@@ -178,6 +178,10 @@ del benchmark
 #in this case, the return of benchmark
 #integration is needed to calculate the return above and below the threshold
 #it is a more reasonable ratio to measure the risk adjusted return
+#normal distribution doesnt explain the fat tail of returns
+#so i use student T cumulated distribution function instead 
+#for reason of simplicity, i do not use empirical distribution
+#the cdf of empirical distribution is much more complex
 def omega(rf,df,sigu,sigl):
     y=integrate.quad(lambda g:1-t.cdf(g,df),rf,sigu)
     x=integrate.quad(lambda g:t.cdf(g,df),sigl,rf)
@@ -187,6 +191,7 @@ def omega(rf,df,sigu,sigl):
 #sortino ratio is another variation of sharpe ratio
 #the standard deviation of all returns is substituted with standard deviation of negative returns
 #sortino ratio measures the impact of negative return on return
+#i am also using student T probability distribution function instead of normal distribution
 
 def sortino(rf,df,m,sigl):
     v=np.sqrt(np.abs(integrate.quad(lambda r:((rf-r)**2)*t.pdf(r,df),rf,sigl)))
