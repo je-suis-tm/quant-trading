@@ -195,18 +195,30 @@ def sortino(rf,df,m,sigl):
 
 
 #backtesting stats
+#CAGR stands for cumulated average growth rate
 stats['CAGR']=stats['portfolio return']=float(0)
 stats['CAGR'][0]=m
 stats['portfolio return'][0]=portfolio['total asset'][-1:]/c0-1
 stats['benchmark return']=rb
 stats['sharpe ratio']=(m-rf)/std
 stats['maximum drawdown']=np.min(portfolio['total asset'])/np.max(portfolio['total asset'])-1
+#calmar ratio is sorta like sharpe ratio
+#the standard deviation is replaced by maximum drawdown
+#it is the measurement of return after worse scenario adjustment
 stats['calmar ratio']=m/stats['maximum drawdown']
 stats['omega ratio']=omega(rf,df,sigu,sigl)
 stats['sortino ratio']=sortino(rf,df,m,sigl)
+#note that i use stop loss limit to limit the numbers of longs
+#and when clearing positions, we clear all the positions at once
+#so every long is always one, and short could be no larger than the stop loss limit
 stats['numbers of longs']=df1['signals'].loc[df1['signals']==1].count()
 stats['numbers of shorts']=df1['signals'].loc[df1['signals']<0].count()
 stats['numbers of trades']=stats['numbers of shorts']+stats['numbers of longs']  
+#to get the total length of trades
+#given that cumsum indicates the holding of positions
+#we can get all the possible outcomes when cumsum doesnt equal zero
+#then we count how many non-zero positions
+#we get the estimation of total length of trades
 stats['total length of trades']=df1['signals'].loc[df1['cumsum']!=0].count()
 stats['average length of trades']=stats['total length of trades']/stats['numbers of trades']
 stats['profit per trade']=float(0)
