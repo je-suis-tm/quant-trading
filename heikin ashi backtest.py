@@ -217,7 +217,7 @@ stats['numbers of trades']=stats['numbers of shorts']+stats['numbers of longs']
 #to get the total length of trades
 #given that cumsum indicates the holding of positions
 #we can get all the possible outcomes when cumsum doesnt equal zero
-#then we count how many non-zero positions
+#then we count how many non-zero positions there are
 #we get the estimation of total length of trades
 stats['total length of trades']=df1['signals'].loc[df1['cumsum']!=0].count()
 stats['average length of trades']=stats['total length of trades']/stats['numbers of trades']
