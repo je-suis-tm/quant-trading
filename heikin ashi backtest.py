@@ -18,21 +18,28 @@ from scipy.stats import t
 #first part is about downloading data and transforming it to dataframe
 
 
-stls=3
+
 #stop loss positions, the maximum long positions we can get
+#without certain constraints, you will long indefinites times as long as the market condition triggers the signal
+#in a bear market, it is suicidal
+stls=3
 ticker='NVDA'
 stdate='2015-04-01'
 eddate='2018-02-15'
+#initial capital to calculate the actual pnl
 c0=10000
-#initial capital
-shares=100
 #shares of every position
+shares=100
+
 df=yf.download(ticker,start=stdate,end=eddate)
 df1=pd.DataFrame(df)
 df=len(df1.index)
 
 
 #details of Heikin Ashi parameters:https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
+#Heikin Ashi has a unique method to filter out the noise
+#its open, close, high, low require a different calculation approach
+#please refer to the website mentioned above
 
 df1['HA close']=(df1['Open']+df1['Close']+df1['High']+df1['Low'])/4
 df1['HA open']=float(0)
@@ -48,11 +55,23 @@ df1['HA low']=m.apply(min,axis=1)
 del df1['Adj Close']
 del df1['Volume']
 
-#setting up signal generations, details can be found from the website mentioned above, just some simple if structures
+#setting up signal generations
+#trigger conditions can be found from the website mentioned above
+#there should also be a short strategy
+#as i am an individual investor, i only use long and clear strategies
+#the trigger condition of short strategy is the reverse of long strategy
+#you have to satisfy all four conditions to long/short
+#nevertheless, the clear signal only has three conditions
 
 df1['signals']=0
+#i use cumulated sum to check how many positions i have longed
+#i would ignore the clear signal prior to no long positions in the portfolio
+#i also keep tracking how many long positions i have got
+#long signals cannot exceed the stop loss limit
 df1['cumsum']=0
 
+#bear in mind that df was a dataframe
+#i reassign it to represent the length of the dataframe
 for n in range(1,df):
     if (df1['HA open'][n]>df1['HA close'][n] and df1['HA open'][n]==df1['HA high'][n] and
         np.abs(df1['HA open'][n]-df1['HA close'][n])>np.abs(df1['HA open'][n-1]-df1['HA close'][n-1]) and
@@ -60,6 +79,7 @@ for n in range(1,df):
         df1['signals'][n]=1
         df1['cumsum']=df1['signals'].cumsum()
         
+        #stop longing positions
         if df1['cumsum'][n]>stls:
             df1['signals'][n]=0
         
@@ -69,13 +89,20 @@ for n in range(1,df):
         df1['signals'][n]=-1
         df1['cumsum']=df1['signals'].cumsum()
         
+        #if long positions i hold are more than one
+        #its time to clear all my positions
+        #if there are no long positions in my portfolio
+        #ignore the clear signal
         if df1['cumsum'][n]>0:
             df1['signals'][n]=-1*(df1['cumsum'][n-1])
         elif df1['cumsum'][n]<0:
             df1['signals'][n]=0
             
 
-#plotting the backtesting result, first plot is Heikin-Ashi candlestick, the second plot is the actual price with long/short positions
+#plotting the backtesting result
+#first plot is Heikin-Ashi candlestick
+#use candlestick function and set Heikin-Ashi O,C,H,L
+#the second plot is the actual price with long/short positions as up/down arrows
 
 
 ax1=plt.subplot2grid((200,1), (0,0), rowspan=120,ylabel='HA price')
@@ -87,6 +114,8 @@ plt.title('Heikin-Ashi')
 ax2=plt.subplot2grid((200,1), (120,0), rowspan=80,ylabel='price',xlabel='')
 df1['Close'].plot(ax=ax2,label=ticker,c='k')
 #long/short positions are attached to the real close price of the stock
+#set the line width to zero
+#thats why we only observe markers
 ax2.plot(df1.loc[df1['signals']==1].index,df1['Close'][df1['signals']==1],marker='^',lw=0,c='g',label='long')
 ax2.plot(df1.loc[df1['signals']<0].index,df1['Close'][df1['signals']<0],marker='v',lw=0,c='r',label='short')
 plt.grid(True)
@@ -105,11 +134,13 @@ portfolio['return']=portfolio['total asset'].pct_change()
 portfolio['close']=df1['Close']
 portfolio['signals']=df1['signals']
 
-#plotting the change of total asset value
+#plotting the asset value change of the portfolio
 fig=plt.figure()
 bx=fig.add_subplot(111)
 portfolio['total asset'].plot()
-#long/short positions related to the portfolio
+#long/short position markers related to the portfolio
+#the same mechanism as the previous one
+#replace close price with total asset value
 bx.plot(portfolio['signals'].loc[portfolio['signals']==1].index,portfolio['total asset'][portfolio['signals']==1],lw=0,marker='^',c='g',label='long')
 bx.plot(portfolio['signals'].loc[portfolio['signals']<0].index,portfolio['total asset'][portfolio['signals']<0],lw=0,marker='v',c='r',label='short')
 plt.legend(loc='best')
@@ -120,12 +151,13 @@ plt.ylabel('asset value')
 plt.show()
 
 #ratio calculation begins
-a=np.arange(1).reshape(1,1)
-stats=pd.DataFrame(a)
+
+stats=pd.DataFrame([0])
 #get the min and max of return
 sigu=np.max(portfolio['return'])
 sigl=np.min(portfolio['return'])
-#m is the average growth rate of portfolio return
+#m is the average growth rate of portfolio 
+#i use geometric average instead of arithmetic average for percentage growth
 m=(float(portfolio['total asset'][-1:]/c0))**(1/df)-1
 #calculating the standard deviation
 std=float(np.sqrt((((portfolio['return']-m)**2).sum())/df))
@@ -135,22 +167,26 @@ std=float(np.sqrt((((portfolio['return']-m)**2).sum())/df))
 benchmark=yf.download('^GSPC',start=stdate,end=eddate)
 #rb is the return of benchmark
 rb=float(benchmark['Close'][-1:]/benchmark['Open'][0]-1)
-#rf is the average growth rate of benchmark return
+#rf is the average growth rate of benchmark 
+#i use geometric average instead of arithmetic average for percentage growth
 rf=(rb+1)**(1/df)-1
 del benchmark
 
 
-#omega ratio is a variation of sharpe ratio, the risk free return is replaced by a given threshhold, in this case, the return of benchmark, integration is needed to calculate the return above and below the threshold
-
-
+#omega ratio is a variation of sharpe ratio
+#the risk free return is replaced by a given threshhold
+#in this case, the return of benchmark
+#integration is needed to calculate the return above and below the threshold
+#it is a more reasonable ratio to measure the risk adjusted return
 def omega(rf,df,sigu,sigl):
     y=integrate.quad(lambda g:1-t.cdf(g,df),rf,sigu)
     x=integrate.quad(lambda g:t.cdf(g,df),sigl,rf)
     z=(y[0])/(x[0])
     return z
 
-#sortino ratio is another variation of sharpe ratio, the standard deviation of all returns is substituted with standard deviation of negative returns which calculated by integration
-
+#sortino ratio is another variation of sharpe ratio
+#the standard deviation of all returns is substituted with standard deviation of negative returns
+#sortino ratio measures the impact of negative return on return
 
 def sortino(rf,df,m,sigl):
     v=np.sqrt(np.abs(integrate.quad(lambda r:((rf-r)**2)*t.pdf(r,df),rf,sigl)))
