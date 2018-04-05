@@ -5,7 +5,7 @@ Created on Tue Feb  6 11:57:46 2018
 @author: Administrator
 """
 
-#special thx to my mentor Giampiero Gallo and his mentor Robert Engle for their tremendous contributions to VCEM
+#special thx to my mentor Giampiero Gallo and his mentor Robert Engle for their tremendous contributions to VECM
 
 #need to get fix yahoo finance package first
 #also some basic understanding of time series and behavioral finance
