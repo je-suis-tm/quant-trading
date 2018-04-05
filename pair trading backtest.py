@@ -1,16 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue Feb  6 13:17:14 2018
-
-@author: Administrator
-"""
-
-# -*- coding: utf-8 -*-
-"""
 Created on Tue Feb  6 11:57:46 2018
 
 @author: Administrator
 """
+
+#special thx to my mentor Giampiero Gallo and his mentor Robert Engle for their tremendous contributions to VCEM
 
 #need to get fix yahoo finance package first
 #also some basic understanding of time series and behavioral finance
