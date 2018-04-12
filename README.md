@@ -1,3 +1,4 @@
+
 # Quant-trading
 
 This folder contains some quantitative trading strategies I found interesting. Note that I only do historical data backtesting. I do have some real time trading strategy I am using. So far it is profitable so I would not share unless you require.
@@ -15,6 +16,12 @@ This is the easiest trading strategy. It is a momentum trading strategy which ho
 2. Pair trading
 
 This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift away too far from each other. First of all, I choose two stocks and run Engle-Granger two step analysis (1, run regression. 2, run unit root test on residuals) on both. Next, I standardize the residual and set one sigma away (both sides) as the threshold. After that, I take the standardized residual list and compare with the threshold. When the residual exceeds threshold, it generates the signals. I always long the cheap stock and short the expensive stock. 
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/ols%20and%20adf.PNG)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/residual.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading.png)
 
 3. Heikin-Ashi candlestick
 
