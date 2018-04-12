@@ -1,4 +1,4 @@
-# quant-trading
+# Quant-trading
 
 This folder contains some quantitative trading strategies I found interesting.
 
@@ -6,7 +6,7 @@ Note that I only do historical data backtesting.
 
 # Strategies:
 
-1.MACD oscillator
+1. MACD oscillator
 
 This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. I basically take long moving average and short moving average on the close price of stock. To generate the trading signal, I implement a comparison between two moving averages. When short moving average is larger than long moving average, I set the signal at 1 which implies LONG, vice versa.
 
