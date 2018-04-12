@@ -19,6 +19,7 @@ This is so-called statistics arbitrage. It is based on the assumption that two c
 The rules of Heikin-Ashi is quite tricky. It is a Japanese way to filter out the noise for momentum trading. Basically I do a few transformations on four key benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low. After that, a few signals are generated. I set up the stop loss position so that we don't get screwed up during any market collapse.
 
 Transformations and trading rules can be found here: 
+
 https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 
