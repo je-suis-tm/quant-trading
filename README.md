@@ -8,6 +8,10 @@ This folder contains some quantitative trading strategies I found interesting. N
 
 This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. I basically take long moving average and short moving average on the close price of stock. To generate the trading signal, I implement a comparison between two moving averages. When short moving average is larger than long moving average, I set the signal at 1 which implies LONG, vice versa.
 
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/momentum%20trading.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/macd%20oscillator.png)
+
 2. Pair trading
 
 This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift away too far from each other. First of all, I choose two stocks and run Engle-Granger two step analysis (1, run regression. 2, run unit root test on residuals) on both. Next, I standardize the residual and set one sigma away (both sides) as the threshold. After that, I take the standardized residual list and compare with the threshold. When the residual exceeds threshold, it generates the signals. I always long the cheap stock and short the expensive stock. 
