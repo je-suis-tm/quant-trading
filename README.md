@@ -28,6 +28,7 @@ HA_Low = minimum of Low, HA_Open, and HA_Close
 
 HA_High = maximum of High, HA_Open, and HA_Close
 
+
 Heikin-Ashi Calculations on First Run
 
 HA_Close = (Open + High + Low + Close) / 4
@@ -37,6 +38,7 @@ HA_Open = (Open + Close) / 2
 HA_Low = Low
 
 HA_High = High
+
 
 Go LONG if all of these are met:
 
@@ -48,6 +50,7 @@ Latest Heikin-Ashi candle body is longer than the previous candle
 
 Latest Heikin-Ashi candle has no upper wick
 
+
 Go SHORT if all of these are met:
 
 Latest Heikin-Ashi candle is bullish
@@ -57,6 +60,7 @@ Previous Heikin-Ashi candle was also bullish
 Latest Heikin-Ashi candle body is longer than the previous candle
 
 Latest Heikin-Ashi candle has no lower wick
+
 
 Exit Conditions:
 
