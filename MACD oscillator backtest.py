@@ -51,25 +51,41 @@ signals['signals'][ma1:]=np.where(signals['ma1'][ma1:]>=signals['ma2'][ma1:],1,0
 #as signals only imply the holding
 #we take the difference to generate real trade signal
 signals['trade']=signals['signals'].diff()
+#oscillator is the difference between two moving average
+#when it is positive, we long, vice versa
+signals['oscillator']=signals['ma1']-signals['ma2']
 #take the slicing
 new=signals[st:]
 
 #plotting the backtesting result
 #the first plot is the actual close price with long/short positions
-#the second plot is long/short moving average oscillator
 fig=plt.figure()
-ax=fig.add_subplot(211)
-new['Close'].plot(label='price')
-ax.plot(new.loc[new['trade']==1].index,new['Close'][new['trade']==1],lw=0,marker='^',c='g')
-ax.plot(new.loc[new['trade']==-1].index,new['Close'][new['trade']==-1],lw=0,marker='v',c='r')
+ax=fig.add_subplot(111)
+new['Close'].plot(label=ticker)
+ax.plot(new.loc[new['trade']==1].index,new['Close'][new['trade']==1],label='LONG',lw=0,marker='^',c='g')
+ax.plot(new.loc[new['trade']==-1].index,new['Close'][new['trade']==-1],label='SHORT',lw=0,marker='v',c='r')
 plt.legend(loc='best')
 plt.grid(True)
+plt.title('Positions')
+plt.show()
 
+
+#the second plot is long/short moving average with oscillator
+#note that i use bar chart for oscillator
+fig=plt.figure()
+cx=fig.add_subplot(211)
+new['oscillator'].plot(kind='bar',color='r')
+plt.legend(loc='best')
+plt.grid(True)
+plt.xticks([])
+plt.xlabel('')
+plt.title('MACD Oscillator')
 bx=fig.add_subplot(212)
 new['ma1'].plot(label='ma1')
 new['ma2'].plot(label='ma2',linestyle=':')
 plt.legend(loc='best')
 plt.grid(True)
+plt.show()
 
 
 plt.show()
