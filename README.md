@@ -4,7 +4,7 @@ This folder contains some quantitative trading strategies I found interesting.
 
 Note that I only do historical data backtesting.
 
-Strategies:
+# Strategies:
 
 1.MACD oscillator
 
