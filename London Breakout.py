@@ -78,7 +78,7 @@ while i<=len(signals['date'])-1:
         
     else:
         signals['cumsum']=signals['signals'].cumsum()
-        if signals['cumsum']!=0:
+        if signals['cumsum'][i]!=0:
             if signals['price'][i]>start+risky/2:
                 signals['signals'][i]=-signals['cumsum'][i]
             if df['price'][i]<start-risky/2:
