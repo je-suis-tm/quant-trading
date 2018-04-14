@@ -36,3 +36,8 @@ https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/backtest.png)
 
+4. London Breakout
+
+To one of my favourite cities in the world.
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/London%20Breakout.png)
