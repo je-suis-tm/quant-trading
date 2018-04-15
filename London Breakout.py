@@ -211,6 +211,8 @@ while i<=len(signals['date'])-1:
         
             
         
+#how to calculate stats could be found from my other code called Heikin-Ashi: https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
     i+=1
 
 
@@ -285,6 +287,8 @@ bx.plot(news['price'],label='EURGBP')
 plt.legend(loc='best')
 plt.show()
 
+
+#how to calculate stats could be found from my other code called Heikin-Ashi: https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
 
 
