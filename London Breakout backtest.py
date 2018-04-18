@@ -10,13 +10,13 @@
 #okay, lets get down to business
 #the idea of london break out strategy is to take advantage of fx trading hour
 #basically fx trading is 24 hour non stop for weekdays
-#u got tokyo, when tokyo closes, u got london
+#u got tokyo, before tokyo closes, u got london
 #in the afternoon, u got new york, when new york closes, its sydney
 #and several hours later, tokyo starts again
 #however, among these three major players
 #london is where the majority trades are executed
 #not sure if it will stay the same after brexit actually takes place
-#what we intend to do is look at the last trading hour of tokyo
+#what we intend to do is look at the last trading hour before london starts
 #we set up our thresholds based on that hours high and low
 #when london market opens, we examine the first 30 minutes
 #if it goes way above or below thresholds
@@ -36,10 +36,12 @@
 #what we get from the website is one minute frequency bid-ask price
 #i take the average of em and add a header called price
 #i save it on local disk then read it via python
-#please note that this website uses new york time zone utc-5
+#please note that this website uses new york time zone utc -5
 #for non summer daylight saving time
 #london market starts at gmt 8 am
 #which is est 3 am
+#daylight saving time is another story
+#what a stupid idea it is
 import os
 os.chdir('d:')
 os.getcwd()
@@ -117,14 +119,14 @@ signals['lower']=0.0
 while i<=len(signals['date'])-1:
     #like i have mentioned before
     #my datasets use eastern standard time
-    #so est 2am is the last hour of tokyo market
+    #so est 2am is the last hour before london starts
     #we try to append all the price into the list called threshold
     if signals['date'][i].hour==2:
         threshold.append(signals['price'][i])
     
     #est 3am which is gmt 8am
     #thats when london market starts
-    #good morning monument and canary wharf!
+    #good morning city and canary wharf!
     #right at this moment
     #we get max and min of the price of tokyo trading hour
     #i set up the threshold as the way it is
@@ -208,10 +210,7 @@ while i<=len(signals['date'])-1:
                 signals['signals'][i]=-signals['cumsum'][i]
             if df['price'][i]<start-risky/2:
                 signals['signals'][i]=-signals['cumsum'][i]
-        
-            
-        
-#how to calculate stats could be found from my other code called Heikin-Ashi: https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+     
 
     i+=1
 
