@@ -38,7 +38,8 @@ https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 4. London Breakout
 
-To one of my favourite cities in the world. Proud to be a Londoner.
+To one of my favourite cities in the world! Proud to be a Londoner!
+
 London Breakout is a very simple strategy. Basically, it is to take advantage of Japan market momentum and bring it to London market. Tokyo FX trading hour is GMT 0 - GMT 8:59am. London FX trading hour starts from GMT 8am. There is an hour which Tokyo trading hour overlaps London.The crucial time frame is GMT 7am to GMT 8 am. We look at the performance of Tokyo market. We set upper and lower threshold based on that hour's high and low. Once London market begins, we spend the first couple of minutes to see if the price would breach the boundaries. If it is above threshold, we long the currency pair, vice versa. Nevertheless, we should also set a limit to prevent us from trading in case abnormal open volatility occurs. Normally, we clear our positions based on our target stop loss or stop profit. By the end of the day, if there is still open positions, we clear them out. So London Breakout is a day trading strategy.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/LondonBreakOut.png)
