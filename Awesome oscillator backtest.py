@@ -13,8 +13,8 @@ import fix_yahoo_finance as yf
 # In[2]:
 
 
-ma1=int(input('ma1:'))
-ma2=int(input('ma2:'))
+ma1=5
+ma2=34
 
 stdate=input('start date in format yyyy-mm-dd:')
 eddate=input('end date in format yyyy-mm-dd:')
@@ -56,7 +56,7 @@ signals['awesome trade']=signals['awesome signals'].diff()
 # In[88]:
 
 
-st=200
+
 new=signals[st:]
 
 
