@@ -1,5 +1,3 @@
-
-
 # Quant-trading
 
 This folder contains some quantitative trading strategies I found interesting. Note that I only do historical data backtesting. I do have some real time trading strategy I am using. So far it is profitable so I would not share unless you require.
@@ -45,3 +43,14 @@ London Breakout is a very simple strategy. Basically, it is to take advantage of
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/LondonBreakOut.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/London%20Threshold.png)
+
+5.Awesome oscillator
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20positions.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/Awesome%20oscillator.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20ma.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20asset.png)
+
