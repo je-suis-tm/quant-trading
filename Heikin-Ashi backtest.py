@@ -199,15 +199,17 @@ def sortino(rf,df,m,sigl):
     s=(m-rf)/v[0]
     return s
 
-#this is how to calculate the maximum drawdown
-#basically we take return of every period
-#we check the difference between return and previous maximum return
-#we get the drawdown
-#we set a variable to store every day drawdown
-#when the new drawdown is smaller than the variable
-#we update the variable with the smaller one
-#in the end we output the mininum value which is the maximum drawdown
-#cuz drawdown is negative so this is called maximum drawdown
+#i use a function to calculate maximum drawdown
+#the idea is simple
+#for every day, we take the current asset value
+#to compare with the previous highest asset value
+#we get our daily drawdown
+#it is supposed to be negative if it is not the maximum for this period so far
+#we implement a temporary variable to store the minimum value
+#which is called maximum drawdown
+#for each daily drawdown that is smaller than our temporary value
+#we update the temp until we finish our traversal
+#in the end we return the maximum drawdown
 def mdd(list):
     temp=0
     for i in range(1,len(list)):
