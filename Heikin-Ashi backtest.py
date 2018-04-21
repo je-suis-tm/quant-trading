@@ -153,6 +153,7 @@ plt.show()
 #ratio calculation begins
 
 stats=pd.DataFrame([0])
+
 #get the min and max of return
 sigu=np.max(portfolio['return'])
 sigl=np.min(portfolio['return'])
@@ -198,6 +199,22 @@ def sortino(rf,df,m,sigl):
     s=(m-rf)/v[0]
     return s
 
+#this is how to calculate the maximum drawdown
+#basically we take return of every period
+#we check the difference between return and previous maximum return
+#we get the drawdown
+#we set a variable to store every day drawdown
+#when the new drawdown is smaller than the variable
+#we update the variable with the smaller one
+#in the end we output the mininum value which is the maximum drawdown
+#cuz drawdown is negative so this is called maximum drawdown
+def mdd(list):
+    temp=0
+    for i in range(1,len(list)):
+        if temp>(list[i]/max(list[:i])-1):
+            temp=(list[i]/max(list[:i])-1)
+
+    return temp
 
 #backtesting stats
 #CAGR stands for cumulated average growth rate
@@ -206,7 +223,7 @@ stats['CAGR'][0]=m
 stats['portfolio return'][0]=portfolio['total asset'][-1:]/c0-1
 stats['benchmark return']=rb
 stats['sharpe ratio']=(m-rf)/std
-stats['maximum drawdown']=np.min(portfolio['total asset'])/np.max(portfolio['total asset'])-1
+stats['maximum drawdown']=mdd(portfolio['total asset'])
 #calmar ratio is sorta like sharpe ratio
 #the standard deviation is replaced by maximum drawdown
 #it is the measurement of return after worse scenario adjustment
