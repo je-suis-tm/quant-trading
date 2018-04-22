@@ -46,6 +46,10 @@ London Breakout is a very simple strategy. Basically, it is to take advantage of
 
 5.Awesome oscillator
 
+Awesome oscillator is similar to MACD oscillator. Both of em are considered momentum strategies which holds the belief that upward momentum has more impact on short term moving average than long term moving average. Instead of taking moving average on close price, awesome moving average is based on the mean of high and low price. Other than the difference between short term moving average and long term moving average, which called oscillator, there is another way to generate signals ahead of moving average divergence. It is called saucer which is slightly more difficult than MACD. Details of saucer could be found here:
+
+https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/Awesome%20oscillator.png)
