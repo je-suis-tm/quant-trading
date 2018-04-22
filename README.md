@@ -1,6 +1,6 @@
 # Quant-trading
 
-This folder contains some quantitative trading strategies I found interesting. Note that I only do historical data backtesting. I do have some real time trading strategy I am using. So far it is profitable so I would not share unless you require.
+This folder contains some quantitative trading strategies I found interesting. Mostly, they are momentum trading strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless.
 
 # Strategies:
 
