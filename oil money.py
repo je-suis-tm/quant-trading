@@ -1,4 +1,5 @@
 
+# https://segmentfault.com/a/1190000011145901
 # coding: utf-8
 
 # In[ ]:
@@ -80,10 +81,26 @@ signals['upper']=signals['fitted']+0.5*upper
 signals['lower']=signals['fitted']+0.5*lower
 signals['stop profit']=signals['fitted']+2*upper
 signals['stop loss']=signals['fitted']+2*lower
-
+signals['signals']=0
 
 # In[51]:
-
+for j in signals.index:
+    if signals['nok'][j:j]>signals['upper'][j:j]:
+        signals['signals'][j:j]=-1
+        if signals['nok'][j:j]>signals['stop profit'][j:j]:
+            signals['signals'][j:j]=0
+        signals['cumsum']=signals['signals'].cumsum()
+        if signals['cumsum'][j:j]<-1:
+            signals['signals'][j:j]=0
+            
+            
+    if signals['nok'][j:j]<signals['lower'][j:j]:
+        signals['signals'][j:j]=1
+        if signals['nok'][j:j]<signals['stop loss'][j:j]:
+            signals['signals'][j:j]=0
+        signals['cumsum']=signals['signals'].cumsum()
+        if signals['cumsum'][j:j]>1:
+            signals['signals'][j:j]=0
 
 
 # In[53]:
