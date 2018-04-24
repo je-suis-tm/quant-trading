@@ -71,7 +71,10 @@ lower=-upper
 
 
 signals=df[df.index>='2017-04-25']
-signals['fitted']=signals['usd']*model.params[1]+signals['gbp']*model.params[2]+signals['eur']*model.params[3]+signals['brent']*model.params[4]+model.params[0]
+signals['fitted']=signals['usd']*model.params[1]+\
+signals['gbp']*model.params[2]+\
+signals['eur']*model.params[3]+\
+signals['brent']*model.params[4]+model.params[0]
 
 signals['upper']=signals['fitted']+0.5*upper
 signals['lower']=signals['fitted']+0.5*lower
