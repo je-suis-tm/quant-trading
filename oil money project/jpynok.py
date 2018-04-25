@@ -119,7 +119,7 @@ plt.show()
 (signals['brent'][signals['stop profit']<signals['nok']]).plot(c='#FFA07A')
 plt.legend(loc='best')
 plt.title('brent crude after 2017/10/28')
-plt.ylabel('brent future contract in usd')
+plt.ylabel('brent future contract in jpy')
 plt.show()
 
 
