@@ -46,6 +46,27 @@ y=df['nok'][df.index<'2017-04-25']
 # In[71]:
 model=sm.OLS(y,x).fit()
 print(model.summary(),'\n')
+#nevertheless, from the summary u can tell there is multicollinearity
+#to solve the problem, i used elastic net regression to achieve the convergence
+#plz check the following codes
+
+#from sklearn.linear_model import ElasticNetCV as en 
+#m=en(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10], \
+#l1_ratio=[.01, .1, .5, .9, .99],  max_iter=5000).fit(x0[x0.index<'2017-04-25'], y)  
+#print(m.intercept_,m.coef_)
+
+#results:
+#0.0865891404588 [  0.00000000e+00   0.00000000e+00   0.00000000e+00  -2.50754626e-06]
+#so brent crude can be decomposed into jpyusd,jpyeur,jpygbp
+#us dollar possibly can account for some oil price change
+#what about japanese yen, euro, uk sterling
+#none of these countries are major oil producers
+#it simply doesnt make sense
+#even though a simple correlation between norwegian krone and brent crude is what i desired
+#it doesnt work this way
+#i used the fitted value to compare with actual value 
+#the error term is extremely large 
+#basically i cant use the model to do any statistical arbitrage
 
 # In[72]:
 upper=np.std(model.resid)
