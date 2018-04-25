@@ -2,6 +2,13 @@
 
 This folder contains some quantitative trading strategies I found interesting. Mostly, they are momentum trading strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless.
 
+1.MACD oscillator
+2.Pair trading
+3.Heikin-Ashi candlestick
+4.London Breakout
+5.Awesome oscillator
+
+
 # Strategies:
 
 1. MACD oscillator
