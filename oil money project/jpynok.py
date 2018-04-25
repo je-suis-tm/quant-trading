@@ -125,7 +125,7 @@ plt.show()
 
 # In[96]:
 capital0=5000
-positions=100
+positions=10000
 portfolio=pd.DataFrame(index=signals.index)
 portfolio['holding']=signals['nok']*signals['cumsum']*positions
 portfolio['cash']=capital0-(signals['nok']*signals['signals']*positions).cumsum()
