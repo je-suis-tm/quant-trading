@@ -1,10 +1,49 @@
 # coding: utf-8
-
-
-
 # In[67]:
 
+#i call it oil money
+#cuz its a statistical arbitrage on oil price and currency pair
+#the inspiration came from an article i read last week
+#it suggested to trade on forex of oil producing countries
+#as the oil price went uprising
+#what i intend to do is to build up a model
+#we do a regression on historical datasets
+#we use linear regression to do the prediction
+#we set up thresholds based on the standard deviation of residual
+#i take one deviation above as the upper threshold
+#if the currency price breaches the upper threshold
+#i take a short position as it is assumed to revert to its normal price range
+#for the lower threshold, vice versa
+#however, our regression is based on statistics
+#we still need to consider fundamental influence
+#what if the market condition has changed
+#in that case our model wont work any more
+#the price would deviate two sigmas away from predicted value
+#which we should revert our positions
+#e.g. the price is two sigmas above our predicted value
+#we change our short to long as the market has changed
+#there is probably hidden information in the uprising price
+#lets follow the trend and see how it goes
 
+#this idea sounds very silly
+#nobody actually does it
+#i just wanna see if this project is plausible
+#perhaps im gonna suffer a huge loss from it
+#first, we choose my currency norwegian krone
+#norway is one of the largest oil producing countries with floating fx regime
+#other oil producing countries such as saudi, iran, qatar have their fx pegged to usd
+#russia is supposed to be a good training set
+#however, russia got sanctioned by uncle sam a lot
+#i tried jpyrub and the model barely captured anything
+#every model seemed to be overfitted and had no prediction power
+#i have uploaded russian ruble raw data in this folder for those who are willing to try
+
+#after targetting at norwegian krone, we have to choose our base currency
+#i took a look at norway's biggest trading partners to determine our variables
+#i decided to include us dollar, euro and uk sterling as well as brent crude price
+#i chose japanese yen as base currency
+#cuz it doesnt have much correlation with nok
+#lets get started!
 
 import matplotlib.pyplot as plt
 import statsmodels.api as sm
@@ -14,15 +53,22 @@ import os
 os.chdir('h:/')
 os.getcwd()
 
+
 # In[68]:
+#this part is just data etl
+#i got my raw data from eikon 4 
+#so i gotta consolidate em before regression
+#i have uploaded integrated dataset called raw.csv in this folder
+#u can use pd.read_csv to replace this section
 nok=pd.read_csv('nok.csv')
 usd=pd.read_csv('usd.csv')
 gbp=pd.read_csv('gbp.csv')
 eur=pd.read_csv('eur.csv')
 brent=pd.read_csv('brent.csv')
-
-
 # In[69]:
+#this loop is unnecessary
+#i am just being lazy
+#lets turn these prices into time series
 for i in nok,usd,gbp,eur,brent:
     i.set_index(pd.to_datetime(i['Date']),inplace=True)
 temp=pd.concat([nok['Last'],usd['Open'],eur['Last'],gbp['Last']],axis=1)
@@ -34,16 +80,18 @@ crude['Date']=brent.index
 df=pd.merge(temp,crude)
 df.set_index(pd.to_datetime(df['Date']),inplace=True)
 del df['Date']
+df.to_csv('raw.csv')
+
 
 
 # In[70]:
+#now we do our linear regression
+#our historical data dated from 2013-4-25 to 2017-4-25
+#we use data from 2017-4-25 to 2018-4-25 to do backtesting
 x0=pd.concat([df['usd'],df['gbp'],df['eur'],df['brent']],axis=1)
 x1=sm.add_constant(x0)
 x=x1[x1.index<'2017-04-25']
 y=df['nok'][df.index<'2017-04-25']
-
-
-# In[71]:
 model=sm.OLS(y,x).fit()
 print(model.summary(),'\n')
 #nevertheless, from the summary u can tell there is multicollinearity
