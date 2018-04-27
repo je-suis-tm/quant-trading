@@ -27,13 +27,16 @@
 
 #this idea sounds very silly
 #nobody actually does it
+#it came to my mind outta nowhere
 #i just wanna see if this project is plausible
 #perhaps im gonna suffer a huge loss from it
+#however, its not what i thought it was
+#it turned out to be a totally different indicator!
 #first, we choose my currency norwegian krone
 #norway is one of the largest oil producing countries with floating fx regime
 #other oil producing countries such as saudi, iran, qatar have their fx pegged to usd
 #russia is supposed to be a good training set
-#however, russia got sanctioned by uncle sam a lot
+#nevertheless, russia got sanctioned by uncle sam a lot
 #i tried rubjpy and the model barely captured anything
 #every model seemed to be overfitted and had no prediction power
 #i have uploaded russian ruble raw data in this folder for those who are willing to try
@@ -267,5 +270,5 @@ plt.show()
 #that is basically the most profitable trade ever
 #best to follow up with a momentum strategy
 #maybe this is not a statistical arbitrage after all
-#the model is a trend reversal indicator
-#its a momentum trading strategy
+#the model is a trend following indicator
+#i just created a momentum trading strategy
