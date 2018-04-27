@@ -200,10 +200,12 @@ plt.title('fitted vs actual')
 plt.ylabel('jpynok')
 plt.show()
 
-#there are a few options as why
+#if we decompose jpynok into long term trend and short term random process
+#we could clearly see that brent crude has dominated short term random process
+#so what changed the long term trend?
+#there are a few options as reasons
 #saudi and iran endorsed an extension of production caps on that particular date
-#donald trump got elected as potus
-
+#donald trump got elected as potus so he would lift the ban on domestics shale oil restriction
 (signals['brent'][signals['stop profit']<signals['nok']]).plot(c='#FFA07A')
 plt.legend(loc='best')
 plt.title('brent crude after 2017/10/28')
@@ -212,6 +214,7 @@ plt.show()
 
 
 # In[96]:
+#then lets do a pnl analysis
 capital0=5000
 positions=10000
 portfolio=pd.DataFrame(index=signals.index)
@@ -220,9 +223,8 @@ portfolio['cash']=capital0-(signals['nok']*signals['signals']*positions).cumsum(
 portfolio['total asset']=portfolio['holding']+portfolio['cash']
 portfolio['signals']=signals['signals']
 
-
-
 # In[98]:
+#we plot how our asset value changes over time
 fig=plt.figure()
 ax=fig.add_subplot(111)
 portfolio['total asset'].plot()
