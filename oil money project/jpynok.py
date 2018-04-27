@@ -115,13 +115,16 @@ print(model.summary(),'\n')
 #i used the fitted value to compare with actual value 
 #the error term is extremely large 
 #basically i cant use the model to do any statistical arbitrage
+#unfortunately i have to live with this model
+#as it has some prediction power over the next several months
+
 
 # In[72]:
+#lets generate signals
+#we set one sigma of the residual as thresholds
+#two sigmas of the residual as stop orders
 upper=np.std(model.resid)
 lower=-upper
-
-
-# In[73]:
 signals=df[df.index>='2017-04-25']
 signals['fitted']=signals['usd']*model.params[1]+signals['gbp']*model.params[2]+signals['eur']*model.params[3]+signals['brent']*model.params[4]+model.params[0]
 signals['upper']=signals['fitted']+0.5*upper
@@ -131,7 +134,17 @@ signals['stop loss']=signals['fitted']+2*lower
 signals['signals']=0
 
 
+
 # In[83]:
+#while doing a traversal
+#we apply the rules i mentioned before
+#if actual price goes beyond upper threshold
+#we take a short and bet on its reversion process
+#vice versa
+#we use cumsum to make sure our signals only get generated
+#for the first time condions are met
+#when actual price hit the stop order boundary
+#we revert our positions
 for j in signals.index:
     if pd.Series(signals['nok'])[j]>pd.Series(signals['upper'])[j]:
         signals['signals'][j:j]=-1  
@@ -156,7 +169,9 @@ for j in signals.index:
         signals['cumsum']=signals['signals'].cumsum()
         break
 
+        
 # In[84]:
+#next, we plot the usual positions as the first figure
 fig=plt.figure()
 ax=fig.add_subplot(111)
 signals['nok'].plot(label='jpynok')
@@ -169,6 +184,11 @@ plt.show()
 
 
 # In[85]:
+#the second figure explores thresholds and boundaries for signal generation
+#we can see after 2017/10/28, jpynok price went skyrocketing
+#as a data scientist, we may ask why?
+#is it a problem of our model identification
+#or the fundamental situation of jpynok or oil price changed
 signals['fitted'].plot()
 signals['nok'].plot()
 signals['upper'].plot(linestyle='--')
@@ -180,9 +200,8 @@ plt.title('fitted vs actual')
 plt.ylabel('jpynok')
 plt.show()
 
-
-#saudi and iran endorsed an extension of production caps
-
+#there are a few options as why
+#saudi and iran endorsed an extension of production caps on that particular date
 #donald trump got elected as potus
 
 (signals['brent'][signals['stop profit']<signals['nok']]).plot(c='#FFA07A')
