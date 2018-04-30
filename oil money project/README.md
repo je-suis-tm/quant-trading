@@ -14,3 +14,10 @@ The next step, we take the residuals from both estimations and check its standar
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/actual%20vs%20fitted.png)
+
+What really interests us is why our model doesnt work any more. A detailed causal analysis is basically writing a thesis. Oh, how I hate writing thesis! I would make it short here. What we can tell is that after 2017/11/15 things have dramatically changed. What could possibly be the reason? 
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/brent%20crude.png)
+
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/portfolio.png)
