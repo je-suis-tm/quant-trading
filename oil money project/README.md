@@ -15,9 +15,12 @@ The next step, we take the residuals from both estimations and check its standar
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/actual%20vs%20fitted.png)
 
-What really interests us is why our model doesnt work any more. A detailed causal analysis is basically writing a thesis. Oh, how I hate writing thesis! I would make it short here. What we can tell is that after 2017/11/15 things have dramatically changed. What could possibly be the reason? 
+What really interests us is why our model doesnt work any more. A detailed causal analysis is basically writing a thesis. Oh, how I hate writing thesis! I would make it short here. What we can tell is that after 2017/11/15 things have dramatically changed. What could possibly be the reason? Could it be that Saudi and Iran endorsed an extension of production caps on that particular date? Or Donald Trump got elected as POTUS so he would encourage a depreciated US dollar?
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/brent%20crude.png)
 
+Well, we are traders not economists. Lets take a look at our portfolio performance. So far so good, we actually made a few bucks from NOK. Interestingly, after we placed the stop order, I decided to add extra position to see what would happen. In the figure below, we could see the profolio when NOK breached the stop loss threshold. The downwards momentum didnt stop until two months later (maybe another major event in financial market occured). 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/portfolio.png)
+
+Wow, did we just do a momentum trading strategy! We started to find a statistical arbitrage between oil price and oil producing country forex. What we got in return is a momentum trading strategy. My explanation for our results would be when the model doesnt work any more, there must be some fundamental situations that have changed investors outlooks in NOK forever. I tested this trading strategy on NOK in different periods. It turned out that our momentum trading is much more riskless and profitable than our statistical arbitrage. But does it work on any other currencies? 
