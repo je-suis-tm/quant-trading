@@ -19,7 +19,7 @@ What really interests us is why our model doesnt work any more. A detailed causa
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/brent%20crude.png)
 
-Well, we are traders not economists. Lets take a look at our portfolio performance. So far so good, we actually made a few bucks from NOK. Interestingly, after we placed the stop order, I decided to add extra position to see what would happen. In the figure below, we could see the profolio when NOK breached the stop loss threshold. The downwards momentum didnt stop until two months later (maybe another major event in financial market occured). 
+Well, we are not economists. I wont write a paper on this. Then, lets take a look at our portfolio performance. So far so good, we actually made a few bucks from NOK. Interestingly, after we placed the stop order, I decided to add extra position to see what would happen. In the figure below, we could see the profolio when NOK breached the stop loss threshold. The downwards momentum didnt stop until two months later (maybe another major event in financial market occured). 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/portfolio.png)
 
