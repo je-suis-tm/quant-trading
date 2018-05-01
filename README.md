@@ -1,6 +1,6 @@
 # Quant-trading
 
-This folder contains some quantitative trading strategies I found interesting. Mostly, they are momentum trading strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless.
+This folder contains some quantitative trading strategies I found interesting. Mostly, they are momentum trading strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless. I also might include some strange ideas I came up with. There is no guarantee that any of them would make money in real market.
 
 1.MACD oscillator
 
@@ -72,6 +72,8 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 6.Oil money project
 
-I came up with this idea after reading an article about how to trade forex during low volatility period. As its not a recognized trading strategy like others in this repo, i store all files inside a separate folder called oil money project. For enquiry on more details of the strategy, please refer to readme in the following link.
+I came up with this idea after reading an article about how to trade forex during low volatility period. As its not a recognized trading strategy like others in this repo, I store all files inside a separate folder called oil money project. For enquiry on more details of the strategy, please refer to readme in the following link.
 
 https://github.com/tattooday/quant-trading/tree/master/oil%20money%20project
+
+STAY TUNED
