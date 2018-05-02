@@ -257,8 +257,8 @@ plt.show()
 
 #that still doesnt sound convincable
 #lets try cointegration test
-#academically we should use johansen test
-#unfortunately, there is no johanssen test in statsmodels
+#academically we should use johansen test which works on multi dimensions
+#unfortunately, there is no johansen test in statsmodels
 #well, here we go again
 #we have to use Engle-Granger two step!
 #salute to Engle, mentor of my mentor
@@ -276,7 +276,8 @@ print(model.rsquared)
 #(-2.5593457642922992, 0.10169409761939013, 0, 1030, 
 #{'1%': -3.4367147300588341, '5%': -2.8643501440982058, '10%': -2.5682662399849185}, -1904.8360920752475)
 #0.731199409071
-#unfortunately, it hasnt even reached 90% confidence interval
+#unfortunately, the residual hasnt even reached 90% confidence interval
+#we cant conclude any cointegration from the test
 #still, from the visualization
 #we can tell nok and eur are somewhat correlated
 #our rsquared suggested euro has the power of 73% explanation on nok
