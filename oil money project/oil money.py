@@ -254,6 +254,35 @@ plt.ylabel('normalized price by 100')
 plt.title('random walk with a drift')
 plt.show()
 
+
+#that still doesnt sound convincable
+#lets try cointegration test
+#academically we should use johansen test
+#unfortunately, there is no johanssen test in statsmodels
+#well, here we go again
+#we have to use Engle-Granger two step!
+#salute to Engle, mentor of my mentor
+#to the nobel prize winner
+#im not gonna explain much here
+#if u have checked my other codes, u would know
+#its in pair trading
+# https://github.com/tattooday/quant-trading/blob/master/Pair%20trading%20backtest.py
+x2=df['eur'][df.index<'2017-04-25']
+x3=sm.add_constant(x2)
+model=sm.OLS(y,x3).fit()
+ero=model.resid
+print(adf(ero))
+print(model.rsquared)
+#(-2.5593457642922992, 0.10169409761939013, 0, 1030, 
+#{'1%': -3.4367147300588341, '5%': -2.8643501440982058, '10%': -2.5682662399849185}, -1904.8360920752475)
+#0.731199409071
+#unfortunately, it hasnt even reached 90% confidence interval
+#still, from the visualization
+#we can tell nok and eur are somewhat correlated
+#our rsquared suggested euro has the power of 73% explanation on nok
+#even though the model has a relatively large condition number
+
+
 # In[96]:
 #then lets do a pnl analysis
 capital0=2000
