@@ -240,6 +240,19 @@ plt.title('brent crude after 2017/11/15')
 plt.ylabel('brent future contract in jpy')
 plt.show()
 
+#lets normalize all prices by 100
+#its easy to see that nok follows euro
+#and economics explanation would be norway is in eea
+#its economy heavily relies on eu
+(df['nok']/df['nok'][0]*100).plot()
+(df['usd']/df['usd'][0]*100).plot()
+(df['eur']/df['eur'][0]*100).plot()
+(df['gbp']/df['gbp'][0]*100).plot()
+(df['brent']/df['brent'][0]*100).plot()
+plt.legend()
+plt.ylabel('normalized price by 100')
+plt.title('random walk with a drift')
+plt.show()
 
 # In[96]:
 #then lets do a pnl analysis
