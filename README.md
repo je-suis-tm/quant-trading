@@ -42,6 +42,7 @@ The rules of Heikin-Ashi are quite tricky. It is a Japanese way to filter out th
 
 Transformations and trading rules can be found here: 
 
+
 https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/heikin%20ashi.png)
@@ -86,5 +87,7 @@ Rules of dual thrust can be found in the following link:
 
 https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust.png)
 
 STAY TUNED
