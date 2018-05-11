@@ -14,6 +14,8 @@ This folder contains some quantitative trading strategies I found interesting. M
 
 6.Oil money project
 
+7.Dual thrust
+
 # Strategies:
 
 1. MACD oscillator
@@ -75,5 +77,15 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 I came up with this idea after reading an article about how to trade forex during low volatility period. As its not a recognized trading strategy like others in this repo, I store all files inside a separate folder called oil money project. For enquiry on more details of the strategy, please refer to readme in the following link.
 
 https://github.com/tattooday/quant-trading/tree/master/oil%20money%20project
+
+7.Dual thrust
+
+Dual thrust is very popular opening range breakout strategy, especially in CTA. It is very similar to London Breakout strategy. Basically we set up upper and lower thresholds based on previous days open, close, high, low. When the market opens and the price exceeds thresholds, we would take a long/short positions prior to upper/lower threshold. It is quite useful in intra daily trading. There is no stop long/short position in this strategy. We clear our position at the end of the day.
+
+Rules of dual thrust can be found in the following link:
+
+https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20asset.png)
 
 STAY TUNED
