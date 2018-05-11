@@ -88,6 +88,6 @@ Rules of dual thrust can be found in the following link:
 https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust.png)
+
 
 STAY TUNED
