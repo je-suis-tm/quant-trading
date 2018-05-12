@@ -71,7 +71,11 @@ intraday['range']=np.where(intraday['range1']>intraday['range2'],intraday['range
     
 
     
-#
+#as the lags of days have been set to 5
+#we should start our backtesting after 4 workdays of january
+#which is jan 8
+#cumsum is to control the holding of underlying asset
+#sigup and siglo are the variables to store the upper/lower threshold
 signals=pd.DataFrame(df[df.index>='2018-01-08'])
 signals['signals']=0
 signals['cumsum']=0
@@ -79,7 +83,19 @@ sigup=float(0)
 siglo=float(0)
 
 
-#
+#for traversal on time series
+#the tricky part is the slicing
+#we have to either use [i:i] or pd.Series
+#first we set up thresholds at the beginning of london market
+#which is est 3am
+#if the price exceeds either threshold
+#we will take long/short positions
+#cumsum is used to make sure that we only generate one signal for each situation
+#if the price goes from below the lower threshold to above the upper threshold during the day
+#we reverse our positions from short to long
+#by the end of london market, which is est 12pm
+#we clear all opening positions
+#the whole part is very similar to London Breakout strategy
 for i in signals.index:
     if (i.hour==3 and i.minute==0):
         sigup=float(param*intraday['range']['2018-01-%d'%(i.day):'2018-01-%d'%(i.day)]+pd.Series(signals['eurusd'])[i])
@@ -108,15 +124,20 @@ for i in signals.index:
         signals['signals'][i:i]=-signals['cumsum'][i:i]
         
 
-#
+#in the end, we plot our positions throughout january
+#this time, lets use ggplot for a different experience
+#we always need to set up the style before we begin to plot
 plt.style.use('ggplot')
 plt.show()
+#we have to do a lil bit slicing to make sure we can see the plot clearly
 signew=signals[signals.index>'2018-01-20']
 fig=plt.figure()
 ax=fig.add_subplot(111)
 ax.plot(signew['eurusd'],label='EURUSD')
 ax.plot(signew.loc[signew['signals']==1].index,signew['eurusd'][signew['signals']==1],lw=0,marker='^',markersize=10,c='g',label='long')
 ax.plot(signew.loc[signew['signals']==-1].index,signew['eurusd'][signew['signals']==-1],lw=0,marker='v',markersize=10,c='r',label='short')
+#somehow ggplot legends use white texts as default
+#this is how we change that
 lgd=plt.legend(loc='best').get_texts()
 for text in lgd:
     text.set_color('k')
