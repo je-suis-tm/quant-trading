@@ -21,9 +21,33 @@ rg=5
 param=0.5
 
 
-#
+
+#as we are doing backtesting, we have already got all the datasets we need
+#we can create a table to store all open, close, high and low prices
+#and calculate the range before we get to signal generation
+#otherwise, we would have to put this part inside the loop
+#it would greatly increase the time complexity
+#however, in real time trading, we do not have futures price
+#we have to store all past information in sql
+#we have to calculate the range from sql before the market opens
+
+#lets create a dictionary 
+#we use keys to classify different info we need
 memo={'date':[],'open':[],'close':[],'high':[],'low':[]}
 for i in range(1,32):
+    #as we already know we use january price to do backtesting
+    #we only need to run a traversal on 31 days
+    #nevertheless, not everyday is a workday
+    #assuming our raw data doesnt contain weekend prices
+    #we use try function to make sure we get the info of workdays without errors
+    #note that i put date at the end of the loop
+    #the date appendix doesnt depend on our raw data
+    #it only relies on the range function above
+    #we could accidentally append weekend date if we put it at the beginning
+    #not until the program cant find price in raw data will the program stop
+    #by that time, we have already appended weekend date
+    #we wanna make sure the length of all lists in dictionary are the same
+    #so that we can construct a structured table in the next step
     try:
         temp=df['2018-01-%d 3:00:00'%(i):'2018-01-%d 12:00:00'%(i)]['eurusd']
         
@@ -37,7 +61,6 @@ for i in range(1,32):
         continue
 
 intraday=pd.DataFrame()
-
 for key in memo:
     intraday[key]=memo[key]
 
@@ -47,6 +70,7 @@ intraday['range2']=intraday['close'].rolling(rg).max()-intraday['low'].rolling(r
 intraday['range']=np.where(intraday['range1']>intraday['range2'],intraday['range1'],intraday['range2'])
     
 
+    
 #
 signals=pd.DataFrame(df[df.index>='2018-01-08'])
 signals['signals']=0
