@@ -5,6 +5,16 @@ Created on Mon Mar 19 15:22:38 2018
 @author: Administrator
 """
 
+#dual thrust is an opening range breakout strategy
+#it is very similar to London Breakout
+#please check London Breakout if u have any questions
+# https://github.com/tattooday/quant-trading/blob/master/London%20Breakout%20backtest.py
+#Initially we set up upper and lower thresholds based on previous days open, close, high and low 
+#When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds 
+#However, there is no stop long/short position in this strategy
+#We clear all positions at the end of the day
+#rules of dual thrust can be found in the following link
+# https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 import os
 os.chdir('D:/')
 os.getcwd()
@@ -13,10 +23,15 @@ import numpy as np
 import pandas as pd
 
 
-#
+#similar to London Breakout
+#my raw data comes from the same website
+# http://www.histdata.com/download-free-forex-data/?/excel/1-minute-bar-quotes
+#just take the mid price of whatever currency pair you want
 df=pd.read_csv('eurusd.csv')
 df.set_index(pd.to_datetime(df['date']),inplace=True)
-
+#rg is the lags of days
+#param is the parameter of trigger range, it should be smaller than one
+#normally ppl use 0.5 to give long and short 50/50 chance to trigger
 rg=5
 param=0.5
 
@@ -145,3 +160,7 @@ plt.ylabel('EURUSD')
 plt.xlabel('date')
 plt.title('positions')
 plt.show()
+
+#how to calculate stats could be found from my other code called Heikin-Ashi
+# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
