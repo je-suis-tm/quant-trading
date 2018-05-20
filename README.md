@@ -1,6 +1,6 @@
 # Quant-trading
 
-This folder contains some quantitative trading strategies I found interesting. Mostly, they are momentum trading strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless. I also might include some strange ideas I came up with. There is no guarantee that any of them would make money in real market.
+This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
 
 1.MACD oscillator
 
