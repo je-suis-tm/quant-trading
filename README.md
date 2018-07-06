@@ -16,6 +16,8 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 7.Dual thrust
 
+8.Parabolic SAR
+
 # Strategies:
 
 1. MACD oscillator
