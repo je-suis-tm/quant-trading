@@ -1,5 +1,3 @@
-<a href="https://info.flagcounter.com/K52F"><img src="https://s11.flagcounter.com/count2/K52F/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
-
 # Quant-trading
 
 This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
@@ -92,3 +90,6 @@ https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20pos.png)
 
 STAY TUNED
+
+<a href="https://info.flagcounter.com/K52F"><img src="https://s11.flagcounter.com/count2/K52F/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
+
