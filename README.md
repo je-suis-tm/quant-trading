@@ -91,6 +91,21 @@ https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20pos.png)
 
+8.Parabolic SAR
+
+Parabolic SAR is an indicator to identify stop and reverse of a trend. When it is an uptrend, SAR curve would be below the price. When it is downtrend, SAR curve would be above the price. It is always considered as the resistance to the price momentum. When SAR curve and the price curve crosses over, it is when trades should be executed. The strategy itself is very similar to MACD oscillator (as most momentum trading strategies are). 
+
+However, the calculation of SAR is extremely painful. Info on Parabolic SAR can be found in wikipedia but not very well explained. The most straight forward way is to look at the spreadsheet made of joeu2004. These websites can be found in the following links:
+
+https://en.wikipedia.org/wiki/Parabolic_SAR
+
+https://www.box.com/s/gbtrjuoktgyag56j6lv0
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar.png)
+
+
+
+
 STAY TUNED
 
 <a href="https://info.flagcounter.com/K52F"><img src="https://s11.flagcounter.com/count2/K52F/bg_FFFFFF/txt_000000/border_CCCCCC/columns_2/maxflags_10/viewers_0/labels_0/pageviews_0/flags_0/percent_0/" alt="Flag Counter" border="0"></a>
