@@ -24,7 +24,7 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. We basically take long moving average and short moving average on the close price of stock. To generate the trading signal, we implement a comparison between two moving averages. When short moving average is larger than long moving average, we set the signal at 1 which implies LONG, vice versa.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/momentum%20trading.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/macd%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/macd%20oscillator.png)
 
