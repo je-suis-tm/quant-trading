@@ -67,7 +67,7 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20positions.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/Awesome%20oscillator.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20oscillator.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20ma.png)
 
