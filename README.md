@@ -99,7 +99,7 @@ https://en.wikipedia.org/wiki/Parabolic_SAR
 
 https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar%20positions.png)
 
 
 
