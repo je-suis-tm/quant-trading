@@ -81,13 +81,13 @@ https://github.com/tattooday/quant-trading/tree/master/oil%20money%20project
 
 7.Dual thrust
 
-Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days open, close, high and low. When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We clear all positions at the end of the day.
+Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days open, close, high and low. When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions at the end of the day.
 
 Rules of dual thrust can be found in the following link:
 
 https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20pos.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20positions.png)
 
 8.Parabolic SAR
 
