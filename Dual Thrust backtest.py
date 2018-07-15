@@ -211,7 +211,7 @@ def plot(signals,intraday,column):
     plt.text('%s-%s-%s 03:00:00'%(date.year,date.month,date.day),signew['lower']['%s-%s-%s 03:00:00'%(date.year,date.month,date.day)],'Lower Bound',color='#C06C84')
     
     plt.ylabel(column)
-    plt.xlabel('date')
+    plt.xlabel('Date')
     plt.title('Dual Thrust')
     plt.grid(True)
     plt.show()
