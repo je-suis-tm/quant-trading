@@ -140,7 +140,7 @@ new=signal_generation(df,parabolic_sar)
 
 #convert back to time series for plotting
 #so that we get a date x axis
-new.set_index(new['Date'],inplace=True)
+new.set_index(new['date'],inplace=True)
 
 #shorten our plotting horizon and plot
 new=new[slicer:]
