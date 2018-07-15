@@ -124,7 +124,7 @@ def plot(new,ticker):
     plt.legend()
     plt.grid(True)
     plt.title('Parabolic SAR')
-    plt.ylabel('%s'%ticker)
+    plt.ylabel('price')
     plt.show()
 
 
