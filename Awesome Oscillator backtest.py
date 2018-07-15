@@ -50,16 +50,16 @@ slicer=int(input('slicing:'))
 #this part is macd
 #i will not go into details as i have another session called macd
 #the only difference is that i use ewma function to apply exponential smoothing technique
-def ewmacd(signals):
+def ewmacd(signals,ma1,ma2):
     
     signals['macd ma1']=signals['Close'].ewm(span=ma1).mean()    
     signals['macd ma2']=signals['Close'].ewm(span=ma2).mean()   
     
     return signals
     
-def signal_generation(df,method):
+def signal_generation(df,method,ma1,ma2):
     
-    signals=method(df)
+    signals=method(df,ma1,ma2)
     signals['macd positions']=0
     signals['macd positions'][ma1:]=np.where(signals['macd ma1'][ma1:]>=signals['macd ma2'][ma1:],1,0)
     signals['macd signals']=signals['macd positions'].diff()
@@ -312,7 +312,7 @@ def stats(portfolio):
     print(stats)
 
 
-signals=signal_generation(df,ewmacd)
+signals=signal_generation(df,ewmacd,ma1,ma2)
 sig=awesome_signal_generation(signals,awesome_ma)
 new=sig[slicer:]
 plot(new)
