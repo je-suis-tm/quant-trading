@@ -1,6 +1,6 @@
 # Quant-trading
 
-This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting. My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
+This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting (basically via Python not C++). My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
 
 1.MACD oscillator
 
