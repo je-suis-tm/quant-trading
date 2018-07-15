@@ -8,6 +8,12 @@ Created on Thu Feb 15 20:48:35 2018
 
 # In[1]:
 
+#heikin ashi is a Japanese way to filter out the noise for momentum trading
+#basically we do a few transformations on four key benchmarks - Open, Close, High, Low
+#apply some unique rules on ha Open, Close, High, Low to trade
+#details of heikin ashi indicators and rules can be found in the following link
+# https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
+
 #need to get fix yahoo finance package first
 #matplotlib.pyplot has been removed from matplotlib
 #need to install mpl_finance instead
@@ -45,7 +51,7 @@ df=yf.download(ticker,start=stdate,end=eddate)
 # In[3]:
 
 
-#details of Heikin Ashi parameters:https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
+
 #Heikin Ashi has a unique method to filter out the noise
 #its open, close, high, low require a different calculation approach
 #please refer to the website mentioned above
@@ -355,3 +361,4 @@ profit(portfo)
 
 stats(portfo,df1,stdate,eddate)
 
+#note that this is the only py file with complete stats calculation
