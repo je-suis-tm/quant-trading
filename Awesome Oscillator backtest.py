@@ -285,12 +285,12 @@ def profit(portfolio):
 #for each daily drawdown that is smaller than our temporary value
 #we update the temp until we finish our traversal
 #in the end we return the maximum drawdown
-def mdd(list):
+def mdd(series):
 
     temp=0
-    for i in range(1,len(list)):
-        if temp>(list[i]/max(list[:i])-1):
-            temp=(list[i]/max(list[:i])-1)
+    for i in range(1,len(series)):
+        if temp>(series[i]/max(series[:i])-1):
+            temp=(series[i]/max(series[:i])-1)
 
     return temp
 
