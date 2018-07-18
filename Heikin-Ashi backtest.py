@@ -86,6 +86,7 @@ def heikin_ashi(df1):
 
 #setting up signal generations
 #trigger conditions can be found from the website mentioned above
+#they kinda look like marubozu candles
 #there should also be a short strategy
 #as i am an individual investor, i only use long strategies
 #the trigger condition of short strategy is the reverse of long strategy
