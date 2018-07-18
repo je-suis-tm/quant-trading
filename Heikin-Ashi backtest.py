@@ -9,6 +9,7 @@ Created on Thu Feb 15 20:48:35 2018
 # In[1]:
 
 #heikin ashi is a Japanese way to filter out the noise for momentum trading
+#it can prevent the occurence of sideway chops
 #basically we do a few transformations on four key benchmarks - Open, Close, High, Low
 #apply some unique rules on ha Open, Close, High, Low to trade
 #details of heikin ashi indicators and rules can be found in the following link
@@ -33,7 +34,7 @@ from scipy.stats import t
 
 #stop loss positions, the maximum long positions we can get
 #without certain constraints, you will long indefinites times as long as the market condition triggers the signal
-#in a bear market, it is suicidal
+#in a whipsaw condition, it is suicidal
 stls=3
 ticker='NVDA'
 stdate='2015-04-01'
