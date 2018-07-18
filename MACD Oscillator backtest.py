@@ -17,6 +17,11 @@ import fix_yahoo_finance as yf
 #once a upon a time you got six trading days in a week
 #so it is two week moving average versus one month moving average
 #for now, the ideal choice would be 10 and 21
+
+#macd is easy and effective
+#there is just one issue
+#entry signal is always late
+#watch out for downward EMA spirals!
 ma1=int(input('ma1:'))
 ma2=int(input('ma2:'))
 stdate=input('start date in format yyyy-mm-dd:')
