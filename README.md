@@ -107,7 +107,7 @@ https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
 9.Bollinger Bands Pattern Recognition
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20pattern%20recognition%20positions.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
 
 
