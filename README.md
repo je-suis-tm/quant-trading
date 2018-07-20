@@ -14,9 +14,11 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 6.Oil money project
 
-7.Dual thrust
+7.Dual Thrust
 
 8.Parabolic SAR
+
+9.Bollinger Bands Pattern Recognition
 
 # Strategies:
 
@@ -81,7 +83,7 @@ I came up with this idea after reading an article about how to trade forex durin
 
 https://github.com/tattooday/quant-trading/tree/master/oil%20money%20project
 
-7.Dual thrust
+7.Dual Thrust
 
 Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days open, close, high and low. When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions at the end of the day.
 
@@ -103,6 +105,9 @@ https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar%20positions.png)
 
+9.Bollinger Bands Pattern Recognition
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20pattern%20recognition%20positions.png)
 
 
 
