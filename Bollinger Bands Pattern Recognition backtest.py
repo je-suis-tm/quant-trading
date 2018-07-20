@@ -3,6 +3,7 @@
 
 # In[1]:
 
+# https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 import os
 import pandas as pd
