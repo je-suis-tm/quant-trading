@@ -107,6 +107,8 @@ https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
 9.Bollinger Bands Pattern Recognition
 
+https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
 
