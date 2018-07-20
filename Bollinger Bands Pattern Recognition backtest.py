@@ -103,7 +103,6 @@ def signal_generation(data,method):
 def plot(new):
     
     a,b=list(new[new['signals']!=0].iloc[:2].index)
-    a,b=(2199,2301)
     
     newbie=new[a-85:b+30]
     newbie.set_index(pd.to_datetime(newbie['date'],format='%Y-%m-%d %H:%M:%S'),inplace=True)
