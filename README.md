@@ -111,6 +111,7 @@ https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bottom%20w%20pattern.png)
 
 
 STAY TUNED
