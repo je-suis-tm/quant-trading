@@ -107,11 +107,14 @@ https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
 9.Bollinger Bands Pattern Recognition
 
+Bollinger Bands is a very simple indicator. There are three bands. The mid band is the moving average on the price series. The upper and lower bands are two moving standard deviations away from the moving average. The indicators can be used to test for many different strategies. For volatility trading, contraction and expansion of the band width is a crucial element. For momentum trading, 'walking the band' indicates resistance and support level. For pattern recognition, Bollinger Bands has the capability of testing bottom W, top M, head-shoulder patterns and etc.
+
+For the rules of Bollinger Bands, please refer to the following website:
+
 https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bottom%20w%20pattern.png)
 
 
 STAY TUNED
