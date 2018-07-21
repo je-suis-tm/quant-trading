@@ -3,6 +3,20 @@
 
 # In[1]:
 
+#bollinger bands is a simple indicator
+#just moving average plus moving standard deviation
+#but pattern recognition is a differenct case
+#visualization is easy for human to identify the pattern
+#but for the machines, we gotta find a different approach
+#when we talk about pattern recognition these days
+#people always respond with machine learning
+#why machine learning when u can use arithmetic approach 
+#which is much faster and simpler?
+
+#there are many patterns
+#top m, bottom w, head-shoulder top, head-shoulder bottom, elliott waves
+#in this content, we only discuss bottom w
+#rules of bollinger bands and bottom w can be found in the following link:
 # https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 import os
@@ -46,6 +60,7 @@ def signal_generation(data,method):
     df['cumsum']=0
     df['coordinates']=''
     
+    # https://github.com/tattooday/quant-trading/blob/master/preview/bottom%20w%20pattern.png
     for i in range(period,len(df)):
         
         moveon=False
