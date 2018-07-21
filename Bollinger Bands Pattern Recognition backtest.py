@@ -106,6 +106,10 @@ def signal_generation(data,method):
         threshold=0.0
         
         #bottom w pattern recognition
+        #there is another signal generation method called walking the bands
+        #i personally think its too late for following the trend
+        #after confirmation of several breakthroughs
+        #maybe its good for stop and reverse
         #condition 4
         if (df['price'][i]>df['upper band'][i]) and \
         (df['cumsum'][i]==0):
