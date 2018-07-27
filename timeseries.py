@@ -1,6 +1,6 @@
 # coding: utf-8
 
-
+#this file contains some useful time series model i need to use on regular basis
 
 import matplotlib.pyplot as plt 
 import statsmodels.api as sm 
