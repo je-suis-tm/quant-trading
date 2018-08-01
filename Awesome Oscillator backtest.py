@@ -106,7 +106,7 @@ def awesome_signal_generation(df,method):
         signals['awesome oscillator'][i-1]>signals['awesome oscillator'][i-2] and
         signals['awesome oscillator'][i-1]<0 and 
         signals['awesome oscillator'][i]<0):
-            signals.set_value(i,'awesome signals',1)
+            signals.at[i,'awesome signals']=1
 
 
         #this is bullish saucer
@@ -118,7 +118,7 @@ def awesome_signal_generation(df,method):
         signals['awesome oscillator'][i-1]<signals['awesome oscillator'][i-2] and
         signals['awesome oscillator'][i-1]>0 and
         signals['awesome oscillator'][i]>0):
-            signals.set_value(i,'awesome signals',-1)
+            signals.at[i,'awesome signals']=-1
 
 
         #this part is the same as macd signal generation
@@ -130,16 +130,16 @@ def awesome_signal_generation(df,method):
         #if so, we will take a pass
         
         if signals['awesome ma1'][i]>signals['awesome ma2'][i]:
-            signals.set_value(i,'awesome signals',1)
+            signals.at[i,'awesome signals']=1
             signals['cumsum']=signals['awesome signals'].cumsum()
             if signals['cumsum'][i]>1:
-                signals.set_value(i,'awesome signals',0)
+                signals.at[i,'awesome signals']=0
             
         if signals['awesome ma1'][i]<signals['awesome ma2'][i]:
-            signals.set_value(i,'awesome signals',-1)
+            signals.at[i,'awesome signals']=-1
             signals['cumsum']=signals['awesome signals'].cumsum()
             if signals['cumsum'][i]<0:
-                signals.set_value(i,'awesome signals',0)
+                signals.at[i,'awesome signals']=0
     
     signals['cumsum']=signals['awesome signals'].cumsum()
     
