@@ -106,7 +106,7 @@ def min2day(df,column,year,month,rg):
 
 
 #signal generation
-#even replace assignment with set_value
+#even replace assignment with set_value or at
 #it still takes a while for us to get the result
 #any optimization suggestion?
 def signal_generation(df,intraday,param,column,rg):
@@ -149,24 +149,25 @@ def signal_generation(df,intraday,param,column,rg):
         #thresholds got breached
         #signals generating
         if (sigup!=0 and pd.Series(signals[column])[i]>sigup):
-            signals.set_value(i,'signals',1)
+            signals.at[i,'signals']=1
         if (siglo!=0 and pd.Series(signals[column])[i]<siglo):
-            signals.set_value(i,'signals',-1)
+            signals.at[i,'signals']=-1
+
 
         #check if signal has been generated
         #if so, use cumsum to verify that we only generate one signal for each situation
         if pd.Series(signals['signals'])[i]!=0:
             signals['cumsum']=signals['signals'].cumsum()        
             if (pd.Series(signals['cumsum'])[i]>1 or pd.Series(signals['cumsum'])[i]<-1):
-                signals.set_value(i,'signals',0)
+                signals.at[i,'signals']=0
                
             #if the price goes from below the lower threshold to above the upper threshold during the day
             #we reverse our positions from short to long
             if (pd.Series(signals['cumsum'])[i]==0):
                 if (pd.Series(signals[column])[i]>sigup):
-                    signals.set_value(i,'signals',2)
+                    signals.at[i,'signals']=2
                 if (pd.Series(signals[column])[i]<siglo):
-                    signals.set_value(i,'signals',-2)
+                    signals.at[i,'signals']=-2
                     
         #by the end of london market, which is est 12pm
         #we clear all opening positions
@@ -174,11 +175,11 @@ def signal_generation(df,intraday,param,column,rg):
         if i.hour==12 and i.minute==0:
             sigup,siglo=float(0),float(0)
             signals['cumsum']=signals['signals'].cumsum()
-            signals.set_value(i,'signals',-signals['cumsum'][i:i])
+            signals.at[i,'signals']=-signals['cumsum'][i:i]
             
         #keep track of trigger levels
-        signals.set_value(i,'upper',sigup)
-        signals.set_value(i,'lower',siglo)
+        signals.at[i,'upper']=sigup
+        signals.at[i,'lower']=siglo
 
     return signals
 
