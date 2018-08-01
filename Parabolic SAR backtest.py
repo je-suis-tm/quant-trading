@@ -144,4 +144,4 @@ new.set_index(new['date'],inplace=True)
 
 #shorten our plotting horizon and plot
 new=new[slicer:]
-plot(new,ticker)
+plot(new,ticker) 
