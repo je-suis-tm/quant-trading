@@ -106,9 +106,9 @@ def min2day(df,column,year,month,rg):
 
 
 #signal generation
-#even replace assignment with set_value or at
+#even replace assignment with pandas.at
 #it still takes a while for us to get the result
-#any optimization suggestion?
+#any optimization suggestion besides using numpy array?
 def signal_generation(df,intraday,param,column,rg):
     
     #as the lags of days have been set to 5  
