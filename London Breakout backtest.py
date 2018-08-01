@@ -130,8 +130,8 @@ def signal_generation(df,method):
             upper=max(tokyo_price)
             lower=min(tokyo_price)
 
-            signals.set_value(i,'upper',upper)
-            signals.set_value(i,'lower',lower)
+            signals.at[i,'upper']=upper
+            signals.at[i,'lower']=lower
 
             tokyo_price=[]
             
@@ -144,14 +144,14 @@ def signal_generation(df,method):
         elif signals['date'][i].hour==3 and signals['date'][i].minute<open_minutes:
 
             #again, we wanna keep track of thresholds during signal generation periods
-            signals.set_value(i,'upper',upper)
-            signals.set_value(i,'lower',lower)
+            signals.at[i,'upper']=upper
+            signals.at[i,'lower']=lower
             
             #this is the condition of signals generation
             #when the price is above upper threshold
             #we set signals to 1 which implies long
             if signals['price'][i]-upper>0:
-                signals.set_value(i,'signals',1)
+                signals.at[i,'signals']=1
 
                 #we use cumsum to check the cumulated sum of signals
                 #we wanna make sure that
@@ -162,10 +162,10 @@ def signal_generation(df,method):
                 signals['cumsum']=signals['signals'].cumsum()
 
                 if signals['price'][i]-upper>risky_stop:
-                    signals.set_value(i,'signals',0)
+                    signals.at[i,'signals']=0
 
                 elif signals['cumsum'][i]>1:
-                    signals.set_value(i,'signals',0)
+                    signals.at[i,'signals']=0
 
                 else:
 
@@ -175,15 +175,15 @@ def signal_generation(df,method):
 
             #vice versa    
             if signals['price'][i]-lower<0:
-                signals.set_value(i,'signals',-1)
+                signals.at[i,'signals']=-1
 
                 signals['cumsum']=signals['signals'].cumsum()
 
                 if signals['price'][i]-lower<risky_stop:
-                    signals.set_value(i,'signals',0)
+                    signals.at[i,'signals']=0
 
                 elif signals['cumsum'][i]<-1:
-                    signals.set_value(i,'signals',0)
+                    signals.at[i,'signals']=0
 
                 else:
                     executed_price=signals['price'][i]
@@ -194,7 +194,7 @@ def signal_generation(df,method):
         #if there is no open position, -0 is still 0
         elif signals['date'][i].hour==12:
             signals['cumsum']=signals['signals'].cumsum()
-            signals.set_value(i,'signals',-signals['cumsum'][i])
+            signals.at[i,'signals']=-signals['cumsum'][i]
             
         #during london trading hour after opening but before closing
         #we still use cumsum to check our open positions
@@ -207,10 +207,10 @@ def signal_generation(df,method):
             
             if signals['cumsum'][i]!=0:
                 if signals['price'][i]>executed_price+risky_stop/2:
-                    signals.set_value(i,'signals',-signals['cumsum'][i])
+                    signals.at[i,'signals']=-signals['cumsum'][i]
                     
                 if signals['price'][i]<executed_price-risky_stop/2:
-                    signals.set_value(i,'signals',-signals['cumsum'][i])
+                    signals.at[i,'signals']=-signals['cumsum'][i]
     
     return signals
 
