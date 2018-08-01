@@ -67,7 +67,7 @@ def heikin_ashi(df1):
     df1['HA open'][0]=df1['Open'][0]
 
     for n in range(1,len(df1)):
-        df1.set_value(n,'HA open',(df1['HA open'][n-1]+df1['HA close'][n-1])/2)
+        df1.at[n,'HA open']=(df1['HA open'][n-1]+df1['HA close'][n-1])/2)
 
     temp=pd.concat([df1['HA open'],df1['HA close'],df1['Low'],df1['High']],axis=1)
     df1['HA high']=temp.apply(max,axis=1)
@@ -110,19 +110,19 @@ def signal_generation(df,method):
             np.abs(df1['HA open'][n]-df1['HA close'][n])>np.abs(df1['HA open'][n-1]-df1['HA close'][n-1]) and
             df1['HA open'][n-1]>df1['HA close'][n-1]):
             
-            df1.set_value(n,'signals',1)
+            df1.at[n,'signals']=1
             df1['cumsum']=df1['signals'].cumsum()
 
 
             #stop longing positions
             if df1['cumsum'][n]>stls:
-                df1.set_value(n,'signals',0)
+                df1.at[n,'signals']=0
         
 
         elif (df1['HA open'][n]<df1['HA close'][n] and df1['HA open'][n]==df1['HA low'][n] and 
         df1['HA open'][n-1]<df1['HA close'][n-1]):
             
-            df1.set_value(n,'signals',-1)
+            df1.at[n,'signals']=-1
             df1['cumsum']=df1['signals'].cumsum()
         
 
@@ -131,10 +131,10 @@ def signal_generation(df,method):
             #if there are no long positions in my portfolio
             #ignore the exit signal
             if df1['cumsum'][n]>0:
-                df1.set_value(n,'signals',-1*(df1['cumsum'][n-1]))
+                df1.at[n,'signals']=-1*(df1['cumsum'][n-1]))
 
             if df1['cumsum'][n]<0:
-                df1.set_value(n,'signals',0)
+                df1.at[n,'signals']=0
                 
     return df1
 
