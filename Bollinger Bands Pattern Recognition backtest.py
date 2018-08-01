@@ -149,8 +149,8 @@ def signal_generation(data,method):
                     if (df['price'][m]-df['lower band'][m]<alpha) and \
                     (df['price'][m]>df['lower band'][m]) and \
                     (df['price'][m]<threshold):
-                        df.set_value(i,'signals',1)
-                        df.set_value(i,'coordinates','%s,%s,%s,%s,%s'%(l,k,j,m,i))
+                        df.at[i,'signals']=1
+                        df.at[i,'coordinates']='%s,%s,%s,%s,%s'%(l,k,j,m,i)
                         df['cumsum']=df['signals'].cumsum()
                         moveon=True
                         break
@@ -167,7 +167,7 @@ def signal_generation(data,method):
         if (df['cumsum'][i]!=0) and \
         (df['std'][i]<beta) and \
         (moveon==False):
-            df.set_value(i,'signals',-1)
+            df.at[i,'signals']=-1
             df['cumsum']=df['signals'].cumsum()
             
     return df
