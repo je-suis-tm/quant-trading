@@ -53,7 +53,7 @@ def parabolic_sar(new):
     #initial values for recursive calculation
     new['trend'][1]=1 if new['Close'][1]>new['Close'][0] else -1
     new['sar'][1]=new['High'][0] if new['trend'][1]>0 else new['Low'][0]
-    new.set_value(1,'real sar',new['sar'][1])
+    new.at[1,'real sar']=new['sar'][1]
     new['ep'][1]=new['High'][1] if new['trend'][1]>0 else new['Low'][1]
     new['af'][1]=initial_af
 
@@ -62,31 +62,31 @@ def parabolic_sar(new):
         
         temp=new['sar'][i-1]+new['af'][i-1]*(new['ep'][i-1]-new['sar'][i-1])
         if new['trend'][i-1]<0:
-            new.set_value(i,'sar',max(temp,new['High'][i-1],new['High'][i-2]))
+            new.at[i,'sar']=max(temp,new['High'][i-1],new['High'][i-2])
             temp=1 if new['sar'][i]<new['High'][i] else new['trend'][i-1]-1
         else:
-            new.set_value(i,'sar',min(temp,new['Low'][i-1],new['Low'][i-2]))
+            new.at[i,'sar']=min(temp,new['Low'][i-1],new['Low'][i-2])
             temp=-1 if new['sar'][i]>new['Low'][i] else new['trend'][i-1]+1
-        new.set_value(i,'trend',temp)
+        new.at[i,'trend']=temp
     
         
         if new['trend'][i]<0:
             temp=min(new['Low'][i],new['ep'][i-1]) if new['trend'][i]!=-1 else new['Low'][i]
         else:
             temp=max(new['High'][i],new['ep'][i-1]) if new['trend'][i]!=1 else new['High'][i]
-        new.set_value(i,'ep',temp)
+        new.at[i,'ep']=temp
     
     
         if np.abs(new['trend'][i])==1:
             temp=new['ep'][i-1]
-            new.set_value(i,'af',initial_af)
+            new.at[i,'af']=initial_af
         else:
             temp=new['sar'][i]
             if new['ep'][i]==new['ep'][i-1]:
-                new.set_value(i,'af',new['af'][i-1])
+                new.at[i,'af']=new['af'][i-1]
             else:
-                new.set_value(i,'af',min(end_af,new['af'][i-1]+step_af))
-        new.set_value(i,'real sar',temp)
+                new.at[i,'af']=min(end_af,new['af'][i-1]+step_af)
+        new.at[i,'real sar']=temp
        
         
     return new
