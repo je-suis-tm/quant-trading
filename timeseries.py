@@ -1,6 +1,6 @@
 # coding: utf-8
 
-#this file contains some useful time series model i need to use on regular basis
+
 
 import matplotlib.pyplot as plt 
 import statsmodels.api as sm 
@@ -305,7 +305,7 @@ def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12):
 
 
 
-# In[5]: iteration for finding the lag
+# In[5]: iteration for finding regressors and best fitted lag
 
 def regression2(y,x):
     
@@ -313,8 +313,23 @@ def regression2(y,x):
     m1=sm.OLS(y,x0).fit()
 
     return m1.rsquared
-    
 
+
+#put y as the first column
+def find_x(df):
+    
+    dictionary={}
+    temp=list(df.columns)
+    df.columns=[i for i in range(len(df.columns))]
+
+    for k in range(1,len(df.columns)):
+        s=regression2(df[0],df[k])
+        dictionary[s]=temp[k]
+    
+    for j in sorted(dictionary.keys())[::-1]:
+        print(j,dictionary[j])
+    
+    
 def iteration4(y,x1,x2,x3,x4,n=12):
     perfect={}
     
@@ -329,7 +344,7 @@ def iteration4(y,x1,x2,x3,x4,n=12):
                     else:
                         perfect[temp].append([i,j,k,l])
     
-    for key in sorted(perfect.keys())[-5:]:
+    for key in sorted(perfect.keys())[-5:][::-1]:
         print(key,':',perfect[key])
     
 
@@ -347,7 +362,7 @@ def iteration3(y,x1,x2,x3,n=12):
                 else:
                     perfect[temp].append([i,j,k])
     
-    for key in sorted(perfect.keys())[-5:]:
+    for key in sorted(perfect.keys())[-5:][::-1]:
         print(key,':',perfect[key])
 
 
@@ -364,7 +379,7 @@ def iteration2(y,x1,x2,n=12):
             else:
                 perfect[temp].append([i,j])
     
-    for key in sorted(perfect.keys())[-5:]:
+    for key in sorted(perfect.keys())[-5:][::-1]:
         print(key,':',perfect[key])
         
 
@@ -381,7 +396,7 @@ def iteration1(y,x1,n=12):
         else:
             perfect[temp].append([i])
     
-    for key in sorted(perfect.keys())[-5:]:
+    for key in sorted(perfect.keys())[-5:][::-1]:
         print(key,':',perfect[key])
 
 
@@ -540,22 +555,35 @@ def ytd2annual(new):
 
 #heat map
 #set df date as index before passing to this function
-def heatmap(df):
+#note that fig_size is in scale with fontsize
+def heatmap(df,fig_size=(10,5),fontsize=1):
     
     temp=df.corr()
     
-    fig=plt.figure(figsize=(40,20))
+    fig=plt.figure(figsize=fig_size)
     ax=fig.add_subplot(111)
-    sns.set(font_scale=5)
+
+    sns.set(font_scale=fontsize)
     
     mask = np.zeros_like(temp)
     mask[np.triu_indices_from(mask)] = True
     sns.heatmap(temp, xticklabels=temp.columns, \
                 yticklabels=temp.columns, annot=True, \
                 mask=mask, ax=ax)
-    plt.show()
-
     
+    sns.set()
+    
+    
+#set df date as index before passing to this function
+def plot_all(df,color='b'):
+    
+    for i in df.columns:
+        print(i)
+        df[i].plot(c=color)
+        plt.show()
+
+
+
 def pick_a_color():
     
     colorlist= \
