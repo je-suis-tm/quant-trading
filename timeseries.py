@@ -170,7 +170,7 @@ def OLSregression(y,x,n=0):
     
     
     if n==0:
-        return 
+        return m1.params
     else:
         m2=en(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],\
               l1_ratio=[.01, .1, .5, .9, .99],  max_iter=5000).fit(x, y)
@@ -187,7 +187,8 @@ def OLSregression(y,x,n=0):
 
         plt.title('Elastic Net')
         plt.show()
-
+        
+        return [m2.intercept_]+[item for item in m2.coef_]
 
 
 # In[3]: Holts Winters
@@ -237,7 +238,7 @@ def hw_forecast_group(string,future,lag=12,method='mul'):
 # In[4]: SARIMAX
 
 
-def SARIMAX(df,future,m=1,n=1,o=1,lag=12):
+def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True):
     
     print(adf(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(20,20))
@@ -247,10 +248,15 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12):
     sm.graphics.tsa.plot_acf(df,ax=bx)
     plt.show()
     
-    
+    if seasonality==True:
+        alpha,beta,gamma=1,1,1
+    else:
+        alpha,beta,gamma=0,0,0
+        
+        
     m = sm.tsa.statespace.SARIMAX(df,
                                 order=(m, n, o),
-                                seasonal_order=(1, 1, 1, lag),
+                                seasonal_order=(alpha,beta,gamma,lag),
                                 enforce_stationarity=False,
                                 enforce_invertibility=False).fit()
     
@@ -262,7 +268,7 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12):
     fig=plt.figure(figsize=(20,10))
     ax=fig.add_subplot(111)
     ax.plot(p.predicted_mean,label='forecast',c=pick_a_color())
-    ax.plot(m.predict(),label='fitted',c=pick_a_color())
+    ax.plot(m.predict().iloc[1:],label='fitted',c=pick_a_color())
     ax.plot(df,label='actual',c=pick_a_color())
     ax.fill_between(p.conf_int().index, \
                     p.conf_int().iloc[:, 0], \
@@ -273,9 +279,19 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12):
     plt.show()
 
 
-def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12):
-    a=sm.tsa.statespace.SARIMAX(x,order=(m,n,o), \
-                                seasonal_order=(1,1,1,lag)).fit()
+def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True):
+    
+    if seasonality==True:
+        alpha,beta,gamma=1,1,1
+    else:
+        alpha,beta,gamma=0,0,0
+    
+    
+    a=sm.tsa.statespace.SARIMAX(x,
+                                order=(m, n, o),
+                                seasonal_order=(alpha,beta,gamma,lag),
+                                enforce_stationarity=False,
+                                enforce_invertibility=False).fit()
     
     temp=list(a.predict())
     k=a.get_forecast(steps=future).predicted_mean
@@ -284,7 +300,7 @@ def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12):
     
 
 #the csv file should not contain index
-def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12):
+def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True):
     
     new=pd.read_csv(string)
     new.set_index(pd.to_datetime(new['date']),inplace=True)
@@ -297,7 +313,7 @@ def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12):
     temp={}
     for i in range(column):
         
-        temp[i]=SARIMAX_forecast(new[i],future,m=1,n=1,o=1,lag=12)
+        temp[i]=SARIMAX_forecast(new[i],future,m=1,n=1,o=1,lag=12,seasonality=True)
         output[i]=temp[i]
         
     output.to_csv('forecast.csv')
