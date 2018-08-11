@@ -22,7 +22,8 @@ What really interests us is why our model doesn't work any more after a while. A
 Ta-da, its Euro. As Norway is in EEA, its economic connection with EU totally dominates the long term trend of NOK. From the normalized figure, we clearly see the trend of both NOK and EUR are somewhat correlated. To get a formal conclusion, we need a cointegration test to test all currencies. Nevertheless, there is no Johansen Test in statsmodel.api package. We would have to use Engle-Granger two step test (more details can be found from https://en.wikipedia.org/wiki/Cointegration#Engle–Granger_two-step_method), which is invented by the mentor of my mentor! A Nobel Prize Winner! Well, we can't get any confirmation of cointegration from the test. The regression model itself is not robust. Its condition number is a bit large. Sometimes we have to use the old fashion way to make a judgement, which is called instinct. This is the time that my guts are telling me EUR is the driver of NOKs long term trend, PERIOD! (LOL)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/trend.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/EG%20failed.PNG)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/EG%20failed.png)
 
 Well, we are not economists. I won't write a paper on this matter (even though I work as a time series econometrician). Then, let us take a look at our portfolio performance. So far so good, we actually made a few bucks from NOK. Interestingly, after we placed the stop order, I decided to add extra position to see what would happen. In the figure below, we could see the profolio when NOK breached the stop loss threshold. The downwards momentum didnt stop until two months later (maybe another major event in financial market occured). 
 
