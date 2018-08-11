@@ -4,7 +4,7 @@ As I mentioned before, this is a project inspired by an article that I read. Dur
 
 The regression result came out as below. We had a pretty high R square. All T stats and F stats were significant. As the summary suggested, there could be multicollinearity. I wouldnt doubt it as Brent Crude and USD should be negatively correlated.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/model%20summary.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/model%20summary.png)
 
 In this case, we could use elastic net regression to implement a penalty function on this multicollinearity problem. Elastic net is a statistics/machine learning technique that consists of Lasso and Ridge regression (more details can be found from https://en.wikipedia.org/wiki/Elastic_net_regularization ). Let us take elastic net estimated NOK to subtract from OLS estimated NOK. From the figure below, we could tell the distribution of the difference is negatively skewed which implied OLS overestimated NOK.
 
