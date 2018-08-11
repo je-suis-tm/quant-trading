@@ -1,10 +1,10 @@
-# Oil money project
+# Oil Money project
 
 As I mentioned before, this is a project inspired by an article that I read. During low volatility period, the article recommended to trade Norwegian Krone as the oil price was bouncing back. To my curiosity, I intended to find out if this idea is plausible. First thing came to my mind was whether the correlation between Norwegian Krone and Brent Crude was substantial. Norway is one my fav places in Europe. Unlike Qatar or Saudi Arabia or any other gulf countries, it doesn't heavily rely on oil for its gross income. I doubted if oil price is the only factor that affects the exchange rate of NOK. I looked into international trading statistics of Norway. Basically, most trading partners are inside European Union. Prior to stats, I included UK sterling and Euro in my linear regression model. To my surprise, Norway is actually doing a lot of business with US. Thus, the model consisted of EUR, GBP, USD and Brent Crude. After model identification, I had to choose a currency to evaluate NOK. It should be a stable entity with not much connection to Norways economy. I picked the safe haven currency in East Asia, JPY! Hence, all currencies involved in the model would be evaluated by Japanese Yen. Our variables were EURJPY, GBPJPY, USDJPY and Brent Crude. Our regressor was NOKJPY.
 
 The regression result came out as below. We had a pretty high R square. All T stats and F stats were significant. As the summary suggested, there could be multicollinearity. I wouldnt doubt it as Brent Crude and USD should be negatively correlated.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/model%20summary.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/model%20summary.PNG)
 
 In this case, we could use elastic net regression to implement a penalty function on this multicollinearity problem. Elastic net is a statistics/machine learning technique that consists of Lasso and Ridge regression (more details can be found from https://en.wikipedia.org/wiki/Elastic_net_regularization ). Let us take elastic net estimated NOK to subtract from OLS estimated NOK. From the figure below, we could tell the distribution of the difference is negatively skewed which implied OLS overestimated NOK.
 
@@ -22,7 +22,7 @@ What really interests us is why our model doesn't work any more after a while. A
 Ta-da, its Euro. As Norway is in EEA, its economic connection with EU totally dominates the long term trend of NOK. From the normalized figure, we clearly see the trend of both NOK and EUR are somewhat correlated. To get a formal conclusion, we need a cointegration test to test all currencies. Nevertheless, there is no Johansen Test in statsmodel.api package. We would have to use Engle-Granger two step test (more details can be found from https://en.wikipedia.org/wiki/Cointegration#Engle–Granger_two-step_method), which is invented by the mentor of my mentor! A Nobel Prize Winner! Well, we can't get any confirmation of cointegration from the test. The regression model itself is not robust. Its condition number is a bit large. Sometimes we have to use the old fashion way to make a judgement, which is called instinct. This is the time that my guts are telling me EUR is the driver of NOKs long term trend, PERIOD! (LOL)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/trend.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/oil%20money%20project/preview/EG%20failed.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/EG%20failed.PNG)
 
 Well, we are not economists. I won't write a paper on this matter (even though I work as a time series econometrician). Then, let us take a look at our portfolio performance. So far so good, we actually made a few bucks from NOK. Interestingly, after we placed the stop order, I decided to add extra position to see what would happen. In the figure below, we could see the profolio when NOK breached the stop loss threshold. The downwards momentum didnt stop until two months later (maybe another major event in financial market occured). 
 
