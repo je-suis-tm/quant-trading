@@ -33,7 +33,7 @@ def seasonality_check(df,freq='monthly'):
     plt.show()
     sm.graphics.tsa.plot_pacf(df)
     plt.show()
-    df.plot()
+    df.plot(c=pick_a_color())
     plt.title('original')
     plt.show()
     df2.trend.plot(c=pick_a_color())
@@ -65,18 +65,32 @@ def seasonality_check(df,freq='monthly'):
     
     print('weighted')
     var=locals()
-    for i in range(1,lag+1):
-        var['seasonal_weight'+str(i)]= \
-        np.mean(df[df.index.month==i])/np.mean(df)
-        print(var['seasonal_weight'+str(i)])
-        
-    df_adj=pd.Series(df)
-    for j in df.index:
-        df_adj[j:j]=df[j:j]/var['seasonal_weight'+str(j.month)]
-        
-    df_adj.plot(c=pick_a_color())
-    plt.show()
     
+    if freq=='monthly':
+        for i in range(1,lag+1):
+            var['seasonal_weight'+str(i)]= \
+            np.mean(df[df.index.month==i])/np.mean(df)
+            print(var['seasonal_weight'+str(i)])
+        
+        df_adj=pd.Series(df)
+        for j in df.index:
+            df_adj[j:j]=df[j:j]/var['seasonal_weight'+str(j.month)]
+        
+        df_adj.plot(c=pick_a_color())
+        plt.show()
+    
+    else:
+        for i in range(3,3*lag+1,lag-1):
+            var['seasonal_weight'+str(i)]= \
+            np.mean(df[df.index.month==i])/np.mean(df)
+            print(var['seasonal_weight'+str(i)])
+        
+        df_adj=pd.Series(df)
+        for j in df.index:
+            df_adj[j:j]=df[j:j]/var['seasonal_weight'+str(j.month)]
+        
+        df_adj.plot(c=pick_a_color())
+        plt.show()
     
 #input value type is pandas series with datetime index
 def seasonality(df,n,freq='monthly'):
@@ -194,11 +208,11 @@ def OLSregression(y,x,n=0):
 # In[3]: Holts Winters
 
 
-def hw_smooth(df,future,lag=12,method='mul'):
+def hw_smooth(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future    
     
-    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,damped=True)
+    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,**kwargs)
     model=m.fit(optimized=True)
     plt.plot(model.predict(start=0,end=forecast),label='fitted', \
              color=pick_a_color())
@@ -207,16 +221,16 @@ def hw_smooth(df,future,lag=12,method='mul'):
     plt.show()
     
 
-def hw_forecast(df,future,lag=12,method='mul'):
+def hw_forecast(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future
-    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,damped=True)
+    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,**kwargs)
     model=m.fit(optimized=True)
     
     return model.predict(start=0,end=forecast)
     
 #the csv file should not contain index
-def hw_forecast_group(string,future,lag=12,method='mul'):
+def hw_forecast_group(string,future,lag=12,method='mul',**kwargs):
     
     new=pd.read_csv(string)
     new.set_index(pd.to_datetime(new['date']),inplace=True)
@@ -229,7 +243,7 @@ def hw_forecast_group(string,future,lag=12,method='mul'):
     temp={}
     for i in range(column):
         
-        temp[i]=hw_forecast(new[i],future,lag=12,method='mul')
+        temp[i]=hw_forecast(new[i],future,lag=12,method='mul',**kwargs)
         output[i]=temp[i]
         
     output.to_csv('forecast.csv')
@@ -238,10 +252,10 @@ def hw_forecast_group(string,future,lag=12,method='mul'):
 # In[4]: SARIMAX
 
 
-def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True):
+def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
     
     print(adf(df.diff().fillna(df.bfill())))
-    fig=plt.figure(figsize=(20,20))
+    fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(211)
     sm.graphics.tsa.plot_pacf(df,ax=ax)
     bx=fig.add_subplot(212)
@@ -257,15 +271,14 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True):
     m = sm.tsa.statespace.SARIMAX(df,
                                 order=(m, n, o),
                                 seasonal_order=(alpha,beta,gamma,lag),
-                                enforce_stationarity=False,
-                                enforce_invertibility=False).fit()
+                                **kwargs).fit()
     
     m.plot_diagnostics(figsize=(20,10))
     print(m.summary())
     
     p=m.get_forecast(steps=future)
     
-    fig=plt.figure(figsize=(20,10))
+    fig=plt.figure(figsize=(10,5))
     ax=fig.add_subplot(111)
     ax.plot(p.predicted_mean,label='forecast',c=pick_a_color())
     ax.plot(m.predict().iloc[1:],label='fitted',c=pick_a_color())
@@ -279,7 +292,7 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True):
     plt.show()
 
 
-def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True):
+def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
     
     if seasonality==True:
         alpha,beta,gamma=1,1,1
@@ -290,8 +303,7 @@ def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True):
     a=sm.tsa.statespace.SARIMAX(x,
                                 order=(m, n, o),
                                 seasonal_order=(alpha,beta,gamma,lag),
-                                enforce_stationarity=False,
-                                enforce_invertibility=False).fit()
+                                **kwargs).fit()
     
     temp=list(a.predict())
     k=a.get_forecast(steps=future).predicted_mean
@@ -300,7 +312,7 @@ def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True):
     
 
 #the csv file should not contain index
-def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True):
+def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
     
     new=pd.read_csv(string)
     new.set_index(pd.to_datetime(new['date']),inplace=True)
@@ -313,7 +325,8 @@ def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True):
     temp={}
     for i in range(column):
         
-        temp[i]=SARIMAX_forecast(new[i],future,m=1,n=1,o=1,lag=12,seasonality=True)
+        temp[i]=SARIMAX_forecast(new[i],future,m=1,n=1,o=1,lag=12, \
+            seasonality=True,**kwargs)
         output[i]=temp[i]
         
     output.to_csv('forecast.csv')
@@ -543,7 +556,7 @@ def ytd2monthly(new):
 
         for j in range(len(df)):
             if df.index[j].month==1:
-                df.set_value(df.index[j],i+number-1,df[i].iloc[j])
+                df.at[df.index[j],i+number-1]=df[i].iloc[j]
       
         del df[i]
     
@@ -565,6 +578,37 @@ def ytd2annual(new):
     output.reset_index(inplace=True)
     
     return output
+
+
+def ytd2quarterly(new):
+    
+    df=copy.deepcopy(new)
+
+    df.set_index(pd.to_datetime(df[str(df.columns[0])]),inplace=True)
+    del df[str(df.columns[0])]
+           
+    output=pd.DataFrame()
+    
+    for i in df.columns:
+        temp=[]
+        for j in range(len(df[i])):
+            if list(df[i].index)[j].month==3 or \
+            list(df[i].index)[j].month==12:
+                temp.append(df[i].iloc[j])
+            
+            elif list(df[i].index)[j].month==6 or \
+            list(df[i].index)[j].month==9:
+                temp.append(df[i].iloc[j]-df[i].iloc[j-3])
+            
+            else:
+                pass
+        
+        output[i]=temp
+        
+    output['date']=list(df.index)[2::3]
+    
+    return output
+
 
     
 # In[9]: plotting
