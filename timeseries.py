@@ -19,6 +19,62 @@ from statsmodels.tsa.holtwinters import ExponentialSmoothing as es
 
 # In[1]: Seasonality
 
+#input value type is pandas series with datetime index
+
+
+def seasonality_decompose(decomposition,series,name,freq='quarterly'):
+    
+    lag=np.select([freq=='quarterly',freq=='monthly'], [3,1])
+    
+    output=[]
+    index=[]
+    
+    for i in series:
+        for j in decomposition:
+            output.append(i*j)
+    
+    for k in series.index.year.drop_duplicates():
+        for l in range(lag,13,lag):
+            date='%s-%s-01'%(k,l)
+            index.append(date)
+            
+    df=pd.DataFrame()
+    df[name]=output
+    df['date']=pd.to_datetime(index)
+    df.set_index(df['date'],inplace=True)
+    del df['date']
+    
+    return df
+
+
+def seasonality_find(df,direction='y2q'):
+    
+    decomposition=[]
+    
+    lag=np.select([direction=='y2m',direction=='y2q'], \
+                      [12,4])
+    var=locals()
+    
+    if direction=='y2m':
+        for i in range(1,lag+1):
+            var['seasonal_weight'+str(i)]= \
+            np.sum(df[df.index.month==i])/np.sum(df)
+            decomposition.append(var['seasonal_weight'+str(i)])
+
+    elif direction=='y2q':
+        for i in range(3,3*lag+1,lag-1):
+            var['seasonal_weight'+str(i)]= \
+            np.sum(df[df.index.month==i])/np.sum(df)
+            decomposition.append(var['seasonal_weight'+str(i)])
+        
+    else:
+        assert not True,'Unkown Direction'
+        
+    for index,value in enumerate(decomposition):
+        print('%s: %.8f'%(index+1,value))
+        
+    return decomposition
+
 
 def seasonality_check(df,freq='monthly'):
     
@@ -92,7 +148,7 @@ def seasonality_check(df,freq='monthly'):
         df_adj.plot(c=pick_a_color())
         plt.show()
     
-#input value type is pandas series with datetime index
+
 def seasonality(df,n,freq='monthly'):
       
     
@@ -160,6 +216,7 @@ def reverse(df1,df2):
 
 # In[2]: OLS and Elastic Net
 
+#input value type is pandas series with datetime index
 
 def OLSregression(y,x,n=0):
     
@@ -207,7 +264,9 @@ def OLSregression(y,x,n=0):
 
 # In[3]: Holts Winters
 
-
+#input value type is pandas series with datetime index
+        
+    
 def hw_smooth(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future    
@@ -251,8 +310,10 @@ def hw_forecast_group(string,future,lag=12,method='mul',**kwargs):
 
 # In[4]: SARIMAX
 
-
-def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
+#input value type is pandas series with datetime index
+    
+    
+def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
     
     print(adf(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(10,10))
@@ -261,16 +322,11 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
     bx=fig.add_subplot(212)
     sm.graphics.tsa.plot_acf(df,ax=bx)
     plt.show()
-    
-    if seasonality==True:
-        alpha,beta,gamma=1,1,1
-    else:
-        alpha,beta,gamma=0,0,0
-        
+      
         
     m = sm.tsa.statespace.SARIMAX(df,
-                                order=(m, n, o),
-                                seasonal_order=(alpha,beta,gamma,lag),
+                                order=arima,
+                                seasonal_order=seasonality,
                                 **kwargs).fit()
     
     m.plot_diagnostics(figsize=(20,10))
@@ -292,27 +348,24 @@ def SARIMAX(df,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
     plt.show()
 
 
-def SARIMAX_forecast(x,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
-    
-    if seasonality==True:
-        alpha,beta,gamma=1,1,1
-    else:
-        alpha,beta,gamma=0,0,0
-    
-    
+def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12),history=True,**kwargs):
+
     a=sm.tsa.statespace.SARIMAX(x,
-                                order=(m, n, o),
-                                seasonal_order=(alpha,beta,gamma,lag),
+                                order=arima,
+                                seasonal_order=seasonality,
                                 **kwargs).fit()
     
     temp=list(a.predict())
     k=a.get_forecast(steps=future).predicted_mean
     
-    return temp+(list(k))
+    if history==True:
+        return temp+(list(k))
+    else:
+        return list(k)
     
 
 #the csv file should not contain index
-def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True,**kwargs):
+def SARIMAX_forecast_group(string,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
     
     new=pd.read_csv(string)
     new.set_index(pd.to_datetime(new['date']),inplace=True)
@@ -325,8 +378,7 @@ def SARIMAX_forecast_group(string,future,m=1,n=1,o=1,lag=12,seasonality=True,**k
     temp={}
     for i in range(column):
         
-        temp[i]=SARIMAX_forecast(new[i],future,m=1,n=1,o=1,lag=12, \
-            seasonality=True,**kwargs)
+        temp[i]=SARIMAX_forecast(new[i],future,arima,seasonality,**kwargs)
         output[i]=temp[i]
         
     output.to_csv('forecast.csv')
@@ -345,6 +397,7 @@ def regression2(y,x):
 
 
 #put y as the first column
+#recommend to use pd.concat([y,df],axis=1)
 def find_x(df):
     
     dictionary={}
@@ -614,8 +667,9 @@ def ytd2quarterly(new):
 # In[9]: plotting
 
 #heat map
-#set df date as index before passing to this function
+##input value type is pandas dataframe with datetime index
 #note that fig_size is in scale with fontsize
+
 def heatmap(df,fig_size=(10,5),fontsize=1):
     
     temp=df.corr()
@@ -634,7 +688,6 @@ def heatmap(df,fig_size=(10,5),fontsize=1):
     sns.set()
     
     
-#set df date as index before passing to this function
 def plot_all(df,color='b'):
     
     for i in df.columns:
