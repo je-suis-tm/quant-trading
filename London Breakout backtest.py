@@ -270,18 +270,21 @@ def plot(new):
     
     
 # In[3]:
+def main():
     
-df=pd.read_csv('gbpusd.csv')
+    df=pd.read_csv('gbpusd.csv')
 
-signals=signal_generation(df,london_breakout)
+    signals=signal_generation(df,london_breakout)
 
-new=signals
-new.set_index(pd.to_datetime(signals['date']),inplace=True)
-date=new.index[0].strftime('%Y-%m-%d')
-new=new['%s'%date]
+    new=signals
+    new.set_index(pd.to_datetime(signals['date']),inplace=True)
+    date=new.index[0].strftime('%Y-%m-%d')
+    new=new['%s'%date]
 
-plot(new)
+    plot(new)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
 # https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
+if __name__ == '__main__':
+    main()
