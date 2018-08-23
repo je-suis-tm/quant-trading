@@ -1,8 +1,6 @@
 # coding: utf-8
 
-
 # In[1]:
-
 
 #this is to London, the greatest city in the world
 #i was a Londoner, proud of being Londoner, how i love the city!
@@ -50,7 +48,6 @@ import pandas as pd
 
 # In[2]:
 
-
 def london_breakout(df):
     
     df['signals']=0
@@ -64,7 +61,6 @@ def london_breakout(df):
     df['lower']=0.0
 
     return df
-
 
 
 def signal_generation(df,method):
