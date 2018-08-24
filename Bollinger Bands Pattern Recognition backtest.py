@@ -30,10 +30,6 @@ import numpy as np
 # In[2]:
 os.chdir('d:/')
 
-#again, i download data from histdata.com
-#and i take the average of bid and ask price
-df=pd.read_csv('gbpusd.csv')
-
 
 # In[3]:
 
@@ -222,10 +218,20 @@ def plot(new):
 # In[6]:
 
 #ta-da
-signals=signal_generation(df,bollinger_bands)
+def main():
+    
+    #again, i download data from histdata.com
+    #and i take the average of bid and ask price
+    df=pd.read_csv('gbpusd.csv')
+    
+    signals=signal_generation(df,bollinger_bands)
 
-new=copy.deepcopy(signals)
-plot(new)
+    new=copy.deepcopy(signals)
+    plot(new)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
 # https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
+
+if __name__ == '__main__':
+    main()
