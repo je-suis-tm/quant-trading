@@ -18,14 +18,13 @@ Created on Mon Mar 19 15:22:38 2018
 # https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
 
 import os
-os.chdir('D:/')
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 
 # In[2]:
 
-
+os.chdir('D:/')
 
 
 # In[3]:
