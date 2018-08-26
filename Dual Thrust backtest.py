@@ -26,24 +26,7 @@ import pandas as pd
 # In[2]:
 
 
-#similar to London Breakout
-#my raw data comes from the same website
-# http://www.histdata.com/download-free-forex-data/?/excel/1-minute-bar-quotes
-#just take the mid price of whatever currency pair you want
 
-df=pd.read_csv('gbpusd.csv')
-df.set_index(pd.to_datetime(df['date']),inplace=True)
-
-#rg is the lags of days
-#param is the parameter of trigger range, it should be smaller than one
-#normally ppl use 0.5 to give long and short 50/50 chance to trigger
-rg=5
-param=0.5
-
-#these three variables are for the frequency convertion from minute to intra daily
-year=df.index[0].year
-month=df.index[0].month
-column='price'
 
 # In[3]:
 
@@ -220,12 +203,33 @@ def plot(signals,intraday,column):
 
 
 # In[4]:
+def main():
     
-intraday=min2day(df,column,year,month,rg)
-signals=signal_generation(df,intraday,param,column,rg)
-plot(signals,intraday,column)
+    #similar to London Breakout
+    #my raw data comes from the same website
+    # http://www.histdata.com/download-free-forex-data/?/excel/1-minute-bar-quotes
+    #just take the mid price of whatever currency pair you want
 
+    df=pd.read_csv('gbpusd.csv')
+    df.set_index(pd.to_datetime(df['date']),inplace=True)
 
+    #rg is the lags of days
+    #param is the parameter of trigger range, it should be smaller than one
+    #normally ppl use 0.5 to give long and short 50/50 chance to trigger
+    rg=5
+    param=0.5
+
+    #these three variables are for the frequency convertion from minute to intra daily
+    year=df.index[0].year
+    month=df.index[0].month
+    column='price'
+    
+    intraday=min2day(df,column,year,month,rg)
+    signals=signal_generation(df,intraday,param,column,rg)
+    plot(signals,intraday,column)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
 # https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
+if __name__ == '__main__':
+    main()
