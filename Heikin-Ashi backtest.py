@@ -19,6 +19,9 @@ Created on Thu Feb 15 20:48:35 2018
 #matplotlib.pyplot has been removed from matplotlib
 #need to install mpl_finance instead
 
+
+# In[2]:
+
 import pandas as pd
 import matplotlib.pyplot as plt
 import fix_yahoo_finance as yf
@@ -26,27 +29,6 @@ import mpl_finance as mpf
 import numpy as np
 from scipy import integrate
 from scipy.stats import t
-
-
-# In[2]:
-
-#initializing
-
-#stop loss positions, the maximum long positions we can get
-#without certain constraints, you will long indefinites times as long as the market condition triggers the signal
-#in a whipsaw condition, it is suicidal
-stls=3
-ticker='NVDA'
-stdate='2015-04-01'
-eddate='2018-02-15'
-
-#slice is used for plotting
-#a three year dataset with 750 variables would be too much for a figure
-slicer=700
-
-
-#downloading data
-df=yf.download(ticker,start=stdate,end=eddate)
 
 
 # In[3]:
@@ -353,14 +335,38 @@ def stats(portfolio,df1,stdate,eddate):
 
 # In[10]:
 
-df1=signal_generation(df,heikin_ashi)
+def main():
+    
+    #initializing
 
-new=df1[slicer:]
-plot(new,ticker)
+    #stop loss positions, the maximum long positions we can get
+    #without certain constraints, you will long indefinites times as long as the market condition triggers the signal
+    #in a whipsaw condition, it is suicidal
+    stls=3
+    ticker='NVDA'
+    stdate='2015-04-01'
+    eddate='2018-02-15'
 
-portfo=portfolio(new)
-profit(portfo)
+    #slice is used for plotting
+    #a three year dataset with 750 variables would be too much for a figure
+    slicer=700
 
-stats(portfo,df1,stdate,eddate)
 
-#note that this is the only py file with complete stats calculation
+    #downloading data
+    df=yf.download(ticker,start=stdate,end=eddate)
+
+    df1=signal_generation(df,heikin_ashi)
+
+    new=df1[slicer:]
+    plot(new,ticker)
+
+    portfo=portfolio(new)
+    profit(portfo)
+
+    stats(portfo,df1,stdate,eddate)
+
+    #note that this is the only py file with complete stats calculation
+    
+    
+if __name__ == '__main__':
+    main()
