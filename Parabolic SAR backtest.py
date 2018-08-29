@@ -1,5 +1,7 @@
-
 # coding: utf-8
+
+# In[1]:
+
 
 #parabolic stop and reverse is very useful for trend following
 #sar is an indicator below the price when its an uptrend 
@@ -19,17 +21,7 @@ import fix_yahoo_finance as yf
 import pandas as pd
 
 
-#download data via fix yahoo finance library
-stdate=('2016-01-01')
-eddate=('2018-01-01')
-ticker=('EA')
-
-#slice is used for plotting
-#a two year dataset with 500 variables would be too much for a figure
-slicer=450
-
-df=yf.download(ticker,start=stdate,end=eddate)
-
+# In[2]:
 
 #the calculation of sar
 #as rules are very complicated
@@ -91,6 +83,7 @@ def parabolic_sar(new):
         
     return new
 
+# In[3]:
 
 #generating signals
 #idea is the same as macd oscillator
@@ -108,6 +101,11 @@ def signal_generation(df,method):
         return new
 
     
+
+
+
+# In[4]:
+
 #plotting of sar and trading positions
 #still similar to macd
 
@@ -128,20 +126,44 @@ def plot(new,ticker):
     plt.show()
 
 
-#delete adj close and volume
-#as we dont need them
-del df['Adj Close']
-del df['Volume']
+# In[5]:
 
-#no need to iterate over timestamp index
-df.reset_index(inplace=True)
+def main():
+    
+    #download data via fix yahoo finance library
+    stdate=('2016-01-01')
+    eddate=('2018-01-01')
+    ticker=('EA')
 
-new=signal_generation(df,parabolic_sar)
+    #slice is used for plotting
+    #a two year dataset with 500 variables would be too much for a figure
+    slicer=450
 
-#convert back to time series for plotting
-#so that we get a date x axis
-new.set_index(new['date'],inplace=True)
+    df=yf.download(ticker,start=stdate,end=eddate)
+    
+    #delete adj close and volume
+    #as we dont need them
+    del df['Adj Close']
+    del df['Volume']
 
-#shorten our plotting horizon and plot
-new=new[slicer:]
-plot(new,ticker) 
+    #no need to iterate over timestamp index
+    df.reset_index(inplace=True)
+
+    new=signal_generation(df,parabolic_sar)
+
+    #convert back to time series for plotting
+    #so that we get a date x axis
+    new.set_index(new['date'],inplace=True)
+
+    #shorten our plotting horizon and plot
+    new=new[slicer:]
+    plot(new,ticker) 
+
+#how to calculate stats could be found from my other code called Heikin-Ashi
+# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
+
+# In[6]:
+
+if __name__ == '__main__':
+    main()
