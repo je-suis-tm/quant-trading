@@ -5,6 +5,8 @@ Created on Tue Feb  6 11:57:46 2018
 @author: Administrator
 """
 
+# In[1]:
+
 #need to get fix yahoo finance package first
 
 import matplotlib.pyplot as plt
@@ -12,30 +14,9 @@ import numpy as np
 import pandas as pd
 import fix_yahoo_finance as yf
 
-#input the long moving average and short moving average period
-#for the classic MACD, it is 12 and 26
-#once a upon a time you got six trading days in a week
-#so it is two week moving average versus one month moving average
-#for now, the ideal choice would be 10 and 21
 
-#macd is easy and effective
-#there is just one issue
-#entry signal is always late
-#watch out for downward EMA spirals!
-ma1=int(input('ma1:'))
-ma2=int(input('ma2:'))
-stdate=input('start date in format yyyy-mm-dd:')
-eddate=input('end date in format yyyy-mm-dd:')
-ticker=input('ticker:')
 
-#slicing the downloaded dataset
-#if the dataset is too large, backtesting plot would look messy
-#you get too many markers cluster together
-slicer=int(input('slicing:'))
-
-#downloading data
-df=yf.download(ticker,start=stdate,end=eddate)
-
+# In[2]:
 
 #simple moving average
 def macd(signals):
@@ -46,6 +27,9 @@ def macd(signals):
     
     return signals
 
+
+
+# In[3]:
 
 #signal generation
 #when the short moving average is larger than long moving average, we long and hold
@@ -72,6 +56,9 @@ def signal_generation(df,method):
 
     return signals
 
+
+
+# In[4]:
 
 #plotting the backtesting result
 def plot(new):
@@ -112,10 +99,43 @@ def plot(new):
     plt.grid(True)
     plt.show()
 
+    
+# In[5]:
 
-new=signal_generation(df,macd)
-new=new[slicer:]
-plot(new)
+def main():
+    
+    #input the long moving average and short moving average period
+    #for the classic MACD, it is 12 and 26
+    #once a upon a time you got six trading days in a week
+    #so it is two week moving average versus one month moving average
+    #for now, the ideal choice would be 10 and 21
 
-#how to calculate stats could be found from my other code called Heikin-Ashi: 
+    #macd is easy and effective
+    #there is just one issue
+    #entry signal is always late
+    #watch out for downward EMA spirals!
+    ma1=int(input('ma1:'))
+    ma2=int(input('ma2:'))
+    stdate=input('start date in format yyyy-mm-dd:')
+    eddate=input('end date in format yyyy-mm-dd:')
+    ticker=input('ticker:')
+
+    #slicing the downloaded dataset
+    #if the dataset is too large, backtesting plot would look messy
+    #you get too many markers cluster together
+    slicer=int(input('slicing:'))
+
+    #downloading data
+    df=yf.download(ticker,start=stdate,end=eddate)
+    
+    new=signal_generation(df,macd)
+    new=new[slicer:]
+    plot(new)
+
+
+#how to calculate stats could be found from my other code called Heikin-Ashi
 # https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+
+
+if __name__ == '__main__':
+    main()
