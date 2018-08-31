@@ -3,18 +3,15 @@
 
 
 import matplotlib.pyplot as plt 
-import statsmodels.api as sm 
+import statsmodels as sm 
 import pandas as pd 
 import numpy as np 
 import random as rd
-from sklearn.linear_model import ElasticNetCV as en  
-from statsmodels.tsa.stattools import adfuller as adf 
-from statsmodels.tsa.seasonal import seasonal_decompose as sd
+import datetime as dt
+import sklearn as skl
 import copy
-from statsmodels.tsa.stattools import grangercausalitytests as gct
-from statsmodels.tsa.api import VAR
 import seaborn as sns
-from statsmodels.tsa.holtwinters import ExponentialSmoothing as es
+
 
 
 # In[1]: Seasonality
@@ -83,11 +80,11 @@ def seasonality_check(df,freq='monthly'):
     
     print('ARIMA decomposition')
     
-    df2=sd(df,freq=lag)
-    print(adf(df))
-    sm.graphics.tsa.plot_acf(df)
+    df2=sm.tsa.seasonal.seasonal_decompose(df,freq=lag)
+    print(sm.tsa.stattools.adfuller(df))
+    sm.api.graphics.tsa.plot_acf(df)
     plt.show()
-    sm.graphics.tsa.plot_pacf(df)
+    sm.api.graphics.tsa.plot_pacf(df)
     plt.show()
     df.plot(c=pick_a_color())
     plt.title('original')
@@ -142,8 +139,9 @@ def seasonality_check(df,freq='monthly'):
             print(var['seasonal_weight'+str(i)])
         
         df_adj=pd.Series(df)
-        for j in df.index:
-            df_adj[j:j]=df[j:j]/var['seasonal_weight'+str(j.month)]
+        
+        for j in range(len(df)):
+            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(j.month)]
         
         df_adj.plot(c=pick_a_color())
         plt.show()
@@ -155,7 +153,7 @@ def seasonality(df,n,freq='monthly'):
     if n==1:
         lag=np.select([freq=='monthly',freq=='quarterly'], \
                       [12,4])
-        df2=sd(df,freq=12)
+        df2=sm.tsa.seasonal.seasonal_decompose(df,freq=12)
         return df2.trend
     
     elif n==2:
@@ -180,8 +178,9 @@ def seasonality(df,n,freq='monthly'):
             var['seasonal_weight'+str(i)]= \
             np.mean(df[df.index.month==i])/np.mean(df)
             
-        for j in df.index:
-            df_adj[j:j]=df[j:j]/var['seasonal_weight'+str(j.month)]
+        for j in range(len(df)):
+            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(j.month)]
+            
         return df_adj
 
 
@@ -220,8 +219,8 @@ def reverse(df1,df2):
 
 def OLSregression(y,x,n=0):
     
-    x0=sm.add_constant(x)
-    m1=sm.OLS(y,x0).fit()
+    x0=sm.api.add_constant(x)
+    m1=sm.api.OLS(y,x0).fit()
     
     print(m1.summary())
     print(np.std(m1.predict()-np.array(y)))
@@ -243,8 +242,9 @@ def OLSregression(y,x,n=0):
     if n==0:
         return m1.params
     else:
-        m2=en(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],\
-              l1_ratio=[.01, .1, .5, .9, .99],  max_iter=5000).fit(x, y)
+        m2=skl.linear_model.ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],\
+                                         l1_ratio=[.01, .1, .5, .9, .99],  \
+                                         max_iter=5000).fit(x, y)
         print(m2.intercept_,m2.coef_)
         print(np.std(m2.predict(x)-np.array(y)))
         
@@ -271,7 +271,10 @@ def hw_smooth(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future    
     
-    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,**kwargs)
+    m=sm.tsa.holtwinters.ExponentialSmoothing(df, \
+                                              seasonal=method, \
+                                              trend=method, \
+                                              seasonal_periods=lag,**kwargs)
     model=m.fit(optimized=True)
     plt.plot(model.predict(start=0,end=forecast),label='fitted', \
              color=pick_a_color())
@@ -283,7 +286,10 @@ def hw_smooth(df,future,lag=12,method='mul',**kwargs):
 def hw_forecast(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future
-    m=es(df,seasonal=method,trend=method,seasonal_periods=lag,**kwargs)
+    m=sm.tsa.holtwinters.ExponentialSmoothing(df, \
+                                              seasonal=method, \
+                                              trend=method, \
+                                              seasonal_periods=lag,**kwargs)
     model=m.fit(optimized=True)
     
     return model.predict(start=0,end=forecast)
@@ -313,14 +319,14 @@ def hw_forecast_group(string,future,lag=12,method='mul',**kwargs):
 #input value type is pandas series with datetime index
     
     
-def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
+def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwargs):
     
-    print(adf(df.diff().fillna(df.bfill())))
+    print(sm.tsa.stattools.adfuller(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(211)
-    sm.graphics.tsa.plot_pacf(df,ax=ax)
+    sm.api.graphics.tsa.plot_pacf(df,ax=ax)
     bx=fig.add_subplot(212)
-    sm.graphics.tsa.plot_acf(df,ax=bx)
+    sm.api.graphics.tsa.plot_acf(df,ax=bx)
     plt.show()
       
         
@@ -329,7 +335,11 @@ def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
                                 seasonal_order=seasonality,
                                 **kwargs).fit()
     
-    m.plot_diagnostics(figsize=(20,10))
+    if diagnose==True:
+        m.plot_diagnostics(figsize=(20,10))
+    else:
+        pass
+    
     print(m.summary())
     
     p=m.get_forecast(steps=future)
@@ -384,14 +394,45 @@ def SARIMAX_forecast_group(string,future,arima=(1,1,1),seasonality=(1,1,1,12),**
     output.to_csv('forecast.csv')
 
 
+# In[5]:use y=kx+b to forecast
+
+#input value type is pandas series with datetime index
+def trend_forecast(df,future,name):
+    
+    output=pd.DataFrame()
+    temp=[]
+    time=[]
+    
+    slope=(df.iloc[0]-df.iloc[-1])/(1-len(df))
+    intercept=df.iloc[0]-slope*1
+    
+    for i in range(1,len(df)+future+1):
+        temp.append(slope*i+intercept)
+        
+    output[name]=temp
+    
+    date=str(dt.datetime.strftime(df.index[0],'%Y-%m-%d'))
+    delta=(df.index[1]-df.index[0]).days
+
+    if delta>300:
+        for j in range(len(df)+future):
+            year=int(date[:4])+j
+            time.append(str(year)+date[4:])
+            
+    output.set_index(pd.to_datetime(time),inplace=True)
+    
+    
+    
+    return output[name]
+    
 
 
-# In[5]: iteration for finding regressors and best fitted lag
+# In[6]: iteration for finding regressors and best fitted lag
 
 def regression2(y,x):
     
-    x0=sm.add_constant(x)
-    m1=sm.OLS(y,x0).fit()
+    x0=sm.api.add_constant(x)
+    m1=sm.api.OLS(y,x0).fit()
 
     return m1.rsquared
 
@@ -483,12 +524,12 @@ def iteration1(y,x1,n=12):
 
 
 
-# In[6]: monte carlo
+# In[7]: monte carlo
 
 
 def montecarlo(df,m=58,n=1000):
-    x1=sm.add_constant(df.shift(1))
-    mo=sm.OLS(df[1:],x1[1:]).fit()
+    x1=sm.api.add_constant(df.shift(1))
+    mo=sm.api.OLS(df[1:],x1[1:]).fit()
 
     plt.plot(mo.predict(),label='fitted',c=pick_a_color())
     plt.plot(np.array(df[1:]),label='actual',c=pick_a_color())
@@ -521,24 +562,25 @@ def montecarlo(df,m=58,n=1000):
 
 
 
-# In[7]: vector
+# In[8]: vector
 
 def vector_check(y,x,n=5):
-    print('\nunit root test for regressand\n',adf(y))
-    print('\nunit root test for regressor\n',adf(x))
+    print('\nunit root test for regressand\n',sm.tsa.stattools.adfuller(y))
+    print('\nunit root test for regressor\n',sm.tsa.stattools.adfuller(x))
     print('\ngranger causality test\n')
     print('x to y')
-    (gct(pd.concat([y,x],axis=1),maxlag=n))
+    (sm.tsa.stattools.grangercausalitytests(pd.concat([y,x],axis=1),maxlag=n))
     print('\ny to x')
-    (gct(pd.concat([x,y],axis=1),maxlag=n))
+    (sm.tsa.stattools.grangercausalitytests(pd.concat([x,y],axis=1),maxlag=n))
     
     print('\n\nEngle-Granger')
-    x_sm=sm.add_constant(x)
-    m=sm.OLS(y,x_sm).fit()
-    print('\n',adf(m.resid))
+    x_sm=sm.api.add_constant(x)
+    m=sm.api.OLS(y,x_sm).fit()
+    print('\n',sm.tsa.stattools.adfuller(m.resid))
     
+#dataframe with datetime index
 def VAR_IRF(df,n=10,future=20):
-    m=VAR(df)
+    m=sm.tsa.api.VAR(df)
     m.select_order(n)
     n=int(input('order:'))
     model=m.fit(maxlags=n)
@@ -546,7 +588,7 @@ def VAR_IRF(df,n=10,future=20):
     model.irf(10).plot()
     
     
-# In[8]: convertion
+# In[9]: convertion
     
 #the first column should be date
 #input value type is pandas dataframe
@@ -664,7 +706,7 @@ def ytd2quarterly(new):
 
 
     
-# In[9]: plotting
+# In[10]: plotting
 
 #heat map
 ##input value type is pandas dataframe with datetime index
@@ -686,6 +728,8 @@ def heatmap(df,fig_size=(10,5),fontsize=1):
                 mask=mask, ax=ax)
     
     sns.set()
+    
+    plt.style.use('default')
     
     
 def plot_all(df,color='b'):
