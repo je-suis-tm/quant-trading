@@ -51,7 +51,7 @@ https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/heikin-ashi%20positions.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/asset%20value.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/heikin-ashi%20asset%20value.png)
 
 4. London Breakout
 
