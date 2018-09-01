@@ -61,7 +61,7 @@ def signal_generation(df,method):
 # In[4]:
 
 #plotting the backtesting result
-def plot(new):
+def plot(new, ticker):
     
     #the first plot is the actual close price with long/short positions
     fig=plt.figure()
@@ -130,7 +130,7 @@ def main():
     
     new=signal_generation(df,macd)
     new=new[slicer:]
-    plot(new)
+    plot(new, ticker)
 
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
