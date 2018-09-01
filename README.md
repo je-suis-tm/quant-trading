@@ -34,7 +34,7 @@ This is the easiest trading strategy. It is a momentum trading strategy which ho
 
 This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift away too far from each other. First of all, we choose two stocks and run Engle-Granger two step analysis (1, run regression. 2, run unit root test on residuals) on both. Next, we standardize the residual and set one sigma away (both sides) as the threshold. After that, we take the standardized residual list and compare with the threshold. When the residual exceeds threshold, it generates the signals. We always long the cheap stock and short the expensive stock. 
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading%20eg%202%20step.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading%20eg%20two%20step.PNG)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading%20z%20stats.png)
 
