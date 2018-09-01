@@ -63,7 +63,7 @@ def bollinger_bands(df):
 #we just use it for pattern visualization
 #finally, we locate the second bottom node m, condition 3
 #plz refer to the following link for my poor visualization
-# https://github.com/tattooday/quant-trading/blob/master/preview/bottom%20w%20pattern.png
+# https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20bottom%20w%20pattern.png
 def signal_generation(data,method):
     
     #according to investopedia
