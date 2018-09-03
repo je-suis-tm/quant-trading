@@ -3,7 +3,7 @@
 
 
 import matplotlib.pyplot as plt 
-import statsmodels as sm 
+import statsmodels.api as sm 
 import pandas as pd 
 import numpy as np 
 import random as rd
@@ -82,9 +82,9 @@ def seasonality_check(df,freq='monthly'):
     
     df2=sm.tsa.seasonal.seasonal_decompose(df,freq=lag)
     print(sm.tsa.stattools.adfuller(df))
-    sm.api.graphics.tsa.plot_acf(df)
+    sm.graphics.tsa.plot_acf(df)
     plt.show()
-    sm.api.graphics.tsa.plot_pacf(df)
+    sm.graphics.tsa.plot_pacf(df)
     plt.show()
     df.plot(c=pick_a_color())
     plt.title('original')
@@ -219,8 +219,8 @@ def reverse(df1,df2):
 
 def OLSregression(y,x,n=0):
     
-    x0=sm.api.add_constant(x)
-    m1=sm.api.OLS(y,x0).fit()
+    x0=sm.add_constant(x)
+    m1=sm.OLS(y,x0).fit()
     
     print(m1.summary())
     print(np.std(m1.predict()-np.array(y)))
@@ -324,9 +324,9 @@ def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwar
     print(sm.tsa.stattools.adfuller(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(211)
-    sm.api.graphics.tsa.plot_pacf(df,ax=ax)
+    sm.graphics.tsa.plot_pacf(df,ax=ax)
     bx=fig.add_subplot(212)
-    sm.api.graphics.tsa.plot_acf(df,ax=bx)
+    sm.graphics.tsa.plot_acf(df,ax=bx)
     plt.show()
       
         
@@ -431,8 +431,8 @@ def trend_forecast(df,future,name):
 
 def regression2(y,x):
     
-    x0=sm.api.add_constant(x)
-    m1=sm.api.OLS(y,x0).fit()
+    x0=sm.add_constant(x)
+    m1=sm.OLS(y,x0).fit()
 
     return m1.rsquared
 
@@ -528,8 +528,8 @@ def iteration1(y,x1,n=12):
 
 
 def montecarlo(df,m=58,n=1000):
-    x1=sm.api.add_constant(df.shift(1))
-    mo=sm.api.OLS(df[1:],x1[1:]).fit()
+    x1=sm.add_constant(df.shift(1))
+    mo=sm.OLS(df[1:],x1[1:]).fit()
 
     plt.plot(mo.predict(),label='fitted',c=pick_a_color())
     plt.plot(np.array(df[1:]),label='actual',c=pick_a_color())
@@ -574,13 +574,13 @@ def vector_check(y,x,n=5):
     (sm.tsa.stattools.grangercausalitytests(pd.concat([x,y],axis=1),maxlag=n))
     
     print('\n\nEngle-Granger')
-    x_sm=sm.api.add_constant(x)
-    m=sm.api.OLS(y,x_sm).fit()
+    x_sm=sm.add_constant(x)
+    m=sm.OLS(y,x_sm).fit()
     print('\n',sm.tsa.stattools.adfuller(m.resid))
     
 #dataframe with datetime index
 def VAR_IRF(df,n=10,future=20):
-    m=sm.tsa.api.VAR(df)
+    m=sm.tsa.VAR(df)
     m.select_order(n)
     n=int(input('order:'))
     model=m.fit(maxlags=n)
