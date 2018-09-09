@@ -55,7 +55,10 @@ def smma(series,n):
 
 # In[3]:
 
-
+#calculating rsi is very simple
+#except there are several versions of moving average for rsi
+#simple moving average, exponentially weighted moving average, etc
+#in this script, we use smoothed moving average(the authentic way)
 def rsi(data,n=14):
     
     delta=data.diff().dropna()
@@ -72,7 +75,11 @@ def rsi(data,n=14):
 
 # In[4]:
 
-
+#signal generation
+#it is really easy
+#when rsi goes above 70, we short the stock
+#we bet the stock price would fall
+#vice versa
 def signal_generation(df,method,n=14):
     
     df['rsi']=0.0
@@ -87,7 +94,7 @@ def signal_generation(df,method,n=14):
 
 # In[5]:
 
-
+#plotting
 def plot(new,ticker):
     
     #the first plot is the actual close price with long/short positions
@@ -141,7 +148,8 @@ def main():
     plot(new,ticker)
 
 
-# In[7]:
+#how to calculate stats could be found from my other code called Heikin-Ashi
+# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
 if __name__ == '__main__':
     main()
