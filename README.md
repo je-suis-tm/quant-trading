@@ -20,7 +20,7 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 9.Bollinger Bands Pattern Recognition
 
-10. Relative Strength Index
+10.Relative Strength Index
 
 # Strategies:
 
