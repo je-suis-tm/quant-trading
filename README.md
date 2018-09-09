@@ -20,6 +20,8 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 9.Bollinger Bands Pattern Recognition
 
+10. Relative Strength Index
+
 # Strategies:
 
 1. MACD oscillator
@@ -115,6 +117,8 @@ https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
+10. Relative Strength Index
 
+RSI (Relative Strength Index) is also a popular indicator. It reflects the current strength or weakness of the stock price momentum. The calculation is pretty straight forward. We use 14 days of smoothed moving average (or other moving average methods) to separately calculate the intra daily uptrend and downtrend. We denote uptrend moving average divided by downtrend moving average as the relative strength. We normalize the relative strength by 100 which is called RSI. It is commonly believed that RSI above 70 is overbought and RSI below 30 is oversold. Nevertheless, there could be divergence between RSI momentum and price momentum which this script would not cover that part. The effectiveness of divergence strategy is debatable. We can also apply double bottom pattern recognition technique to RSI to anticipate the trend. Please refer to strategy No.9 Bollinger Bands for details of pattern recognition.
 
 STAY TUNED
