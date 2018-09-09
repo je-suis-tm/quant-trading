@@ -1,10 +1,35 @@
-
 # coding: utf-8
 
 # In[1]:
 
-
+#relative strength index(rsi) is another popular indicator for technical analysis
+#actually i believe its kinda bull shit
+#normally i read stuff on trading view wiki
+#its not like i work there and try to promote it
+#trading view wiki is a very detailed encyclopedia for different indicators
+#plz refer to the following link for more details
 # https://www.tradingview.com/wiki/Relative_Strength_Index_(RSI)
+
+#on trading view wiki, there are a couple of strategies to use rsi
+#the simplest one is overbought/oversold
+#that is what this script is about
+#we just set upper/lower boundaries capped at 30/70 for rsi
+#if rsi exceeds the bound, we bet the stock would go under price correction
+
+#another one is called divergence
+#rsi goes up and price actually goes down
+#the inventor of rsi called wilder believes bearish rsi divergence creates a selling opportunity 
+#but his protege cardwell believes bearish divergence only occurs in a bullish trend
+#so their ideas basically contradict to each other
+#i would undoubtedly give up on this bs divergence strategy
+
+#the last one is called failure swing
+#its kinda like a double bottom pattern in price itself
+#except this strategy is a pattern recognition on rsi
+#as i have written similar strategy for bollinger bands
+#plz refer to that script for more details
+# https://github.com/tattooday/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py
+
 
 import pandas as pd
 import numpy as np
@@ -14,7 +39,9 @@ import fix_yahoo_finance as yf
 
 # In[2]:
 
-
+#smoothed moving average
+#for details plz refer to wikipedia
+# https://en.wikipedia.org/wiki/Moving_average#Modified_moving_average
 def smma(series,n):
     
     output=[series[0]]
