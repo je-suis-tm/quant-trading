@@ -26,23 +26,7 @@ import pandas as pd
 import fix_yahoo_finance as yf
 
 
-#awesome oscillator uses 5 lags as short ma
-#34 lags as long ma
-#for the consistent comparison
-#i apply the same to macd oscillator
-ma1=5
-ma2=34
 
-#downloading
-stdate=input('start date in format yyyy-mm-dd:')
-eddate=input('end date in format yyyy-mm-dd:')
-ticker=input('ticker:')
-df=yf.download(ticker,start=stdate,end=eddate)
-
-#slicing the downloaded dataset
-#if the dataset is too large
-#backtesting plot would look messy
-slicer=int(input('slicing:'))
 
 
 # In[2]:
@@ -151,7 +135,7 @@ def awesome_signal_generation(df,method):
 #we plot the results to compare
 #basically the same as macd
 #im not gonna explain much
-def plot(new):
+def plot(new,ticker):
     
     #positions
     fig=plt.figure()
@@ -268,7 +252,6 @@ def profit(portfolio):
     plt.legend(loc='best')
     plt.grid(True)
     plt.title('Awesome VS MACD')
-    plt.ylabel('Asset Value')
     plt.show()
 
 
@@ -312,18 +295,43 @@ def stats(portfolio):
     print(stats)
 
 
-signals=signal_generation(df,ewmacd,ma1,ma2)
-sig=awesome_signal_generation(signals,awesome_ma)
-new=sig[slicer:]
-plot(new)
+# In[8]:   
 
-portfo=portfolio(sig)
-profit(portfo)
+def main():
+    
+    #awesome oscillator uses 5 lags as short ma
+    #34 lags as long ma
+    #for the consistent comparison
+    #i apply the same to macd oscillator
+    ma1=5
+    ma2=34
 
-stats(portfo)
-#from my tests
-#macd has demonstrated a higher sharpe ratio
-#it executes fewer trades but brings more profits
-#however its maximum drawdown is higher than awesome oscillator
-#which one is better?
-#it depends on your risk averse level
+    #downloading
+    stdate=input('start date in format yyyy-mm-dd:')
+    eddate=input('end date in format yyyy-mm-dd:')
+    ticker=input('ticker:')
+    df=yf.download(ticker,start=stdate,end=eddate)
+
+    #slicing the downloaded dataset
+    #if the dataset is too large
+    #backtesting plot would look messy
+    slicer=int(input('slicing:'))
+    signals=signal_generation(df,ewmacd,ma1,ma2)
+    sig=awesome_signal_generation(signals,awesome_ma)
+    new=sig[slicer:]
+    plot(new,ticker)
+    
+    portfo=portfolio(sig)
+    profit(portfo)
+    
+    stats(portfo)
+    
+    #from my tests
+    #macd has demonstrated a higher sharpe ratio
+    #it executes fewer trades but brings more profits
+    #however its maximum drawdown is higher than awesome oscillator
+    #which one is better?
+    #it depends on your risk averse level
+
+if __name__ == '__main__':
+    main()
