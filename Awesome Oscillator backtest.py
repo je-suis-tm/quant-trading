@@ -26,9 +26,6 @@ import pandas as pd
 import fix_yahoo_finance as yf
 
 
-
-
-
 # In[2]:
 
 #this part is macd
