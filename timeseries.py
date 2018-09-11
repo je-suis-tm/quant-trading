@@ -8,7 +8,7 @@ import pandas as pd
 import numpy as np 
 import random as rd
 import datetime as dt
-import sklearn as skl
+import sklearn.linear_model as skl
 import copy
 import seaborn as sns
 
@@ -141,7 +141,7 @@ def seasonality_check(df,freq='monthly'):
         df_adj=pd.Series(df)
         
         for j in range(len(df)):
-            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(j.month)]
+            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(df.index[j].month)]
         
         df_adj.plot(c=pick_a_color())
         plt.show()
@@ -179,7 +179,7 @@ def seasonality(df,n,freq='monthly'):
             np.mean(df[df.index.month==i])/np.mean(df)
             
         for j in range(len(df)):
-            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(j.month)]
+            df_adj.iloc[j]=df.iloc[j]/var['seasonal_weight'+str(df.index[j].month)]
             
         return df_adj
 
@@ -242,7 +242,7 @@ def OLSregression(y,x,n=0):
     if n==0:
         return m1.params
     else:
-        m2=skl.linear_model.ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],\
+        m2=skl.ElasticNetCV(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],\
                                          l1_ratio=[.01, .1, .5, .9, .99],  \
                                          max_iter=5000).fit(x, y)
         print(m2.intercept_,m2.coef_)
@@ -294,24 +294,16 @@ def hw_forecast(df,future,lag=12,method='mul',**kwargs):
     
     return model.predict(start=0,end=forecast)
     
-#the csv file should not contain index
-def hw_forecast_group(string,future,lag=12,method='mul',**kwargs):
-    
-    new=pd.read_csv(string)
-    new.set_index(pd.to_datetime(new['date']),inplace=True)
-  
+#input value type is pandas dataframe with datetime index
+def hw_forecast_group(new,future,lag=12,method='mul',**kwargs):
+
     output=pd.DataFrame()
-    del new['date']
-    
-    column=len(new.columns)
-    new.columns=[i for i in range(column)]
-    temp={}
-    for i in range(column):
+
+    for i in new.columns:
         
-        temp[i]=hw_forecast(new[i],future,lag=12,method='mul',**kwargs)
-        output[i]=temp[i]
-        
-    output.to_csv('forecast.csv')
+        output[i]=hw_forecast(new[i],future,lag=12,method='mul',**kwargs)
+
+    return output
     
 
 # In[4]: SARIMAX
@@ -374,24 +366,16 @@ def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12),history=True,
         return list(k)
     
 
-#the csv file should not contain index
-def SARIMAX_forecast_group(string,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
+#input value type is pandas dataframe with datetime index
+def SARIMAX_forecast_group(new,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
     
-    new=pd.read_csv(string)
-    new.set_index(pd.to_datetime(new['date']),inplace=True)
-  
     output=pd.DataFrame()
-    del new['date']
     
-    column=len(new.columns)
-    new.columns=[i for i in range(column)]
-    temp={}
-    for i in range(column):
+    for i in new.columns:
         
-        temp[i]=SARIMAX_forecast(new[i],future,arima,seasonality,**kwargs)
-        output[i]=temp[i]
+        output[i]=SARIMAX_forecast(new[i],future,arima,seasonality,**kwargs)
         
-    output.to_csv('forecast.csv')
+    return output
 
 
 # In[5]:use y=kx+b to forecast
@@ -790,3 +774,22 @@ def pick_a_color():
     a=rd.randint(0,39)
     
     return colorlist[a]
+
+
+# In[11]:
+
+#set the first column as datetime index
+#change the column name to date
+def first_col_date(df,set_index=True,**kwargs):
+    
+    temp=list(df.columns)
+    temp.pop(0)
+    temp.insert(0,'date')
+    df.columns=temp
+    if set_index==True:
+        df.set_index('date',inplace=True)
+        df.index=pd.to_datetime(df.index,**kwargs)
+    else:
+        df['date']=pd.to_datetime(df['date'],**kwargs)
+    
+    return df
