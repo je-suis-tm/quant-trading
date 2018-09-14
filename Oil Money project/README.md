@@ -1,6 +1,6 @@
 # Oil Money project
 
-As I mentioned before, this is a project inspired by an article that I read. During low volatility period, the article recommended to trade petrocurrency such as Norwegian Krone as the oil price was bouncing back. To my curiosity, I intended to find out if this idea is plausible. First thing came to my mind was whether the correlation between Norwegian Krone and Brent Crude was substantial. Norway is one of my fav places in Europe. Unlike Qatar or Saudi Arabia or any other gulf countries, it doesn't heavily rely on oil for its gross income. 
+As I mentioned before, this is a project inspired by an article that I read. During low volatility period, the article recommended to trade petrocurrency such as Norwegian Krone when the oil price was bouncing back. To my curiosity, I intended to find out if this idea is plausible. First thing came to my mind was whether the correlation between Norwegian Krone and Brent Crude was substantial. Norway is one of my fav places in Europe. Unlike Qatar or Saudi Arabia or any other gulf countries, it doesn't heavily rely on oil for its gross income. 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/global%20oil%20production.png)
 
