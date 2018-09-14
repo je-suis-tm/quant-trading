@@ -16,6 +16,12 @@ os.chdir('d:/')
 # In[2]:
 
 #need data with value and coordinates to plot
+#the oil production data of 2016 comes from wikipedia
+# https://en.wikipedia.org/wiki/List_of_countries_by_oil_production
+#the coordinates of each country's capital come from someone's personal blog
+# https://lab.lmnixon.org/4th/worldcapitals.html
+#note that the capital dont necessarily locate at the centre of a country
+#to make the figure look better, i slightly change a lil bit of coordinates
 df=pd.read_csv('global oil production.csv')
 
 
