@@ -81,7 +81,7 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 6.Oil money project
 
-I came up with this idea after reading an article about how to trade petrocurrency when the volatility of forex is low and oil price is steadily increasing. As it's not a recognized trading strategy like others in this repo (although quite a lot of research on this topic), I store all files inside a separate folder called oil money project. I highly recommend you guys to take a look and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
+I came up with this idea after reading an article about how to trade petrocurrency when the volatility of forex is low and oil price is steadily increasing. As it's not a recognized trading strategy like others in this repo (although quite a lot of research on this topic), I store all files inside a separate folder called oil money project. I highly recommend you guys to take a look (spoiler alert: some really gorgeous visualizations there) and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
 
 https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
 
