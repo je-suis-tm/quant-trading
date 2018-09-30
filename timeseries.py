@@ -4,6 +4,7 @@
 
 import matplotlib.pyplot as plt 
 import statsmodels.api as sm 
+from statsmodels import tsa as ts
 import pandas as pd 
 import numpy as np 
 import random as rd
@@ -73,15 +74,15 @@ def seasonality_find(df,direction='y2q'):
     return decomposition
 
 
-def seasonality_check(df,freq='monthly'):
+def seasonality_check(df,freq='monthly',**kwargs):
     
     lag=np.select([freq=='monthly',freq=='quarterly'], \
                       [12,4])
     
     print('ARIMA decomposition')
     
-    df2=sm.tsa.seasonal.seasonal_decompose(df,freq=lag)
-    print(sm.tsa.stattools.adfuller(df))
+    df2=ts.seasonal.seasonal_decompose(df,freq=lag,**kwargs)
+    print(ts.stattools.adfuller(df))
     sm.graphics.tsa.plot_acf(df)
     plt.show()
     sm.graphics.tsa.plot_pacf(df)
@@ -103,7 +104,7 @@ def seasonality_check(df,freq='monthly'):
     print('HP filter')
     hplag=np.select([freq=='monthly',freq=='quarterly',freq=='annual'], \
                     [14400,1600,100])
-    cycle,trend=sm.tsa.filters.hpfilter(df,hplag)
+    cycle,trend=ts.filters.hp_filter.hpfilter(df,hplag,**kwargs)
     cycle.plot(c=pick_a_color())
     plt.title('cycle')
     plt.show()
@@ -147,19 +148,19 @@ def seasonality_check(df,freq='monthly'):
         plt.show()
     
 
-def seasonality(df,n,freq='monthly'):
+def seasonality(df,n,freq='monthly',**kwargs):
       
     
     if n==1:
         lag=np.select([freq=='monthly',freq=='quarterly'], \
                       [12,4])
-        df2=sm.tsa.seasonal.seasonal_decompose(df,freq=12)
+        df2=ts.seasonal.seasonal_decompose(df,freq=12,**kwargs)
         return df2.trend
     
     elif n==2:
         lag=np.select([freq=='monthly',freq=='quarterly',freq=='annual'], \
                       [14400,1600,100])
-        cycle,trend=sm.tsa.filters.hpfilter(df,lag)
+        cycle,trend=ts.filters.hp_filter.hpfilter(df,lag,**kwargs)
         return trend
     
     elif n==3:
@@ -271,7 +272,7 @@ def hw_smooth(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future    
     
-    m=sm.tsa.holtwinters.ExponentialSmoothing(df, \
+    m=ts.holtwinters.ExponentialSmoothing(df, \
                                               seasonal=method, \
                                               trend=method, \
                                               seasonal_periods=lag,**kwargs)
@@ -286,7 +287,7 @@ def hw_smooth(df,future,lag=12,method='mul',**kwargs):
 def hw_forecast(df,future,lag=12,method='mul',**kwargs):
     
     forecast=len(df)-1+future
-    m=sm.tsa.holtwinters.ExponentialSmoothing(df, \
+    m=ts.holtwinters.ExponentialSmoothing(df, \
                                               seasonal=method, \
                                               trend=method, \
                                               seasonal_periods=lag,**kwargs)
@@ -313,7 +314,7 @@ def hw_forecast_group(new,future,lag=12,method='mul',**kwargs):
     
 def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwargs):
     
-    print(sm.tsa.stattools.adfuller(df.diff().fillna(df.bfill())))
+    print(ts.stattools.adfuller(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(211)
     sm.graphics.tsa.plot_pacf(df,ax=ax)
@@ -322,7 +323,7 @@ def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwar
     plt.show()
       
         
-    m = sm.tsa.statespace.SARIMAX(df,
+    m = ts.statespace.sarimax.SARIMAX(df,
                                 order=arima,
                                 seasonal_order=seasonality,
                                 **kwargs).fit()
@@ -352,7 +353,7 @@ def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwar
 
 def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12),history=True,**kwargs):
 
-    a=sm.tsa.statespace.SARIMAX(x,
+    a=ts.statespace.sarimax.SARIMAX(x,
                                 order=arima,
                                 seasonal_order=seasonality,
                                 **kwargs).fit()
@@ -549,23 +550,23 @@ def montecarlo(df,m=58,n=1000):
 # In[8]: vector
 
 def vector_check(y,x,n=5):
-    print('\nunit root test for regressand\n',sm.tsa.stattools.adfuller(y))
-    print('\nunit root test for regressor\n',sm.tsa.stattools.adfuller(x))
+    print('\nunit root test for regressand\n',ts.stattools.adfuller(y))
+    print('\nunit root test for regressor\n',ts.stattools.adfuller(x))
     print('\ngranger causality test\n')
     print('x to y')
-    (sm.tsa.stattools.grangercausalitytests(pd.concat([y,x],axis=1),maxlag=n))
+    (ts.stattools.grangercausalitytests(pd.concat([y,x],axis=1),maxlag=n))
     print('\ny to x')
-    (sm.tsa.stattools.grangercausalitytests(pd.concat([x,y],axis=1),maxlag=n))
+    (ts.stattools.grangercausalitytests(pd.concat([x,y],axis=1),maxlag=n))
     
     print('\n\nEngle-Granger')
     x_sm=sm.add_constant(x)
     m=sm.OLS(y,x_sm).fit()
-    print('\n',sm.tsa.stattools.adfuller(m.resid))
+    print('\n',ts.stattools.adfuller(m.resid))
     
 #dataframe with datetime index
 def VAR_IRF(df,n=10,future=20):
-    m=sm.tsa.VAR(df)
-    m.select_order(n)
+    m=ts.vector_ar.var_model.VAR(df)
+    print(m.select_order(n))
     n=int(input('order:'))
     model=m.fit(maxlags=n)
     print('\n\n',model.summary())
