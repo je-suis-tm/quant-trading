@@ -137,6 +137,10 @@ def plot(new,ticker):
 # In[6]:
 
 #pattern recognition
+#do u really think i would write such an easy script?
+#dont be naive, here is another pattern recognition
+#unlike double bottom pattern for bollinger bands
+#this is head-shoulder pattern on rsi
 def pattern_recognition(df,method,lag=14):
     
     df['rsi']=0.0
