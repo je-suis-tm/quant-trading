@@ -127,6 +127,10 @@ RSI (Relative Strength Index) is also a popular indicator. It reflects the curre
 
 We can apply pattern recognition technique to RSI as well. Unlike strategy No.9 Bollinger Bands, we can directly look at the patterns of RSI itself instead of the price. Since we have tested double bottom pattern in Bollinger Bands, we would test head-shoulder pattern on RSI this time.
 
+For details of head-shoulder pattern, please refer to the following website:
+
+https://www.investopedia.com/terms/h/head-shoulders.asp
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20oscillator.png)
