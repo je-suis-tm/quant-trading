@@ -83,7 +83,7 @@ def rsi(data,n=14):
 def signal_generation(df,method,n=14):
     
     df['rsi']=0.0
-    df['rsi'][n:]=rsi(df['Close'],n=14)
+    df['rsi'][n:]=method(df['Close'],n=14)
     
     df['positions']=np.select([df['rsi']<30,df['rsi']>70], \
                               [1,-1],default=0)
