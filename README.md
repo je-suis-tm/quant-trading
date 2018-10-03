@@ -119,11 +119,13 @@ https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
 
 10. Relative Strength Index Pattern Recognition
 
-RSI (Relative Strength Index) is also a popular indicator. It reflects the current strength or weakness of the stock price momentum. The calculation is pretty straight forward. We use 14 days of smoothed moving average (or other moving average methods) to separately calculate the intra daily uptrend and downtrend. We denote uptrend moving average divided by downtrend moving average as the relative strength. We normalize the relative strength by 100 which is called RSI. It is commonly believed that RSI above 70 is overbought and RSI below 30 is oversold. Nevertheless, there could be divergence between RSI momentum and price momentum which this script would not cover that part. The effectiveness of divergence strategy is debatable. We can also apply double bottom pattern recognition technique to RSI to anticipate the trend. Please refer to strategy No.9 Bollinger Bands for details of pattern recognition.
+RSI (Relative Strength Index) is also a popular indicator. It reflects the current strength or weakness of the stock price momentum. The calculation is pretty straight forward. We use 14 days of smoothed moving average (or other moving average methods) to separately calculate the intra daily uptrend and downtrend. We denote uptrend moving average divided by downtrend moving average as the relative strength. We normalize the relative strength by 100 which is called RSI. It is commonly believed that RSI above 70 is overbought and RSI below 30 is oversold. Nevertheless, there could be divergence between RSI momentum and price momentum which this script would not cover that part. The effectiveness of divergence strategy is debatable.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20oscillator.png)
+
+We can apply pattern recognition technique to RSI as well. Unlike strategy No.9 Bollinger Bands, we can directly look at the patterns of RSI itself instead of the price. Since we have tested double bottom pattern in Bollinger Bands, we would test head-shoulder pattern on RSI this time.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20positions.png)
 
