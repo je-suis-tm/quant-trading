@@ -157,15 +157,14 @@ def pattern_recognition(df,method,lag=14):
     period=25    
     
     #delta is the threshold of the difference between two prices
-    #if the difference is smaller than delta, we conclude two prices are almost the same
-    #we do not expect nodes of shoulder are exactly the same
-    #its okay to be slightly different
-    #we denote delta as the word slightly
+    #if the difference is smaller than delta
+    #we can conclude two prices are not significantly different from each other
+    #the significant level is defined as delta
     delta=0.2
     
     #these are the multipliers of delta
-    #we wanna make sure there is a large difference between head and shoulders
-    #the difference is defined as head/shoulder multiplier*delta
+    #we wanna make sure there is head and shoulders are significantly larger than other nodes
+    #the significant level is defined as head/shoulder multiplier*delta
     head=1.1
     shoulder=1.1
     
@@ -181,8 +180,7 @@ def pattern_recognition(df,method,lag=14):
     #we use a variable called counter to keep track of it
     #two is that rsi has increased more than 4 since the entry
     #the variable for 4 is called exit_rsi
-    #when either condition is triggered, exit boolean variable gets True
-    #we exit the trade
+    #when either condition is triggered, we exit the trade
     #this is a lazy way to exit the trade
     #cuz i dont wanna import indicators from other scripts
     #i would suggest people to use other indicators such as macd or bollinger bands
@@ -190,10 +188,18 @@ def pattern_recognition(df,method,lag=14):
     entry_rsi=0.0
     counter=0
     exit_rsi=4
-    exit_days=5    
-    exit=False
+    exit_days=5
     
     #signal generation
+    #plz refer to the following link for pattern visualization
+    # https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20head-shoulder%20pattern.png
+    #the idea is to start with the first node i
+    #we look backwards and find the head node j with maximum value in pattern finding period
+    #between node i and node j, we find a node k with its value almost the same as node i
+    #started from node j to left, we find a node l with its value almost the same as node i
+    #between the left beginning and node l, we find a node m with its value almost the same as node i
+    #after that, we find the shoulder node n with maximum value between node m and node l
+    #finally, we find the shoulder node o with its value almost the same as node n
     for i in range(period+lag,len(df)):
         
         #this is pretty much the same idea as in bollinger bands
@@ -208,18 +214,33 @@ def pattern_recognition(df,method,lag=14):
         if (df['cumsum'][i]==0) and  \
         (df['Close'][i]!=max(df['Close'][i-period:i])):
             
+            #get the head node j with maximum value in pattern finding period
+            #note that dataframe is in datetime index
+            #we wanna convert the result of idxmax to a numerical index number
             j=df.index.get_loc(df['Close'][i-period:i].idxmax())
+            
+            #if the head node j is significantly larger than node i
+            #we would move on to the next phrase
             if (np.abs(df['Close'][j]-df['Close'][i])>head*delta):
                 bottom=df['Close'][i]
                 moveon=True
             
+            #we try to find node k between node j and node i
+            #if node k is not significantly different from node i
+            #we would move on to the next phrase
             if moveon==True:
                 moveon=False
                 for k in range(j,i):    
                     if (np.abs(df['Close'][k]-bottom)<delta):
                         moveon=True
                         break
-                        
+            
+            #we try to find node l between node j and the end of pattern finding horizon
+            #note that we start from node j to the left
+            #cuz we need to find another bottom node m later which would start from the left beginning
+            #this way we can make sure we would find a shoulder node n between node m and node l
+            #if node l is not significantly different from node i
+            #we would move on to the next phrase
             if moveon==True:
                 moveon=False
                 for l in range(j,i-period+1,-1):
@@ -227,6 +248,10 @@ def pattern_recognition(df,method,lag=14):
                         moveon=True
                         break
                     
+            #we try to find node m between node l and the end of pattern finding horizon
+            #this time we start from left to right as usual
+            #if node m is not significantly different from node i
+            #we would move on to the next phrase
             if moveon==True:
                 moveon=False        
                 for m in range(i-period,l):
@@ -234,6 +259,11 @@ def pattern_recognition(df,method,lag=14):
                         moveon=True
                         break
             
+            #get the shoulder node n with maximum value between node m and node l
+            #note that dataframe is in datetime index
+            #we wanna convert the result of idxmax to a numerical index number
+            #if node n is significantly larger than node i and significantly smaller than node j
+            #we would move on to the next phrase
             if moveon==True:
                 moveon=False        
                 n=df.index.get_loc(df['Close'][m:l].idxmax())
@@ -242,7 +272,12 @@ def pattern_recognition(df,method,lag=14):
                     top=df['Close'][n]
                     moveon=True
                     
-                    
+            #we try to find shoulder node o between node k and node i
+            #if node o is not significantly different from node n
+            #we would set up the signals and coordinates for visualization
+            #we also need to refresh cumsum and entry_rsi for exiting the trade
+            #note that moveon is still set as True
+            #it would help the algo to ignore this round of iteration for exiting the trade
             if moveon==True:        
                 for o in range(k,i):
                     if (np.abs(df['Close'][o]-top)<delta):
@@ -252,35 +287,42 @@ def pattern_recognition(df,method,lag=14):
                         entry_rsi=df['rsi'][i]
                         moveon=True
                         break
-                    
-        if entry_rsi!=0:
+        
+        #each time we have a holding position
+        #counter would steadily increase
+        #if either of the exit conditions is met
+        #we exit the trade with long position
+        #and we refresh counter, entry_rsi and cumsum
+        #you may wonder why do we need cumsum?
+        #well, this is for holding positions in case you wanna check on portfolio performance
+        if entry_rsi!=0 and moveon==False:
             counter+=1
             if (df['rsi'][i]-entry_rsi>exit_rsi) or \
             (counter>exit_days):
-                exit=True
-            
-        if (df['cumsum'][i]!=0) and \
-        (exit==True) and \
-        (moveon==False):
-            df.at[df.index[i],'signals']=1
-            df['cumsum']=df['signals'].cumsum()
-            exit=False
-            counter=0
-            entry_rsi=0
+                df.at[df.index[i],'signals']=1
+                df['cumsum']=df['signals'].cumsum()
+                counter=0
+                entry_rsi=0
             
     return df
 
 
+#visualize the pattern
 def pattern_plot(new,ticker):
     
+    #this part is to get a small slice of dataframe
+    #so we can get a clear view of head-shoulder pattern
     a,b=list(new[new['signals']!=0].iloc[2:4].index)
     
+    #extract coordinates for head-shoulder pattern visualization
     temp=list(map(int,new['coordinates'][a].split(',')))
     indexlist=list(map(lambda x:new.index[x],temp))
     
+    #slicing
     c=new.index.get_loc(b)
     newbie=new[temp[0]-30:c+20]
     
+    #first plot is always price with positions
     ax=plt.figure(figsize=(10,10)).add_subplot(211)
         
     newbie['Close'].plot(label=ticker)
@@ -296,10 +338,12 @@ def pattern_plot(new,ticker):
     plt.grid(True)
     plt.show()
     
+    #second plot is head-shoulder pattern on rsi
     bx=plt.figure(figsize=(10,10)).add_subplot(212,sharex=ax)
     
     newbie['rsi'].plot(label='relative strength index',c='#f4ed71')
     
+    #we plot the overbought/oversold interval, positions and pattern
     bx.fill_between(newbie.index,30,70,alpha=0.6,label='overbought/oversold range',color='#000d29')
     bx.plot(newbie['rsi'][indexlist], \
             lw=3,alpha=0.7,marker='o', \
@@ -309,9 +353,8 @@ def pattern_plot(new,ticker):
     bx.plot(newbie['rsi'][newbie['signals']==-1],marker='v',markersize=12, \
             lw=0,c='r',label='SHORT')
 
-    
+    #put some captions on head and shoulders
     for i in [(1,'Shoulder'),(3,'Head'),(5,'Shoulder')]:
-        
         plt.text(indexlist[i[0]], newbie['rsi'][indexlist[i[0]]]+2, \
              '%s'%i[1],fontsize=10,color='#e4ebf2', \
              horizontalalignment='center', \
