@@ -26,10 +26,8 @@
 #the last one is called failure swing
 #its kinda like a double bottom pattern in price itself
 #except this strategy is a pattern recognition on rsi
-#as i have written similar strategy for bollinger bands
-#plz refer to that script for more details
-# https://github.com/tattooday/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py
-
+#since i have written bottom w pattern for bollinger bands
+#i would not do it here
 
 import pandas as pd
 import numpy as np
@@ -138,16 +136,36 @@ def plot(new,ticker):
 
 #pattern recognition
 #do u really think i would write such an easy script?
-#dont be naive, here is another pattern recognition
+#dont be naive, here is another way of using rsi
 #unlike double bottom pattern for bollinger bands
-#this is head-shoulder pattern on rsi
+#this is head-shoulder pattern directly on rsi instead of price
+#well, it is actually named head and shoulders
+#but i refused to do free marketing for the shampoo
+#cuz that shampoo doesnt work at all!
+#the details of head-shoulder pattern could be found in this link
+# https://www.investopedia.com/terms/h/head-shoulders.asp
+
+#any way, this pattern recognition is similar to the one in bollinger bands
+#plz refer to bollinger bands for a detailed explanation
+# https://github.com/tattooday/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py
 def pattern_recognition(df,method,lag=14):
     
     df['rsi']=0.0
     df['rsi'][lag:]=method(df['Close'],lag)    
     
+    #as usual, period is defined as the horizon for finding the pattern
     period=25    
+    
+    #delta is the threshold of the difference between two prices
+    #if the difference is smaller than delta, we conclude two prices are almost the same
+    #we do not expect nodes of shoulder are exactly the same
+    #its okay to be slightly different
+    #we denote delta as the word slightly
     delta=0.2
+    
+    #these are the multipliers of delta
+    #we wanna make sure there is a large difference between head and shoulders
+    #the difference is defined as head/shoulder multiplier*delta
     head=1.1
     shoulder=1.1
     
@@ -155,18 +173,38 @@ def pattern_recognition(df,method,lag=14):
     df['cumsum']=0
     df['coordinates']=''
     
+    #now these are the parameters set by us based on experience
+    #entry_rsi is the rsi when we enter a trade
+    #we would exit the trade based on two conditions
+    #one is that we hold the stock for more than five days
+    #the variable for five days is called exit_days
+    #we use a variable called counter to keep track of it
+    #two is that rsi has increased more than 4 since the entry
+    #the variable for 4 is called exit_rsi
+    #when either condition is triggered, exit boolean variable gets True
+    #we exit the trade
+    #this is a lazy way to exit the trade
+    #cuz i dont wanna import indicators from other scripts
+    #i would suggest people to use other indicators such as macd or bollinger bands
+    #exiting trades based on rsi is definitely inefficient and unprofitable
     entry_rsi=0.0
     counter=0
     exit_rsi=4
     exit_days=5    
     exit=False
     
+    #signal generation
     for i in range(period+lag,len(df)):
         
+        #this is pretty much the same idea as in bollinger bands
+        #except we have two variables
+        #one for shoulder and one for the bottom nodes
         moveon=False
         top=0.0
         bottom=0.0
         
+        #we have to make sure no holding positions
+        #and the close price is not the maximum point of pattern finding horizon
         if (df['cumsum'][i]==0) and  \
         (df['Close'][i]!=max(df['Close'][i-period:i])):
             
