@@ -17,7 +17,7 @@ import pandas as pd
 # https://en.wikipedia.org/wiki/List_of_countries_by_oil_production
 #but i have changed the names of some countries
 #try to keep names consistent with geojson file
-df=pd.read_csv('oil production.csv')
+df=pd.read_csv('oil production choropleth.csv')
 
 
 # In[3]:
