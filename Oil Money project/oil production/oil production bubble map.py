@@ -22,7 +22,7 @@ os.chdir('d:/')
 # https://lab.lmnixon.org/4th/worldcapitals.html
 #note that the capital dont necessarily locate at the centre of a country
 #to make the figure look better, i slightly change a lil bit of coordinates
-df=pd.read_csv('global oil production.csv')
+df=pd.read_csv('oil production bubble map.csv')
 
 
 # In[3]:
