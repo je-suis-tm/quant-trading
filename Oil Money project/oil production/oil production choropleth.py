@@ -74,3 +74,10 @@ m.choropleth(
 folium.LayerControl().add_to(m)
 display(m)
 
+#in general, folium is a really good wrap up for leaflet.js
+#it saves me a lot of time from learning javascript
+#it is very straight forward, a very flat learning curve
+#there is only one thing i hate about it
+#which is the location name is always in local language
+#at least google map provides english plus local language
+#this is quite annoying, other than that, its pretty cool
