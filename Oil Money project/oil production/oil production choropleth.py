@@ -65,7 +65,7 @@ m.choropleth(
  fill_color='YlOrRd',
  fill_opacity=0.7,
  line_opacity=0.2,
- legend_name='Oil Production 1000 Barrels/Day',
+ legend_name='Oil Production Thousand Barrels/Day',
  threshold_scale=[0.0,1.0, 150.0, 800.0, 2000.0, 4000.0]
 )
 
