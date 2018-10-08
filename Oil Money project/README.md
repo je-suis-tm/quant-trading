@@ -4,7 +4,7 @@ This project is inspired by an article that I read. During low volatility period
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
 
 <b><font color="#6F6F6F" size="+5"> Norwegian Krone and Brent Crude </font></b><br>
 
