@@ -1,1 +1,3 @@
+The following figure is the global iron ore production bubble map (check subfolder for how it is visualized: ttps://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py, this can also be done in choropleth, check this link for how to create a choropleth: https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/oil%20production/oil%20production%20choropleth.py). It lists out a few iron ore arbitrage options.
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/preview/iron%20ore%20production%20bubble%20map.png)
