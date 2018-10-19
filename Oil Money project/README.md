@@ -1,8 +1,6 @@
 # Oil Money
 
-This project is inspired by an article that I read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading idea is academically plausible. The following figures are the global oil production bubble map and choropleth (check subfolder for how it is visualized: https://github.com/tattooday/quant-trading/tree/master/Oil%20Money%20project/oil%20production). They list out a couple of petrocurrency trading options.
-
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
+This project is inspired by an article that I read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading idea is academically plausible. The following figure is the global oil production choropleth (check subfolder for how it is visualized: https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py, this can also be done in bubble map, check this link for how to create a bubble map: https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py). It lists out a couple of petrocurrency trading options.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
 
