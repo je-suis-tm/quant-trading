@@ -6,6 +6,8 @@
 
 #installing basemap is pretty painful for anaconda
 #try conda install -c conda-forge basemap
+#if there is filenotfounderror
+#try conda install -c conda-forge proj4
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
