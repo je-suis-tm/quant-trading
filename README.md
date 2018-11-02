@@ -85,6 +85,8 @@ Quantitative trading is not only about technical analysis. It is about quatitati
 
 https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
 
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
+
 7.Dual Thrust
 
 Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days open, close, high and low. When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions at the end of the day.
