@@ -38,3 +38,14 @@ Well, we are not economists (even though my work has a lot to do with them). Let
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/asset%20value.png)
 
 Wow, did we just discover a momentum trading strategy! We started to seek for a statistical arbitrage opportunity between crude price and petrocurrency. What we got in the end is an entry signal of momentum trading strategy. Also, we found out Euro is the major and long term influence on Norwegian Krone, Brent Crude is the short term disturbance. My explanation for our discovery would be, when the model breaks, there must be something fundamental that changed investors' outlook in NOK or Brent, e.g. an increase in refinery capacity limit. That kind of change should at least last for a while which offers a chance for trend following. I tested this trading strategy on NOK for different testing horizons. It turned out that our momentum trading is much more robust and profitable than our statistical arbitrage. But does it work on any other petrocurrencies? Unfortunately, Norway is one of the largest oil producing countries with floating FX regime. The rest is US, Canada and Russia. US dollar is a totally different case. It doesn't rely on WTI price at all. Oil business only takes up a very small share in US economy. What about Russian Ruble? Well, I have attached raw data of Russian Ruble. From my test results, I could only complain about that Russia has been sanctioned by US for so many times. Modeling on Russian Ruble never seems to be robust. The situation of RUB is too volatile and dynamic (feeling sorry for Russians). If you have a better idea for research on Russian Ruble, please do not hesitate to inform me.
+
+<b><font color="#6F6F6F" size="+5"> Russian Rubles and Urals Crude </font></b><br>
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise1.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise2.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202018.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20be4%202018.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20be4%202018.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20trend.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20cycle.png)
