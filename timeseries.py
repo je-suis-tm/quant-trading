@@ -253,7 +253,8 @@ def OLSregression(y,x,n=0):
         ax=fig.add_subplot(111)
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
-        plt.plot(y.index,pd.Series(m2.predict(x)),label='fitted',c=pick_a_color())
+        plt.plot(y.index,pd.Series(m2.predict(x)),label='fitted', \
+                 c=pick_a_color())
         plt.plot(y.index,y,label='actual',c=pick_a_color())
         plt.legend(loc='best')
 
@@ -312,7 +313,8 @@ def hw_forecast_group(new,future,lag=12,method='mul',**kwargs):
 #input value type is pandas series with datetime index
     
     
-def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwargs):
+def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12), \
+            diagnose=False,**kwargs):
     
     print(ts.stattools.adfuller(df.diff().fillna(df.bfill())))
     fig=plt.figure(figsize=(10,10))
@@ -351,7 +353,8 @@ def SARIMAX(df,future,arima=(1,1,1),seasonality=(1,1,1,12),diagnose=False,**kwar
     plt.show()
 
 
-def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12),history=True,**kwargs):
+def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12), \
+                     history=True,**kwargs):
 
     a=ts.statespace.sarimax.SARIMAX(x,
                                 order=arima,
@@ -368,7 +371,8 @@ def SARIMAX_forecast(x,future,arima=(1,1,1),seasonality=(1,1,1,12),history=True,
     
 
 #input value type is pandas dataframe with datetime index
-def SARIMAX_forecast_group(new,future,arima=(1,1,1),seasonality=(1,1,1,12),**kwargs):
+def SARIMAX_forecast_group(new,future,arima=(1,1,1), \
+                           seasonality=(1,1,1,12),**kwargs):
     
     output=pd.DataFrame()
     
@@ -446,7 +450,11 @@ def iteration4(y,x1,x2,x3,x4,n=12):
             for k in range(1,n):
                 for l in range(1,n):
                     para=max(i,j,k,l)
-                    temp=regression2(y[para:],pd.concat([x1.shift(i),x2.shift(j),x3.shift(k),x4.shift(l)],axis=1)[para:])
+                    temp=regression2(y[para:], \
+                                     pd.concat([x1.shift(i), \
+                                                x2.shift(j), \
+                                                x3.shift(k), \
+                                                x4.shift(l)],axis=1)[para:])
                     if temp not in perfect.keys():
                         perfect[temp]=[i,j,k,l]
                     else:
@@ -464,7 +472,9 @@ def iteration3(y,x1,x2,x3,n=12):
         for j in range(1,n):
             for k in range(1,n):
                 para=max(i,j,k)
-                temp=regression2(y[para:],pd.concat([x1.shift(i),x2.shift(j),x3.shift(k)],axis=1)[para:])
+                temp=regression2(y[para:],pd.concat([x1.shift(i), \
+                                 x2.shift(j), \
+                                 x3.shift(k)],axis=1)[para:])
                 if temp not in perfect.keys():
                     perfect[temp]=[i,j,k]
                 else:
@@ -481,7 +491,8 @@ def iteration2(y,x1,x2,n=12):
     for i in range(1,n):
         for j in range(1,n):
             para=max(i,j)
-            temp=regression2(y[para:],pd.concat([x1.shift(i),x2.shift(j)],axis=1)[para:])
+            temp=regression2(y[para:],pd.concat([x1.shift(i), \
+                             x2.shift(j)],axis=1)[para:])
             if temp not in perfect.keys():
                 perfect[temp]=[i,j]
             else:
@@ -690,6 +701,43 @@ def ytd2quarterly(new):
     return output
 
 
+def monthly2ytd(new):
+    
+    df=copy.deepcopy(new)
+    
+    df.set_index(df.columns[0],inplace=True)
+    df.index=pd.to_datetime(df.index)
+    
+    var=locals()
+    temp=df.index.year.drop_duplicates()
+    for i in range(len(temp)):
+        var[i]=df[str(temp[i]):str(temp[i])].cumsum()
+    
+    output=pd.concat([var[i] for i in range(len(temp))])
+    
+    return output
+
+
+def add_jan(df):
+    
+    date=df['Date'].tolist()
+    value=df['Value'].tolist()
+    temp=[]
+    
+    for i in range(len(date)):
+        if pd.to_datetime(date[i]).month==2:
+            temp.append(i)
+    
+    for j in temp:
+        
+        date.insert(j+temp.index(j),date[j+temp.index(j)][:6]+'1-01')
+        value.insert(j+temp.index(j),value[j+temp.index(j)])
+    
+    output=pd.DataFrame()
+    output['Date']=date
+    output['Value']=value
+    
+    return output
     
 # In[10]: plotting
 
