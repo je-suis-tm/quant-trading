@@ -18,7 +18,7 @@ import re
 # In[2]:
 
 
-os.chdir('d:/python/data')
+os.chdir('d:/')
 
 
 # In[3]:
@@ -115,7 +115,7 @@ plt.show()
 # In[9]:
 
 
-x=sm.add_constant(pd.concat([df['urals'],df['jpy'],df['eur']],axis=1))
+x=sm.add_constant(pd.concat([df['urals']],axis=1))
 y=df['rub']
 m=sm.OLS(y['2018':'2018'],x['2018':'2018']).fit()
 print(m.summary())
@@ -129,12 +129,13 @@ plt.legend(loc=0)
 plt.title('Russian Ruble 2018')
 plt.ylabel('RUBAUD')
 plt.xlabel('Date')
+plt.show()
 
 
 # In[10]:
 
 
-x=sm.add_constant(pd.concat([df['urals'],df['jpy'],df['eur']],axis=1))
+x=sm.add_constant(pd.concat([df['urals'],df['eur']],axis=1))
 y=df['rub']
 m=sm.OLS(y[:'2017'],x[:'2017']).fit()
 print(m.summary())
@@ -147,6 +148,7 @@ plt.legend(loc=0)
 plt.title('Russian Ruble Before 2018')
 plt.ylabel('RUBAUD')
 plt.xlabel('Date')
+plt.show()
 
 
 # In[11]:
@@ -163,19 +165,6 @@ ax.spines['right'].set_visible(False)
 plt.legend(loc=0)
 plt.title('2018 Trend')
 plt.ylabel('Normalized Value by 100')
-plt.xlabel('Date')
-
-
-# In[12]:
-
-
-ax=plt.figure(figsize=(10,5)).add_subplot(111)
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-plt.plot(df.loc['2018'].index,df['rub']['2018'],label='Russian Ruble',c='#720017')
-plt.legend(loc=0)
-plt.title('Russian Ruble Cyclical Component')
-plt.ylabel('RUBAUD')
 plt.xlabel('Date')
 plt.show()
 
