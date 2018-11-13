@@ -48,4 +48,3 @@ Wow, did we just discover a momentum trading strategy! We started to seek for a 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20be4%202018.PNG)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20be4%202018.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20trend.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20cycle.png)
