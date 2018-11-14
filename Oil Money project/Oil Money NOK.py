@@ -5,17 +5,19 @@
 
 
 #i call it oil money
-#cuz its a statistical arbitrage on oil price and currency pair
-#the inspiration came from an article i read last week
-#it suggested to trade on forex of oil producing countries
-#when the oil price went uprising and overall volatility for forex market was low
-#what i intend to do is to build up a model to explore the causality
-#we do a regression on historical datasets
-#we use linear regression to make a prediction
+#cuz its a statistical arbitrage on crude benchmark and petrocurrency
+#the inspiration came from an article i read
+#it suggested to trade on petrocurrency when the oil price went uprising 
+#plus overall volatility for forex market was low
+#the first thing is to build up a model to explore the causality
+#we split the historical datasets into two parts
+#one for the model estimation, the other for the model validation
+#we do a regression on estimation horizon
+#we use linear regression to make a prediction on ideal price level
 #we set up thresholds based on the standard deviation of residual
-#i take one deviation above as the upper threshold
+#take one deviation above as the upper threshold
 #if the currency price breaches the upper threshold
-#i take a short position as it is assumed to revert to its normal price range
+#take a short position as it is assumed to revert to its normal price range soon
 #for the lower threshold, vice versa
 #so its kinda like bollinger bands
 
@@ -23,29 +25,29 @@
 #we still need to consider fundamental influence
 #what if the market condition has changed
 #in that case our model wont work any more
+#well,all models lose their creditability over the time
 #the price would deviate two sigmas away from predicted value
 #which we should revert our positions
 #e.g. the price is two sigmas above our predicted value
-#we change our short to long as the market has changed its sentiment
+#we change our short to long since the market has changed its sentiment
 #there is probably hidden information in the uprising price
 #lets follow the trend and see where it ends
 
 #this idea sounds very silly
 #nobody actually does it or not that i knew
 #it came to my mind outta nowhere
-#i just wanna see if this project is plausible
-#perhaps im gonna suffer a huge loss from it
-#however, its not what i thought it was
-#it turned out to be a totally different indicator in the end!
+#i just wanted to see if the idea would work
+#perhaps the idea would bring a huge loss
+#nonetheless, it turns out to be not what i thought it was
+#it turns out to be a totally different indicator in the end!
 
 #first, we choose our currency norwegian krone
 #norway is one of the largest oil producing countries with floating fx regime
 #other oil producing countries such as saudi, iran, venezuela have their fx pegged to usd
 #russia is supposed to be a good training set
 #nevertheless, russia got sanctioned by uncle sam a lot
-#i tried rubjpy and the model barely captured anything
-#every model seemed to be overfitted and had no prediction power on rubjpy
-#i have uploaded russian ruble raw data in this folder for those who are willing to try
+#we would see this in the next script
+# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20RUB.py
 
 #after targetting at norwegian krone, we have to choose a currency to evaluate nok
 #i took a look at norway's biggest trading partners 
@@ -77,8 +79,8 @@ del df[list(df.columns)[0]]
 
 
 #now we do our linear regression
-#lets denote data from 2013-4-25 to 2017-4-25 as estimation window/training set
-#lets denote data from 2017-4-25 to 2018-4-25 as backtesting window/testing set
+#lets denote data from 2013-4-25 to 2017-4-25 as estimation horizon/training set
+#lets denote data from 2017-4-25 to 2018-4-25 as validation horizon/testing set
 x0=pd.concat([df['usd'],df['gbp'],df['eur'],df['brent']],axis=1)
 x1=sm.add_constant(x0)
 x=x1[x1.index<'2017-04-25']
@@ -91,7 +93,7 @@ print(model.summary(),'\n')
 # In[4]:
 
 
-#nevertheless, from the summary u can tell there is multicollinearity
+#from the summary u can tell there is multicollinearity
 #the condition number is skyrocketing
 #alternatively, i can use elastic net regression to achieve the convergence
 m=en(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],
@@ -153,12 +155,16 @@ print(np.std(df['sk_residual'])>np.std(df['ols_residual']))
 #elastic net has a smaller standard deviation after recalibration
 #ols may be biased subject to multicollinearity
 #apparently we got a winner
+#one can always argue what if we eliminate some regressors
+#in econometrics, if adding extra variables do not decrease adjusted r squared
+#or worsen AIC, BIC
+#we should include more information as long as it makes sense
 
 
 # In[7]:
 
 
-#lets generate signals based on the winner
+#lets generate signals based on the elastic net
 #we set one sigma of the residual as thresholds
 #two sigmas of the residual as stop orders
 #which is common practise in statistics
@@ -328,14 +334,14 @@ plt.show()
 #that still doesnt sound convincable
 #lets try cointegration test
 #academically we should use johansen test which works on multi dimensions
-#unfortunately, there is no johansen test in statsmodels
+#unfortunately, there is no johansen test in statsmodels (at the time i wrote this script)
 #well, here we go again
 #we have to use Engle-Granger two step!
 #salute to Engle, mentor of my mentor Gallo
 #to the nobel prize winner
 
 #im not gonna explain much here
-#if u have checked my other codes, u would know
+#if u have checked my other codes, u sould know
 #details are in pair trading session
 # https://github.com/tattooday/quant-trading/blob/master/Pair%20trading%20backtest.py
 
