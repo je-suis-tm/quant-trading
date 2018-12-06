@@ -55,8 +55,8 @@ The figure below shows R squared of each variable for cumulated years.
 
 Modelling
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202018.PNG)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%202018.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20be4%202018.PNG)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20be4%202018.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20trend.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20-2016.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20-2016.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202017-.PNG)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20be4%202017-.png)
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
