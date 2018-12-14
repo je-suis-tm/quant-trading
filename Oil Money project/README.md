@@ -55,10 +55,17 @@ The figure below shows R squared of each variable for cumulated years.
 
 Here are some interesting facts. Apart from Japanese Yen, Korean Won and Ukrainian Hryvnia, R squared year by year on other currencies or commodities are actually plunging from 2015 to 2018. The biggest cause is the sanctions. Ever since the annexation of Crimea, military intervention in Syria and nerve agent attack in UK, the sanction on Russia is getting more and more serious. Most countries except some rogue ones (e.g. Iran, Venezuela) decline to trade with Russia. Thus we are able to observe the R squared downhill of Dutch TTF gas, Euro and Chinese Yuan over the years. It is quite strange that R squared on Urals jumps up in 2018. We would find out why very soon. Before that, it is also strange that there are some spikes of R squared on Japanese Yen. My first guess was that Japanese Yen became the safe haven for Russia turmoil. It turns out it is more of a coincidence. It is simply because of the sluggish growth of Japan economy which somehow coincides with the downtrend of Russian Ruble. The same applies to Korean Won. As for Ukrainian Hryvnia, its R squared barely exceeds 20% so we just ignore it. Now let us take a look at R squared of year cumulated. We could easily draw up the same conclusion that R squared of most regressors are declining over the years (Korean Won looks like a bell shape curve). 2017 and 2018 seem to be roughest for Russia. In that case, I prefer to split the data into pre-2017 and post-2017.
 
+For pre-2017 data, the model seems to be very robust. Urals alone explains more than 80% of the price movement of Russian Ruble. The introduction of Euros into the model is optional. It indeed increases a significant amount (more than 2%) of R squared compared to other regressors. 
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20-2016.PNG)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20-2016.png)
+
+For post-2017 data, we can tell 2017 and 2018 are when the sanction bites. Urals can only explain less than 30% of the price movement of Russian Ruble. Moreover, the coefficient of Urals is even negative which contradicts the fact that Russian Ruble is a petrocurrency.
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202017-.PNG)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%202017-.png)
+
+If we track the price for Urals, Japanese Yen, Euro and Russian Ruble from 2017 and 2018, we will get a clear picture of how these assets move along the time axis. The stable performance of Japanese Yen and Euro justifies the post-recession economy growth of two different entities. And the exceptional uptrend of Urals from the beginning of 2018 gets mistranslated into the poor performance of Russian Ruble.
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202015%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202016%20positions.png)
