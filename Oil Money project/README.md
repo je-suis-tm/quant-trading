@@ -69,8 +69,12 @@ If we track the price for Urals, Japanese Yen, Euro and Russian Ruble from 2017 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
 
-In terms of trading strategies,
+In terms of trading strategies, Russian Ruble is too event driven for any quantitative analysis. What we do here is to split the data 30/70 into training and testing. We would apply whatever we have learned from the training dataset to backtest our momentum trading entry points. For the first two years, our model captures pretty solid R squared. The actual price of Russian Ruble barely drifts two standard divation away from our model forecast. The good news is that our model identification is perfectly correct but the bad news is that our strategy only works when the model begins to break. 
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202015%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202016%20positions.png)
+
+For 2017 and 2018, the R squared becomes total failures. It drops from less than 10% to less than 1% within 2 years. Still, you can argue that this strategy actually works. The sharp decline of both 2017 and 2018 implies the temptating wide profit margin we can exploit. Nonetheless, I have a formal statistic background. A model with ridiculously low R squared and insignificant coefficients do not sound like a wise investment to me. I strongly urge people to be cautious when it comes to some statistical 'no' situations. My conclusion for Russian Ruble is that DONT TRADE IT!! Its unique petrocurrency status gets dragged down by a few political agendas. Please take your own risk to trade when the model is not robust. Lucky for us, we still have one more petrocurrency, Canadian Dollar to be tested.
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20positions.png)
