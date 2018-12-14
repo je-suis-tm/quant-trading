@@ -66,7 +66,10 @@ For post-2017 data, we can tell 2017 and 2018 are when the sanction bites. Urals
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%202017-.png)
 
 If we track the price for Urals, Japanese Yen, Euro and Russian Ruble from 2017 and 2018, we will get a clear picture of how these assets move along the time axis. The stable performance of Japanese Yen and Euro justifies the post-recession economy growth of two different entities. And the exceptional uptrend of Urals from the beginning of 2018 gets mistranslated into the poor performance of Russian Ruble.
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
+
+In terms of trading strategies,
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202015%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202016%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017%20positions.png)
