@@ -1,12 +1,8 @@
-
 # coding: utf-8
 
 # In[1]:
 
 
-# https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime
-# http://www.worldstopexports.com/omans-top-10-exports/
-# https://www.rferl.org/a/russia-sanctions-timeline/29477179.html
 import os
 import pandas as pd
 import numpy as np
@@ -28,7 +24,10 @@ df.dropna(inplace=True)
 
 # In[3]:
 
-
+#this is the part to create r squared of different regressors 
+#in different years for stepwise regression
+#we can use locals to create lists for different currency
+#each list contains r squared of different years
 year=df.index.year.drop_duplicates().tolist()
 var=locals()
 for i in df.columns:
@@ -45,6 +44,8 @@ ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
+#to save you from the hassle
+#just use these codes to generate the bar chart
 width=0.3
 colorlist=['#c0334d','#d6618f','#f3d4a0','#f1931b']
 bar=locals()
@@ -66,7 +67,9 @@ plt.show()
 
 # In[4]:
 
-
+#this is similar to In[3]
+#In[3] is r squared of each regressor in each year
+#In[4] is r squared of each regressor of years cumulated
 var=locals()
 for i in df.columns:
     if i!='rub':
@@ -103,7 +106,7 @@ plt.show()
 
 # In[5]:
 
-
+#print model summary and actual vs fitted line chart
 x=sm.add_constant(pd.concat([df['urals']],axis=1))
 y=df['rub']
 m=sm.OLS(y['2017':'2018'],x['2017':'2018']).fit()
@@ -112,8 +115,10 @@ print(m.summary())
 ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
-ax.plot(df.loc['2017':'2018'].index,m.predict(),         c='#0abda0',label='Fitted')
-ax.plot(df.loc['2017':'2018'].index,         df['rub']['2017':'2018'],c='#132226',label='Actual')
+ax.plot(df.loc['2017':'2018'].index,m.predict(), \
+        c='#0abda0',label='Fitted')
+ax.plot(df.loc['2017':'2018'].index, \
+        df['rub']['2017':'2018'],c='#132226',label='Actual')
 plt.legend(loc=0)
 plt.title('Russian Ruble 2017-2018')
 plt.ylabel('RUBAUD')
@@ -123,7 +128,7 @@ plt.show()
 
 # In[6]:
 
-
+#print model summary and actual vs fitted line chart
 x=sm.add_constant(pd.concat([df['urals'],df['eur']],axis=1))
 y=df['rub']
 m=sm.OLS(y[:'2016'],x[:'2016']).fit()
@@ -131,8 +136,10 @@ print(m.summary())
 ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
-plt.plot(df.loc[:'2016'].index,m.predict(),          c='#c05640',label='Fitted')
-plt.plot(df.loc[:'2016'].index,df['rub'][:'2016'],          c='#edd170',label='Actual')
+plt.plot(df.loc[:'2016'].index,m.predict(), \
+         c='#c05640',label='Fitted')
+plt.plot(df.loc[:'2016'].index,df['rub'][:'2016'], \
+         c='#edd170',label='Actual')
 plt.legend(loc=0)
 plt.title('Russian Ruble Before 2017')
 plt.ylabel('RUBAUD')
@@ -142,7 +149,8 @@ plt.show()
 
 # In[7]:
 
-
+#normalize different regressors by 100 as the initial value
+#so that we can observe the trend of different regressors in the same scale
 ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
@@ -160,7 +168,8 @@ plt.show()
 
 # In[8]:
 
-
+#plot actual vs fitted line chart for each year
+#including one sigma and two sigma confidence interval
 for i in df.index.year.drop_duplicates():
     
     temp=df.loc[str(i):str(i)]
@@ -176,13 +185,23 @@ for i in df.index.year.drop_duplicates():
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     
-    ax.plot(test.index,              forecast,              label='Fitted',c='#f5ca99')
+    ax.plot(test.index, \
+            forecast, \
+            label='Fitted',c='#f5ca99')
     test['rub'].plot(label='Actual',c='#ed5752')
     
     
-    ax.fill_between(test.index,                      forecast+resid,                      forecast-resid,                      color='#1e1f26',                      alpha=0.8,                      label='1 Sigma')
+    ax.fill_between(test.index, \
+                    forecast+resid, \
+                    forecast-resid, \
+                    color='#1e1f26', \
+                    alpha=0.8, \
+                    label='1 Sigma')
     
-    ax.fill_between(test.index,                      forecast+2*resid,                      forecast-2*resid,                      color='#d0e1f9',
+    ax.fill_between(test.index, \
+                    forecast+2*resid, \
+                    forecast-2*resid, \
+                    color='#d0e1f9', \
                      alpha=0.7, \
                      label='2 Sigma')
     
