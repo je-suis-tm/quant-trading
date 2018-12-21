@@ -93,7 +93,9 @@ def signal_generation(dataset,x,y,method, \
                 #once the positions are cleared
                 #we set confidence intervals back to the fitted value
                 #so we could avoid the confusion in our visualization
-                #e.g. why no trades has been executed,
+                #for instance. if we dont do that, 
+                #there would be confidence intervals even when the model is invalid
+                #we could have been asking why no trade has been executed,
                 #even when actual price falls out of the confidence intervals?
                 df.at[i:,'pos2 sigma']=df['forecast']
                 df.at[i:,'neg2 sigma']=df['forecast']
@@ -101,12 +103,13 @@ def signal_generation(dataset,x,y,method, \
                 df.at[i:,'neg1 sigma']=df['forecast']
                 
                 #we use continue to skip this round of iteration
-                #if the clearing condition gets triggered
+                #only if the clearing condition gets triggered
                 continue
                 
             #plz note i make stop loss and stop profit symmetric
-            #usually they are asymmetric as ppl cannot take as much loss as profit
             #thats why we use absolute value of the spread between current price and entry price
+            #usually stop loss and stop profit are asymmetric 
+            #as ppl cannot take as much loss as profit
             if np.abs( \
                       df[y].iloc[i]-df[y][df['signals']!=0].iloc[-1] \
                       )>=stop:
@@ -132,14 +135,14 @@ def signal_generation(dataset,x,y,method, \
                 Y=df[y].iloc[i-train_len:i]
                 m=sm.OLS(Y,X).fit()
                 
-                #if r squared meetings the threshold demand
+                #if r squared meets the statistical request
                 #which is 0.7 by default
                 #we can start to build up confidence intervals
                 if m.rsquared>rsquared_threshold:
                     trained=True
                     sigma=np.std(Y-m.predict(X))
                     
-                    #plz note we set the forecast and confidence intervals
+                    #plz note that we set the forecast and confidence intervals
                     #for every data point after the current one
                     #this would fill in the blank once our model turns invalid
                     #when we have a new valid model
@@ -176,7 +179,9 @@ def signal_generation(dataset,x,y,method, \
 
 # In[4]:
 
-
+#this part is to monitor how our portfolio performs over time
+#details can be found from heiki ashi
+# https://github.com/tattooday/quant-trading/blob/master/Heikin-Ashi%20backtest.py
 def portfolio(signals,close_price,capital0=5000,positions=250):   
 
     portfolio=pd.DataFrame()
@@ -197,7 +202,7 @@ def portfolio(signals,close_price,capital0=5000,positions=250):
 
 # In[5]:
 
-
+#plotting fitted vs actual price with confidence intervals and positions
 def plot(signals,close_price):
     
     data=copy.deepcopy(signals[signals['forecast']!=0])
@@ -233,7 +238,7 @@ def plot(signals,close_price):
 
 # In[6]:
 
-
+#plotting portfolio performance over time with positions
 def profit(portfolio,close_price):
     
     data=copy.deepcopy(portfolio)
@@ -267,9 +272,15 @@ def main():
     df=pd.read_csv('brent crude nokjpy.csv')
     signals=signal_generation(df,'brent','nok',oil_money)
     p=portfolio(signals,'nok')
+    
+    #pandas.at[] is the fastest but it doesnt support datetime index
+    #so we have to set datetime index after iteration but before visualization
     signals.set_index('date',inplace=True)
     signals.index=pd.to_datetime(signals.index,format='%m/%d/%Y')
     p.set_index(signals.index,inplace=True)
+    
+    #we only visualize data point from 387 to 600
+    #becuz the visualization of 5 years data could be too messy
     plot(signals.iloc[387:600],'nok')
     profit(p.iloc[387:600],'nok')
     
