@@ -50,7 +50,7 @@ def oil_money(dataset):
 #which is 0.5 points by default in both ways
 #we clear our positions to claim profit/loss
 #once our positions are cleared
-#we recalibrate our regression model based on past 50 data points
+#we recalibrate our regression model based on the latest 50 data points
 #we keep doing this on and on
 def signal_generation(dataset,x,y,method, \
                       holding_threshold=10, \
@@ -59,18 +59,18 @@ def signal_generation(dataset,x,y,method, \
     
     df=method(dataset)
     
-    #the holding takes 3 values, -1,0,1
+    #variable holding takes 3 values, -1,0,1
     #0 implies no holding positions
     #1 implies long, -1 implies short
-    #when we wanna clear oure positions
+    #when we wanna clear our positions
     #we just reverse the sign of holding
-    #it is quite convenient
+    #which is quite convenient
     holding=0
     
     #trained is a boolean value
     #it indicates whether the current model is valid
-    #in another word, r squared is over 0.7 by default
-    #and the regressand is within two sigmas range from the fitted value
+    #in another word,when trained==True, r squared is over 0.7 by default
+    #and the regressand is within two sigma range from the fitted value
     trained=False
     
     #counter counts the days of position holding
@@ -78,20 +78,35 @@ def signal_generation(dataset,x,y,method, \
     
 
     for i in range(train_len,len(df)):
-    
+        
+        #when we have uncleared positions
         if holding!=0:
+            
+            #when counter exceeds holding threshold
+            #we clear our positions and reset all the parameters
             if counter>holding_threshold:
                 df.at[i,'signals']=-holding            
                 holding=0
                 trained=False
                 counter=0
-            
+                
+                #once the positions are cleared
+                #we set confidence intervals back to the fitted value
+                #so we could avoid the confusion in our visualization
+                #e.g. why no trades has been executed,
+                #even when actual price falls out of the confidence intervals?
                 df.at[i:,'pos2 sigma']=df['forecast']
                 df.at[i:,'neg2 sigma']=df['forecast']
                 df.at[i:,'pos1 sigma']=df['forecast']
                 df.at[i:,'neg1 sigma']=df['forecast']
+                
+                #we use continue to skip this round of iteration
+                #if the clearing condition gets triggered
                 continue
                 
+            #plz note i make stop loss and stop profit symmetric
+            #usually they are asymmetric as ppl cannot take as much loss as profit
+            #thats why we use absolute value of the spread between current price and entry price
             if np.abs( \
                       df[y].iloc[i]-df[y][df['signals']!=0].iloc[-1] \
                       )>=stop:
@@ -109,14 +124,26 @@ def signal_generation(dataset,x,y,method, \
             counter+=1
     
         else:
+            
+            #if we do not have a valid model yet
+            #we would keep trying the latest 50 data points
             if not trained:
                 X=sm.add_constant(df[x].iloc[i-train_len:i])
                 Y=df[y].iloc[i-train_len:i]
                 m=sm.OLS(Y,X).fit()
+                
+                #if r squared meetings the threshold demand
+                #which is 0.7 by default
+                #we can start to build up confidence intervals
                 if m.rsquared>rsquared_threshold:
                     trained=True
                     sigma=np.std(Y-m.predict(X))
                     
+                    #plz note we set the forecast and confidence intervals
+                    #for every data point after the current one
+                    #this would fill in the blank once our model turns invalid
+                    #when we have a new valid model
+                    #the new forecast and confidence intervals would cover the former one
                     df.at[i:,'forecast']= \
                     m.predict(sm.add_constant(df[x].iloc[i:]))
                     
@@ -131,7 +158,9 @@ def signal_generation(dataset,x,y,method, \
                     
                     df.at[i:,'neg1 sigma']= \
                     df['forecast'].iloc[i:]-sigma
-        
+            
+            #once we have a valid model
+            #we can feel free to generate trading signals
             if trained:
                 if df[y].iloc[i]>df['pos2 sigma'].iloc[i]:
                     df.at[i,'signals']=1
