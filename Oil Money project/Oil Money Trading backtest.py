@@ -4,6 +4,9 @@
 # In[1]:
 
 
+#here is the official trading strategy script for this lil project
+#the details could be found in the readme of the repo, section norwegian krone and brent crude
+# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
 import statsmodels.api as sm
 import copy
 import pandas as pd
@@ -15,7 +18,8 @@ os.chdir('d:/')
 
 # In[2]:
 
-
+#theoratically we only need two sigma to trigger the trading signals
+#i only add one sigma to make it look better in visualization
 def oil_money(dataset):
     
     df=copy.deepcopy(dataset)
@@ -32,16 +36,44 @@ def oil_money(dataset):
 
 # In[3]:
 
-
+#the trading idea is straight forward
+#we run regression on nok and brent of the past 50 data points by default
+#if the rsquared exceeds 0.7 by default
+#the regression model is deemed valid
+#we calculate the standard deviation of the residual
+#and use +/- two sigma as the threshold to trigger the trading signals
+#once the trade is executed
+#we would start a counter to count the period of position holding
+#if the holding period exceeds 10 days by default
+#we clear our positions
+#meanwhile, if the spread between current price and entry price exceeds stop limit
+#which is 0.5 points by default in both ways
+#we clear our positions to claim profit/loss
+#once our positions are cleared
+#we recalibrate our regression model based on past 50 data points
+#we keep doing this on and on
 def signal_generation(dataset,x,y,method, \
                       holding_threshold=10, \
                       stop=0.5,rsquared_threshold=0.7, \
                       train_len=50):
     
     df=method(dataset)
-
+    
+    #the holding takes 3 values, -1,0,1
+    #0 implies no holding positions
+    #1 implies long, -1 implies short
+    #when we wanna clear oure positions
+    #we just reverse the sign of holding
+    #it is quite convenient
     holding=0
+    
+    #trained is a boolean value
+    #it indicates whether the current model is valid
+    #in another word, r squared is over 0.7 by default
+    #and the regressand is within two sigmas range from the fitted value
     trained=False
+    
+    #counter counts the days of position holding
     counter=0
     
 
