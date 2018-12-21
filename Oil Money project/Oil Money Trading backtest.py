@@ -90,18 +90,6 @@ def signal_generation(dataset,x,y,method, \
                 trained=False
                 counter=0
                 
-                #once the positions are cleared
-                #we set confidence intervals back to the fitted value
-                #so we could avoid the confusion in our visualization
-                #for instance. if we dont do that, 
-                #there would be confidence intervals even when the model is invalid
-                #we could have been asking why no trade has been executed,
-                #even when actual price falls out of the confidence intervals?
-                df.at[i:,'pos2 sigma']=df['forecast']
-                df.at[i:,'neg2 sigma']=df['forecast']
-                df.at[i:,'pos1 sigma']=df['forecast']
-                df.at[i:,'neg1 sigma']=df['forecast']
-                
                 #we use continue to skip this round of iteration
                 #only if the clearing condition gets triggered
                 continue
@@ -118,10 +106,6 @@ def signal_generation(dataset,x,y,method, \
                 trained=False
                 counter=0
             
-                df.at[i:,'pos2 sigma']=df['forecast']
-                df.at[i:,'neg2 sigma']=df['forecast']
-                df.at[i:,'pos1 sigma']=df['forecast']
-                df.at[i:,'neg1 sigma']=df['forecast']
                 continue
         
             counter+=1
@@ -168,9 +152,27 @@ def signal_generation(dataset,x,y,method, \
                 if df[y].iloc[i]>df['pos2 sigma'].iloc[i]:
                     df.at[i,'signals']=1
                     holding=1
+                    
+                    #once the positions are entered
+                    #we set confidence intervals back to the fitted value
+                    #so we could avoid the confusion in our visualization
+                    #for instance. if we dont do that, 
+                    #there would be confidence intervals even when the model is broken
+                    #we could have been asking why no trade has been executed,
+                    #even when actual price falls out of the confidence intervals?
+                    df.at[i:,'pos2 sigma']=df['forecast']
+                    df.at[i:,'neg2 sigma']=df['forecast']
+                    df.at[i:,'pos1 sigma']=df['forecast']
+                    df.at[i:,'neg1 sigma']=df['forecast']
+                    
                 if df[y].iloc[i]<df['neg2 sigma'].iloc[i]:
                     df.at[i,'signals']=-1
-                    holding=-1  
+                    holding=-1
+                    
+                    df.at[i:,'pos2 sigma']=df['forecast']
+                    df.at[i:,'neg2 sigma']=df['forecast']
+                    df.at[i:,'pos1 sigma']=df['forecast']
+                    df.at[i:,'neg1 sigma']=df['forecast']
 
                     
     return df
