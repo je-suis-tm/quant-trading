@@ -41,6 +41,7 @@ Wow, did we just discover a momentum trading strategy! We started to seek for a 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
 
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
 <b><font color="#6F6F6F" size="+5"> Russian Rubles and Urals Crude </font></b><br>
