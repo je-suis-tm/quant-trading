@@ -14,11 +14,7 @@ In this demonstration, we denoted the period before 2017-04-25 as training horiz
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20model%20summary.png)
 
-In this case, we used elastic net regression to implement a penalty on this multicollinearity issue. Elastic net is a statistics/machine learning technique that consists of Lasso and Ridge regression (https://en.wikipedia.org/wiki/Elastic_net_regularization ). Assuming elastic net correctly estimated the parameters, we took elastic net fitted result to subtract from OLS fitted result to get the difference. From the figure below, we could tell the distribution of that difference is negatively skewed which implies OLS overestimated NOK. The next step, we took the residuals from both estimations and checked their standard deviations. It turned out that elastic net regression delivered a smaller standard deviation than OLS. Hence, we determined OLS estimation was biased and elastic net estimation was the better approach for modeling. 
-
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20ols%20vs%20elastic%20net.png)
-
-Before moving to backtesting, we ought to set up thresholds for signal generation. For common practise in statistical arbitrage, we set one sigma away from our fitted value as thresholds. When actual NOK price goes above the upper threshold, we take a short position cuz we hold the belief that it would come back to its so-called normal status. For lower threshold scenario, it is vice versa. However, the model is based on historical data. No models can precisely predict the future from the past. Our estimation is most likely to be overfitting and fail in the near future. We need to set up some thresholds for stop orders. When the model breaks, we could clear our positions and exit the trades gracefully. Let's use the golden rule in statistics, 2 sigmas with 95% confidence interval, to do the trick. If NOK deviates 2 sigmas away from our fitted value, we will exit the trades with elegance. What we didn't expect from the result is that there is a strong trend (could be up/down) after our model breaks. The trend is independent of our training horizon. In another word, no matter which period we use as training horizon, a strong trend always follow for either direction after the model breaks. The break of the model doesn't really upset me. It is apparently a blessing in disguise. Because whenever a strong trend occurs, there shall be exploiting opportunities for momentum trading! The figures below are positions of statistical arbitrage and the price movement against our fitted value.
+In this case, we used elastic net regression to implement a penalty on this multicollinearity issue. Elastic net is a statistics/machine learning technique that consists of Lasso and Ridge regression (https://en.wikipedia.org/wiki/Elastic_net_regularization ). Before moving to backtesting, we ought to set up thresholds for signal generation. For common practise in statistical arbitrage, we set one sigma away from our fitted value as thresholds. When actual NOK price goes above the upper threshold, we take a short position cuz we hold the belief that it would come back to its so-called normal status. For lower threshold scenario, it is vice versa. However, the model is based on historical data. No models can precisely predict the future from the past. Our estimation is most likely to be overfitting and fail in the near future. We need to set up some thresholds for stop orders. When the model breaks, we could clear our positions and exit the trades gracefully. Let's use the golden rule in statistics, 2 sigmas with 95% confidence interval, to do the trick. If NOK deviates 2 sigmas away from our fitted value, we will exit the trades with elegance. What we didn't expect from the result is that there is a strong trend (could be up/down) after our model breaks. The trend is independent of our training horizon. In another word, no matter which period we use as training horizon, a strong trend always follow for either direction after the model breaks. The break of the model doesn't really upset me. It is apparently a blessing in disguise. Because whenever a strong trend occurs, there shall be opportunities for momentum trading! The figures below are positions of statistical arbitrage and the price movement against our fitted value.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20oil%20money%20positions.png)
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20fitted%20vs%20actual.png)
@@ -42,6 +38,10 @@ Wow, did we just discover a momentum trading strategy! We started to seek for a 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
+
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
 <b><font color="#6F6F6F" size="+5"> Russian Rubles and Urals Crude </font></b><br>
 
@@ -87,6 +87,4 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 <b><font color="#6F6F6F" size="+5"> Canadian Dollars and Western Canadian Select </font></b><br>
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
