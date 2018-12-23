@@ -1,10 +1,15 @@
 # Oil Money
 
-This project is inspired by an article that I read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading idea is academically plausible. The following figure is the global oil production choropleth (check <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/oil%20production/oil%20production%20choropleth.py>here</a> for how to create interactive choropleth, this can also be done in static bubble map, check <a href=https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py>here</a> for how to create a bubble map). The figure lists out a couple of petrocurrency trading options (check <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>here</a> to see currency regimes of different countries). Click the link below to be redirected to interactive map.
-
-https://tattooday.github.io/quant-trading/oil-money/oil-production/
-
+This project is inspired by an article I have read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading strategy is plausible. Thus, I applied some academic analysis and coding work on some potential petrocurrencies to test the idea. The following figure is a global oil production choropleth. The map lists out a couple of forex trading options. But some of the oil exporting countries peg their currencies to US dollar.  We should verify the exchange rate regime of any oil exporting country from <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>wikipedia</a> before moving onto further analysis. 
+<br>
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
+
+<p>Unfortunately GitHub readme does not support javascript. Click the link below to be redirected to an interactive version of the oil production choropleth.</p>
+<p>https://tattooday.github.io/quant-trading/oil-money/oil-production/</p>
+<br>
+<p>Here are other useful links for this map:</p>
+<p>Check <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/oil%20production/oil%20production%20choropleth.py>here</a> for how to create the interactive choropleth.</p>
+<p>The chart can also be done in a static bubble map, check <a href=https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py>here</a> for how to create a bubble map.</p>
 
 <b><font color="#6F6F6F" size="+5"> Norwegian Krone and Brent Crude </font></b><br>
 
