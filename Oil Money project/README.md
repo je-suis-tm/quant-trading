@@ -1,16 +1,19 @@
 # Oil Money
 
-This project is inspired by an article I have read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading strategy is plausible. Thus, I applied some academic analysis and coding work on some potential petrocurrencies to test the idea. The following figure is a global oil production choropleth. The map lists out a couple of forex trading options. But some of the oil exporting countries peg their currencies to US dollar.  We should verify the exchange rate regime of any oil exporting country from <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>wikipedia</a> before moving onto further analysis. 
-<br>
+<p>This project is inspired by an article I have read. During low volatility period of forex, the article recommended to trade petrocurrency such as Norwegian Krone or Canadian Dollar when the oil price was bouncing back. To my curiosity, I intended to find out if this trading strategy is plausible. Thus, I applied some academic analysis and coding work on some potential petrocurrencies to test the idea. The following figure is a global oil production choropleth. The map lists out a couple of forex trading options. But some of the oil exporting countries peg their currencies to US dollar.  We should verify the exchange rate regime of any oil exporting country from <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>wikipedia</a> before moving onto further analysis.
+</p>
+
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
 
 <p>Unfortunately GitHub readme does not support javascript. Click the link below to be redirected to an interactive version of the oil production choropleth.</p>
 <p>https://tattooday.github.io/quant-trading/oil-money/oil-production/</p>
-<br>
 <p>Here are other useful links for this map:</p>
-<p>Check <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/oil%20production/oil%20production%20choropleth.py>here</a> for how to create the interactive choropleth.</p>
-<p>The chart can also be done in a static bubble map, check <a href=https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py>here</a> for how to create a bubble map.</p>
-
+<p>The link below illustrates how to create the interactive choropleth.</p>
+<p>https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/oil%20production/oil%20production%20choropleth.py</p>
+<p>The chart can also be done in a static bubble map, The link is below.</p>
+<p>https://github.com/tattooday/quant-trading/blob/master/Ore%20Money%20project/iron%20ore%20production/iron%20ore%20production%20bubble%20map.py</p>
+<br>
+<br>
 <b><font color="#6F6F6F" size="+5"> Norwegian Krone and Brent Crude </font></b><br>
 
 First thing came to my mind was whether the correlation between Norwegian Krone and Brent Crude was substantial or not. Norway is one of my favorite places in Europe. Unlike Qatar or Saudi Arabia or any other GCC/OPEC countries, the government doesn't heavily rely on oil or gas for its gross income (even though Equinor formerly Statoil is still a major player in Oslo Stock Exchange). It has the largest sovereign fund in the world to hedge against oil price decline. It also has other industries such as fishing, maritime, renewable energy etc which contribute to the economy. I doubted if oil price was the only factor that affected the exchange rate of NOK. I looked into international trading statistics of Norway (this is the <a href=http://www.worldstopexports.com/omans-top-10-exports>link</a>). Basically, most trading partners were inside European Union. Prior to trading stats, I decided to input UK sterling and Euro into the NOK price evaluation model. To my surprise, Norway was actually doing a lot of business with US. Thus, the model regressor consisted of EUR, GBP, USD and Brent Crude. After model identification, I had to choose a currency to evaluate NOK. It should be a stable entity with not much connection to Norway's economy. Therefore, I picked the safe haven currency in East Asia, JPY! All currencies involved in the model were evaluated by Japanese Yen. Our regressor variables were EURJPY, GBPJPY, USDJPY and Brent Crude in JPY. Our regressand variable was NOKJPY.
