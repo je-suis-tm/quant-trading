@@ -6,7 +6,7 @@ This project is inspired by an article I have read. During low volatility period
 
 ###### Unfortunately GitHub readme does not support javascript. Click <a href=https://tattooday.github.io/quant-trading/oil-money/oil-production>here</a> to be redirected to an interactive version of the oil production choropleth.
 
-## Norwegian Krone and Brent Crude
+### Norwegian Krone and Brent Crude
 
 First thing came to my mind was whether the correlation between Norwegian Krone and Brent Crude was substantial or not. Norway is one of my favorite places in Europe. Unlike Qatar or Saudi Arabia or any other GCC/OPEC countries, the government doesn't heavily rely on oil or gas for its gross income (even though Equinor formerly Statoil is still a major player in Oslo Stock Exchange). It has the largest sovereign fund in the world to hedge against oil price decline. It also has other industries such as fishing, maritime, renewable energy etc which contribute to the economy. I doubted if oil price was the only factor that affected the exchange rate of NOK. I looked into international trading statistics of Norway (this is the <a href=http://www.worldstopexports.com/omans-top-10-exports>link</a>). Basically, most trading partners were inside European Union. Prior to trading stats, I decided to input UK sterling and Euro into the NOK price evaluation model. To my surprise, Norway was actually doing a lot of business with US. Thus, the model regressor consisted of EUR, GBP, USD and Brent Crude. After model identification, I had to choose a currency to evaluate NOK. It should be a stable entity with not much connection to Norway's economy. Therefore, I picked the safe haven currency in East Asia, JPY! All currencies involved in the model were evaluated by Japanese Yen. Our regressor variables were EURJPY, GBPJPY, USDJPY and Brent Crude in JPY. Our regressand variable was NOKJPY.
 
@@ -44,7 +44,7 @@ Wow, did we just discover a momentum trading strategy! We started to seek for a 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
-## Russian Rubles and Urals Crude
+### Russian Rubles and Urals Crude
 
 For Norway, I may have doubts in how much oil business contributes to its overall GDP. As for Russia, I doubt if any person would question the role of oil business in economy of Russia. According to Wikipedia, Russian oil business (Rosneft) accounted for 16% of GDP, 52% of federal budget revenues and over 70% of total exports in 2012. Usually, countries having large natural resource reserves suffer from Dutch Disease (USA is an exception), particularly Russia. Hence, we don't need any extra step to validate if Russian Ruble is a petrocurrency.
 
