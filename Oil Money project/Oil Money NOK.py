@@ -398,7 +398,7 @@ om.profit(p,'nok')
 dic={}
 for holdingt in range(5,20):
     for stopp in np.arange(0.3,1.1,0.05):
-        signals=om.signal_generation(dataset,'brent','nok', \
+        signals=om.signal_generation(dataset,'brent','nok',om.oil_money \
                                      holding_threshold=holdingt, \
                                      stop=stopp)
         
