@@ -17,8 +17,8 @@
 #we set up thresholds based on the standard deviation of residual
 #take one deviation above as the upper threshold
 #if the currency price breaches the upper threshold
-#take a short position as it is assumed to revert to its normal price range soon
-#for the lower threshold, vice versa
+#take a short position as it is assumed to revert to its 'normal' price range soon
+#vice versa
 #so its kinda like bollinger bands
 
 #however, our regression is based on statistics
@@ -26,7 +26,7 @@
 #what if the market condition has changed
 #in that case our model wont work any more
 #well,all models lose their creditability over the time
-#the price would deviate two sigmas away from predicted value
+#denote the price deviating two sigmas away from predicted value as model failure
 #which we should revert our positions
 #e.g. the price is two sigmas above our predicted value
 #we change our short to long since the market has changed its sentiment
@@ -34,25 +34,23 @@
 #lets follow the trend and see where it ends
 
 #this idea sounds very silly
-#nobody actually does it or not that i knew
-#it came to my mind outta nowhere
-#i just wanted to see if the idea would work
+#nobody actually does it or not that i know of
+#i just wanna to see if the idea would work
 #perhaps the idea would bring a huge loss
-#nonetheless, it turns out to be not what i thought it was
-#it turns out to be a totally different indicator in the end!
+#nonetheless, it turns out to be a big surprise!
 
 #first, we choose our currency norwegian krone
 #norway is one of the largest oil producing countries with floating fx regime
 #other oil producing countries such as saudi, iran, venezuela have their fx pegged to usd
 #russia is supposed to be a good training set
-#nevertheless, russia got sanctioned by uncle sam a lot
+#nevertheless, russia gets sanctioned by uncle sam a lot
 #we would see this in the next script
 # https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20RUB.py
 
 #after targetting at norwegian krone, we have to choose a currency to evaluate nok
-#i took a look at norway's biggest trading partners 
-#i decided to include us dollar, euro and uk sterling as well as brent crude price in our model
-#in addition, i chose japanese yen as target currency
+#take a look at norway's biggest trading partners 
+#we should include us dollar, euro and uk sterling as well as brent crude price in our model
+#in addition, the base currency would be japanese yen 
 #cuz its not a big trading partner with norway
 #which implies it doesnt have much correlation with nok
 #preparation is done, lets get started!
@@ -78,7 +76,7 @@ del df[list(df.columns)[0]]
 # In[3]:
 
 
-#now we do our linear regression
+#first we do our linear regression
 #lets denote data from 2013-4-25 to 2017-4-25 as estimation horizon/training set
 #lets denote data from 2017-4-25 to 2018-4-25 as validation horizon/testing set
 x0=pd.concat([df['usd'],df['gbp'],df['eur'],df['brent']],axis=1)
@@ -108,53 +106,18 @@ print(m.intercept_,m.coef_)
 # In[5]:
 
 
-#we plot the difference between two different approaches
-#note that the difference is negative skewed
+#calculate the fitted value of nok
 df['sk_fit']=(df['usd']*m.coef_[0]+df['gbp']*m.coef_[1]+
                  df['eur']*m.coef_[2]+df['brent']*m.coef_[3]+m.intercept_)
-df['ols_fit']=(df['usd']*model.params[1]+df['gbp']*model.params[2]+
-                 df['eur']*model.params[3]+df['brent']*model.params[4]+model.params[0])
-df['epsilon']=df['sk_fit']-df['ols_fit']
-
-ax=plt.figure(figsize=(10,5)).add_subplot(111)
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-
-df['epsilon'].hist(histtype='bar',color='#ede574',width=0.007,bins=80)
-
-plt.title('OLS vs Elastic Net',fontsize=15)
-plt.xticks(fontsize=10)
-plt.yticks(fontsize=10)
-plt.grid(False)
-plt.ylabel('Frequency')
-plt.xlabel('Interval')
-plt.show()
-
-print(adf(df['epsilon']))
-
-#unit root test results:
-#(-2.4689818197725981, 0.12320492058022914, 2, 1286, {'1%': -3.4354451795550935, '5%': -2.863790090661305, '10%': -2.5679679660127368}, -6151.8371655225037)
-#hence, its not a stationary process
 
 
 # In[6]:
 
 
-#next step is to compare mean and standard deviation of two approaches
+#getting the residual
 df['sk_residual']=df['nok']-df['sk_fit']
-df['ols_residual']=df['nok']-df['ols_fit']
 
-print(np.mean(df['sk_residual'])>np.mean(df['ols_residual']))
-print(np.std(df['sk_residual'])>np.std(df['ols_residual']))
 
-#boolean values:
-#True
-#False
-#assuming elastic net correctly estimate the price
-#thus, ols overestimates the price a lot
-#elastic net has a smaller standard deviation after recalibration
-#ols may be biased subject to multicollinearity
-#apparently we got a winner
 #one can always argue what if we eliminate some regressors
 #in econometrics, if adding extra variables do not decrease adjusted r squared
 #or worsen AIC, BIC
@@ -171,7 +134,8 @@ print(np.std(df['sk_residual'])>np.std(df['ols_residual']))
 upper=np.std(df['sk_residual'][df.index<'2017-04-25'])
 lower=-upper
 
-signals=pd.concat([df[i] for i in ['nok', 'usd', 'eur', 'gbp', 'brent', 'sk_fit','sk_residual']],                   axis=1)[df.index>='2017-04-25']
+signals=pd.concat([df[i] for i in ['nok', 'usd', 'eur', 'gbp', 'brent', 'sk_fit','sk_residual']], \
+                  axis=1)[df.index>='2017-04-25']
 signals['fitted']=signals['sk_fit']
 del signals['sk_fit']
 
@@ -197,7 +161,7 @@ signals['signals']=0
 #u may wonder whats next for breaking the boundary
 #well, we stop the signal generation algorithm
 #we need to recalibrate our model or use other trend following strategies
-#i will leave this part to u
+
 index=list(signals.columns).index('signals')
 
 for j in range(len(signals)):
@@ -291,21 +255,8 @@ plt.show()
 #saudi and iran endorsed an extension of production caps on that particular date
 #donald trump got elected as potus so he would encourage a depreciated us dollar
 #which ultimately pushed up the oil price
-ax=plt.figure(figsize=(10,5)).add_subplot(111)
-ax.spines['top'].set_visible(False)
-ax.spines['right'].set_visible(False)
-
-(signals['brent'][signals.index>'2017-11-15']).plot(c='#355c7d',                                                    label='Brent Crude 1st Month Future Contract in JPY')
-
-plt.legend(loc='best')
-plt.title('After 2017/11/15')
-plt.ylabel('JPY')
-plt.xlabel('Date')
-plt.show()
-
 
 # In[12]:
-
 
 #lets normalize all prices by 100
 #its easy to see that nok follows euro
@@ -420,8 +371,97 @@ plt.show()
 #best to follow up with a momentum strategy
 #maybe this is not a statistical arbitrage after all
 #the model is a trend following entry indicator
-#can we do pair trading between brent crude and norwegian krone?
-#absolutely not!
-#but we may closely monitor the cointegration period
-#prepare for a momentum following once the cointegration breaks
 
+
+# In[17]:
+#now lets construct a trend following strategy based on the previous strategy
+#call it oil money version 2 or whatever
+#here i would only import the strategy script as this is a script for analytics and visualization
+#the official trading strategy script is in the following link
+# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20Trading%20backtest.py
+import oil_money_trading_backtest as om
+
+#generate signals,monitor portfolio performance
+#plot positions and total asset
+signals=om.signal_generation(dataset,'brent','nok',om.oil_money)
+p=om.portfolio(signals,'nok')
+om.plot(signals,'nok')
+om.profit(p,'nok')
+
+#but thats not enough, we are not happy with the return
+#come on, 2 percent return?
+#i may as well as deposit the money into the current account 
+#and get 0.75% risk free interest rate
+#therefore, we gotta try different holding period and stop loss/profit point
+#the double loop is very slow, i almost wanna do it in julia
+#plz go get a coffee or even lunch and dont wait for it
+dic={}
+for holdingt in range(5,20):
+    for stopp in np.arange(0.3,1.1,0.05):
+        signals=om.signal_generation(dataset,'brent','nok', \
+                                     holding_threshold=holdingt, \
+                                     stop=stopp)
+        
+        p=om.portfolio(signals,'nok')
+        dic[holdingt,stopp]=p['asset'].iloc[-1]/p['asset'].iloc[0]-1
+     
+profile=pd.DataFrame({'params':list(dic.keys()),'return':list(dic.values())})
+
+
+# In[18]:
+
+#plotting the distribution of return
+#in average the return is 2%
+#but we can get -6% and 6% as extreme values
+#we dont give a crap about average
+#we want the largest positive return
+
+ax=plt.figure(figsize=(10,5)).add_subplot(111)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+profile['return'].apply(lambda x:x*100).hist(histtype='bar', \
+                                            color='#f09e8c', \
+                                            width=0.45,bins=20)
+plt.title('Distribution of Return on NOK Trading')
+plt.grid(False)
+plt.ylabel('Frequency')
+plt.xlabel('Return (%)')
+plt.show()
+
+
+# In[19]:
+
+#plotting the heatmap of return under different parameters
+#try to find the optimal parameters to maximize the return
+
+#turn the dataframe into a matrix format first
+matrix=pd.DataFrame(columns= \
+                    [round(i,2) for i in np.arange(0.3,1.1,0.05)])
+
+matrix['index']=np.arange(5,20)
+matrix.set_index('index',inplace=True)
+
+for i,j in profile['params']:
+    matrix.at[i,round(j,2)]= \
+    profile['return'][profile['params']==(i,j)].item()*100
+
+for i in matrix.columns:
+    matrix[i]=matrix[i].apply(float)
+
+
+#plotting
+fig=plt.figure(figsize=(10,5))
+ax=fig.add_subplot(111)
+sns.heatmap(matrix,cmap='gist_heat_r',square=True, \
+            xticklabels=3,yticklabels=3)
+ax.collections[0].colorbar.set_label('Return(%) \n', \
+                                     rotation=270)
+plt.xlabel('\nStop Loss/Profit (points)')
+plt.ylabel('\nPosition Holding Period (days)')
+plt.title('\nProfit Heatmap',fontsize=10)
+plt.style.use('default')
+
+#it seems like the return doesnt depend on the stop profit/loss point
+#it is correlated with the length of holding period
+#the ideal one should be 9 trading days
+#as for stop loss/profit point could range from 0.6 to 1.05
