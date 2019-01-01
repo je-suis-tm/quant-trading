@@ -2,11 +2,11 @@
 
 This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting (basically via Python not C++). My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
 
-1.MACD oscillator
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#1-macd-oscillator>1.MACD oscillator</a>
 
-2.Pair trading
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#2-pair-trading>2.Pair trading</a>
 
-3.Heikin-Ashi candlestick
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#3-heikin-ashi-candlestick>3.Heikin-Ashi candlestick</a>
 
 4.London Breakout
 
