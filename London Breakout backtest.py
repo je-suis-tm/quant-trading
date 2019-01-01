@@ -175,7 +175,7 @@ def signal_generation(df,method):
 
                 signals['cumsum']=signals['signals'].cumsum()
 
-                if signals['price'][i]-lower<risky_stop:
+                if lower-signals['price'][i]>risky_stop:
                     signals.at[i,'signals']=0
 
                 elif signals['cumsum'][i]<-1:
