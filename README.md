@@ -8,19 +8,19 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#3-heikin-ashi-candlestick>3.Heikin-Ashi candlestick</a>
 
-4.London Breakout
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#4-london-breakout>4.London Breakout</a>
 
-5.Awesome oscillator
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#5-awesome-oscillator>5.Awesome oscillator</a>
 
-6.Oil money project
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#6-oil-money-project>6.Oil money project</a>
 
-7.Dual Thrust
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#7-dual-thrust>7.Dual Thrust</a>
 
-8.Parabolic SAR
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#8-parabolic-sar>8.Parabolic SAR</a>
 
-9.Bollinger Bands Pattern Recognition
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#9-bollinger-bands-pattern-recognition>9.Bollinger Bands Pattern Recognition</a>
 
-10.Relative Strength Index Pattern Recognition
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
 
 # Strategies:
 
