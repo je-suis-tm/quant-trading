@@ -1,6 +1,8 @@
 # Quant-trading
 
-This folder contains some quantitative trading strategies I found interesting. There are momentum trading, opening range breakout and statistical arbitrage strategies. Note that I only do historical data backtesting (basically via Python not C++). My assumption is that all trades are frictionless. I also might include some weird ideas I came up with. 
+Most scripts inside this repository are technical indicator automated trading. There are various types of momentum trading, opening range breakout and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly strange trading ideas I come up with to beat the market (or so I thought). There is no options strategy or HFT strategy simply because option price data and ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless so we don't have to worry about slippage or liquidity. 
+
+### Table of Contents
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#1-macd-oscillator>1.MACD oscillator</a>
 
@@ -81,7 +83,7 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 ### 6.Oil money project
 
-Quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, quantitative analysis on alternative datasets to generate ideas or low latency order execution in the market microstructure. Projects inside this repository are mostly about strange trading ideas I come up with. Simply because option price data and ultra high frequency data are very expensive to acquire. I can only go with the cheapest choice of algorithmic trading. As this is not a well-recognized trading strategy like others in this repository (although quite a lot of research on this topic), I store all related files inside a separate folder called oil money project. I highly recommend you guys to take a look (spoiler alert: some really gorgeous visualizations and detailed analysis there) and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
+As this is not a well-recognized trading strategy like others in this repository (although quite a lot of research on this topic), I store all related files inside a separate folder called oil money project. I highly recommend you guys to take a look (spoiler alert: some really gorgeous visualizations and detailed analysis there) and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
 
 https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
 
