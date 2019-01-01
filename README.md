@@ -10,15 +10,15 @@ This folder contains some quantitative trading strategies I found interesting. T
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#4-london-breakout>4.London Breakout</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#5-awesome-oscillator>5.Awesome oscillator</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#5awesome-oscillator>5.Awesome oscillator</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#6-oil-money-project>6.Oil money project</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#6oil-money-project>6.Oil money project</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#7-dual-thrust>7.Dual Thrust</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#7dual-thrust>7.Dual Thrust</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#8-parabolic-sar>8.Parabolic SAR</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#8parabolic-sar>8.Parabolic SAR</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#9-bollinger-bands-pattern-recognition>9.Bollinger Bands Pattern Recognition</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#9bollinger-bands-pattern-recognition>9.Bollinger Bands Pattern Recognition</a>
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
 
