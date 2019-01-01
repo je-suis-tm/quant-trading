@@ -28,7 +28,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### 1. MACD oscillator
 
-This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. We basically take long moving average and short moving average on the close price of stock. To generate the trading signal, we implement a comparison between two moving averages. When short moving average is larger than long moving average, we set the signal at 1 which implies LONG, vice versa.
+This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. We basically calculate long term moving average and short term moving average on the close price of a given stock. To generate the trading signal, we implement a comparison between two moving averages. When short term moving average is above long term moving average, we set the signal at 1 which implies LONG position. Vice versa.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/macd%20positions.png)
 
@@ -36,7 +36,7 @@ This is the easiest trading strategy. It is a momentum trading strategy which ho
 
 ### 2. Pair trading
 
-This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift away too far from each other. First of all, we choose two stocks and run Engle-Granger two step analysis (1, run regression. 2, run unit root test on residuals) on both. Next, we standardize the residual and set one sigma away (both sides) as the threshold. After that, we take the standardized residual list and compare with the threshold. When the residual exceeds threshold, it generates the signals. We always long the cheap stock and short the expensive stock. 
+This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift too far away from each other. First step, we select two stocks and run Engle-Granger two step analysis (1, construct regression model. 2, run unit root test on the residual of first step). Once the criteria of cointegration is met, we standardize the residual and set one sigma away (two tailed) as the threshold. After that, we compute the current standardized residual of the selected stocks accordingly. When the standardized residual exceeds the threshold, it generates the trading signal. The simple rule is we always long the cheap stock and short the expensive stock. 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading%20eg%20two%20step.PNG)
 
