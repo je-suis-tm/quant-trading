@@ -59,6 +59,7 @@ import matplotlib.pyplot as plt
 import statsmodels.api as sm
 import pandas as pd
 import numpy as np
+import seaborn as sns
 from sklearn.linear_model import ElasticNetCV as en 
 from statsmodels.tsa.stattools import adfuller as adf
 import os
@@ -457,8 +458,8 @@ sns.heatmap(matrix,cmap='gist_heat_r',square=True, \
 ax.collections[0].colorbar.set_label('Return(%) \n', \
                                      rotation=270)
 plt.xlabel('\nStop Loss/Profit (points)')
-plt.ylabel('\nPosition Holding Period (days)')
-plt.title('\nProfit Heatmap',fontsize=10)
+plt.ylabel('Position Holding Period (days)\n')
+plt.title('Profit Heatmap\n',fontsize=10)
 plt.style.use('default')
 
 #it seems like the return doesnt depend on the stop profit/loss point
