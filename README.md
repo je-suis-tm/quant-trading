@@ -30,7 +30,9 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### 1. MACD oscillator
 
-This is the easiest trading strategy. It is a momentum trading strategy which holds the belief that upward momentum has more impact on short term moving average than long term moving average. We basically calculate long term moving average and short term moving average on the close price of a given stock. To generate the trading signal, we implement a comparison between two moving averages. When short term moving average is above long term moving average, we set the signal at 1 which implies LONG position. Vice versa.
+MACD oscillator is trading strategy 101. MACD refers to Moving Average Convergence/Divergence. It is a momentum trading strategy which holds the belief that upward/downward momentum has more impact on short term moving average than long term moving average. It only takes 5 minutes for any bloke with no background in finance to trade with MACD signals. Regarding the simplicity of MACD oscillator, it is the most common strategy among the non-professionals in the market. In behavioral economics, the more people believe in the strategy, the more effective the strategy becomes (not always true, e.g. 2008). Therefore, we should not underestimate the power of MACD oscillator.
+
+For the strategy itself, we compute long term moving average and short term moving average on the close price of a given stock. To generate the trading signal, we implement a comparison between the moving averages of different time horizons. When short term moving average is above long term moving average, we long the given stock accordingly. Vice versa.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/macd%20positions.png)
 
@@ -38,7 +40,9 @@ This is the easiest trading strategy. It is a momentum trading strategy which ho
 
 ### 2. Pair trading
 
-This is so-called statistics arbitrage. It is based on the assumption that two cointegrated stocks would not drift too far away from each other. First step, we select two stocks and run Engle-Granger two step analysis (1, construct regression model. 2, run unit root test on the residual of first step). Once the criteria of cointegration is met, we standardize the residual and set one sigma away (two tailed) as the threshold. After that, we compute the current standardized residual of the selected stocks accordingly. When the standardized residual exceeds the threshold, it generates the trading signal. The simple rule is we always long the cheap stock and short the expensive stock. 
+Pair trading is the basic form of statistics arbitrage. It relies on the assumption that two cointegrated stocks would not drift too far away from each other. First step, we select two stocks and run <a href=https://en.wikipedia.org/wiki/Error_correction_model#Engle_and_Granger_2-step_approach>Engle-Granger two step analysis</a>. Once the criteria of cointegration is met, we standardize the residual and set one sigma away (two tailed) as the threshold. After that, we compute the current standardized residual of the selected stocks accordingly. When the standardized residual exceeds the threshold, it generates the trading signal. The simple rule is we always long the cheap stock and short the expensive stock. 
+
+The core idea of pair trading is <a href=https://en.wikipedia.org/wiki/Cointegration>cointegration</a>. Metaphorically speaking, cointegration is like a couple in a clingy relationship where two parties are crazy-glued together. Yet, most relationships break sooner or later, and only the very few can make it to the marriage (from a statistics perspective, not being pessimistic). Hence, it is important to frequently check on the status quo of cointegration before any pair trading order execution (the same applies to relationships).
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/pair%20trading%20eg%20two%20step.PNG)
 
@@ -48,7 +52,7 @@ This is so-called statistics arbitrage. It is based on the assumption that two c
 
 ### 3. Heikin-Ashi candlestick
 
-The rules of Heikin-Ashi are quite tricky. It is a Japanese way to filter out the noise for momentum trading. Basically we do a few transformations on four key benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low. After that, a few signals are generated. We set up the stop loss position so that we don't get screwed up during any market collapse.
+Heikin-Ashi, the exotic name actually refers to 'Average Bar' in Japanese, is an alternative style of candlestick chart. The sophisticated rules of Heiki-Ashi are designed to filter out the noise for momentum trading. Arguably it should outperform the standard candlestick in sideways and choppy markets. Initially we do a few transformations on four vital benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low to generate trading signals. The downside of Heikin-Ashi (or any momentum trading strategies) is the slow response. Thus, we should set up the stop loss position accordingly so that we don't get caught up in any flash collapse.
 
 The rules of Heikin-Ashi can be found in <a href=https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx>Quantiacs</a>.
 
