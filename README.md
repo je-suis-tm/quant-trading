@@ -50,9 +50,7 @@ This is so-called statistics arbitrage. It is based on the assumption that two c
 
 The rules of Heikin-Ashi are quite tricky. It is a Japanese way to filter out the noise for momentum trading. Basically we do a few transformations on four key benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low. After that, a few signals are generated. We set up the stop loss position so that we don't get screwed up during any market collapse.
 
-Transformations and trading rules can be found here: 
-
-https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
+The rules of Heikin-Ashi can be found in <a href=https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx>Quantiacs</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/heikin-ashi%20positions.png)
 
@@ -66,7 +64,7 @@ London Breakout is an intra daily opening range breakout strategy. Basically, it
 
 Back to London Breakout, London and Tokyo are two of the largest FX markets in the world. Tokyo FX trading hour is GMT 0:00 a.m. - GMT 8:59am. London FX trading hour (no summer daylight saving) begins at GMT 8:00 a.m. Even though there is an hour of overlap, the crucial timeframe of London Breakout is GMT 7:00 a.m. - GMT 7:59 a.m. a.k.a. the last trading hour before the opening of London market. The price movement of the crucial timeframe incorporates the information of all the overnight activities of financial market (from the perspective of the current time zone).
 
-We establish upper and lower thresholds prior to the high and low of the crucial timeframe. Once London FX market opens, we spend the first couple of minutes to check if the price would breach the preset boundaries. If it is above threshold, we long the currency pair accordingly. Vice versa. Nevertheless, we should set up a limit to prevent us from trading in the case of abnormal opening volatility. Normally, we clear our positions based on our target stop loss or stop profit respectively. By the end of the trading hour (still from the perspective of the current time zone), if there are any open positions, we clear them out.
+For the strategy itself, we establish upper and lower thresholds prior to the high and low of the crucial timeframe. Once London FX market opens, we spend the first couple of minutes to check if the price would breach the preset boundaries. If it is above threshold, we long the currency pair accordingly. Vice versa. Nevertheless, we should set up a limit to prevent us from trading in the case of abnormal opening volatility. Normally, we clear our positions based on our target stop loss or stop profit respectively. By the end of the trading hour (still from the perspective of the current time zone), if there are any open positions, we clear them out.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/london%20breakout%20positions.png)
 
@@ -76,7 +74,7 @@ We establish upper and lower thresholds prior to the high and low of the crucial
 
 Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which focus on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is based on the mean of high and low price. Apart from moving average divergence, there is additional way for awesome oscillator to generate signals, which is called saucer. Saucer is slightly more complex to implement but it has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response doesn't guarantee a more profitable or less risky outcome. 
 
-More details about the rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>Tradingview</a>.
+The rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>TradingView</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20positions.png)
 
@@ -100,27 +98,27 @@ For more details, please refer to the <a href=https://github.com/tattooday/quant
 
 Dual thrust is a very popular intra daily opening range breakout strategy, especially in CTA. Initially we establish upper and lower thresholds based on previous days' open, close, high and low. When the market opens and the price exceeds certain thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop loss/profit position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions by the end of the day.
 
-Rules of dual thrust can be found in <a href=https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm>Quantconnect</a>.
+Rules of dual thrust can be found in <a href=https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm>QuantConnect</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20positions.png)
 
 ### 8.Parabolic SAR
 
-Parabolic SAR is an indicator to identify stop and reverse of a trend. When it is an uptrend, SAR curve would be below the price. When it is downtrend, SAR curve would be above the price. It is always considered as the resistance to the price momentum. When SAR curve and the price curve crosses over, it is when trades should be executed. The strategy itself is very similar to MACD oscillator (as most momentum trading strategies are). However, the calculation of SAR is extremely painful. Info on Parabolic SAR can be found in <a href=https://en.wikipedia.org/wiki/Parabolic_SAR>Wikipedia</a> but not very well explained. The most straight forward way is to look at the <a href=https://www.box.com/s/gbtrjuoktgyag56j6lv0>spreadsheet</a> made by joeu2004. 
+Parabolic SAR is an indicator to identify stop and reverse of a trend. When it is an uptrend, SAR curve would sit below the price. When it is downtrend, SAR curve would rise above the price. It is always considered as a symbol of resistance to the price momentum. When SAR curve and the price curve crosses over, it is when trades should be executed. The strategy of divergence is very similar to MACD oscillator (as most momentum trading strategies are). However, the calculation of SAR is extremely painful. Information on Parabolic SAR can be found in <a href=https://en.wikipedia.org/wiki/Parabolic_SAR>Wikipedia</a> but not very well explained. The most straight forward answer is to take a look at the <a href=https://www.box.com/s/gbtrjuoktgyag56j6lv0>spreadsheet</a> made by joeu2004. 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar%20positions.png)
 
 ### 9.Bollinger Bands Pattern Recognition
 
-Bollinger Bands is a very simple indicator. There are three bands. The mid band is the moving average on the price series. The upper and lower bands are two moving standard deviations away from the moving average. The indicators can be used to test for many different strategies. For volatility trading, contraction and expansion of the band width is a crucial element. For momentum trading, 'walking the band' indicates resistance and support level. For pattern recognition, Bollinger Bands has the capability of testing bottom W, top M, head-shoulder patterns and etc.
+Bollinger Bands is a very simple but powerful indicator. There are three bands of this indicator. The mid band is the moving average on the price series. The upper and lower bands are two moving standard deviations away from the moving average. The indicators can be used to test for various types of strategies. For volatility trading, contraction and expansion of the band width is an key element. For momentum trading, the phenomenon of 'walking the band' indicates the resistance and support level of the underlying asset. For pattern recognition, Bollinger Bands has the capability of testing bottom W, top M, head-shoulder patterns and etc.
 
-For the rules of Bollinger Bands, please refer to <a href=https://www.tradingview.com/wiki/Bollinger_Bands_(BB)>Tradingview</a>.
+For the rules of Bollinger Bands, please refer to <a href=https://www.tradingview.com/wiki/Bollinger_Bands_(BB)>TradingView</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
 ### 10. Relative Strength Index Pattern Recognition
 
-RSI (Relative Strength Index) is also a popular indicator. It reflects the current strength or weakness of the stock price momentum. The calculation is pretty straight forward. We use 14 days of smoothed moving average (or other moving average methods) to separately calculate the intra daily uptrend and downtrend. We denote uptrend moving average divided by downtrend moving average as the relative strength. We normalize the relative strength by 100 which is called RSI. It is commonly believed that RSI above 70 is overbought and RSI below 30 is oversold. Nevertheless, there could be divergence between RSI momentum and price momentum which this script would not cover that part. The effectiveness of divergence strategy is debatable.
+RSI (Relative Strength Index) is also a popular indicator. It reflects the current strength/weakness of the stock price momentum. The calculation is pretty straight forward. We use 14 days of smoothed moving average (or other moving average methods) to separately calculate the intra daily uptrend and downtrend. We denote uptrend moving average divided by downtrend moving average as the relative strength. We normalize the relative strength by 100 which becomes an index called RSI. It is commonly believed that RSI above 70 is overbought and RSI below 30 is oversold. Nonetheless, there could be divergence between RSI momentum and price momentum which will not be covered in the script. The effectiveness of any divergence strategy on RSI is rather debatable.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20positions.png)
 
