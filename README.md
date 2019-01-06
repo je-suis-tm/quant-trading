@@ -85,31 +85,23 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 ### 6.Oil Money project
 
-As this is not a well-recognized trading strategy like others in this repository (although quite a lot of research on this topic), I store all related files inside a separate folder called oil money project. I highly recommend you guys to take a look (spoiler alert: some really gorgeous visualizations and detailed analysis there) and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
-
-https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
+This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. When the oil exits the bear market, the currency exchange of oil producing countries would also bounce back. But, does this statement really hold? With academic analysis and computer simulation on a couple of petrocurrencies, we have found a deeper level of the story. For more details, please refer to the <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md>read me page</a> of a separate directory or <a href=https://tattooday.github.io/quant-trading/oil-money>quant trading section</a> on my personal blog.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
 
+![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
+
 ### 7.Dual Thrust
 
-Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days open, close, high and low. When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions at the end of the day.
+Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days' open, close, high and low. When the market opens and the price exceeds certain thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions by the end of the day.
 
-Rules of dual thrust can be found in the following link:
-
-https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm/
+Rules of dual thrust can be found in <a href=https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm>Quantconnect</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/dual%20thrust%20positions.png)
 
 ### 8.Parabolic SAR
 
-Parabolic SAR is an indicator to identify stop and reverse of a trend. When it is an uptrend, SAR curve would be below the price. When it is downtrend, SAR curve would be above the price. It is always considered as the resistance to the price momentum. When SAR curve and the price curve crosses over, it is when trades should be executed. The strategy itself is very similar to MACD oscillator (as most momentum trading strategies are). 
-
-However, the calculation of SAR is extremely painful. Info on Parabolic SAR can be found in wikipedia but not very well explained. The most straight forward way is to look at the spreadsheet made of joeu2004. These websites can be found in the following links:
-
-https://en.wikipedia.org/wiki/Parabolic_SAR
-
-https://www.box.com/s/gbtrjuoktgyag56j6lv0
+Parabolic SAR is an indicator to identify stop and reverse of a trend. When it is an uptrend, SAR curve would be below the price. When it is downtrend, SAR curve would be above the price. It is always considered as the resistance to the price momentum. When SAR curve and the price curve crosses over, it is when trades should be executed. The strategy itself is very similar to MACD oscillator (as most momentum trading strategies are). However, the calculation of SAR is extremely painful. Info on Parabolic SAR can be found in <a href=https://en.wikipedia.org/wiki/Parabolic_SAR>Wikipedia</a> but not very well explained. The most straight forward way is to look at the <a href=https://www.box.com/s/gbtrjuoktgyag56j6lv0>spreadsheet</a> made by joeu2004. 
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/parabolic%20sar%20positions.png)
 
@@ -117,9 +109,7 @@ https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
 Bollinger Bands is a very simple indicator. There are three bands. The mid band is the moving average on the price series. The upper and lower bands are two moving standard deviations away from the moving average. The indicators can be used to test for many different strategies. For volatility trading, contraction and expansion of the band width is a crucial element. For momentum trading, 'walking the band' indicates resistance and support level. For pattern recognition, Bollinger Bands has the capability of testing bottom W, top M, head-shoulder patterns and etc.
 
-For the rules of Bollinger Bands, please refer to the following website:
-
-https://www.tradingview.com/wiki/Bollinger_Bands_(BB)
+For the rules of Bollinger Bands, please refer to <a href=https://www.tradingview.com/wiki/Bollinger_Bands_(BB)>Tradingview</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
@@ -133,9 +123,7 @@ RSI (Relative Strength Index) is also a popular indicator. It reflects the curre
 
 We can apply pattern recognition technique to RSI as well. Unlike strategy No.9 Bollinger Bands, we can directly look at the patterns of RSI itself instead of the price. Since we have tested double bottom pattern in Bollinger Bands, we would test head-shoulder pattern on RSI this time.
 
-For details of head-shoulder pattern, please refer to the following website:
-
-https://www.investopedia.com/terms/h/head-shoulders.asp
+For details of head-shoulder pattern, please refer to <a href=https://www.investopedia.com/terms/h/head-shoulders.asp>Investopedia</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20positions.png)
 
