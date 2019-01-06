@@ -24,7 +24,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
 
-11.Monte Carlo project
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#11monte-carlo-project>11.Monte Carlo project</a>
 
 # Strategies:
 
