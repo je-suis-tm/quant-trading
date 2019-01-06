@@ -1,4 +1,4 @@
-# Monte Carlo
+# Monte Carlo Simulation
 
 
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/simulation.png)
