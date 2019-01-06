@@ -14,7 +14,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#5awesome-oscillator>5.Awesome oscillator</a>
 
-<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#6oil-money-project>6.Oil money project</a>
+<a href=https://github.com/tattooday/quant-trading/blob/master/README.md#6oil-money-project>6.Oil Money project</a>
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#7dual-thrust>7.Dual Thrust</a>
 
@@ -23,6 +23,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#9bollinger-bands-pattern-recognition>9.Bollinger Bands Pattern Recognition</a>
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
+
+11.Monte Carlo project
 
 # Strategies:
 
@@ -81,7 +83,7 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20asset.png)
 
-### 6.Oil money project
+### 6.Oil Money project
 
 As this is not a well-recognized trading strategy like others in this repository (although quite a lot of research on this topic), I store all related files inside a separate folder called oil money project. I highly recommend you guys to take a look (spoiler alert: some really gorgeous visualizations and detailed analysis there) and give me some feedback. For enquiry on details of this strategy, please refer to readme in the following link.
 
@@ -138,5 +140,11 @@ https://www.investopedia.com/terms/h/head-shoulders.asp
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20positions.png)
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20pattern%20oscillator.png)
+
+### 11.Monte Carlo project
+
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/simulation.png)
+
+
 
 STAY TUNED
