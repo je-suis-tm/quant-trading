@@ -52,7 +52,6 @@ The rules of Heikin-Ashi are quite tricky. It is a Japanese way to filter out th
 
 Transformations and trading rules can be found here: 
 
-
 https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/heikin-ashi%20positions.png)
@@ -63,7 +62,11 @@ https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 To one of my favourite cities in the world! Proud to be a Londoner!
 
-London Breakout is a very simple opening range breakout strategy. Basically, it is to take advantage of Japan market momentum and bring it to London market. Tokyo FX trading hour is GMT 0 - GMT 8:59am. London FX trading hour starts from GMT 8am. There is an hour which Tokyo trading hour overlaps London.The crucial time frame is GMT 7am to GMT 8 am. We look at the performance of Tokyo market. We set upper and lower threshold based on that hour's high and low. Once London market begins, we spend the first couple of minutes to see if the price would breach the boundaries. If it is above threshold, we long the currency pair, vice versa. Nevertheless, we should also set a limit to prevent us from trading in case abnormal open volatility occurs. Normally, we clear our positions based on our target stop loss or stop profit. By the end of the day, if there are open positions, we clear them out. So London Breakout is a day trading strategy.
+London Breakout is an intra daily opening range breakout strategy. Basically, it is a fascinating information arbitrage across different markets in different time zones. FX market runs 24/7 globally. For instance, you cannot long the stock of Ford in ASX simply because Ford is listed in NYSE. As FX market is decentralised, you can long any currency pair in any market as long as the market is open. That leaves a door to take a peek at the activity in a closed foreign FX market before the opening of domestic FX market.
+
+Back to London Breakout, London and Tokyo are two of the largest FX markets in the world. Tokyo FX trading hour is GMT 0:00 a.m. - GMT 8:59am. London FX trading hour (no summer daylight saving) begins at GMT 8:00 a.m. Even though there is an hour of overlap, the crucial timeframe of London Breakout is GMT 7:00 a.m. - GMT 7:59 a.m. a.k.a. the last trading hour before the opening of London market. The price movement of the crucial timeframe incorporates the information of all the overnight activities of financial market (from the perspective of the current time zone).
+
+We establish upper and lower thresholds prior to the high and low of the crucial timeframe. Once London FX market opens, we spend the first couple of minutes to check if the price would breach the preset boundaries. If it is above threshold, we long the currency pair accordingly. Vice versa. Nevertheless, we should set up a limit to prevent us from trading in the case of abnormal opening volatility. Normally, we clear our positions based on our target stop loss or stop profit respectively. By the end of the trading hour (still from the perspective of the current time zone), if there are any open positions, we clear them out.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/london%20breakout%20positions.png)
 
@@ -71,9 +74,9 @@ London Breakout is a very simple opening range breakout strategy. Basically, it 
 
 ### 5.Awesome oscillator
 
-Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which hold the belief that upward momentum has more impact on short term moving average than long term moving average. Instead of taking moving average on close price, awesome moving average is based on the mean of high and low price. Besides the difference between short term moving average and long term moving average, which is called oscillator, there is another way to generate signals ahead of moving average divergence. It is called saucer which is slightly more complex than MACD. Generally speaking, beating the delay doesnt guarantee a more profitable outcome. From my experience, awesome oscillator delivers a lower Sharpe ratio with a lower maximum drawdown. More details about how saucer generates signals could be found here:
+Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which focus on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is based on the mean of high and low price. Apart from moving average divergence, there is additional way for awesome oscillator to generate signals, which is called saucer. Saucer is slightly more complex to implement but it has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response doesn't guarantee a more profitable or less risky outcome. 
 
-https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
+More details about the rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>Tradingview</a>.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/preview/awesome%20positions.png)
 
@@ -85,7 +88,9 @@ https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)
 
 ### 6.Oil Money project
 
-This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. When the oil exits the bear market, the currency exchange of oil producing countries would also bounce back. But, does this statement really hold? With academic analysis and computer simulation on a couple of petrocurrencies, we have found a deeper level of the story. For more details, please refer to the <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md>read me page</a> of a separate directory or <a href=https://tattooday.github.io/quant-trading/oil-money>quant trading section</a> on my personal blog.
+This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. When the oil exits the bear market, the currency exchange of oil producing countries would also bounce back. But, does this statement really hold? With academic analysis and computer simulation on a couple of petrocurrencies, we have found a deeper level of the story. 
+
+For more details, please refer to the <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md>read me page</a> of a separate directory or <a href=https://tattooday.github.io/quant-trading/oil-money>quant trading section</a> on my personal blog.
 
 ![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
 
@@ -93,7 +98,7 @@ This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2
 
 ### 7.Dual Thrust
 
-Dual thrust is a very popular opening range breakout strategy, especially in CTA. It is similar to London Breakout strategy. Initially we set up upper and lower thresholds based on previous days' open, close, high and low. When the market opens and the price exceeds certain thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop long/short position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions by the end of the day.
+Dual thrust is a very popular intra daily opening range breakout strategy, especially in CTA. Initially we establish upper and lower thresholds based on previous days' open, close, high and low. When the market opens and the price exceeds certain thresholds, we would take long/short positions prior to upper/lower thresholds. The strategy is quite useful in intra daily trading. However, there is no stop loss/profit position in this strategy. We reverse our positions when the price goes from one threshold to the other. We need to clear all positions by the end of the day.
 
 Rules of dual thrust can be found in <a href=https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm>Quantconnect</a>.
 
