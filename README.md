@@ -52,7 +52,9 @@ The core idea of pair trading is <a href=https://en.wikipedia.org/wiki/Cointegra
 
 ### 3. Heikin-Ashi candlestick
 
-Heikin-Ashi, the exotic name actually refers to 'Average Bar' in Japanese, is an alternative style of candlestick chart. The sophisticated rules of Heiki-Ashi are designed to filter out the noise for momentum trading. Arguably it should outperform the standard candlestick in sideways and choppy markets. Initially we do a few transformations on four vital benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low to generate trading signals. The downside of Heikin-Ashi (or any momentum trading strategies) is the slow response. Thus, we should set up the stop loss position accordingly so that we don't get caught up in any flash collapse.
+Heikin-Ashi, the exotic name actually referring to 'Average Bar' in Japanese, is an alternative style of candlestick chart. The sophisticated rules of Heiki-Ashi are designed to filter out the noise for momentum trading. Hence, Heikin-Ashi shows more consecutive bars in contrast to the standard candlestick, which makes price momentum and reverse points more distinguishable in figures. Arguably it should outperform the standard candlestick in sideways and choppy markets. 
+
+For the strategy itself, initially we make a few transformations on four vital benchmarks - Open, Close, High, Low. The next step is to apply unique Heikin-Ashi rules on Heikin-Ashi Open, Close, High, Low to generate trading signals. The downside of Heikin-Ashi (or any momentum trading strategies) is the slow response. Thus, we should set up the stop loss position accordingly so that we don't get caught up in any flash crash.
 
 The rules of Heikin-Ashi can be found in <a href=https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx>Quantiacs</a>.
 
@@ -76,7 +78,7 @@ For the strategy itself, we establish upper and lower thresholds prior to the hi
 
 ### 5.Awesome oscillator
 
-Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which focus on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is based on the mean of high and low price. Apart from moving average divergence, there is additional way for awesome oscillator to generate signals, which is called saucer. Saucer is slightly more complex to implement but it has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response doesn't guarantee a more profitable or less risky outcome. 
+Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which focus on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is based on the mean of high and low price. Apart from the traditional moving average divergence, there is additional way for awesome oscillator to generate signals, which is called saucer. Saucer is slightly more complex to implement but it has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response doesn't guarantee a more profitable or less risky outcome. 
 
 The rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>TradingView</a>.
 
