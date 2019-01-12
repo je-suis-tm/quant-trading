@@ -1,5 +1,5 @@
-# Monte Carlo simulation in trading,
-# is nothing but house of cards
+## Monte Carlo simulation in trading,
+## is nothing but house of cards
 
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/xkcd_curve_fitting.png)
 
