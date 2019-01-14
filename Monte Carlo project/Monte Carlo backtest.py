@@ -17,9 +17,8 @@ from sklearn.model_selection import train_test_split
 
 # In[2]:
 
-
+#this list is purely designed to generate gradient color 
 global colorlist
-
 colorlist=['#fffb77',
  '#fffa77',
  '#fff977',
@@ -182,29 +181,60 @@ colorlist=['#fffb77',
 # In[3]:
 
 
-
-def monte_carlo(data,testsize=0.5,simulation=100):    
+#this is where the actual simulation happens
+#testsize denotes how much percentage of dataset would be used for testing
+#simulation denotes the number of simulations
+#theoretically speaking, the larger the better
+#given the limited computing power
+#we have to take a balance point between efficiency and effectiveness
+def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):    
     
-    df,test=train_test_split(data,test_size=testsize,shuffle=False)
+    df,test=train_test_split(data,test_size=testsize,shuffle=False,**kwargs)
     forecast_horizon=len(test)
     
+    #we only care about close price
+    #if there is dividend
+    #we use adjusted close price instead
     df=df.loc[:,['Close']]
         
+    #here we use ar1 model to compute the residual as return
+    #then estimate the mean and the sigma of our return to generate random numbers
+    #we can use unit root test to test if our model is actually random walk
+    #alternative we can just take mean and standard deviation of simple return (first order difference)
     x=sm.add_constant(df['Close'].shift(1).dropna())
     y=df['Close'].iloc[1:]
     m=sm.OLS(y,x).fit()
     
+    #we use dictionary to store predicted time series
     d={}
     
+    #to be consistent in methodology
+    #we use ar1 model to predict the future trend as well
+    #we gotta use backward calculation 
+    #to compute each simulation from the very beginning
     for counter in range(simulation):
         d[counter]=[df['Close'].iloc[0]]
+      
+        #we dont just forecast the future
+        #we need to compare the fitted with the historical data as well
         for i in range(len(y)+forecast_horizon):
+         
+            #we use normal distribution to generate pseudo random number
+            #which is sufficient for our monte carlo simulation
             e=rd.gauss(np.mean(m.resid),np.std(m.resid))
         
-            temp=m.params@             np.mat([1,d[counter][-1]]).reshape(2,1)+e
+            #use the estimated parameters from ar1
+            #to make on step ahead forecast based on the last available value
+            #and our pseudo random number
+            temp=m.params@ \
+                 np.mat([1,d[counter][-1]]).reshape(2,1)+e
         
             d[counter].append(temp.item())
-            
+    
+    #to determine which simulation is the best fit
+    #we use simple criterias, the smallest standard deviation
+    #we iterate through every simulation and compare it with actual data
+    #the one with the least standard deviation wins
     std=float('inf')
     pick=0
     for counter in range(simulation):
@@ -228,8 +258,12 @@ def plot(df,forecast_horizon,d,pick):
     ax.spines['right'].set_visible(False)
     for i in range(int(len(d))):
         if i!=pick:
-            ax.plot(df.index[:len(df)-forecast_horizon],                     d[i][:len(df)-forecast_horizon],                     alpha=0.05)
-    ax.plot(df.index[:len(df)-forecast_horizon],             d[pick][:len(df)-forecast_horizon],             c='#5398d9',linewidth=5,label='Best Fitted')
+            ax.plot(df.index[:len(df)-forecast_horizon], \
+                    d[i][:len(df)-forecast_horizon], \
+                    alpha=0.05)
+    ax.plot(df.index[:len(df)-forecast_horizon], \
+            d[pick][:len(df)-forecast_horizon], \
+            c='#5398d9',linewidth=5,label='Best Fitted')
     df['Close'].iloc[:len(df)-forecast_horizon].plot(c='#d75b66',linewidth=5,label='Actual')
     plt.title('Monte Carlo Simulation')
     plt.legend(loc=0)
@@ -244,8 +278,12 @@ def plot(df,forecast_horizon,d,pick):
     plt.plot(d[pick],label='Best Fitted',c='#edd170')
     plt.plot(df['Close'].tolist(),label='Actual',c='#02231c')
     plt.axvline(len(df)-forecast_horizon,linestyle=':',c='k')
-    plt.text(len(df)-forecast_horizon-50,max(df['Close']),'Training',              horizontalalignment='center',              verticalalignment='center')
-    plt.text(len(df)-forecast_horizon+50,max(df['Close']),'Testing',              horizontalalignment='center',              verticalalignment='center')
+    plt.text(len(df)-forecast_horizon-50,max(df['Close']),'Training', \
+             horizontalalignment='center', \
+             verticalalignment='center')
+    plt.text(len(df)-forecast_horizon+50,max(df['Close']),'Testing', \
+             horizontalalignment='center', \
+             verticalalignment='center')
     plt.title('Training versus Testing\n')
     plt.legend(loc=0)
     plt.ylabel('Price')
@@ -268,7 +306,8 @@ def test(df,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
         
         forecast_horizon,d,pick=monte_carlo(df,simulation=i,**kwargs)
         
-        actual_return=np.sign(             df['Close'].iloc[len(df)-forecast_horizon]-df['Close'].iloc[-1])
+        actual_return=np.sign( \
+                              df['Close'].iloc[len(df)-forecast_horizon]-df['Close'].iloc[-1])
         
         best_fitted_return=np.sign(d[pick][len(df)-forecast_horizon]-d[pick][-1])
         table.at[i,'Prediction']=np.where(actual_return==best_fitted_return,1,-1)
@@ -280,7 +319,8 @@ def test(df,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     ax.spines['top'].set_visible(False)
 
 
-    plt.barh(np.arange(1,len(table)*2+1,2),table['Prediction'],          color=colorlist[0::int(len(colorlist)/len(table))])
+    plt.barh(np.arange(1,len(table)*2+1,2),table['Prediction'], \
+             color=colorlist[0::int(len(colorlist)/len(table))])
 
     plt.xticks([-1,1],['Failure','Success'])
     plt.yticks(np.arange(1,len(table)*2+1,2),table.index)
@@ -300,7 +340,8 @@ def main():
     ticker='PPG'
 
     #for some reasons, can only download one year's data
-    #many issues in the project github but the owner hasnt closed them yet
+    #many open issues in the project github 
+    #but the owner hasnt got time to close any yet
     df=yf.download(ticker,start=stdate,end=eddate)
     df.index=pd.to_datetime(df.index)
     
