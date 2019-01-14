@@ -3,9 +3,13 @@
 
 # In[1]:
 
-
-import os
-os.chdir('d:/')
+#monte carlo simulation is so popular in financial industry
+#everybody talks about it but no one actally knows how to use it
+#the idea presented here is very easy
+#we construct a model to get mean and variance of its residual/return
+#we generate the next possible price by ar1/sde
+#we run this simulations for as many times as possible
+#naturally we should acquire a large amount of data
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -189,11 +193,12 @@ colorlist=['#fffb77',
 #we have to take a balance point between efficiency and effectiveness
 def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):    
     
+    #train test split as usual
     df,test=train_test_split(data,test_size=testsize,shuffle=False,**kwargs)
     forecast_horizon=len(test)
     
     #we only care about close price
-    #if there is dividend
+    #if there has been dividend issued
     #we use adjusted close price instead
     df=df.loc[:,['Close']]
         
@@ -212,6 +217,14 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
     #we use ar1 model to predict the future trend as well
     #we gotta use backward calculation 
     #to compute each simulation from the very beginning
+    #alternatively we can use geometric brownian motion
+    # https://en.wikipedia.org/wiki/Geometric_Brownian_motion
+    #the code would look like this
+    #return=df['Close'].diff()
+    #drift=return.mean()-return.var()/2
+    #sde=drift+return.std()*rd.gauss(0,1)
+    #temp=d[counter][-1]*np.exp(sde)
+    #d[counter].append(temp)
     for counter in range(simulation):
         d[counter]=[df['Close'].iloc[0]]
       
@@ -224,7 +237,8 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
             e=rd.gauss(np.mean(m.resid),np.std(m.resid))
         
             #use the estimated parameters from ar1
-            #to make on step ahead forecast based on the last available value
+            #to make one step ahead forecast 
+            #based on the last available value
             #and our pseudo random number
             temp=m.params@ \
                  np.mat([1,d[counter][-1]]).reshape(2,1)+e
@@ -250,9 +264,12 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
 
 # In[4]:
 
-
+#result plotting
 def plot(df,forecast_horizon,d,pick):
     
+    #the first plot is to plot every simulation
+    #and highlight the best fit with the actual dataset
+    #we only compare the training dataset in first figure
     ax=plt.figure(figsize=(10,5)).add_subplot(111)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -271,7 +288,9 @@ def plot(df,forecast_horizon,d,pick):
     plt.xlabel('Date')
     plt.show()
     
-    
+    #the second figure plots both training and testing of the best fit versus actual
+    #this figure reveals why monte carlo simulation in trading is house of cards
+    #it is merely illusion that monte carlo simulation can forecast any asset price
     ax=plt.figure(figsize=(10,5)).add_subplot(111)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
@@ -293,7 +312,11 @@ def plot(df,forecast_horizon,d,pick):
 
 # In[5]:
 
-
+#last but not least we test 
+#if the surge in simulations increases the prediction accuracy
+#simu_start denotes the minimum simulation number
+#simu_end denotes the maximum simulation number
+#sim_delta denotes how many steps it takes to reach the max from the min
 def test(df,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     
     table=pd.DataFrame()
@@ -301,6 +324,15 @@ def test(df,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     table.set_index('Simulations',inplace=True)
     table['Prediction']=0
 
+    #for each simulation
+    #we test if the prediction is accurate
+    #for instance
+    #if the end of testing horizon is larger than the end of training horizon
+    #we denote the return direction as 1
+    #if both actual and predicted result 
+    #have the same return direction by the end of testing horizon
+    #we define the prediction is accurate
+    #vice versa
     for i in np.arange(100,1100,100):
         print(i)
         
@@ -312,8 +344,8 @@ def test(df,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
         best_fitted_return=np.sign(d[pick][len(df)-forecast_horizon]-d[pick][-1])
         table.at[i,'Prediction']=np.where(actual_return==best_fitted_return,1,-1)
         
-    
-
+    #we plot the horizontal bar chart 
+    #to show the accuracy does not increase over the number of simulations
     ax=plt.figure(figsize=(10,5)).add_subplot(111)
     ax.spines['right'].set_position('center')
     ax.spines['top'].set_visible(False)
@@ -339,8 +371,8 @@ def main():
     eddate='2019-01-04'
     ticker='PPG'
 
-    #for some reasons, can only download one year's data
-    #many open issues in the project github 
+    #for some reasons, we can only download one year's data
+    #many open issues have been filed in the project github 
     #but the owner hasnt got time to close any yet
     df=yf.download(ticker,start=stdate,end=eddate)
     df.index=pd.to_datetime(df.index)
