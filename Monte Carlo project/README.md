@@ -6,10 +6,16 @@ Why do I put this picture (see <a href=https://www.explainxkcd.com/wiki/index.ph
 
 Monte Carlo, my first thought on these two words is that grand casino, where you meet Famke Janssen and introduce yourself 'Bond, James Bond'.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/simulation.png)
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation.png)
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/versus.png)
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20versus.png)
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/accuracy.png)
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20accuracy.png)
+
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
+
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20versus.png)
+
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20simulation.png)
 
 
