@@ -269,7 +269,7 @@ def plot(df,forecast_horizon,d,pick,ticker):
     #the first plot is to plot every simulation
     #and highlight the best fit with the actual dataset
     #we only look at training horizon in the first figure
-    ax=plt.figure(figsize=(10,5),dpi=75).add_subplot(111)
+    ax=plt.figure(figsize=(10,5)).add_subplot(111)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     for i in range(int(len(d))):
@@ -332,7 +332,7 @@ def test(df,ticker,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     #if both actual and predicted return direction align
     #we conclude the prediction is accurate
     #vice versa
-    for i in np.arange(np.arange(simu_start,simu_end+1,simu_delta)):
+    for i in np.arange(simu_start,simu_end+1,simu_delta):
         print(i)
         
         forecast_horizon,d,pick=monte_carlo(df,simulation=i,**kwargs)
