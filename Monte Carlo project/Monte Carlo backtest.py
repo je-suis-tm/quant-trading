@@ -34,7 +34,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import fix_yahoo_finance as yf
 import random as rd
-import statsmodels.api as sm 
 from sklearn.model_selection import train_test_split
 
 
@@ -223,7 +222,7 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
         
     #here we use log return
     returnn=np.log(df['Close'].iloc[1:]/df['Close'].shift(1).iloc[1:])
-    drift=returnn.mean()-returnn.var()/2)
+    drift=returnn.mean()-returnn.var()/2
     
     #we use dictionary to store predicted time series
     d={}
@@ -236,7 +235,7 @@ def monte_carlo(data,testsize=0.5,simulation=100,**kwargs):
         #we dont just forecast the future
         #we need to compare the forecast with the historical data as well
         #thats why the data range is training horizon plus testing horizon
-        for i in range(len(y)+forecast_horizon-1):
+        for i in range(len(df)+forecast_horizon-1):
          
             #we use standard normal distribution to generate pseudo random number
             #which is sufficient for our monte carlo simulation
@@ -270,7 +269,7 @@ def plot(df,forecast_horizon,d,pick,ticker):
     #the first plot is to plot every simulation
     #and highlight the best fit with the actual dataset
     #we only look at training horizon in the first figure
-    ax=plt.figure(figsize=(10,5)).add_subplot(111)
+    ax=plt.figure(figsize=(10,5),dpi=75).add_subplot(111)
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
     for i in range(int(len(d))):
