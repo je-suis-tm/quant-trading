@@ -1,5 +1,7 @@
 # Quant-trading
 
+### Intro
+
 Most scripts inside this repository are technical indicator automated trading. There are various types of momentum trading, opening range breakout and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly strange trading ideas I come up with to beat the market (or so I thought). There is no options strategy or HFT strategy simply because option price data and ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless so we don't have to worry about slippage or liquidity. 
 
 ### Table of Contents
@@ -25,6 +27,16 @@ Most scripts inside this repository are technical indicator automated trading. T
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
 
 <a href=https://github.com/tattooday/quant-trading/blob/master/README.md#11monte-carlo-project>11.Monte Carlo project</a>
+
+### Data Source
+
+1.Yahoo Finance/fix_yahoo_finance package
+
+2.<a href=http://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>fxhistoricaldata</a>
+
+3.Bloomberg/Eikon
+
+4.<a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
 
 # Strategies:
 
