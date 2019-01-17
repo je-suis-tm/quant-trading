@@ -297,10 +297,12 @@ def plot(df,forecast_horizon,d,pick,ticker):
     plt.plot(d[pick],label='Best Fitted',c='#edd170')
     plt.plot(df['Close'].tolist(),label='Actual',c='#02231c')
     plt.axvline(len(df)-forecast_horizon,linestyle=':',c='k')
-    plt.text(len(df)-forecast_horizon-50,max(df['Close']),'Training', \
+    plt.text(len(df)-forecast_horizon-50, \
+             max(max(df['Close']),max(d[pick])),'Training', \
              horizontalalignment='center', \
              verticalalignment='center')
-    plt.text(len(df)-forecast_horizon+50,max(df['Close']),'Testing', \
+    plt.text(len(df)-forecast_horizon+50, \
+             max(max(df['Close']),max(d[pick])),'Testing', \
              horizontalalignment='center', \
              verticalalignment='center')
     plt.title(f'Training versus Testing\nTicker: {ticker}\n')
