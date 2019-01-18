@@ -156,7 +156,11 @@ Monte Carlo, my first thought on these two words is the grand casino, where you 
 
 Here comes the argument on Linkedin that caught my eyes the other day. "Stock price can be seemed as a Wiener Process. Hence, we can use Monte Carlo simulation to predict the stock price." said a data science blog. Well, in order to be a Wiener Process, we have to assume the stock price is continuous in time. In reality, the market closes. The overnight volatility exists. But that is not the biggest issue here. The biggest issue is, can we really use Monte Carlo simulation to predict the stock price, even a range or its direction?
 
+For more details, please refer to the <a href=https://github.com/tattooday/quant-trading/blob/master/Monte%20Carlo%20project/README.md>read me</a> page of a separate directory or <a href=https://tattooday.github.io/quant-trading/monte-carlo>quant trading</a> section on my personal blog.
+
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
+
+
 
 
 
