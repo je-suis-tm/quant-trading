@@ -357,8 +357,8 @@ def test(df,ticker,simu_start=100,simu_end=1000,simu_delta=100,**kwargs):
     plt.xticks([-1,1],['Failure','Success'])
     plt.yticks(np.arange(1,len(table)*2+1,2),table.index)
     plt.xlabel('Prediction Accuracy')
-    plt.ylabel('Times of Simulations')
-    plt.title(f"Prediction accuracy doesn't depend on the numbers of simulations.\nTicker: {ticker}\n")
+    plt.ylabel('Times of Simulation')
+    plt.title(f"Prediction accuracy doesn't depend on the numbers of simulation.\nTicker: {ticker}\n")
     plt.show()
 
 
