@@ -152,7 +152,11 @@ For details of head-shoulder pattern, please refer to <a href=https://www.invest
 
 ### 11.Monte Carlo project
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/simulation.png)
+Monte Carlo, my first thought on these two words is the grand casino, where you meet Famke Janssen in tuxedo and introduce yourself, 'Bond, James Bond'. Indeed, the simulation is named after the infamous casino. It actually refers to the computer simulation of massive amount of random events. This unconventional mathematical method is extremely powerful in the study of stochastic process. 
+
+Here comes the argument on Linkedin that caught my eyes the other day. "Stock price can be seemed as a Wiener Process. Hence, we can use Monte Carlo simulation to predict the stock price." said a data science blog. Well, in order to be a Wiener Process, we have to assume the stock price is continuous in time. In reality, the market closes. The overnight volatility exists. But that is not the biggest issue here. The biggest issue is, can we really use Monte Carlo simulation to predict the stock price, even a range or its direction?
+
+![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
 
 
 
