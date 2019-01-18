@@ -34,5 +34,5 @@ Undoubtedly, the best forecast fails the expectation again. It cannot accurately
 
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20simulation.png)
 
-Still thinking Monte Carlo simulation in your next big plan?
+Still thinking Monte Carlo simulation for your next big plan?
 
