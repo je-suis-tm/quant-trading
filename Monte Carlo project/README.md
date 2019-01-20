@@ -22,7 +22,7 @@ Oops, house of cards collapses. The real momentum is completely the opposite to 
 
 We start from 500 times of simulation to 1500 times of simulation. Each round we increase the number by 50. We don't look at the actual price forecast, just the direction. If the end price of testing horizon is larger than the end price of training horizon, we define it as gain. Vice versa. Only when both actual and forecast directions align, we consider the forecast is accurate. As the result shows, the prediction accuracy is irrelavant to the numbers of simulation. The accuracy is more sort of tossing a coin to guess heads or tails regardless of the times of simulation. If you think 1500 is still not large enough, you can definitely try 150000, be my guest. We don't have so much computing power as an individual user (frankly no patience is the real reason) but I can assure you the result is gonna stay the same. <a href=https://en.wikipedia.org/wiki/Law_of_large_numbers>Law of Large Numbers</a> theorem would not work here.
 
-Now that the prophet of Monte Carlo turns out to be a con artist. Does Monte Carlo simulation have any application in risk management? The answer is still nope. Let's extend the first figure a little bit longer to the end of testing horizon.
+Now that the prophet of Monte Carlo turns out to be a con artist. Does Monte Carlo simulation have any application in risk management? Unless you are drinking the Kool-Aid. Let's extend the first figure a little bit longer to the end of testing horizon.
 
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
 
@@ -34,5 +34,5 @@ Undoubtedly, the best forecast fails the expectation again. It cannot accurately
 
 ![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20simulation.png)
 
-Still thinking Monte Carlo simulation for your next big plan?
+Still thinking about Monte Carlo for your next big project?
 
