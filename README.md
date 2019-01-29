@@ -108,7 +108,7 @@ This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2
 
 For more details, please refer to the <a href=https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md>read me page</a> of a separate directory or <a href=https://tattooday.github.io/quant-trading/oil-money>quant trading section</a> on my personal blog.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png | width=80)
+![](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20bubble%20map.png)
 
 ### 7.Dual Thrust
 
