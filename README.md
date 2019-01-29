@@ -90,7 +90,9 @@ For the strategy itself, we establish upper and lower thresholds prior to the hi
 
 ### 5.Awesome oscillator
 
-Awesome oscillator is similar to MACD oscillator. Both of them are considered as momentum strategies which focus on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is based on the mean of high and low price. Apart from the traditional moving average divergence, there is additional way for awesome oscillator to generate signals, which is called saucer. Saucer is slightly more complex to implement but it has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response doesn't guarantee a more profitable or less risky outcome. 
+Awesome oscillator is an upgraded version of MACD oscillator. It is one of those momentum strategies focusing on the game of moving average. Instead of taking simple moving average on close price, awesome moving average is derived from the mean of high and low price. Similar to MACD oscillator, it takes both short term and long term moving averages to construct the oscillator.
+
+There are various strategies for awesome oscillator to generate signals, such as traditional moving average divergence, twin peaks and saucer. Twin peaks is just one of the many names of bottom W pattern. The pattern recognition will be covered in another chapter so the main focus of this chapter is saucer. Saucer is slightly more complex to implement than the traditional divergence. In return, saucer has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response may sound awesome, but it does not guarantee a less risky outcome or a more profitable outcome. Hence, we will take MACD oscillator as a control group, to test if awesome oscillator can actually outperform MACD oscillator.
 
 The rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>TradingView</a>.
 
