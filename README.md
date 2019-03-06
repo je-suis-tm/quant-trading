@@ -32,7 +32,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Data Source
 
-1.Yahoo Finance/fix_yahoo_finance package
+1.<a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
 
 2.Bloomberg/Eikon
 
@@ -180,4 +180,4 @@ For more details, please refer to the <a href=https://github.com/je-suis-tm/quan
 
 <br>
 
-STAY TUNED
+## STAY TUNED
