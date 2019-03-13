@@ -205,7 +205,7 @@ def main():
     plot(signals,ticker1,ticker2)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
-# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
     
 
 # In[5]:
