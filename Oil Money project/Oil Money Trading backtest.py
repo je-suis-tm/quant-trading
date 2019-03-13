@@ -6,7 +6,7 @@
 
 #here is the official trading strategy script for this lil project
 #the details could be found in the readme of the repo, section norwegian krone and brent crude
-# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/README.md
+# https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/README.md
 import statsmodels.api as sm
 import copy
 import pandas as pd
@@ -183,7 +183,7 @@ def signal_generation(dataset,x,y,method, \
 
 #this part is to monitor how our portfolio performs over time
 #details can be found from heiki ashi
-# https://github.com/tattooday/quant-trading/blob/master/Heikin-Ashi%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/Heikin-Ashi%20backtest.py
 def portfolio(signals,close_price,capital0=5000,positions=250):   
 
     portfolio=pd.DataFrame()
