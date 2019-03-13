@@ -147,7 +147,7 @@ def plot(new,ticker):
 
 #any way, this pattern recognition is similar to the one in bollinger bands
 #plz refer to bollinger bands for a detailed explanation
-# https://github.com/tattooday/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py
 def pattern_recognition(df,method,lag=14):
     
     df['rsi']=0.0
@@ -192,7 +192,7 @@ def pattern_recognition(df,method,lag=14):
     
     #signal generation
     #plz refer to the following link for pattern visualization
-    # https://github.com/tattooday/quant-trading/blob/master/preview/rsi%20head-shoulder%20pattern.png
+    # https://github.com/je-suis-tm/quant-trading/blob/master/preview/rsi%20head-shoulder%20pattern.png
     #the idea is to start with the first node i
     #we look backwards and find the head node j with maximum value in pattern finding period
     #between node i and node j, we find a node k with its value almost the same as node i
@@ -383,7 +383,7 @@ def main():
 
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
-# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
 if __name__ == '__main__':
     main()
