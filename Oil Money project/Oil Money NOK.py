@@ -45,7 +45,7 @@
 #russia is supposed to be a good training set
 #nevertheless, russia gets sanctioned by uncle sam a lot
 #we would see this in the next script
-# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20RUB.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20RUB.py
 
 #after targetting at norwegian krone, we have to choose a currency to evaluate nok
 #take a look at norway's biggest trading partners 
@@ -295,7 +295,7 @@ plt.show()
 #im not gonna explain much here
 #if u have checked my other codes, u sould know
 #details are in pair trading session
-# https://github.com/tattooday/quant-trading/blob/master/Pair%20trading%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/Pair%20trading%20backtest.py
 
 x2=df['eur'][df.index<'2017-04-25']
 x3=sm.add_constant(x2)
@@ -379,7 +379,7 @@ plt.show()
 #call it oil money version 2 or whatever
 #here i would only import the strategy script as this is a script for analytics and visualization
 #the official trading strategy script is in the following link
-# https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20Trading%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/Oil%20Money%20Trading%20backtest.py
 import oil_money_trading_backtest as om
 
 #generate signals,monitor portfolio performance
