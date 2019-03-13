@@ -1,6 +1,6 @@
 ## Monte Carlo simulation in trading is nothing but house of cards
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/xkcd_curve_fitting.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/xkcd_curve_fitting.png)
 
 Why do I put this picture (see <a href=https://www.explainxkcd.com/wiki/index.php/2048:_Curve-Fitting>here</a> for explanation) right in front of everything? Have I caught your attention? Hopefully I have. These days, blogs on data science topic are dime a dozen. Some blogs teach you how to use decision tree/random forrest to predict the stock price movement, others illustrate the possibility of back-propagation neural network to forecast a bond price. The brutal truth is, most of them are nothing but house of cards.
 
@@ -10,29 +10,29 @@ The author offered a quite interesting idea. As he suggested, the first step was
 
 Let's take a look at the figure below. Wow, what a great fit! The best fit is almost like running a cool linear regression with valid input. As you can see, it smoothly fits the curve in training horizon.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tmj/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation.png)
 
 If we extend it to testing horizon...
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20versus.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/ge%20versus.png)
 
 Oops, house of cards collapses. The real momentum is completely the opposite to the forecast, let alone the actual price. The forecast looks quite okay for the first 50 days of testing horizon. After that, the real momentum falls like a stone down through the deep sea while the forecast is gently climbing up. You may argue the number of the iterations is too small so we cannot make a case. Not exactly, let's look at the figure below.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20accuracy.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/ge%20accuracy.png)
 
 We start from 500 times of simulation to 1500 times of simulation. Each round we increase the number by 50. We don't look at the actual price forecast, just the direction. If the end price of testing horizon is larger than the end price of training horizon, we define it as gain. Vice versa. Only when both actual and forecast directions align, we consider the forecast is accurate. As the result shows, the prediction accuracy is irrelavant to the numbers of simulation. The accuracy is more sort of tossing a coin to guess heads or tails regardless of the times of simulation. If you think 1500 is still not large enough, you can definitely try 150000, be my guest. We don't have so much computing power as an individual user (frankly no patience is the real reason) but I can assure you the result is gonna stay the same. <a href=https://en.wikipedia.org/wiki/Law_of_large_numbers>Law of Large Numbers</a> theorem would not work here.
 
 Now that the prophet of Monte Carlo turns out to be a con artist. Does Monte Carlo simulation have any application in risk management? Unless you are drinking the Kool-Aid. Let's extend the first figure a little bit longer to the end of testing horizon.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
 
 Obviously, out of 500 times of simulation, none of them successfully predict the scale of the downslide. The lowest price of 500 predictions is 10.99 per share. It is still way higher than the real bottom price at 6.71 per share (no wonder GE got its ass kicked out of DJIA). The so-called fat tail event simulation is merely a mirage. If you think GE in 2018 is an extreme case, you'd be so wrong. The next ticker we test is Nvidia from 2006/1/15 to 2009/1/15. In 2008, the share price of Nvidia dropped 75.6%!! The financial crisis is the true playground for risk quants. By default, we continue to split the time horizon of NVDA into two parts by 50:50. The result is in the figure below.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20versus.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20versus.png)
 
 Undoubtedly, the best forecast fails the expectation again. It cannot accurately predict the direction of the momentum. For the extreme event, Monte Carlo simulation cannot predict the scale of downslide, again! 6.086 per share is the lowest price we achieve from our 500 times of simulation, yet the actual lowest is at 5.9 per share.
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20simulation.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/nvda%20simulation.png)
 
 Still thinking about Monte Carlo for your next big project?
 
