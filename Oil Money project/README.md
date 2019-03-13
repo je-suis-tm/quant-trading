@@ -4,9 +4,9 @@ This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2
 
 The following figure is a global oil production choropleth. The map lists out a couple of forex trading possibilities. But some of the oil exporting countries peg their currencies to US dollar.  We should always verify the exchange rate regime of any oil exporting economy from <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>wikipedia</a> before moving onto any further analysis.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20choropleth.PNG)
 
-###### Unfortunately GitHub readme does not support javascript. Click <a href=https://tattooday.github.io/quant-trading/oil-money/oil-production>here</a> to be redirected to an interactive version of the oil production choropleth.
+###### Unfortunately GitHub readme does not support javascript. Click <a href=https://je-suis-tm.github.io/quant-trading/oil-money/oil-production>here</a> to be redirected to an interactive version of the oil production choropleth.
 
 ### Norwegian Krone and Brent Crude
 
@@ -14,40 +14,40 @@ In the original article, the first mention is Norwegian Krone. Norway is one of 
 
 After I collect the past five year of data from Thomson Reuters (now called Refinitiv), we denote the time horizon before 2017-04-25 as training period. We use that period to fit a regression model. From 2017-04-25 to the end of our dataset is defined as testing period. We use our model from training horizon to predict "reasonable" range of the value of NOK in testing horizon. The regression result comes out as below. We have a pretty high R square. All T stats and F stats seem to be significant. As the summary suggests, there could be multicollinearity (condition number is large and R suqred is large). Obviously, Brent Crude and US Dollar should be negatively correlated. Most commodity future contracts are priced in US dollar. When US dollar appreciates or depreciates, the underlying commodity price is likely to go the opposite direction. There could be a cointegration relationship between UK sterling and Euro for pre-Brexit time as well.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20model%20summary.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20model%20summary.png)
 
 In this case, we will use <a href=https://en.wikipedia.org/wiki/Elastic_net_regularization>elastic net regression</a> to implement regularization. Elastic net is a statistics/machine learning technique that consists of both Lasso (L1) and Ridge (L2) regression to act as a penalty. Ideally it is a perfect tool for multicollinearity issues. 
 
 Before backtesting, we ought to set up thresholds for signal generation. For common practise in statistical arbitrage, we set one sigma away from our fitted value as thresholds. When actual NOK price goes above the upper threshold, we take a short position as we hold the belief that the price would fall back to its so-called "normal" status. Vice versa. However, the model is based on historical data. No models can precisely predict the future from the past. Our estimation is most likely to be overfitted and fail very quickly in the near future. We need to set up some thresholds for stop orders. When the model breaks, we could clear our positions and exit the trades gracefully. In that case, let's use the golden rule in statistics, 2 sigmas with 95% confidence interval, to do the trick. If NOK deviates 2 sigmas away from our fitted value, we need to realize the model is broken and we shall exit the trades right away. The figures below are the initial trading strategy. The figures below imply the positions of our statistical arbitrage and the actual price movement against the fitted value within confidence intervals.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20oil%20money%20positions.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20fitted%20vs%20actual.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20oil%20money%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20fitted%20vs%20actual.png)
 
 To our surprise, there is a strong momentum for either direction after our model breaks. This trend is independent of the selection of our training horizon. In another word, no matter which period we use as training horizon, the strong trend always follows through right after the model breaks. The failure of this model doesn't really upset me. On the contrary, it is a blessing in disguise. What I see is an opportunity for momentum trading. We will get back to that very soon.
 
 What also interests me is why the model fails after 2017/11/15. Well, there is no way that a universal model can exist and work forever. Most models have short memory due to the dynamic environment of macroeconomics and geo-politics. Based on <a href=https://en.wikipedia.org/wiki/Adaptive_market_hypothesis>adpative market hypothesis</a> developed by Professor Andrew Lo from MIT, the players in the market are always evolving towards the agile environment. So, we should anticipate our model will lose its power sooner or later. Still, what could cause the model to break? I would not get into too much of rigorous and boring empirical analysis. Instead, I intend to bring up a short but insightful discussion here.  What could possibly be the reason of this dramatic change? Could it be that Saudi and Iran endorsed an extension of oil production caps to boost up the oil price on that particular date? Or Donald Trump got elected as POTUS so he would encourage a weak US dollar and lift up restrictions on oil export as promised during his compaign? If we consider the price of NOK as a stochastic process, we can decompose NOK price into long term trend and short term random disturbance. Well, apparently short term is dominated by Brent Crude. It partially justifies our model. What really drives the long term trend though? 
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trend.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trend.png)
 
 Ta-da, its Euro. As Norway is in EEA, its economic tie with EU totally dominates the long term trend of NOK. From the normalized figure, we clearly see the trend of both NOK and EUR are somewhat correlated. To get a formal conclusion, we need a cointegration test. Nevertheless, there is no Johansen Test in statsmodel package (not on the date when the first draft of oil money was finished, but there is now). We would have to use <a href=https://en.wikipedia.org/wiki/Cointegration#Engle–Granger_two-step_method>Engle-Granger two step test</a>. I have to honorably mention that this method is co-developed by the mentor of my mentor, Robert F. Engle, a Nobel prize winner! Unfortunately, we can't get any confirmation of cointegration from the test. The residual of the first step regression is not stationary under <a href=https://en.wikipedia.org/wiki/Augmented_Dickey–Fuller_test>Augmented Dickey-Fuller Test</a>. Sometimes we have to use the old fashion way to make a qualitative judgement, which is rule of thumb. Most researchers in big organizations recalibrate their forecast with policy or experience or consensus views or simply instinct (as an insider, I guarantee you this is 100% true). This is the moment that I exercise the sacred right to declare that EUR is the driver of NOK's long term trend!
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20EG%20failed.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20EG%20failed.png)
 
 Well, I am not an economist (even though my work has a lot to do with them). Let's call it an end to our causality analysis (if you are an economics-savvy person who is eager to know more, feel free to read <a href=https://www.norges-bank.no/globalassets/upload/publikasjoner/economic_bulletin/2000-04/factorsthat.pdf>this paper</a> by the Central Bank of Norway). In fact, we can simplify our model to NOK driven by Brent. From an econometrician's perspective, it does not sound like a good idea. Every coefficient of the model is statistically significant. Adding more variables does not worsen AIC, BIC and adjusted R squared. There is no incentive for us to remove variables as more information in the model is always better. From a trader's perspective, the model is supposed to work in a more general case. Ideally, the model contains two variables, one is the underlying petrocurrency, the other is the local crude oil contract. In this sense, the reduced form model can be applied to any petrocurrency without too much focus on analyzing trade partners. We will take the trader's perspective in the following context.
 
 Next, let's take a look at the portfolio performance. So far so good, we actually made a few bucks from statistical arbitrage. Interestingly, after we placed the stop order, I decided to add an extra position to see what would happen if we follow the trend. In the figure below, we could see the downwards momentum doesn't stop until two months later (maybe another major event in financial market occured). 
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20asset%20value.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20asset%20value.png)
 
 Wow, did we just discover a momentum trading strategy! We started this project to seek for a statistical arbitrage opportunity between crude price and petrocurrency. What we got in the end is an entry signal of momentum trading strategy. Also, we found out Euro is the major and long term influence on Norwegian Krone, and Brent Crude is the short term disturbance. My explanation for our discovery is that, when the model breaks, there must be something fundamental that change investors' outlook in NOK or Brent, e.g. an increase in north sea refinery capacity limit. That sort of change is supposed to last for quite a while which offers us a chance for trend following. 
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
 It turns out that our momentum trading is much more robust and profitable than our original idea of statistical arbitrage. But does it work on any other petrocurrencies? Unfortunately, Norway is one of the largest oil producing countries with floating FX regime. The rest includes US, Russia and Canada. US dollar is a totally different case. It doesn't rely on the price of WTI at all. Oil business only takes up a very small share in US economy even including shale oil boom in Permian Basin. What about Russian Ruble? Well, let's find out! 
 
@@ -59,45 +59,45 @@ First step, let's identify the regressors. If we look at <a href=http://www.worl
 
 Yet, Russian Ruble is very special. Russia has been sanctioned by US for so many times (really feel sorry for those honest Russian people). To know when and what, someone actually creates a <a href=https://www.rferl.org/a/russia-sanctions-timeline/29477179.html>timeline</a> for us. Each major sanction should make a huge impact on the currency. In this case, we use a method called <a href=https://en.wikipedia.org/wiki/Stepwise_regression>stepwise regression</a> to test each potential regressor for each year. We would pick out the R squared winners out of 7 variables from the past 4 years to construct a robust model. The figure below shows R squared of each variable for each year.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise1.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise1.png)
 
 The figure below shows R squared of each variable for cumulated years.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise2.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20stepwise2.png)
 
 Here are some interesting facts. Apart from Japanese Yen, Korean Won and Ukrainian Hryvnia, R squared year by year on other currencies or commodities are actually plunging from 2015 to 2018. The biggest cause is the sanctions. Ever since the annexation of Crimea, military intervention in Syria and nerve agent attack in UK, the sanction on Russia is getting more and more serious. Most countries except some rogue ones (e.g. Iran, Venezuela) decline to trade with Russia. Thus we are able to observe the R squared downhill of Dutch TTF gas, Euro and Chinese Yuan over the years. Even though R squared on Urals jumps up in 2018, there is another key indicator that warns us of the danger. We would find it out very soon. Before that, it is also strange that there are some spikes of R squared on Japanese Yen. My initial guess was that Japanese Yen became the safe haven for Russia turmoil. It turns out it is more of a coincidence. It is simply because of the sluggish growth of Japan economy which somehow coincides with the downtrend of Russian Ruble. The same applies to Korean Won. As for Ukrainian Hryvnia, its R squared barely exceeds 20% so we simply ignore it. Now let us take a look at R squared of year cumulated. We could easily draw the same conclusion as before that R squared of most regressors are declining over the years (Korean Won looks like a bell shape curve though). 2017 and 2018 seem to be the roughest years for Russia. In that case, I prefer to split the backtesting data into pre-2017 and post-2017.
 
 For pre-2017 data, the model seems to be very robust. Urals alone explains more than 80% of the price movement of Russian Ruble. The introduction of Euros into the model is optional. It indeed increases a significant amount (more than 2%) of R squared compared to other regressors. AIC, BIC and adjusted R squared also justifies the theory. Although in the following models, I would only include Urals Crude as a regressor. The reason behind that is to keep the model consistent across different currencies and different commodities.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20-2016.PNG)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20-2016.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%20-2016.PNG)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%20-2016.png)
 
 For post-2017 data, we can tell this is when the sanction bites. Urals can only explain less than 30% of the price movement of Russian Ruble. Moreover, the coefficient of Urals is even negative which contradicts the fact that Russian Ruble is a petrocurrency.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202017-.PNG)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%202017-.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20ols%202017-.PNG)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%20model%202017-.png)
 
 If we track the price for Urals, Japanese Yen, Euro and Russian Ruble from 2017 and 2018, we will get a clear picture of how these assets move along the time axis. The stagnant performance of Japanese Yen and Euro implies the post-recession economy growth of two of the most influential entities in the world. The surge of Urals from the beginning of 2018 does not translate into the performance of Russian Ruble. The sanction on Rusal which deeply disrupted aluminum market and the sanction in response to Russia’s gas attack on UK soil hit Russian Ruble further down.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017-%20trend.png)
 
 In terms of trading strategies, Russian Ruble is too event driven for any quantitative analysis. What we do here is trying to split the data of each year with a ratio of 30:70 into training and testing. We would apply whatever we have learned from the training dataset to backtest our momentum trading entry points. For the first two years, our model captures pretty solid R squared. The actual price of Russian Ruble barely drifts two standard divations away from our forecast price. Nonetheless, there are two sides of this story. The good news is that our model identification is perfectly correct but the bad news is that our strategy only works when the model begins to break. As an old saying goes, there is no way to beat the markets if the markets are fully efficient.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202015%20positions.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202016%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202015%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202016%20positions.png)
 
 For 2017 and 2018, the R squared becomes total failures. It drops from less than 10% to less than 1% within 2 years. Still, you can argue that this strategy sort of works. When the model breaks in 2017, the downward pressure on Russian Ruble lasts more than a month. Although it sounds very temptating for the wide margin we can exploit, the R squared for that model is only 7%! Is it really worth the risk? I don't know how you folks think. I have a formal statistics background. A model with ridiculously low R squared and insignificant coefficients does not sound convincing to me. I strongly urge people to be cautious. When the model isn't robust (say R squared less than 50%), the trading strategy isn't plausible.
 
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017%20positions.png)
-![alt text](https://github.com/tattooday/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017%20positions.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20positions.png)
 
 My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always screw up its petrocurrency status. An recent article by <a href=https://www.ft.com/content/d841992a-021c-11e9-9d01-cd4d49afbbe3>Financial Times</a> justifies my theory. Trading is more like a marathon rather than a 100m sprint. I don't really think Russian Ruble is worth the risk. Is that it? Nope, lucky for us, we still have one more petrocurrency, Canadian Dollar, to test our strategies.
 
 ### Canadian Dollars and Western Canadian Select
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Oil%20Money%20project/preview/cad%20model.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Oil%20Money%20project/preview/cad%20model.png)
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Oil%20Money%20project/preview/cad%20currency.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Oil%20Money%20project/preview/cad%20currency.png)
 
-![alt text](https://raw.githubusercontent.com/tattooday/quant-trading/master/Oil%20Money%20project/preview/cad%20crude.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Oil%20Money%20project/preview/cad%20crude.png)
 
