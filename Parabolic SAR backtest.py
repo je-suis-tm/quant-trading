@@ -88,7 +88,7 @@ def parabolic_sar(new):
 #generating signals
 #idea is the same as macd oscillator
 #check the website below to learn more
-# https://github.com/tattooday/quant-trading/blob/master/MACD%20oscillator%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/MACD%20oscillator%20backtest.py
 
 def signal_generation(df,method):
     
@@ -160,7 +160,7 @@ def main():
     plot(new,ticker) 
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
-# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
 
 # In[6]:
