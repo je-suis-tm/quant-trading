@@ -15,7 +15,7 @@
 #awesome oscillator has slightly more conditions for signals
 #we will see about it later
 #for more details about macd
-# https://github.com/tattooday/quant-trading/blob/master/MACD%20oscillator%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/MACD%20oscillator%20backtest.py
 
 
 # In[1]:
