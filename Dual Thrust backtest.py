@@ -9,7 +9,7 @@ Created on Mon Mar 19 15:22:38 2018
 #dual thrust is an opening range breakout strategy
 #it is very similar to London Breakout
 #please check London Breakout if u have any questions
-# https://github.com/tattooday/quant-trading/blob/master/London%20Breakout%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/London%20Breakout%20backtest.py
 #Initially we set up upper and lower thresholds based on previous days open, close, high and low 
 #When the market opens and the price exceeds thresholds, we would take long/short positions prior to upper/lower thresholds 
 #However, there is no stop long/short position in this strategy
@@ -228,7 +228,7 @@ def main():
     plot(signals,intraday,column)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
-# https://github.com/tattooday/quant-trading/blob/master/heikin%20ashi%20backtest.py
+# https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
 
 if __name__ == '__main__':
     main()
