@@ -1,5 +1,7 @@
 # Oil Money
 
+*The readme is still under construction. Please be patient as I am quite busy (lazy) at the moment. Veuillez patienter. Merci beaucoup!*
+
 This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. When the oil exits the bear market, the currency exchange of oil producing countries would also bounce back. Does this statement really hold? According to the article by Bloomberg (or many other similar research), researchers examine the correlation between petrocurrency and oil price, instead of the causality. But correlation does not equal to causality. Correlation could be a coincidence of a math game. We simply cannot draw the conclusion that oil price moves the currency. Some researchers even use bootstrapping which greatly destroys the autocorrelation of a time series. Thus, it is vital to apply academic analysis and computer simulation on some petrocurrencies to test the causality of oil. 
 
 The following figure is a global oil production choropleth. The map lists out a couple of forex trading possibilities. But some of the oil exporting countries peg their currencies to US dollar.  We should always verify the exchange rate regime of any oil exporting economy from <a href=https://en.wikipedia.org/wiki/List_of_countries_by_exchange_rate_regime>wikipedia</a> before moving onto any further analysis.
