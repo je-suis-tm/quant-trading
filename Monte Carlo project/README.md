@@ -10,7 +10,7 @@ The author offered a quite interesting idea. As he suggested, the first step was
 
 Let's take a look at the figure below. Wow, what a great fit! The best fit is almost like running a cool linear regression with valid input. As you can see, it smoothly fits the curve in training horizon.
 
-![alt text](https://raw.githubusercontent.com/je-suis-tmj/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation.png)
+![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation.png)
 
 If we extend it to testing horizon...
 
