@@ -55,9 +55,15 @@ Here are the new rules of oil money strategy.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
 
+As shown in the portfolio performance, each momentum takes different length of time to decay. Holding the position too short may not reach the peak of the asset price. On the other hand, Holding the position too long may surpass the peak and head towards the lower side of the profit curve. 
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
 
+Nonetheless, we are not satisfied with the return. Men are greedy creatures. 2% return? Why don’t I deposit the money into the current account and get 1% risk free interest rate (1% as in 2019/4/30)? We can try different holding period and stop loss/profit point (even the amount of backtesting data points or acceptable R squared). In average, the return is 2%.  Extreme values can go as far as -6% and 6%.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
+
+The heatmap below is the visualization of return under different parameters. The darker the tile is, the more money you get. From the chart, you can easily tell the return doesn’t have much explanatory power on the stop profit/loss point. The return is more correlated with the length of holding period. To find the optimal parameters to maximize the return, the ideal holding period should be 9 trading days. Stop loss/profit are more flexible, which could range from 0.6 to 1.05.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
