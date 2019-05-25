@@ -45,13 +45,13 @@ Next, let's take a look at the portfolio performance. So far so good, we actuall
 
 Wow, did we just discover a momentum trading strategy! We started off this project to seek for a statistical arbitrage opportunity between crude price and petrocurrency. What we got in the end is an entry signal of momentum trading strategy. Also, we found out Euro is the major and long term influence on Norwegian Krone, and Brent Crude is the short term disturbance. My explanation for our discovery is that, when the model breaks, there must be something fundamental that change investors' outlook in NOK or Brent, e.g. an increase in north sea refinery capacity limit. That sort of change is supposed to last for quite a while which offers us a chance for trend following (this is how CTA makes money). 
 
-Here are the new rules of oil money strategy. 
-*	The first step is always about regression. Run the regression on NOKJPY and Brent in JPY of the past 50 data points. If the R squared exceeds 70%, the model is deemed as valid. It has successfully captured the petrocurrency status of Norwegian Krone for the past 50 trading days.
+Here are the rules of our latest momentum trading strategy. 
+
+*	The first step is always about regression. Run linear regression on NOKJPY and Brent in JPY of the past 50 data points. If the R squared exceeds 70%, the model is deemed as valid, which has successfully verified the petrocurrency status of Norwegian Krone for the past 50 trading days. Then the forecast derived from the model becomes reliable.
 *	Calculate the standard deviation of the residual. Set +/- two sigma from the predicted price as the threshold to trigger trading signals. If the actual price sits above the upper threshold, the position is net long. If the actual price sits below the lower threshold, the position is net short. 
-*	Once the trade is executed, a counter will start as well. It will keep track of how long the position has been held. If the holding period exceeds 10 days, the position will be cleared. The momentum could have vanished into the thin air after such a long timeframe.
-*	Meanwhile, if the absolute spread between the current price and the entry price exceeds stop limit, which is 0.5 points by default, the position will be cleared to claim profit/loss.
-*	After the position gets cleared, the model has to be recalibrated by the latest 50 data points, back to the first step now.
-*	We keep doing this so on and so forth.
+*	Once the trade is executed, a counter will start as well. It will keep track of how long the position has been held. If the holding period exceeds 10 days, the position will be cleared. Because the underlying momentum could have vanished into the thin air after such a long time.
+*	Meanwhile, if the absolute spread between the current price and the entry price exceeds preset limit, which is 0.5 points by default, the position will be cleared to claim profit/loss. The spread varies along with each individual's risk averse level. When the market gets too volatile, it is sensible to reduce the risk exposure.
+*	After the position gets cleared, the model has to be recalibrated by the latest 50 data points. Now that a trade cycle has completed, the whole thing goes back to the first step. So on and so forth.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20positions.png)
 
@@ -59,11 +59,11 @@ As shown in the portfolio performance, each momentum takes different length of t
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
 
-Nonetheless, we are not satisfied with the return. Men are greedy creatures. 2% return? Why don’t I deposit the money into the current account and get 1% risk free interest rate (1% as in 2019/4/30)? We can try different holding period and stop loss/profit point (even the amount of backtesting data points or acceptable R squared). In average, the return is 2%.  Extreme values can go as far as -6% and 6%.
+Nonetheless, we are not satisfied with the return. Men are greedy creatures. 2% return? Why don’t I deposit the money into the current account and get risk free interest (1% Norge Bank interest rate as in 2019/4/30)? We can certainly start to tune the parameters, such as different holding period and stop loss/profit point (even the amount of backtesting data points or acceptable R squared level). In average, the return is 2%.  Yet, extreme values can go as far as -6% to 6%. Needless to say, 6% is the goal.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
 
-The heatmap below is the visualization of return under different parameters. The darker the tile is, the more money you get. From the chart, you can easily tell the return doesn’t have much explanatory power on the stop profit/loss point. The return is more correlated with the length of holding period. To find the optimal parameters to maximize the return, the ideal holding period should be 9 trading days. Stop loss/profit are more flexible, which could range from 0.6 to 1.05.
+The heatmap below is the visualization of return under different parameters. The darker the tile is, the more money you get. From the chart, you can easily tell stop profit/loss point doesn’t have much explanatory power on the return. The return is more correlated with the length of holding period. The optimal parameter to maximize the return appears to be 9 trading days. Stop loss/profit point is more flexible, which could range from 0.6 to 1.05.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20heatmap.png)
 
