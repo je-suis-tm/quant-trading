@@ -76,10 +76,87 @@ del df[list(df.columns)[0]]
 
 # In[3]:
 
-
-#first we do our linear regression
+#identification
+#first of first, using scatter plot to visualize the correlation
 #lets denote data from 2013-4-25 to 2017-4-25 as estimation horizon/training set
 #lets denote data from 2017-4-25 to 2018-4-25 as validation horizon/testing set
+ax=plt.figure(figsize=(10,5)).add_subplot(111)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.scatter(df['brent'][df.index<'2017-04-25'],df['nok'][df.index<'2017-04-25'],s=1,c='#5f0f4e')
+
+plt.title('NOK Brent Correlation')
+plt.xlabel('Brent in JPY')
+plt.ylabel('NOKJPY')
+plt.show()
+
+#if we run a covariance matrix on nok and brent, we got
+#np.corrcoef(df['nok'],df['brent'])
+#array([[1.        , 0.89681228],[0.89681228, 1.        ]])
+
+
+#dual axis plot
+def dual_axis_plot(xaxis,data1,data2,fst_color='r',
+                    sec_color='b',fig_size=(10,5),
+                   x_label='',y_label1='',y_label2='',
+                   legend1='',legend2='',grid=False,title=''):
+    
+    fig=plt.figure(figsize=fig_size)
+    ax=fig.add_subplot(111)
+    
+
+    ax.set_xlabel(x_label)
+    ax.set_ylabel(y_label1, color=fst_color)
+    ax.plot(xaxis, data1, color=fst_color,label=legend1)
+    ax.tick_params(axis='y',labelcolor=fst_color)
+    ax.yaxis.labelpad=15
+
+    plt.legend(loc=3)
+    ax2 = ax.twinx()
+
+    ax2.set_ylabel(y_label2, color=sec_color,rotation=270)
+    ax2.plot(xaxis, data2, color=sec_color,label=legend2)
+    ax2.tick_params(axis='y',labelcolor=sec_color)
+    ax2.yaxis.labelpad=15
+
+    fig.tight_layout()
+    plt.legend(loc=4)
+    plt.grid(grid)
+    plt.title(title)
+    plt.show()
+    
+#nok vs ir
+dual_axis_plot(df.index,df['nok'],df['interest rate'],
+               fst_color='#34262b',sec_color='#cb2800',
+               fig_size=(10,5),x_label='Date',
+               y_label1='NOKJPY',y_label2='Norge Bank Interest Rate 
+               %',
+               legend1='NOKJPY',legend2='Interest Rate',
+               grid=False,title='NOK vs Interest Rate')
+
+#nok vs brent
+dual_axis_plot(df.index,df['nok'],df['brent'],
+               fst_color='#4f2d20',sec_color='#3feee6',
+               fig_size=(10,5),x_label='Date',
+               y_label1='NOKJPY',y_label2='Brent in JPY',
+               legend1='NOKJPY',legend2='Brent',
+               grid=False,title='NOK vs Brent')
+               
+#nok vs gdp
+#cuz gdp is released quarterly
+#we need to convert nok into quarterly data as well
+ind=df['gdp yoy'].dropna().index
+dual_axis_plot(df.loc[ind].index,
+               df['nok'].loc[ind],
+               df['gdp yoy'].dropna(),
+               fst_color='#116466',sec_color='#ff652f',
+               fig_size=(10,5),x_label='Date',
+               y_label1='NOKJPY',y_label2='Norway GDP YoY %',
+               legend1='NOKJPY',legend2='GDP',
+               grid=False,title='NOK vs GDP')
+
+
+#Now we do our linear regression
 x0=pd.concat([df['usd'],df['gbp'],df['eur'],df['brent']],axis=1)
 x1=sm.add_constant(x0)
 x=x1[x1.index<'2017-04-25']
