@@ -16,6 +16,11 @@ In the original article by Bloomberg, the first mention is Norwegian Krone. Norw
 
 After the identification of the model, we have to choose a base currency to evaluate NOK. It should be a stable entity with free floating FX regime with not much economic tie to Norway. I pick the safe haven currency in East Asia, Japanese Yen. In a released report by <a href=https://atlas.media.mit.edu/en/profile/country/nor>OEC</a>, Japan only accounts for less than 2% of exports in 2017 which makes a perfect candidate. Then all regressors in the model would be priced in JPY. Our regressor variables become EURJPY, GBPJPY, USDJPY and Brent Crude in JPY. Our regressand variable is NOKJPY.
 
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20correlation.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20vs%20ir.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20vs%20gdp.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20vs%20brent.png)
+
 The data of the past five years is collected from Thomson Reuters (now called Refinitiv). We denote the time horizon before 2017-04-25 as training period. We use that period to fit a regression model. From 2017-04-25 to the end of our dataset is defined as testing period. We use our model from training horizon to predict "reasonable" range of the value of NOK in testing horizon. The regression result comes out as below. We have a pretty high R squared. All T stats and F stats seem to be significant. As the summary suggests, there could be multicollinearity (condition number is large and R squared is large). Obviously, Brent Crude and US Dollar should be negatively correlated. Most commodity future contracts are priced in US dollar. When US dollar appreciates or depreciates, the underlying commodity price is likely to go the opposite direction. There could be a cointegration relationship between Sterling and Euro for pre-Brexit time as well.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20model%20summary.png)
