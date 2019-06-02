@@ -129,7 +129,7 @@ def dual_axis_plot(xaxis,data1,data2,fst_color='r',
 dual_axis_plot(df.index,df['nok'],df['interest rate'],
                fst_color='#34262b',sec_color='#cb2800',
                fig_size=(10,5),x_label='Date',
-               y_label1='NOKJPY',y_label2='Norge Bank Interest Rate 
+               y_label1='NOKJPY',y_label2='Norges Bank Interest Rate 
                %',
                legend1='NOKJPY',legend2='Interest Rate',
                grid=False,title='NOK vs Interest Rate')
