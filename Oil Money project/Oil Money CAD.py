@@ -40,7 +40,7 @@ df=df.reindex(columns=
  'eur',
  'krw',
  'mxn',
- 'lng',
+ 'gas',
  'wcs',
  'edmonton',
  'wti',
@@ -82,7 +82,7 @@ plt.ylabel('R Squared\n')
 plt.xlabel('\nRegressors')
 plt.xticks(np.arange(len(temp))+width,
            ['Yuan', 'Sterling', 'Dollar', 'Euro', 'KRW',
-             'MXN', 'LNG', 'WCS', 'Edmonton',
+             'MXN', 'Gas', 'WCS', 'Edmonton',
              'WTI', 'Gold', 'Yen'],fontsize=10)
 plt.show()
 
