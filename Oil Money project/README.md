@@ -16,7 +16,7 @@ The figure below is a global oil production <a href=https://www.ft.com/content/6
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20cost%20curve.png)
 
-Okay, enough about bad jokes. You may ask why I talk so much about commodity market at the beginning. If you think quantitative trading is about solving some complex stochastic process on commodity futures, prepare to lose a big chunk of money. You simply cannot quantify geopolitical risk or supply disruption by force majeure. Some basic knowledge of underlying commodity is vital to your trading strategy. 
+Okay, enough about bad jokes. You may ask why I talk so much about commodity market at the beginning. If you think quantitative trading is about solving some complex stochastic process on commodity futures, prepare to lose a big chunk of money. You simply cannot quantify geopolitical risk or supply disruption by force majeure. <a href=https://www.ft.com/content/0093dcd4-ad59-11e9-8030-530adfa879c2>Some basic knowledge of underlying commodity</a> is vital to your trading strategy. 
 
 ### Norwegian Krone and Brent Crude
 
