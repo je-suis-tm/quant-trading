@@ -16,7 +16,7 @@ Created on Thu Feb 15 20:48:35 2018
 # https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx
 
 #need to get fix yahoo finance package first
-#matplotlib.pyplot has been removed from matplotlib
+#candlestick has been removed from matplotlib
 #need to install mpl_finance instead
 
 
