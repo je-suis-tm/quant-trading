@@ -62,9 +62,9 @@ The core idea of pair trading is <a href=https://en.wikipedia.org/wiki/Cointegra
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/pair%20trading%20eg%20two%20step.PNG)
 
-![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/pair%20trading%20z%20stats.png)
-
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/pair%20trading%20positions.png)
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/pair%20trading%20asset.png)
 
 ### 3. Heikin-Ashi candlestick
 
