@@ -5,7 +5,8 @@ Created on Tue Feb  6 11:57:46 2018
 @author: Administrator
 """
 
-#special thx to my mentor Prof Giampiero M Gallo, now a governor in Italy
+#special thx to my mentor Prof Giampiero M Gallo, 
+#now a governor in Italy (neither league nor five star movement)
 #and his mentor Robert Engle, the nobel prize winner!
 #for their tremendous contributions to VECM
 
@@ -128,6 +129,11 @@ def signal_generation(df1,df2,method):
     signals['signals2']=-signals['signals1']
     signals['positions2']=signals['signals2'].diff()
     
+    #fix initial positions issue
+    if signals['signals1'].iloc[0]!=0:
+        signals['positions1'].iloc[0]=signals['signals1'].iloc[0]
+        signals['positions2'].iloc[0]=signals['signals2'].iloc[0]        
+    
     return signals
 
 
@@ -137,7 +143,7 @@ def signal_generation(df1,df2,method):
 #visualization
 def plot(new,ticker1,ticker2):
     
-    #z stats figure
+    #plot z stats
     fig=plt.figure(figsize=(10,10))
     ax=fig.add_subplot(211)
     
@@ -153,37 +159,105 @@ def plot(new,ticker1,ticker2):
     plt.grid(True)
     plt.show()
     
-    #positions
     
+    #plot positions on dual axis
     fig=plt.figure(figsize=(10,10))
     bx=fig.add_subplot(212,sharex=ax)
-
-    new['asset1'].plot(label='{}'.format(ticker1))
-    new['asset2'].plot(label='{}'.format(ticker2))
     
-    bx.plot(new.loc[new['positions1']==1].index, \
-            new['asset1'][new['positions1']==1], \
-            lw=0,marker='^',markersize=8, \
-            label='LONG {}'.format(ticker1),c='g',alpha=0.7)
-    bx.plot(new.loc[new['positions1']==-1].index, \
-            new['asset1'][new['positions1']==-1], \
-            lw=0,marker='v',markersize=8, \
-            label='SHORT {}'.format(ticker1),c='r',alpha=0.7)
-    bx.plot(new.loc[new['positions2']==1].index, \
-            new['asset2'][new['positions2']==1], \
-            lw=0,marker=2,markersize=12, \
-            label='LONG {}'.format(ticker2),c='g',alpha=0.9)
-    bx.plot(new.loc[new['positions2']==-1].index, \
-            new['asset2'][new['positions2']==-1], \
-            lw=0,marker=3,markersize=12, \
-            label='SHORT {}'.format(ticker2),c='r',alpha=0.9)
+    bx2=bx.twinx()
 
-    bx.legend(loc='best')
+    l1,=bx.plot(new.index,new['asset1'],
+                c='b')
+    l2,=bx2.plot(new.index,new['asset2'],
+                 c='k')
+    
+    u1,=bx.plot(new.loc[new['positions1']==1].index, \
+                new['asset1'][new['positions1']==1], \
+                lw=0,marker='^',markersize=8, \
+                c='g',alpha=0.7)
+    d1,=bx.plot(new.loc[new['positions1']==-1].index, \
+                new['asset1'][new['positions1']==-1], \
+                lw=0,marker='v',markersize=8, \
+                c='r',alpha=0.7)
+    u2,=bx2.plot(new.loc[new['positions2']==1].index, \
+                new['asset2'][new['positions2']==1], \
+                lw=0,marker=2,markersize=9, \
+                c='g',alpha=0.9,markeredgewidth=3)
+    d2,=bx2.plot(new.loc[new['positions2']==-1].index, \
+                new['asset2'][new['positions2']==-1], \
+                lw=0,marker=3,markersize=9, \
+                c='r',alpha=0.9,markeredgewidth=3)
+    
+    
+    bx.set_ylabel(ticker1,)
+    bx2.set_ylabel(ticker2,rotation=270)
+    bx.yaxis.labelpad=15
+    bx2.yaxis.labelpad=15
+    
+
+    plt.legend([l1,l2,u1,d1,u2,d2],
+               [ticker1,ticker2,
+               'LONG {}'.format(ticker1),
+               'LONG {}'.format(ticker2),
+               'SHORT {}'.format(ticker1),
+               'SHORT {}'.format(ticker2)],
+               loc='best')
     plt.title('Pair Trading')
     plt.xlabel('Date')
-    plt.ylabel('price')
     plt.grid(True)
     plt.show()
+    
+    
+#visualize overall portfolio performance
+def portfolio(df1):
+    
+    #initial capital to calculate the actual pnl
+    capital0=20000
+
+    #shares to buy of every position
+    positions1=capital0//max(df1['asset1'])
+    positions2=capital0//max(df1['asset2'])
+    
+    #cumsum1 column is created to check the holding of the position
+    df1['cumsum1']=df1['positions1'].cumsum()
+    
+    #since there are two assets, we calculate each asset separately
+    #in the end we aggregate them into one portfolio
+    portfolio=pd.DataFrame()
+    portfolio['asset1']=df1['asset1']
+    portfolio['holdings1']=df1['cumsum1']*df1['asset1']*positions1
+    portfolio['cash1']=capital0-(df1['positions1']*df1['asset1']*positions1).cumsum()
+    portfolio['total asset1']=portfolio['holdings1']+portfolio['cash1']
+    portfolio['return1']=portfolio['total asset1'].pct_change()
+    portfolio['positions1']=df1['positions1']
+    
+    df1['cumsum2']=df1['positions2'].cumsum()
+    portfolio['asset2']=df1['asset2']
+    portfolio['holdings2']=df1['cumsum2']*df1['asset2']*positions2
+    portfolio['cash2']=capital0-(df1['positions2']*df1['asset2']*positions2).cumsum()
+    portfolio['total asset2']=portfolio['holdings2']+portfolio['cash2']
+    portfolio['return2']=portfolio['total asset2'].pct_change()
+    portfolio['positions2']=df1['positions2']
+    
+    portfolio['total asset']=portfolio['total asset1']+portfolio['total asset2']
+    
+    #plotting the asset value change of the portfolio
+    fig=plt.figure()
+    bx=fig.add_subplot(111)
+    
+    portfolio['total asset'].plot(label='Total Asset')
+    
+    #due to two assets with opposite direction of trade
+    #we will not plot positions on asset performance
+    
+    plt.legend(loc='best')
+    plt.grid(True)
+    plt.xlabel('Date')
+    plt.ylabel('Asset Value')
+    plt.title('Total Asset')
+    plt.show()
+
+    return portfolio
 
 
 # In[4]:
