@@ -277,6 +277,8 @@ def main():
     signals=signal_generation(df1,df2,cointegration)
     
     plot(signals,ticker1,ticker2)
+    
+    portfolio(signals)
 
 #how to calculate stats could be found from my other code called Heikin-Ashi
 # https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
