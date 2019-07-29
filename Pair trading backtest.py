@@ -6,7 +6,7 @@ Created on Tue Feb  6 11:57:46 2018
 """
 
 #special thx to my mentor Prof Giampiero M Gallo, 
-#now a governor in Italy (neither league nor five star movement)
+#now a governor in Italy (neither League nor Five Star Movement)
 #and his mentor Robert Engle, the nobel prize winner!
 #for their tremendous contributions to VECM
 
@@ -86,13 +86,11 @@ def cointegration(data1,data2):
     signals['asset1']=test1['Close']
     signals['asset2']=test2['Close']
     
-    signals['fitted']=np.mat(sm.add_constant(signals['asset2']))* \
-    np.mat(model.params).reshape(2,1)
+    signals['fitted']=np.mat(sm.add_constant(signals['asset2']))*np.mat(model.params).reshape(2,1)
     
     signals['residual']=signals['asset1']-signals['fitted']
     
-    signals['z']=(signals['residual']-np.mean(signals['residual']))/ \
-    np.std(signals['residual'])
+    signals['z']=(signals['residual']-np.mean(signals['residual']))/np.std(signals['residual'])
     
     #use z*0 to get panda series instead of an integer result
     signals['z upper limit']=signals['z']*0+np.mean(signals['z'])+np.std(signals['z'])
@@ -120,8 +118,8 @@ def signal_generation(df1,df2,method):
     #as z statistics cannot exceed both upper and lower bounds at the same time
     #this line holds
     signals['signals1']=np.select([signals['z']>signals['z upper limit'], \
-                                  signals['z']<signals['z lower limit']], \
-                                [1,-1],default=0)
+                                   signals['z']<signals['z lower limit']], \
+                                   [-1,1],default=0)
     
     #signals only imply holding
     #we take the first order difference to obtain the execution signal
@@ -140,37 +138,19 @@ def signal_generation(df1,df2,method):
 # In[3]:
 
 
-#visualization
-def plot(new,ticker1,ticker2):
-    
-    #plot z stats
-    fig=plt.figure(figsize=(10,10))
-    ax=fig.add_subplot(211)
-    
-    new['z'].plot(label='z statistics',c='#e8175d')
-    ax.fill_between(new.index,new['z upper limit'],\
-                    new['z lower limit'],label='+- 1 sigma', \
-                    alpha=0.5,color='#f7db4f')
-    
-    plt.legend(loc='best')
-    plt.title('Cointegration Normalized Residual')
-    plt.xlabel('Date')
-    plt.ylabel('value')
-    plt.grid(True)
-    plt.show()
-    
-    
-    #plot positions on dual axis
-    fig=plt.figure(figsize=(10,10))
-    bx=fig.add_subplot(212,sharex=ax)
-    
+#position visualization
+def plot(new,ticker1,ticker2):    
+   
+    fig=plt.figure(figsize=(10,5))
+    bx=fig.add_subplot(111)   
     bx2=bx.twinx()
-
-    l1,=bx.plot(new.index,new['asset1'],
-                c='b')
-    l2,=bx2.plot(new.index,new['asset2'],
-                 c='k')
     
+    #plot two different assets
+    l1,=bx.plot(new.index,new['asset1'],
+                c='#4abdac')
+    l2,=bx2.plot(new.index,new['asset2'],
+                 c='#907163')
+
     u1,=bx.plot(new.loc[new['positions1']==1].index, \
                 new['asset1'][new['positions1']==1], \
                 lw=0,marker='^',markersize=8, \
@@ -180,47 +160,48 @@ def plot(new,ticker1,ticker2):
                 lw=0,marker='v',markersize=8, \
                 c='r',alpha=0.7)
     u2,=bx2.plot(new.loc[new['positions2']==1].index, \
-                new['asset2'][new['positions2']==1], \
-                lw=0,marker=2,markersize=9, \
-                c='g',alpha=0.9,markeredgewidth=3)
+                 new['asset2'][new['positions2']==1], \
+                 lw=0,marker=2,markersize=9, \
+                 c='g',alpha=0.9,markeredgewidth=3)
     d2,=bx2.plot(new.loc[new['positions2']==-1].index, \
-                new['asset2'][new['positions2']==-1], \
-                lw=0,marker=3,markersize=9, \
-                c='r',alpha=0.9,markeredgewidth=3)
-    
-    
+                 new['asset2'][new['positions2']==-1], \
+                 lw=0,marker=3,markersize=9, \
+                 c='r',alpha=0.9,markeredgewidth=3)
+
     bx.set_ylabel(ticker1,)
     bx2.set_ylabel(ticker2,rotation=270)
     bx.yaxis.labelpad=15
     bx2.yaxis.labelpad=15
-    
+    bx.set_xlabel('Date')
+    bx.xaxis.labelpad=15
 
     plt.legend([l1,l2,u1,d1,u2,d2],
                [ticker1,ticker2,
                'LONG {}'.format(ticker1),
-               'LONG {}'.format(ticker2),
                'SHORT {}'.format(ticker1),
+               'LONG {}'.format(ticker2),
                'SHORT {}'.format(ticker2)],
-               loc='best')
+               loc=8)
+
     plt.title('Pair Trading')
     plt.xlabel('Date')
     plt.grid(True)
     plt.show()
-    
-    
+  
+
 #visualize overall portfolio performance
 def portfolio(df1):
-    
+
     #initial capital to calculate the actual pnl
     capital0=20000
 
-    #shares to buy of every position
+    #shares to buy of each position
     positions1=capital0//max(df1['asset1'])
     positions2=capital0//max(df1['asset2'])
-    
+
     #cumsum1 column is created to check the holding of the position
     df1['cumsum1']=df1['positions1'].cumsum()
-    
+
     #since there are two assets, we calculate each asset separately
     #in the end we aggregate them into one portfolio
     portfolio=pd.DataFrame()
@@ -238,22 +219,39 @@ def portfolio(df1):
     portfolio['total asset2']=portfolio['holdings2']+portfolio['cash2']
     portfolio['return2']=portfolio['total asset2'].pct_change()
     portfolio['positions2']=df1['positions2']
-    
+ 
+    portfolio['z']=df1['z']
     portfolio['total asset']=portfolio['total asset1']+portfolio['total asset2']
+    portfolio['z upper limit']=df1['z upper limit']
+    portfolio['z lower limit']=df1['z lower limit']
     
     #plotting the asset value change of the portfolio
-    fig=plt.figure()
-    bx=fig.add_subplot(111)
-    
-    portfolio['total asset'].plot(label='Total Asset')
-    
-    #due to two assets with opposite direction of trade
+    fig=plt.figure(figsize=(10,5))
+    ax=fig.add_subplot(111)
+    ax2=ax.twinx()
+ 
+    l1,=ax.plot(portfolio['total asset'],c='#46344e')
+    l2,=ax2.plot(portfolio['z'],c='#4f4a41',alpha=0.2)
+ 
+    b=ax2.fill_between(portfolio.index,portfolio['z upper limit'],\
+                    portfolio['z lower limit'], \
+                    alpha=0.2,color='#ffb48f')
+     
+    #due to the opposite direction of trade for 2 assets
     #we will not plot positions on asset performance
     
-    plt.legend(loc='best')
-    plt.grid(True)
-    plt.xlabel('Date')
-    plt.ylabel('Asset Value')
+    ax.set_ylabel('Asset Value')
+    ax2.set_ylabel('Z Statistics',rotation=270)
+    ax.yaxis.labelpad=15
+    ax2.yaxis.labelpad=15
+    ax.set_xlabel('Date')
+    ax.xaxis.labelpad=15
+    
+    plt.legend([l2,b,l1],['Z Statistics',
+                          'Z Statistics +-1 Sigma',
+                          'Total Asset Performance'],loc='best')
+
+    plt.grid(True)   
     plt.title('Total Asset')
     plt.show()
 
