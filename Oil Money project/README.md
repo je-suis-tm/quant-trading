@@ -143,4 +143,6 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 ### Canadian Dollars and Western Canadian Select
 
 ![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Oil%20Money%20project/preview/cad%20model.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20elbow.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20kmeans.png)
 
