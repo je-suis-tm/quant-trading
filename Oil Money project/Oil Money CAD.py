@@ -140,9 +140,10 @@ ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
-(df['cny']/df['cny'].iloc[0]).plot(c='#283670',label='Yuan')
-(df['gbp']/df['gbp'].iloc[0]).plot(c='#fe4d32',label='Sterling')
-(df['cad']/df['cad'].iloc[0]).plot(c='#484a25',label='Loonie')
+(df['cny']/df['cny'].iloc[0]).plot(c='#77c9d4',label='Yuan')
+(df['gbp']/df['gbp'].iloc[0]).plot(c='#57bc90',label='Sterling')
+(df['cad']/df['cad'].iloc[0]).plot(c='#015249',label='Loonie')
+
 plt.legend(loc=0)
 plt.xlabel('Date')
 plt.ylabel('Normalized Value by 100')
@@ -157,19 +158,31 @@ ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
-(df['wti']/df['wti'].iloc[0]).plot(c='#2a78b2',label='WTI',alpha=0.5)
-(df['wcs']/df['wcs'].iloc[0]).plot(c='#7b68ee',label='WCS',alpha=0.5)
+(df['wti']/df['wti'].iloc[0]).plot(c='#2a78b2',
+                                   label='WTI',alpha=0.5)
+(df['wcs']/df['wcs'].iloc[0]).plot(c='#7b68ee',
+                                   label='WCS',alpha=0.5)
 (df['edmonton']/df['edmonton'].iloc[0]).plot(c='#110b3c',
                                              label='Edmonton',alpha=0.5)
-(df['cad']/df['cad'].iloc[0]).plot(c='#cb8b8b',label='Loonie')
 plt.legend(loc=0)
 plt.xlabel('Date')
 plt.ylabel('Normalized Value by 100')
-plt.title('Loonie vs Crude Oil Blends')
+plt.title('Crude Oil Blends')
 plt.show()
 
 
 # In[9]:
+
+
+dual_axis_plot(df.index,df['cad'],df['wcs'],
+               x_label='Date',y_label1='Loonie',y_label2='WCS',
+               legend1='Canadian Dollar',
+               legend2='Western Canadian Select',
+               title='Loonie VS WCS',
+               fst_color='#0f1626',sec_color='#ff533d')
+
+
+# In[10]:
 
 
 df['date']=[i for i in range(len(df.index))]
@@ -177,7 +190,7 @@ df['date']=[i for i in range(len(df.index))]
 x=df[['cad','wcs','date']].reset_index(drop=True)
 
 sse=[]
-for i in range(1, 11):
+for i in range(1, 8):
     kmeans = KMeans(n_clusters = i)
     kmeans.fit(x)
     sse.append(kmeans.inertia_/10000)
@@ -187,18 +200,44 @@ a,b=get_line_params(0,sse[0],len(sse)-1,sse[-1])
 distance=[]
 for i in range(len(sse)):    
     distance.append(get_distance(i,sse[i],a,b))
-  
-  
-# In[10]:
 
-
-dual_axis_plot([i for i in range(len(distance))],sse,distance,
+dual_axis_plot(np.arange(1,len(distance)+1),sse,distance,
                x_label='Numbers of Cluster',y_label1='Sum of Squared Error',
                y_label2='Perpendicular Distance',legend1='SSE',legend2='Distance',
                title='Elbow Method for K Means',fst_color='#116466',sec_color='#e85a4f')
-
-
+  
+  
+  
 # In[11]:
+
+
+sil=[]
+for n in range(2,8):
+    
+    clf=KMeans(n).fit(x)
+    projection=clf.predict(x)
+        
+    sil.append(silhouette_score(x,projection))
+    
+ax=plt.figure(figsize=(10,5)).add_subplot(111)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+
+ax.plot(np.arange(2,len(sil)+2),sil,
+       label='Silhouette',c='#5c0811',
+       drawstyle='steps-mid')
+ax.plot(sil.index(max(sil))+2,max(sil),
+        marker='*',markersize=20,lw=0,
+       label='Max Score',c='#d94330')
+
+plt.ylabel('Silhouette Score')
+plt.xlabel('Numbers of Cluster')
+plt.title('Silhouette Analysis for K Means')
+plt.legend(loc=0)
+plt.show()
+
+
+# In[12]:
 
 
 clf=KMeans(n_clusters=2).fit(x)
@@ -206,7 +245,7 @@ df['class']=clf.predict(x)
 threshold=df[df['class']==0].index[-1]
 
 
-# In[12]:
+# In[13]:
 
 ax=plt.figure(figsize=(10,7)).add_subplot(111, projection='3d')
 
@@ -231,3 +270,26 @@ ax.set_title('K Means on Loonie')
 ax.legend(loc=6,bbox_to_anchor=(0.12, -0.1), ncol=4)
 
 plt.show()
+
+
+# In[14]:
+
+
+m=sm.OLS(df['cad'][df['class']==0],sm.add_constant(df['wcs'][df['class']==0])).fit()
+before=m.rsquared
+m=sm.OLS(df['cad'][df['class']==1],sm.add_constant(df['wcs'][df['class']==1])).fit()
+after=m.rsquared
+
+ax=plt.figure(figsize=(10,5)).add_subplot(111)
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+plt.bar(['Before {}'.format(threshold.strftime('%Y-%m-%d')),
+         'After {}'.format(threshold.strftime('%Y-%m-%d'))],
+        [before,after],color=['#f172a1','#a1c3d1'])
+plt.ylabel('R Squared')
+plt.title('Cluster + Regression')
+plt.show()
+
+
+
+
