@@ -14,6 +14,8 @@ import matplotlib.cm as cm
 import statsmodels.api as sm
 import numpy as np
 from sklearn.cluster import KMeans
+from sklearn.metrics import silhouette_score,silhouette_samples
+from sklearn.model_selection import train_test_split
 os.chdir('d:/')
 
 
