@@ -292,4 +292,45 @@ plt.show()
 
 
 
+# In[15]:
+
+
+for i in range(2):
+    
+    x_train,x_test,y_train,y_test=train_test_split(
+        sm.add_constant(df['wcs'][df['class']==i]),
+        df['cad'][df['class']==i],test_size=0.5,shuffle=False)
+    
+    m=sm.OLS(y_test,x_test).fit()
+    
+    forecast=m.predict(x_test)
+    
+    ax=plt.figure(figsize=(10,5)).add_subplot(111)
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    forecast.plot(label='Fitted',c='#ab987a')
+    y_test.plot(label='Actual',c='#ff533d')
+    ax.fill_between(y_test.index,
+                    forecast+np.std(m.resid),
+                    forecast-np.std(m.resid),
+                    color='#0f1626', \
+                    alpha=0.6, \
+                    label='1 Sigma')
+    
+    ax.fill_between(y_test.index,
+                    forecast+2*np.std(m.resid),
+                    forecast-2*np.std(m.resid),
+                    color='#0f1626', \
+                    alpha=0.8, \
+                    label='2 Sigma')
+    
+    plt.legend(loc=0)
+    title='Before '+threshold.strftime('%Y-%m-%d') if i==0 else 'After '+threshold.strftime('%Y-%m-%d')
+    plt.title(f'{title}\nCanadian Dollar Positions\nR Squared {round(m.rsquared*100,2)}%\n')
+    plt.xlabel('\nDate')
+    plt.ylabel('CADAUD')
+    plt.show()
+
+
+
 
