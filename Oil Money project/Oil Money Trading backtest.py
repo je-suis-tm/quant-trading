@@ -184,8 +184,9 @@ def signal_generation(dataset,x,y,method, \
 #this part is to monitor how our portfolio performs over time
 #details can be found from heiki ashi
 # https://github.com/je-suis-tm/quant-trading/blob/master/Heikin-Ashi%20backtest.py
-def portfolio(signals,close_price,capital0=5000,positions=250):   
-
+def portfolio(signals,close_price,capital0=5000):   
+    
+    positions=capital0//max(signals[close_price])
     portfolio=pd.DataFrame()
     portfolio['close']=signals[close_price]
     portfolio['signals']=signals['signals']
