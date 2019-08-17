@@ -160,4 +160,4 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 2. Bernhardsen, T. and Ø. Røisland (2000), <a href=https://www.norges-bank.no/globalassets/upload/publikasjoner/economic_bulletin/2000-04/factorsthat.pdf>"Factors that influence the krone exchange rate"</a>
 
-*This paper is published by two senior economists of Norges Bank. Who knows Norwegian Krone more than insiders?
+*This paper is published by two senior economists of Norges Bank. Who knows Norwegian Krone more than insiders?*
