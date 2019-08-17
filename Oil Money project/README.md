@@ -154,6 +154,6 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 ### Further Reading
 
-1. Ferraro, D., K. Rogoff and B. Rossi (2011), <a href=https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2848153>"Can Oil Prices Forecast Exchange Rates?"</a>
+1. Ferraro, D., K. Rogoff and B. Rossi (2011), <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=2848153">"Can Oil Prices Forecast Exchange Rates?"</a>
 
 *This paper is featured by Bank of Canada. Click <a href=https://www.bankofcanada.ca/wp-content/uploads/2012/02/workshop-exchange-rates-june2011-Ferraro-Rogoff-Rossi-presentation.pdf>here</a> for its workshop presentation. Oil Money project used a similar approach from the paper, yet the results are completely the opposite.*
