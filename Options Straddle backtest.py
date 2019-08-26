@@ -4,6 +4,11 @@
 # In[1]:
 
 
+# https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/long-straddle
+
+# http://base2.optionsdatamine.com/page.php
+# https://www.historicaloptiondata.com/
+
 import os
 os.chdir('d:/')
 import pandas as pd
@@ -13,6 +18,61 @@ import re
 
 
 # In[2]:
+
+def find_strike_price(df):
+    
+    temp=[re.search('\d{4}',i).group() for i in df.columns]
+    target=[]
+
+    for i in set(temp):
+        if temp.count(i)>1:
+            target.append(i)
+            
+    return target
+
+
+
+# In[3]:
+
+def straddle(options,spot,contractsize,strikeprice):
+        
+    option=options[[i for i in options.columns if strikeprice in i]] 
+    
+    df=pd.merge(spot,option,left_index=True,right_index=True)
+
+    temp=[]
+    for i in df.columns:
+        if 'C'+strikeprice in i:
+            temp.append('call')
+        elif 'P'+strikeprice in i:
+            temp.append('put')
+        elif 'Index' in i:
+            temp.append('spot')
+        else:
+            temp.append(i)
+
+    df.columns=temp
+    
+    df['spot']=df['spot'].apply(lambda x:x*contractsize)
+    
+    return df
+
+
+
+# In[4]:
+
+
+def signal_generation(df,threshold):
+    
+    df['signals']=np.where(
+        np.abs(
+            df['call']-df['put'])<threshold,
+        1,0)  
+
+    return df
+
+
+# In[5]:
 
 
 def plot(df,strikeprice,contractsize):
@@ -105,62 +165,6 @@ def plot(df,strikeprice,contractsize):
     plt.show()
 
 
-# In[3]:
-
-
-def find_strike_price(df):
-    
-    temp=[re.search('\d{4}',i).group() for i in df.columns]
-    target=[]
-
-    for i in set(temp):
-        if temp.count(i)>1:
-            target.append(i)
-            
-    return target
-
-
-# In[4]:
-
-
-def signal_generation(df,threshold):
-    
-    df['signals']=np.where(
-        np.abs(
-            df['call']-df['put'])<threshold,
-        1,0)  
-
-    
-    return df
-
-
-# In[5]:
-
-
-def straddle(options,spot,contractsize,strikeprice):
-        
-    option=options[[i for i in options.columns if strikeprice in i]] 
-    
-    df=pd.merge(spot,option,left_index=True,right_index=True)
-
-    temp=[]
-    for i in df.columns:
-        if 'C'+strikeprice in i:
-            temp.append('call')
-        elif 'P'+strikeprice in i:
-            temp.append('put')
-        elif 'Index' in i:
-            temp.append('spot')
-        else:
-            temp.append(i)
-
-    df.columns=temp
-    
-    df['spot']=df['spot'].apply(lambda x:x*contractsize)
-    
-    return df
-
-
 # In[6]:
 
 
@@ -196,5 +200,7 @@ def main():
 # In[8]:
 
 
-#https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/long-straddle
+if __name__ == '__main__':
+    main()
+
 
