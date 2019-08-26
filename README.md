@@ -30,6 +30,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#11monte-carlo-project>11.Monte Carlo project</a>
 
+<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#12options-straddle>12.Options Straddle</a>
+
 ### Data Source
 
 1.<a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
@@ -177,6 +179,10 @@ Here comes the argument on Linkedin that caught my eyes the other day. "Stock pr
 For more details, please refer to the <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Monte%20Carlo%20project/README.md>read me</a> page of a separate directory or <a href=https://je-suis-tm.github.io/quant-trading/monte-carlo>quant trading</a> section on my personal blog.
 
 ![alt text](https://raw.githubusercontent.com/je-suis-tm/quant-trading/master/Monte%20Carlo%20project/preview/ge%20simulation2.png)
+
+### 12.Options Straddle
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/options%20straddle%20payoff%20diagram.png)
 
 <br>
 
