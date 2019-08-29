@@ -3,8 +3,9 @@
 
 # In[1]:
 
-#finally, after a long while of struggle, i finally decided to write something on options strategy
+#after a long while of struggle, i finally decided to write something on options strategy
 #the biggest issue of options trading is to find the backtesting data
+#the most difficult part is options greeks
 #after all, data is the new black gold
 #here are a couple of websites u can try your luck
 #currently they offer free trial for a limited period
@@ -30,6 +31,35 @@
 #you may wanna consider strangle or strap/strip in this case
 #long straddle is commonly used in event driven strategy
 
+#for instance, Brexit on 30th of October 2019, its do or die
+#if bojo delivers a no-deal Brexit, uk sterling gonna sink
+#or he secures a new deal without backstop from macron and merkel
+#even though unlikely, uk sterling gonna spike
+#or he has to postpone and look like an idiot, uk sterling still gonna surge
+#either way, there will be a lot of volatility around that particular date
+#to secure a profit from either direction, that is when options straddle kick in
+
+#but hey, options are 3 dimensional
+#apart from strike date, option price, which strike price should we pick
+#well, that is a one million us dollar question
+#who says quantitative trading is about algos and calculus?
+#this is when u need to consult with some economists to get a base case
+#their fundamental analysis will determine your best/worst scenario
+#therefore, u can pick a good strike price to maximize your profit
+#or the simplest way is to find a strike price closer to the current spot price
+
+#nevertheless, as u can see in our stoxx 50 dataset
+#not all strike price offer both call and put options
+#and even if they offer both, the price of options may be very different
+#there could be more upside/downside from the market consensus
+#we can pick the options which offer both call and put options
+#and we only trade when both option prices are converging
+#and please don’t arrogantly believe that you outsmart the rest of the players in the market
+#all the information you have obtained from any tips may have already been priced in
+#finding a good pair of call and put options at the same strike price,
+#the same strike date and almost the same price is tough
+
+#to make our life easier, we only consider european options with cash settlement in this script
 
 import os
 os.chdir('d:/')
@@ -40,6 +70,10 @@ import re
 
 
 # In[2]:
+
+#as we have gathered all the available call and put options
+#this function will only extract strike price existing in both call and put options
+#this is a fundamental requirement of options straddle
 
 def find_strike_price(df):
     
@@ -55,6 +89,7 @@ def find_strike_price(df):
 
 
 # In[3]:
+
 
 def straddle(options,spot,contractsize,strikeprice):
         
@@ -189,8 +224,16 @@ def plot(df,strikeprice,contractsize):
 
 # In[6]:
 
+#for stoxx 50 options, the contract size is 10 ticks per euro
 
 contractsize=10
+
+#the threshold determines the price disparity between call and put options
+#the same call and put option price for the same strike price and the same strike date
+#only exists in an ideal world, in reality, it is like royal flush
+#when the price difference of call and put is smaller than 2 euros
+#we consider them identically the same option price
+
 threshold=2
 
 
