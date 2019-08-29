@@ -3,11 +3,33 @@
 
 # In[1]:
 
-
-# https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/long-straddle
-
+#finally, after a long while of struggle, i finally decided to write something on options strategy
+#the biggest issue of options trading is to find the backtesting data
+#after all, data is the new black gold
+#here are a couple of websites u can try your luck
+#currently they offer free trial for a limited period
 # http://base2.optionsdatamine.com/page.php
 # https://www.historicaloptiondata.com/
+#in order to save u guys from the hassle, I also include a small dataset of stoxx 50 index
+#the dataset has 3 spreadsheets, the spot spreadsheet refers to spot price of stoxx 50
+#aug spreadsheet refers to options settle at august 2019
+#jul spreadsheet refers to options settle at july 2019
+# https://github.com/je-suis-tm/quant-trading/tree/master/data
+
+#if you dont know what options straddle is
+#i recommend u to read a tutorial from fidelity
+#who else can explain the concept of options than one of the largest mutual funds
+# https://www.fidelity.com/learning-center/investment-products/options/options-strategy-guide/long-straddle
+#in simple words, options are a financial derivative 
+#that enables u to trade underlying asset at certain price in the future
+#and options straddle enable you to profit from a certain level of volatility
+#in this script, we are only gonna talk about long straddle
+#basically long straddle implies buy call option and put option of same strike price and same strike date
+#preferably at the same option price as well
+#otherwise asymmetric option price means there is more one-sided risk than the other
+#you may wanna consider strangle or strap/strip in this case
+#long straddle is commonly used in event driven strategy
+
 
 import os
 os.chdir('d:/')
