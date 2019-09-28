@@ -142,6 +142,8 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 ### Canadian Dollars and Western Canadian Select
 
+For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a country that exports a lot of petroleum. Most of its crude oil are heavy and sour, which is a perfect blend with light sweet shale oil from Permian Basin. Needless to say, the largest buyer of Canadian crude oil is Uncle Sam.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20model.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20crude.png)
