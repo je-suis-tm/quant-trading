@@ -152,7 +152,7 @@ Nomalized values on forex imply UK Sterling and Chinese Yuan were in sync until 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
-Normalized values on crude oil blends demonstrate that Western Canadian Select are indeed associated.
+Normalized values on crude oil blends demonstrate that Canadian blends are indeed associated with West Texas Intermediate.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20crude.png)
 
