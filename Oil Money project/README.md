@@ -144,9 +144,20 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a country that exports a lot of petroleum. Most of its crude oil are heavy and sour, which is a perfect blend with light sweet shale oil from Permian Basin. Needless to say, the largest buyer of Canadian crude oil is Uncle Sam.
 
+In-sample data regression shows no sign of petrocurrency.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20model.png)
+
+Nomalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. It is quite bizarre that US Dollar does not have the strongest R Squared.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
+
+Normalized values on crude oil blends demonstrate that Western Canadian Select are indeed associated.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20crude.png)
+
+K-Means is applied here to find out the clustering on time horizon. Both elbow method and silhouette score are taken into consideration.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20elbow.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20silhouette.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20kmeans.png)
