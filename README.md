@@ -6,7 +6,8 @@
 <br>
 <br>
 > Quantitative Trading is like the house’s advantage in a casino. The odds of one trend-following trade making money is only a fraction over 50%. While many of the trades simply do not work, it can still profit from the law of large number. The genius of momentum trading is not how awesome it is, but its incredible mediocrity, which is far harder to engineer than people think. It works right at the edge of randomness. It’s like trying to cheat at the casino, if you’re too good then the casino throws you out.
-<br>--- Mike Adam, <a href=https://www.ft.com/content/916ed2e0-d63f-11e9-a0bd-ab8ec6435630>the Pioneer of Momentum Trading</a>, Co-Founder of Man AHL
+<br>
+> --- Mike Adam, <a href=https://www.ft.com/content/916ed2e0-d63f-11e9-a0bd-ab8ec6435630>the Pioneer of Momentum Trading</a>, Co-Founder of Man AHL
 
 Most scripts inside this repository are technical indicator automated trading. These scripts include various types of momentum trading, opening range breakout and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly quantamental analysis on some strange ideas I come up with to beat the market (or so I thought). There is no HFT strategy simply because ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting/forward testing (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless. No slippage, no surcharge, no illiquidity. 
 
