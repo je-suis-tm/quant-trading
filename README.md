@@ -3,8 +3,7 @@
 <br>
 
 ## Intro
-<br>
-<br>
+
 > Quantitative Trading is like the house’s advantage in a casino. The odds of one trend-following trade making money is only a fraction over 50%. While many of the trades simply do not work, it can still profit from the law of large number. The genius of momentum trading is not how awesome it is, but its incredible mediocrity, which is far harder to engineer than people think. It works right at the edge of randomness. It’s like trying to cheat at the casino, if you’re too good then the casino throws you out.<br>
 > --- Mike Adam, <a href=https://www.ft.com/content/916ed2e0-d63f-11e9-a0bd-ab8ec6435630>the Pioneer of Momentum Trading</a>, Co-Founder of Man AHL
 
