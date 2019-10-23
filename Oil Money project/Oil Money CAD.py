@@ -177,11 +177,22 @@ plt.show()
 
 
 dual_axis_plot(df.index,df['cad'],df['wcs'],
-               x_label='Date',y_label1='Loonie',y_label2='WCS',
-               legend1='Canadian Dollar',
-               legend2='Western Canadian Select',
-               title='Loonie VS WCS',
-               fst_color='#0f1626',sec_color='#ff533d')
+               x_label='Date',y_label1='Canadian Dollar',
+               y_label2='Western Canadian Select',
+               legend1='Loonie',
+               legend2='WCS',
+               title='Loonie VS WCS in AUD',
+               fst_color='#a5a77f',sec_color='#d8dc2c')
+
+dual_axis_plot(df.index,
+               np.divide(df['cad'],df['usd']),
+               np.divide(df['wcs'],df['usd']),
+               x_label='Date',y_label1='Canadian Dollar',
+               y_label2='Western Canadian Select',
+               legend1='Loonie',
+               legend2='WCS',
+               title='Loonie VS WCS in USD',
+               fst_color='#eb712f',sec_color='#91371b')
 
 
 # In[10]:
