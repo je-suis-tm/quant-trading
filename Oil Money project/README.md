@@ -154,6 +154,11 @@ Nomalized values on forex imply UK Sterling and Chinese Yuan were in sync until 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
+Loonie and WCS priced in different currencies show diverging results. Most studies on Loonie use raw exchange rate of CADUSD. It appears that so-called petrocurrency status is possibly due to the dollar effect.
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20wcs%20in%20aud.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20wcs%20in%20usd.png)
+
 Normalized values on crude oil blends demonstrate that Canadian blends are indeed associated with West Texas Intermediate.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20crude.png)
