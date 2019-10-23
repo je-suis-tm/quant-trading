@@ -142,7 +142,9 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 ### Canadian Dollars and Western Canadian Select
 
-For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a country that exports a lot of petroleum. Most of its crude oil are heavy and sour, which is a perfect blend with light sweet shale oil from Permian Basin. Needless to say, the largest buyer of Canadian crude oil is Uncle Sam.
+For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a heavy weight player in the petroleum industry. Most of its crude oil are heavy and sour, which is a perfect blend with light sweet shale oil from Permian Basin. Needless to say, the largest buyer of Canadian crude oil is Uncle Sam.
+
+Based upon the information from <a href=https://www.trademap.org/Index.aspx>International Trade Centre</a>, mineral fuel is not the only export. Canada also exports a lot of other natural resources including natural gas, precious gems, base metals and agricultural products.
 
 In-sample data regression shows no sign of petrocurrency.
 
