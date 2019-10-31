@@ -138,7 +138,7 @@ For 2017 and 2018, the R squared becomes total failures. It drops from less than
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202017%20positions.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/rub%202018%20positions.png)
 
-My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always screw up its petrocurrency status. A recent article by <a href=https://www.ft.com/content/d841992a-021c-11e9-9d01-cd4d49afbbe3>Financial Times</a> justifies my theory. Trading is more like a marathon rather than a 100m sprint. I don't really think Russian Ruble is worth the risk. Is that it? Nope, lucky for us, we still have one more petrocurrency, Canadian Dollar, to test our strategies.
+My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always screw up its petrocurrency status. A recent article by <a href=https://www.ft.com/content/d841992a-021c-11e9-9d01-cd4d49afbbe3>Financial Times</a> coincides with my theory. Trading is more like a marathon rather than a 100m sprint. Nobody would love to see sanctions kick in like Bête Noire. I don't really think Russian Ruble is worth the risk. Is that it? Nope, lucky for us, we still have one more petrocurrency, Canadian Dollar, to test our strategies.
 
 ### Canadian Dollars and Western Canadian Select
 
