@@ -197,4 +197,5 @@ The crucial element of options straddle is the selection of the strike price. As
 
 <br>
 <br>
+
 #### STAY TUNED
