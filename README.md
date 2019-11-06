@@ -196,5 +196,5 @@ The crucial element of options straddle is the selection of the strike price. As
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/options%20straddle%20payoff%20diagram.png)
 
 <br>
-
+<br>
 #### STAY TUNED
