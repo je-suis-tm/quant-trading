@@ -37,6 +37,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#12options-straddle>12.Options Straddle</a>
 
+13.Portfolio Optimization project
+
 ### Data Source
 
 1.<a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
@@ -194,6 +196,8 @@ Long straddle is commonly seen in event driven strategy, e.g. political referend
 The crucial element of options straddle is the selection of the strike price. As the price of options contains the market consensus, the only way to maximize the profit is to find the optimal strike price to shrink the loss bandwidth. This is where the economists kick in and offer base case outlook plus best/worst scenarios. In contrast to the common misunderstanding of quantitative trading, Option Greeks are no silver bullet. Quantitative combined with fundamental in one, so-called quantamental, makes the portfolio impeccable.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/options%20straddle%20payoff%20diagram.png)
+
+### 13.Portfolio Optimization project
 
 <br>
 
