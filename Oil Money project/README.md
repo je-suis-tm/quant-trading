@@ -142,7 +142,7 @@ My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always
 
 ### Canadian Dollars and Western Canadian Select
 
-For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a heavy weight player in the petroleum industry. Most of its crude oil are heavy and sour, which is a perfect blend with light sweet shale oil from Permian Basin. Needless to say, the largest buyer of Canadian crude oil is Uncle Sam.
+For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a heavy weight player in the petroleum industry. According to <a href=https://www.nrcan.gc.ca/science-data/data-analysis/energy-data-analysis/energy-facts/crude-oil-facts/20064>Canadian government</a>, Canada is the fourth largest crude oil exporter. But hey, why does it catch so little attention in the oil market? Because 96% of its production is shipped to Uncle Sam which kind of makes sense. Given the fact that the majority production in Canada is heavy and sour, it makes a perfect blend with light sweet shale oil from Permian Basin. 
 
 Based upon the information from <a href=https://www.trademap.org/Index.aspx>International Trade Centre</a>, mineral fuel is not the only export. Canada also exports a lot of other natural resources including natural gas, precious gems, base metals and agricultural products.
 
@@ -177,6 +177,7 @@ Nonetheless, even if we split the timeframe in regards to the threshold, we stil
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20groups.png)
 
 Remodelling out-of-sample data by K Means turns up some promising results.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20before.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20after.png)
 
