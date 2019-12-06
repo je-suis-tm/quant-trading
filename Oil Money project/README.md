@@ -170,7 +170,7 @@ K-Means is applied here to find out the clustering on time horizon. Both elbow m
 
 Visualize the clustering in three dimensions. The graph indicates the threshold that separates two groups.
 
-![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20kmeans.png)
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20kmeans.gif)
 
 Nonetheless, even if we split the timeframe in regards to the threshold, we still cannot observe a significant R squared.
 
