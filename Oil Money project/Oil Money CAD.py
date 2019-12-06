@@ -284,6 +284,23 @@ ax.legend(loc=6,bbox_to_anchor=(0.12, -0.1), ncol=4)
 
 plt.show()
 
+#to generate gif, u can use the following code
+#it generates 3d figures from different angles
+#use imageio to concatenate 
+"""
+for ii in range(0,360,10):
+    ax.view_init(elev=10., azim=ii)
+    plt.savefig("cad kmeans%d.png" % (ii))
+
+import imageio
+
+filenames=["movie%d.png" % (ii) for ii in range(0,360,10)] 
+
+images=list(map(lambda filename:imageio.imread(filename),
+                filenames))
+
+imageio.mimsave('cad kmeans.gif',images,duration = 0.2)
+"""
 
 # In[14]:
 
