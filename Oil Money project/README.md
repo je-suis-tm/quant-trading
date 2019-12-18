@@ -156,8 +156,6 @@ When we run regressand on each regressor individually, in-sample data regression
 
 Nobody has expected 35% of the outcome can be explained by UK Sterling and Chinese Yuan. It is quite unusual that US Dollar does not have the strongest R Squared. If we look at GBP and CNY, normalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. The cointegration between GBP and CNY doesn’t make a lot of sense. Is it because of the golden era between UK and China?
 
-Nomalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. It is quite bizarre that US Dollar does not have the strongest R Squared.
-
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
 Normalized values on crude oil blends demonstrate that Canadian blends are indeed associated with West Texas Intermediate.
