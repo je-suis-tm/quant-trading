@@ -38,7 +38,7 @@ Thus, Brent and other currency pairs are undisputedly better inputs to reflect w
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20vs%20brent.png)
 
-The data of the past five years is collected from Thomson Reuters (now called Refinitiv). We denote the time horizon before 2017-04-25 as training period. We use that period to fit a regression model. From 2017-04-25 to the end of our dataset is defined as testing period. We use our model from training horizon to predict "reasonable" range of the value of NOK in testing horizon. This is a standard practice called cross validation by data scientists. Economists call it out-of-sample data for forward testing and in-sample data for backtesting. The regression result comes out as below. We have a pretty high R squared. All T stats and F stats seem to be significant. I have to take back my words. Brent shows a major influence on NOK which implies Norway still heavily depends on petrochemical industry. As the summary suggests, there could be multicollinearity (condition number is large and R squared is large). Obviously, Brent Crude and US Dollar should be negatively correlated. Most commodity future contracts are priced in US dollar. When US dollar appreciates or depreciates, the underlying commodity price is likely to go the opposite direction. There could be a cointegration relationship between Sterling and Euro for pre-Brexit time as well.
+The data of the past five years is collected from Thomson Reuters (now called Refinitiv). We denote the time horizon before 2017-04-25 as training period. We use that period to fit a regression model. From 2017-04-25 to the end of our dataset is defined as testing period. We use our model from training horizon to predict "reasonable" range of the value of NOK in testing horizon. This is a standard practice called cross validation by data scientists. Economists call it out-of-sample data for forward testing and in-sample data for backtesting. The regression result comes out as below. We have a pretty high R squared. All T stats and F stats seem to be significant. I have to take back my words. Brent shows a major influence on NOK which implies Norway still heavily depends on petrochemical industry. As the summary suggests, there could be multicollinearity (condition number is large and R squared is large). Obviously, Brent crude and US dollar should be negatively correlated. Most commodity future contracts are priced in US dollar. When US dollar appreciates or depreciates, the underlying commodity price is likely to go the opposite direction. There could be a cointegration relationship between Sterling and Euro for pre-Brexit time as well.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20correlation.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20model%20summary.png)
@@ -96,7 +96,7 @@ The heatmap below is the visualization of return using different parameters. The
 
 It turns out that our momentum trading is much more robust and profitable than our original idea of statistical arbitrage. But does it work on any other petrocurrencies? Unfortunately, Norway is one of the largest oil producing countries with floating FX regime. The rest are US, Russia and Canada. US dollar is a totally different case. Petroleum business only takes up a very small share in US economy even including shale boom in Permian Basin. What about Russian Ruble? Well, let's find out! 
 
-### Russian Rubles and Urals Crude
+### Russian Ruble and Urals Crude
 
 For Norway, I may have doubts in how much petroleum business contributes to its overall GDP. As for Russia, I suspect if any person in her/his rightful mind would question the role of oil in the economy of Russia. According to <a href=https://en.wikipedia.org/wiki/Economy_of_Russia>Wikipedia</a>, Russian oil business (mostly Rosneft) accounted for 16% of GDP, 52% of federal budget revenues and over 70% of total exports in 2012. Usually, countries with large natural resource reserves suffer from Dutch Disease (USA is an exception), especially Russia! Hence, we don't need any extra step to validate if Russian Ruble is a petrocurrency.
 
@@ -140,7 +140,7 @@ For 2017 and 2018, the R squared becomes total failures. It drops from less than
 
 My conclusion for Russian Ruble is DON'T TRADE IT!! Its political agendas always screw up its petrocurrency status. A recent article by <a href=https://www.ft.com/content/d841992a-021c-11e9-9d01-cd4d49afbbe3>Financial Times</a> coincides with my theory. Trading is more like a marathon rather than a 100m sprint. Nobody would love to see sanctions kick in like Bête Noire. I don't really think Russian Ruble is worth the risk. Is that it? Nope, lucky for us, we still have one more petrocurrency, Canadian Dollar, to test our strategies.
 
-### Canadian Dollars and Western Canadian Select
+### Canadian Dollar and Western Canadian Select
 
 For some bizarre reason, everybody says Canadian Dollar is a petrocurrency. We all know Canada is a country with huge deposits of natural resources. However, it never strikes me as a heavy weight player in the petroleum industry. According to <a href=https://www.nrcan.gc.ca/science-data/data-analysis/energy-data-analysis/energy-facts/crude-oil-facts/20064>Canadian government</a>, Canada is the fourth largest crude oil exporter. But hey, why does it catch so little attention in the oil market? Because 96% of its production is shipped to Uncle Sam. Similar to U.S., Canada has oil pipeline bottleneck as well. Both have attempted to expand the capacity. But both have faced huge resistance from indigenous people and environmental protection. 
 
@@ -154,7 +154,7 @@ When we run regressand on each regressor individually, in-sample data regression
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20model.png)
 
-Nobody has expected 35% of the outcome can be explained by UK Sterling and Chinese Yuan. It is quite unusual that US Dollar does not have the strongest R Squared. If we look at GBP and CNY, normalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. The cointegration between GBP and CNY doesn’t make a lot of sense. Is it because of the golden era between UK and China?
+Nobody has expected 35% of the outcome can be explained by UK Sterling and Chinese Yuan. It is quite unusual that US dollar does not have the strongest R Squared. If we look at GBP and CNY, normalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. The cointegration between GBP and CNY doesn’t make a lot of sense. Is it because of the golden era between UK and China?
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
