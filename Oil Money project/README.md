@@ -158,14 +158,16 @@ Nobody has expected 35% of the outcome can be explained by UK Sterling and Chine
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
-Normalized values on crude oil blends demonstrate that Canadian blends are indeed associated with West Texas Intermediate.
+If we look at the hydrocarbon products, normalized values on crude oil blends demonstrate that Canadian blends are indeed associated with West Texas Intermediate. The light sweet synthetic crude is closely stick to the movement of WTI. WCS drifts off the course occasionally. It is probably caused by some tightening market condition (e.g. the reduction of heavy sour refinery capacity by force majeure). In general, all three crude oil contracts move towards the same direction. With that being said, we can exclude the possibility of faulty petroleum data. So where does the theory of Canadian petrocurrency come from?
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20crude.png)
 
-Loonie and WCS priced in different currencies show diverging results. Most studies on Loonie use raw exchange rate of CADUSD. It appears that so-called petrocurrency status is possibly due to the dollar effect.
+Let’s take a step back and look at what most market analysts focus on. Most studies on Loonie use raw exchange rate of CADUSD. As shown by the figures below, Loonie and WCS priced in different currencies show diverging results. It appears that so-called petrocurrency status is possibly due to the dollar effect. Most commodities are evaluated in US dollar. It’s very intuitive that the commodity price in US dollar tends to show a smaller volatility compared to the commodity price in other currencies. The reason is quite simple. For commodities priced in other currencies, they need to convert to US dollar for international settlement. US dollar is the one and only global currency (hopefully Euro can find its rightful place). Given the bid and ask spread of currency exchange, it tends to widen the gap between currency and underlying asset. Some studies use trade-weighted exchange rate. Nevertheless, the bilateral trade between Canada and U.S. makes up 75% of the trade surplus for Canada. The significant impact of dollar effect on trade-weighted exchange rate makes it de facto CADUSD.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20wcs%20in%20aud.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20wcs%20in%20usd.png)
+
+Our finding is still not solid enough. Recall how Russian Ruble gets flagged by aggressive espionage? Perhaps Canadian Dollar shows different attributes across different time horizon as well. It is definitely not caused by sanction. It could be the monetary policy change by central bank or one of the revolutionary reforms by Justin Trudeau (no sarcasm intended). To confess, Canada is not the spotlight of the financial market, so most people are not familiar with its internal situation. Thanks to the over publicity of machine learning, we have the luxury to borrow some tools from <a href= https://en.wikipedia.org/wiki/Unsupervised_learning>unsupervised learning</a>.
 
 K-Means is applied here to find out the clustering on time horizon. Both elbow method and silhouette score are taken into consideration.
 
