@@ -169,7 +169,7 @@ Let’s take a step back and look at what most market analysts focus on. Most st
 
 Our finding is still not solid enough. Recall how Russian Ruble gets flagged by aggressive espionage? Perhaps Canadian Dollar shows different attributes across different time horizon as well. It is definitely not caused by sanction. It could be the monetary policy change by central bank or one of the revolutionary reforms by Justin Trudeau (no sarcasm intended). To confess, Canada is not the spotlight of the financial market, so most people are not familiar with its internal situation. Thanks to the over publicity of machine learning, we have the luxury to borrow some tools from <a href= https://en.wikipedia.org/wiki/Unsupervised_learning>unsupervised learning</a>.
 
-K-Means is applied here to find out the clustering on time horizon. Both elbow method and silhouette score are taken into consideration.
+<a href=https://github.com/je-suis-tm/machine-learning/blob/master/k%20means.ipynb>K-Means</a> is applied here to find out the clustering on time horizon. Both elbow method and silhouette score are taken into consideration.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20elbow.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20silhouette.png)
