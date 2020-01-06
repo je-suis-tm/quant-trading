@@ -154,7 +154,7 @@ When we run regressand on each regressor individually, in-sample data regression
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20model.png)
 
-Nobody has expected 35% of the outcome can be explained by UK Sterling and Chinese Yuan. It is quite unusual that US dollar does not have the strongest R Squared. If we look at GBP and CNY, normalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. The cointegration between GBP and CNY doesn’t make a lot of sense. Is it because of the golden era between UK and China?
+Nobody has expected 35% of the outcome can be explained by UK Sterling and Chinese Yuan. It is quite unusual that US dollar does not have the strongest R squared. If we look at GBP and CNY, normalized values on forex imply UK Sterling and Chinese Yuan were in sync until Brexit referendum ruined everything. The cointegration between GBP and CNY doesn’t make a lot of sense. Is it because of the golden era between UK and China?
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20currency.png)
 
@@ -169,23 +169,27 @@ Let’s take a step back and look at what most market analysts focus on. Most st
 
 Our finding is still not solid enough. Recall how Russian Ruble gets flagged by aggressive espionage? Perhaps Canadian Dollar shows different attributes across different time horizon as well. It is definitely not caused by sanction. It could be the monetary policy change by central bank or one of the revolutionary reforms by Justin Trudeau (no sarcasm intended). To confess, Canada is not the spotlight of the financial market, so most people are not familiar with its internal situation. Thanks to the over publicity of machine learning, we have the luxury to borrow some tools from <a href= https://en.wikipedia.org/wiki/Unsupervised_learning>unsupervised learning</a>.
 
-<a href=https://github.com/je-suis-tm/machine-learning/blob/master/k%20means.ipynb>K-Means</a> is applied here to find out the clustering on time horizon. Both elbow method and silhouette score are taken into consideration.
+<a href=https://github.com/je-suis-tm/machine-learning/blob/master/k%20means.ipynb>K-Means</a> is applied here to find out the clustering on time horizon. Loonie, WCS and date are the dimensions. There are various techniques to determine the optimal number of the cluster. For this mission, both elbow method and silhouette score are taken into consideration. I have encountered several occasions that two metrics give out two different answers. That is why we ought to use different methods to reach a final decision. Fortunately, we can observe the consistent performance of K-Means with K equals to 2. Thus, we shall split the dataset into two different parts.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20elbow.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20silhouette.png)
 
-Visualize the clustering in three dimensions. The graph indicates the threshold that separates two groups.
+There are some shortcomings of using K-Means. While most cluster problems in machine learning focus on discrete variable, the autocorrelation of time series is not taken into account. Hence, we need to visualize the data to make a judgmental call. In some cases, cluster A is uniformly distributed across the time horizon. we do not see a clear threshold on a specific date to separate two different clusters. Lucky for us, we get a clean cut on March 2nd of 2016. The boundary of two clusters is a flat surface on z axis.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20kmeans.gif)
 
-Nonetheless, even if we split the timeframe in regards to the threshold, we still cannot observe a significant R squared.
+Don’t ask me what happened on March 2nd of 2016. I did a thorough search in the historical archives but came back empty handed. Nonetheless, even if we split the timeframe in regard to the threshold, we still cannot observe a significant R squared from in-sample regression. For the first period, we get respectively 20% R squared. And for the second, we get roughly 10% R squared. It seems that I cannot justify the causal relationship between Loonie and WCS. Is Canadian Dollar really a petrocurrency?
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20groups.png)
 
-Remodelling out-of-sample data by K Means turns up some promising results.
+The next step is to conduct out-of-sample regression. The result surprisingly outperforms in-sample regression. For each period, we take a 70/30 train test split. The R squared is guaranteed to be above 20%. Though it hasn’t hit our 70% target. If we merely take a look at the visualization, we will see the actual price is often within the two standard deviation bandwidth.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20before.png)
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cad%20after.png)
+
+In a nutshell, we have exhausted approaches to validate the petrocurrency status of Canadian Dollar. I personally do not believe Loonie is a petrocurrency. In 2018, mineral fuel takes up about 22% of the total export, compared to 53% for Russia and 62% for Norway. Loonie and WCS are in sync if and only if both assets are denominated in US dollar. Therefore, I reject the null hypothesis that Canadian Dollar is a petrocurrency. Some market analysts talk about the relationship between Mexican Peso and Maya crude oil. In 2018, the vehicles occupy 26% of the total export. On the contrary, mineral oil is such a niche segment in the export business. The number is as pathetic as 7%. I really hope those analysts can give me a more convincing narrative.
+
+Even though Loonie is not a petrocurrency, that shouldn’t stop us from deploying our trading strategy. Unlike the eccentric volatility of Russian Ruble, the political environment of Canada is harmonic, so unusual spikes are not expected. The model per se is based upon rolling period of the past 50 trading days. The market is dynamic so there will always be a moment when both Loonie and WCS enter Nirvana. The bottom line is the preset model threshold. As long as we can obtain a 70% R squared, the game is on. 
 
 ### Further Reading
 
