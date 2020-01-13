@@ -1,7 +1,5 @@
 # Oil Money
 
-*The readme is still under construction. Please be patient as I am quite busy (lazy) at the moment. Veuillez patienter. Merci beaucoup!*
-
 ### Intro
 
 This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. Amid the bullish outlook for crude oil, the currency exchange of oil producing countries would also bounce back. Does this statement really hold? Prior to this article by Bloomberg (or many other similar research), market analysts test the correlation between petrocurrency and oil price, instead of the causality. The issue is that correlation does not equal to causality. Correlation could be a coincidence of a math game. We simply cannot draw the conclusion that oil price moves the currency (the cause can be a third common factor such as inflation). Some researchers even introduce bootstrapping which, unfortunately, destroys the autocorrelation of time series. Thus, it is necessary for us to apply empirical analysis and computer simulation on various petrocurrencies to examine the underlying phenomenon.
