@@ -205,4 +205,4 @@ Even though Loonie is not a petrocurrency, that shouldn’t stop us from deployi
 
 5. Karlsen, J.L.S. and M.B. Mjøen (2015), <a href=https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2382625>"Forecasting the Norwegian Krone Exchange Rate using the Oil Price"</a>
 
-*This paper takes two different approaches to construct a true forecsting model. Nonetheless, the random walk seems to outperform any of these sophisticated model in a high frequency dataset.*
+*This paper takes two different approaches to construct a true forecsting model. Nonetheless, the random walk seems to outperform any of these sophisticated models in a high frequency dataset.*
