@@ -13,41 +13,43 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Table of Contents
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#1-macd-oscillator>1.MACD oscillator</a>
+1. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#1-macd-oscillator>MACD oscillator</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#2-pair-trading>2.Pair trading</a>
+2. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#2-pair-trading>Pair trading</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#3-heikin-ashi-candlestick>3.Heikin-Ashi candlestick</a>
+3. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#4-london-breakout>4.London Breakout</a>
+4. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#4-london-breakout>London Breakout</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#5awesome-oscillator>5.Awesome oscillator</a>
+5. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#5awesome-oscillator>Awesome oscillator</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#6oil-money-project>6.Oil Money project</a>
+6. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#6oil-money-project>Oil Money project</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#7dual-thrust>7.Dual Thrust</a>
+7. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#7dual-thrust>Dual Thrust</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#8parabolic-sar>8.Parabolic SAR</a>
+8. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#8parabolic-sar>Parabolic SAR</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#9bollinger-bands-pattern-recognition>9.Bollinger Bands Pattern Recognition</a>
+9. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>10.Relative Strength Index Pattern Recognition</a>
+10. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#11monte-carlo-project>11.Monte Carlo project</a>
+11. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#11monte-carlo-project>Monte Carlo project</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#12options-straddle>12.Options Straddle</a>
+12. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#12options-straddle>Options Straddle</a>
 
-<a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#13portfolio-optimization-project>13.Portfolio Optimization project</a>
+13. <a href=https://github.com/je-suis-tm/quant-trading/blob/master/README.md#13portfolio-optimization-project>Portfolio Optimization project</a>
 
 ### Data Source
 
-1.<a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
+1. <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
 
-2.Bloomberg/Eikon
+2. Bloomberg/Eikon
 
-3.<a href=https://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>fxhistoricaldata</a>
+3. <a href=https://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>FX Historical Data</a>
 
-4.<a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
+4. <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
+
+5. <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
 
 <br>
 
