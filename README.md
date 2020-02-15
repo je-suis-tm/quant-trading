@@ -201,6 +201,8 @@ The crucial element of options straddle is the selection of the strike price. As
 
 ### 13.Portfolio Optimization project
 
+This project will be documented in the repository of <a href=https://github.com/je-suis-tm/graph-theory>Graph Theory</a>.
+
 <br>
 
 #### STAY TUNED
