@@ -12,7 +12,7 @@
 > If you trade a lot, you only need to be right 51 percent of the time, we need a smaller edge on each trade. <br><br>
 > --- Elwyn Berlekamp, co-Founder of Combinatorial Game Theory
 
-###### The quotes above come from a book by Gregory Zuckerman, a book every quant must read, THE MAN WHO SOLVED THE MARKET.
+###### *The quotes above come from a book by Gregory Zuckerman, a book every quant must read, THE MAN WHO SOLVED THE MARKET.*
 
 &nbsp;
 
