@@ -109,6 +109,8 @@ def main():
     #once a upon a time you got six trading days in a week
     #so it is two week moving average versus one month moving average
     #for now, the ideal choice would be 10 and 21
+    
+    global ma1,ma2,stdate,eddate,ticker,slicer
 
     #macd is easy and effective
     #there is just one issue
