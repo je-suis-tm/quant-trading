@@ -1,5 +1,23 @@
 # Oil Money
 
+&nbsp;
+-----------------------------------------
+### Table of Contents
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#intro>Intro</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#norwegian-krone-and-brent-crude>Norwegian Krone and Brent Crude</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#russian-ruble-and-urals-crude>Russian Ruble and Urals Crude</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#canadian-dollar-and-western-canadian-select>Canadian Dollar and Western Canadian Select</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#colombian-peso-and-vasconia-crude>Colombian Peso and Vasconia Crude</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#further-reading>Further Reading</a>
+------------------------------------------------
+&nbsp;
+
 ### Intro
 
 This project is inspired by an <a href=https://www.bloomberg.com/news/articles/2018-05-20/crude-oil-s-surge-is-putting-the-petro-back-in-petrocurrencies>article</a> on oil-backed foreign exchange. Amid the bullish outlook for crude oil, the currency exchange of oil producing countries would also bounce back. Does this statement really hold? Prior to this article by Bloomberg (or many other similar research), market analysts test the correlation between petrocurrency and oil price, instead of the causality. The issue is that correlation does not equal to causality. Correlation could be a coincidence of a math game. We simply cannot draw the conclusion that oil price moves the currency (the cause can be a third common factor such as inflation). Some researchers even introduce bootstrapping which, unfortunately, destroys the autocorrelation of time series. Thus, it is necessary for us to apply empirical analysis and computer simulation on various petrocurrencies to examine the underlying phenomenon.
@@ -187,24 +205,32 @@ The next step is to conduct out-of-sample regression. The result surprisingly ou
 
 In a nutshell, we have exhausted approaches to validate the petrocurrency status of Canadian Dollar. I personally do not believe Loonie is a petrocurrency. In 2018, mineral fuel takes up about 22% of the total export, compared to 53% for Russia and 62% for Norway. Loonie and WCS are in sync if and only if both assets are denominated in US dollar. Therefore, I reject the null hypothesis that Canadian Dollar is a petrocurrency. Some market analysts talk about the relationship between Mexican Peso and Maya crude oil. In 2018, the vehicles occupy 26% of the total export. On the contrary, mineral oil is such a niche segment in the export business. The number is as pathetic as 7%. I really hope those analysts can give me a more convincing narrative.
 
-Even though Loonie is not a petrocurrency, that shouldn’t stop us from deploying our trading strategy. Unlike the eccentric volatility of Russian Ruble, the political environment of Canada is harmonic, so unusual spikes are not expected. The model per se is based upon rolling period of the past 50 trading days. The market is dynamic so there will always be a moment when both Loonie and WCS enter Nirvana. The bottom line is the preset model threshold. As long as we can obtain a 70% R squared, the game is on. 
+Even though Loonie is not a petrocurrency, that shouldn’t stop us from deploying our trading strategy. Unlike the eccentric volatility of Russian Ruble, the political environment of Canada is harmonic, so unusual spikes are not expected. The model per se is based upon rolling period of the past 50 trading days. The market is dynamic so there will always be a moment when both Loonie and WCS enter Nirvana. The bottom line is the preset model threshold. As long as we can obtain a 70% R squared, the game is on.
+
+### Colombian Peso and Vasconia Crude
 
 ### Further Reading
 
-1. Beckmann, J., R. Czudaj and V. Arora (2017), <a href=https://www.eia.gov/workingpapers/pdf/oil_exchangerates_61317.pdf>"The Relationship between Oil Prices and Exchange Rates: Theory and Evidence"</a>
+1. Beckmann J, Czudaj R, Arora V (2017) <a href=https://www.eia.gov/workingpapers/pdf/oil_exchangerates_61317.pdf>The Relationship Between Oil Prices And Exchange Rates: Theory And Evidence</a>
 
-2. Bernhardsen, T. and Ø. Røisland (2000), <a href=https://www.norges-bank.no/globalassets/upload/publikasjoner/economic_bulletin/2000-04/factorsthat.pdf>"Factors that influence the krone exchange rate"</a>
+	*This paper was documented by US EIA. It summarized the literatures on short-term and long-term bidirectional forecast, direct and indirect transmission channels, nonlinear relationship, time-variation and related policy implications.*
 
-*This paper is published by two senior economists of Norges Bank. Who knows Norwegian Krone more than insiders?*
+2. Bernhardsen T, Røisland Ø (2000) <a href=https://www.norges-bank.no/globalassets/upload/publikasjoner/economic_bulletin/2000-04/factorsthat.pdf>Factors That Influence The Krone Exchange Rate</a>
 
-3. Ferraro, D., K. Rogoff and B. Rossi (2011), <a href="https://www.barcelonagse.eu/research/working-papers/can-oil-prices-forecast-exchange-rates">"Can Oil Prices Forecast Exchange Rates?"</a>
+	*This paper was published by two senior economists of Norges Bank. Who knows Norwegian Krone more than insiders?*
 
-*This paper is featured by Bank of Canada. Click <a href=https://www.bankofcanada.ca/wp-content/uploads/2012/02/workshop-exchange-rates-june2011-Ferraro-Rogoff-Rossi-presentation.pdf>here</a> for its workshop presentation. Oil Money project used a similar approach from the paper, yet the results are completely the opposite.*
+3. Ferraro D, Rogoff K, Rossi B (2011) <a href=https://www.barcelonagse.eu/research/working-papers/can-oil-prices-forecast-exchange-rates>Can Oil Prices Forecast Exchange Rates?</a>
 
-4. Ghalayini, L. (2011), <a href=https://www.researchgate.net/publication/235939209_The_Interaction_between_Oil_Price_and_Economic_Growth>"The Interaction between Oil Price and Economic Growth"</a>
+	*This paper was featured by Bank of Canada. Click <a href=https://www.bankofcanada.ca/wp-content/uploads/2012/02/workshop-exchange-rates-june2011-Ferraro-Rogoff-Rossi-presentation.pdf>here</a> for its workshop presentation. Oil Money project uses a similar approach from the paper, yet the results are completely the opposite.*
 
-*This paper illustrates the mechanism of how oil shock affects different types of economy. That is why dollar effect matters to our oil money trading.*
+4. Fratzscher M, Schneider D, Robays IV (2014) <a href=https://www.ecb.europa.eu/pub/pdf/scpwps/ecbwp1689.pdf>Oil Prices, Exchange Rates And Asset Prices</a>
 
-5. Karlsen, J.L.S. and M.B. Mjøen (2015), <a href=https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2382625>"Forecasting the Norwegian Krone Exchange Rate using the Oil Price"</a>
+	*This paper analyzed the causality between oil and asset prices – exploiting the heteroskedasticity of the underlying time-series data. The economists in ECB didn’t only verify the causality between oil price and exchange rate, but also the causality among oil price, equity market shocks and risk shocks.*
 
-*This paper takes two different approaches to construct a true forecsting model. Nonetheless, the random walk seems to outperform any of these sophisticated models in a high frequency dataset.*
+5. Ghalayini L (2011) <a href=https://www.researchgate.net/publication/235939209_The_Interaction_between_Oil_Price_and_Economic_Growth>The Interaction Between Oil Price And Economic Growth</a>
+
+	*This paper illustrated the mechanism of how oil shock affects different types of economy. That is why dollar effect matters to our oil money trading.*
+
+6. Karlsen JLS, Mjøen MB (2015) <a href=https://ntnuopen.ntnu.no/ntnu-xmlui/handle/11250/2382625>Forecasting The Norwegian Krone Exchange Rate Using The Oil Price</a>
+
+	*This paper took two different approaches to construct a true forecasting model. Nonetheless, the random walk seemed to outperform any of these sophisticated models in a high frequency dataset.*
