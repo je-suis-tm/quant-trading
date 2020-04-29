@@ -21,6 +21,7 @@ os.chdir('d:/')
 
 # In[2]:
 
+#plot two curves on same x axis, different y axis
 def dual_axis_plot(xaxis,data1,data2,fst_color='r',
                     sec_color='b',fig_size=(10,5),
                    x_label='',y_label1='',y_label2='',
@@ -50,6 +51,7 @@ def dual_axis_plot(xaxis,data1,data2,fst_color='r',
     plt.title(title)
     plt.show()
 
+#get distance between a point and a line
 def get_distance(x,y,a,b):
     
     temp1=y-x*a-b
@@ -57,6 +59,7 @@ def get_distance(x,y,a,b):
     
     return np.abs(temp1/temp2)
 
+#create line equation from two points
 def get_line_params(x1,y1,x2,y2):
     
     a=(y1-y2)/(x1-x2)
@@ -99,6 +102,7 @@ df=df.reindex(columns=
 
 # In[6]:
 
+#create r squared bar charts
 
 var=locals()
 
@@ -137,6 +141,7 @@ plt.show()
 
 # In[7]:
 
+#normalized value of loonie,yuan and sterling
 
 ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
@@ -155,6 +160,7 @@ plt.show()
 
 # In[8]:
 
+#normalized value of wti,wcs and edmonton
 
 ax=plt.figure(figsize=(10,5)).add_subplot(111)
 ax.spines['top'].set_visible(False)
@@ -197,6 +203,7 @@ dual_axis_plot(df.index,
 
 # In[10]:
 
+#using elbow method to find optimal number of clusters
 
 df['date']=[i for i in range(len(df.index))]
 
@@ -223,6 +230,7 @@ dual_axis_plot(np.arange(1,len(distance)+1),sse,distance,
   
 # In[11]:
 
+#using silhouette score to find optimal number of clusters
 
 sil=[]
 for n in range(2,8):
@@ -252,6 +260,7 @@ plt.show()
 
 # In[12]:
 
+#k means
 
 clf=KMeans(n_clusters=2).fit(x)
 df['class']=clf.predict(x)
@@ -259,6 +268,8 @@ threshold=df[df['class']==0].index[-1]
 
 
 # In[13]:
+
+#plot clusters in 3d figure
 
 ax=plt.figure(figsize=(10,7)).add_subplot(111, projection='3d')
 
@@ -304,6 +315,8 @@ imageio.mimsave('cad kmeans.gif',images,duration = 0.2)
 
 # In[14]:
 
+#create before/after regression comparison
+#the threshold is based upon the finding of k means
 
 m=sm.OLS(df['cad'][df['class']==0],sm.add_constant(df['wcs'][df['class']==0])).fit()
 before=m.rsquared
@@ -324,6 +337,7 @@ plt.show()
 
 # In[15]:
 
+#create 1 std, 2 std band
 
 for i in range(2):
     
