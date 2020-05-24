@@ -209,6 +209,30 @@ Even though Loonie is not a petrocurrency, that shouldn’t stop us from deployi
 
 ### Colombian Peso and Vasconia Crude
 
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20model.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20gold.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20brl.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20vas.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20groups.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20before%202017.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20after%202017.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20trading%20positions.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20trading%20asset.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20profit%20distribution.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20profit%20heatmap.png) 
+
 ### Further Reading
 
 1. Beckmann J, Czudaj R, Arora V (2017) <a href=https://www.eia.gov/workingpapers/pdf/oil_exchangerates_61317.pdf>The Relationship Between Oil Prices And Exchange Rates: Theory And Evidence</a>
