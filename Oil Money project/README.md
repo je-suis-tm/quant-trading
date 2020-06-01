@@ -209,6 +209,20 @@ Even though Loonie is not a petrocurrency, that shouldn’t stop us from deployi
 
 ### Colombian Peso and Vasconia Crude
 
+Thus far, we have tested three different currencies yet only one of them is really applicable. Don't worry, here comes the bonus stage. Just when I thought this project is finished, one day my colleague came to my desk and asked me, "do you know what the biggest export of Colombia is?" 
+
+"La cocaína!" I answered without hesitation. 
+
+"Well, you watched too much Narcos and Escobar, not that." One of his eyebrows lifted.
+
+"Prostitutes? A large part of web cam models come from Colombia, maybe de facto Venezuelan refugees in Bogotá or Medellín." 
+
+"Jeez, if I am Colombian, I'm gonna execute you the drug cartel way. On the book, it's CRUDE OIL!!"
+
+Lo siento, no offense, Colombians. Surprisingly, mineral fuels took up <a href=http://www.worldstopexports.com/colombias-top-10-exports>52.5%</a> of export in terms of value! In 2018, U.S., China and Panama have taken roughly <a href=https://www.tridge.com/intelligences/crude-oil/CO/export>76.4%</a> of Colombia's crude oil export. However, it only has a very small market share (not even top 20) compared to other big major oil producers and it is not a member of OPEC. Its supply has been eroded by frequent attacks from guerillas on pipelines from Cupiagua to Coveñas. That's why it is almost invisible when we discuss the oil market. The good news is we don't really care about how Colombia impacts the overall oil market. We merely want to profit from its currency fluctuation caused by oil export.
+
+Anyhow, let's take a peep at local crude blends in Colombia. The major products are Cusiana, Caño Limón, Vasconia, Puerto Bahía and Castilla (API from light to heavy, sulfur content from sweet to sour). Although Castilla is the major export to U.S. (find more details from <a href=https://www.eia.gov/international/content/analysis/countries_long/Colombia/pdf/colombia_bkgd.pdf>EIA</a>), we can only obtain Vasconia price from Bloomberg, so we have to cope with that. Similar to Canada, the biggest customer of Colombian crude blends is Uncle Sam. Thus, West Texas Intermediate is a more appropriate benchmark than Brent.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20model.png) 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
