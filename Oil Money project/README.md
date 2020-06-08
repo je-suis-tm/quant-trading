@@ -223,13 +223,23 @@ Lo siento, no offense, Colombians. Surprisingly, mineral fuels took up <a href=h
 
 Anyhow, let's take a peep at local crude blends in Colombia. The major products are Cusiana, Caño Limón, Vasconia, Puerto Bahía and Castilla (API from light to heavy, sulfur content from sweet to sour). Although Castilla is the major export to U.S. (find more details from <a href=https://www.eia.gov/international/content/analysis/countries_long/Colombia/pdf/colombia_bkgd.pdf>EIA</a>), we can only obtain Vasconia price from Bloomberg, so we have to cope with that. Similar to Canada, the biggest customer of Colombian crude blends is Uncle Sam. Thus, West Texas Intermediate is a more appropriate benchmark than Brent.
 
+Besides crude oil, Colombia has other exports, one of the most well-known is coffee beans. Colombia is the second largest coffee bean producer only after Brazil. There are two types of coffee beans, Arabica and Robusta. Arabica is the predominant species in Colombia with its bright acidity, sweet notes, and caramel aroma rising from every brew. However, Robusta has a higher yield and less demanding conditions to grow. Concerning the rising menace of climate change, the bitter and intensive taste has been gradually introduced to Colombia as well. Hence, we would love to test ICE Arabica and Robusta futures price to make sure Vasconia crude is the major factor of Colombian Peso. Apart from the high-profile coffee beans, coal briquette is another big export business in Colombia. Most coals are shipped to Europe, so we pick Rotterdam API 2 coal futures as our benchmark. As for the gold in Colombia, we still follow gold LBMA price in London.
+
+If you recall, we have been using Australian dollar to evaluate Russian Ruble and Canadian Dollar. It is still applicable to Colombian Peso. It seems that there are few trades among commodity exporters. The input of the model also considers Colombia’s top trading partners. Inevitably, we have US dollar and Chinese Yuan, the high-tech manufacturer and the cheap-shit manufacturer. It’s hard to imagine there is a country without sanction in the world who doesn’t trade with this pair. Most of Colombia’s trading partners are in Latin America. These trading partners either use US dollar (Ecuador) or issue their own currencies pegged to US dollar (Eastern Caribbean Dollar). All we need is to add a few currencies from south American countries, Argentina Peso, Peruvian Sol and Brazilian Real. Additionally, we cannot forget Mexican Peso and Turkish Lira. You may wonder, what about Euros? What a sad story! US dollar is the one and only global currency. ICE Rotterdam API 2 coal futures are priced in US dollar.
+
+The regression on the input has verified our theory, Colombian Peso is a petrocurrency! Crude oil can achieve roughly 50% of R squared. Coffee beans or coal briquettes do not have R squared over 20%. The shining performance of US dollar shouldn’t be surprising. After all, all crude oils are priced in US dollar. Oil price and US dollar are negatively correlated.  
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20model.png) 
 
-![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
+The gold has outperformed crude oil in terms of R squared but its coefficient is negative which implies the gold just represents the negative correlation with crude oil. This is hardly a surprise. Both gold and US dollar are regarded as safe haven assets where crude oil is a leading indicator of the economy.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20gold.png) 
 
+For Brazilian Real, the raison d’être is straight forward. Brazil is a huge commodity exporter, the second iron ore exporter, the biggest coffee bean producer, etc. Commodity price has a negative relationship with US dollar and a positive relationship with local currency. Thus, we see a quasi-causality between Brazilian Real and Colombian Peso. Why quasi? Colombia doesn’t even make it to top 10 of Brazil’s trading partners. Brazil has the 7th largest trading deficit with Colombia.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20brl.png) 
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20vas.png) 
 
