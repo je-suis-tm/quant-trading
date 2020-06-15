@@ -136,7 +136,16 @@ dual_axis_plot(df.index,df['cop'],df['gold'],
                legend1='COP',
                legend2='Gold',
                title='COP VS Gold',
-               fst_color='#416270',sec_color='#FEB236')
+               fst_color='#96CEB4',sec_color='#FFA633')
+
+#cop vs usd
+dual_axis_plot(df.index,df['cop'],df['usd'],
+               x_label='Date',y_label1='Colombian Peso',
+               y_label2='US Dollar',
+               legend1='COP',
+               legend2='USD',
+               title='COP VS USD',
+               fst_color='#9DE0AD',sec_color='#5C4E5F')
 
 
 # In[8]:
@@ -149,6 +158,24 @@ dual_axis_plot(df.index,df['cop'],df['brl'],
                legend2='BRL',
                title='COP VS BRL',
                fst_color='#a4c100',sec_color='#f7db4f')
+
+#usd vs mxn
+dual_axis_plot(df.index,df['usd'],df['mxn'],
+               x_label='Date',y_label1='US Dollar',
+               y_label2='Mexican Peso',
+               legend1='USD',
+               legend2='MXN',
+               title='USD VS MXN',
+               fst_color='#F4A688',sec_color='#A2836E')
+
+#cop vs mxn
+dual_axis_plot(df.index,df['cop'],df['mxn'],
+               x_label='Date',y_label1='Colombian Peso',
+               y_label2='Mexican Peso',
+               legend1='COP',
+               legend2='MXN',
+               title='COP VS MXN',
+               fst_color='#F26B38',sec_color='#B2AD7F')
 
 
 # In[9]:
