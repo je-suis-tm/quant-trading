@@ -223,6 +223,8 @@ Lo siento, no offense, Colombians. Surprisingly, mineral fuels took up <a href=h
 
 Anyhow, let's take a peep at local crude blends in Colombia. The major products are Cusiana, Caño Limón, Vasconia, Puerto Bahía and Castilla (API from light to heavy, sulfur content from sweet to sour). Although Castilla is the major export to U.S. (find more details from <a href=https://www.eia.gov/international/content/analysis/countries_long/Colombia/pdf/colombia_bkgd.pdf>EIA</a>), we can only obtain Vasconia price from Bloomberg, so we have to cope with constrained data availability. Similar to Canada, the biggest customer of Colombian crude blends is Uncle Sam. Thus, West Texas Intermediate is a more appropriate benchmark than Brent.
 
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
+
 Besides crude oil, Colombia has other exports, one of the most well-known is coffee beans. Colombia is the second largest coffee bean producer trailing only after Brazil. There are two types of coffee beans, Arabica and Robusta. Arabica is the predominant species in Colombia with its bright acidity, sweet notes, and caramel aroma rising from every brew. However, Robusta has a higher yield and less demanding conditions to grow. Concerning the rising menace of climate change, the bitter and intensive taste has been gradually introduced to Colombia as well. Hence, we would love to test ICE Arabica and Robusta futures price to make sure Vasconia crude is the major factor of Colombian Peso. Apart from the high-profile coffee beans, coal briquette is another big export business in Colombia. Most coals are shipped to Europe, so we pick Rotterdam API 2 coal futures as our benchmark. As for the gold in Colombia, we still follow gold LBMA price in London.
 
 If you recall, we have been using Australian dollar to evaluate Russian Ruble and Canadian Dollar. It is still applicable to Colombian Peso. It seems that there are few trades among big commodity exporters. The input of the model also considers Colombia's top trading partners. Inevitably, we have US dollar and Chinese Yuan, the high-tech manufacturer and the cheap-shit manufacturer. It's hard to imagine there is a country in the world who doesn't trade with this pair (even with sanction you can still trade with one of the pair, you know which one). Most of Colombia's trading partners are in Latin America. These trading partners either use US dollar (Ecuador) or issue their own currencies pegged to US dollar (Eastern Caribbean Dollar). All we need is to add a few currencies from south American countries, Argentina Peso, Peruvian Sol and Brazilian Real. Additionally, we cannot forget Mexican Peso and Turkish Lira. You may wonder, what about Euros? What a sad story! US dollar is the one and only global currency. ICE Rotterdam API 2 coal futures are priced in US dollar.
@@ -251,23 +253,41 @@ Another point is Mexico has the second largest trading deficit with Colombia. Co
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20mxn.png) 
 
-![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20crude.png) 
+From the chart below, we can observe the intertwined relationship between Colombian Peso and Vasconia Crude until 2017. In 2017, the value of Colombian Peso went fiasco, but the crude oil enjoyed a bonanza caused by OPEC production cut. Intuitively we should split the dataset into two groups, pre-2017 and post-2017.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20vs%20vas.png) 
 
+By running a standard oil money regression, pre-2017 dataset demonstrates a bona fide 80% R squared. In comparison, post-2017 dataset confirms no more entangled relationship between Colombian Peso and Vasconia Crude. R squared doesn’t even exceed 30%.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20groups.png) 
+
+Using a traditional train test split, pre-2017 dataset turns out with a lower R squared, 50%. It seems that all the great fitness comes from late 2015 to 2016. There is only one feasible opportunity on late October of 2015 where the surging momentum could be captured. 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20before%202017.png) 
 
+For the post-2017 dataset, things are quite the opposite. The out-of-sample data indicates a higher R squared than in-sample data, about 40%. The whole year of 2018 seems to be a perfect fit where no momentum trading signal emerges. Here comes the greatest dilemma of our strategy. If two assets are perfectly matched, we will lose the chance to make money. Alternatively, if two assets are terribly mismatched or completely detached, we won’t be able to do oil money trading at all. It’s all about the delicate balance of semi-efficient market.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20after%202017.png) 
+
+Although we cannot trade Colombian Peso as frequently as Norwegian Krone, the profit of LATAM oil money is as marvelous as Nordic oil money. Judging by the figure below, roughly 70% of the signals generate positive incomes.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20trading%20positions.png) 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20trading%20asset.png) 
 
+Similar to the previous trading tactics, we aim to maximize our profit by searching for the optimal holding period and stop loss/profit. The profit distribution of different parameters is positively skewed. It’s what every investor loves, a positive fat tail. The mean return is respectively 7% (the Colombian interest rate is <a href=https://www.ceicdata.com/en/colombia/interest-rates>4.498%</a> in 2019).
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20profit%20distribution.png) 
 
+The heatmap tells a consistent story. The return is independent of stop profit/loss point. The length of holding period determines how well we have been riding the waves. The warmer color the tile is, the more profit we will churn out. By setting stop profit/loss point from 0.002 to 0.0045 and holding period at 17 days, we shall be able to achieve our maximum return, 9%! Coincidentally, the excess return α, which interest rate is deducted, for both Norway and Colombia is 4%.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/cop%20profit%20heatmap.png) 
+
+### Discussion
+
+In this project, the petrocurrency trading does produce lucrative cash in our account but not the way most market analysts proclaim. Many papers which you will find in further reading session have declared that using oil price to forecast petrocurrency is urban legend. We started off with this awfully wrong direction led by market analysts who are only good at being report :monkey: but suck at conducting quantitative analytics. Fortunately, we ended up on the right foot, discovering a great momentum trading strategy. The greatness of this strategy is its market neutrality. It is reasonably immune to market turmoil or bull run.  Moreover, the foundation of this strategy comes from the fundamentals of oil market. Unlike the treasure hunt of tiny anomaly of trading signals, neither the phenomenon will vanish into thin air nor the opportunity will cease to exist when the rest of your competitors catches on to it.
+
+As planned, we have examined three petrocurrencies of free floating FX regime, Norwegian Krone, Russian Ruble, and Colombian Peso. We use solid evidence to debunk the petrocurrency myth of Canadian Dollar. We also strongly advise people to be cautious when dealing with assets from autocratic regimes like Russia. In that sense, we are only left with two options, Norway and Colombia, both alphas are approximately 4%. Well, after such a long time of hard work, perhaps now we deserve an Emirati feast generated by oil wealth.
 
 ### Further Reading
 
