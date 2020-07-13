@@ -14,6 +14,8 @@
 
 * <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#colombian-peso-and-vasconia-crude>Colombian Peso and Vasconia Crude</a>
 
+* <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#discussion>Discussion</a>
+
 * <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Oil%20Money%20project#further-reading>Further Reading</a>
 ------------------------------------------------
 &nbsp;
@@ -32,7 +34,7 @@ The figure below is a global oil production <a href=https://www.ft.com/content/6
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/oil%20production%20cost%20curve.png)
 
-Okay, enough about bad jokes. You may ask why I talk so much about commodity market at the beginning. If you think quantitative trading is about solving some complex stochastic process on commodity futures, prepare to lose a big chunk of money. You simply cannot quantify geopolitical risk or supply disruption by force majeure. <a href=https://www.ft.com/content/0093dcd4-ad59-11e9-8030-530adfa879c2>Some basic knowledge of underlying commodity</a> is vital to your trading strategy. 
+Okay, enough about bad jokes. You may ask why I talk so much about commodity market at the beginning. If you think quantitative trading is about solving some complex stochastic process on commodity options, prepare to lose a big chunk of money. You simply cannot quantify geopolitical risk or supply disruption by force majeure. <a href=https://www.ft.com/content/0093dcd4-ad59-11e9-8030-530adfa879c2>Some basic knowledge of underlying commodity</a> is vital to your trading strategy. 
 
 ### Norwegian Krone and Brent Crude
 
@@ -102,7 +104,7 @@ As shown in the portfolio performance, each momentum takes different length of t
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20trading%20asset.png)
 
-Nonetheless, we are not satisfied with the return. We are greedy creatures. 2% return? Why don't we deposit the money into the current account and get some risk free interest (Norges Bank interest rate at 1% as in 2019/4/30)? We certainly need to tune the parameters, such as different holding period and stop loss/profit point (even the amount of backtesting data points or acceptable R squared level), to maximize the return. After several attempts, we have gathered the below statistics. In average, the return is around 2%, positively skewed. Yet, extreme values can go as far as -6% to 6%. Needless to say, 6% is the goal.
+Nonetheless, we are not satisfied with the return. We are greedy creatures. 2% return? Why don't we deposit the money into the current account and get some risk free interest (Norges Bank interest rate at 1% as on the 30th of April, 2019)? We certainly need to tune the parameters, such as different holding period and stop loss/profit point (even the amount of backtesting data points or acceptable R squared level), to maximize the return. After several attempts, we have gathered the below statistics. In average, the return is around 2%, positively skewed. Yet, extreme values can go as far as -6% to 6%. Needless to say, 6% is the goal.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Oil%20Money%20project/preview/nok%20profit%20distribution.png)
 
