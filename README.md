@@ -46,6 +46,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 13. <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization project</a>
 
+14. <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers project</a>
+
 ### Data Source
 
 1. <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
@@ -213,6 +215,12 @@ Modern portfolio theory was introduced in 1952 by Nobel laureate Harry Markowitz
 ![alt text](https://github.com/je-suis-tm/graph-theory/blob/master/Portfolio%20Optimization%20project/preview/outta%20sample%20mean%20variance.png)
 
 This project is documented in the repository of <a href=https://github.com/je-suis-tm/graph-theory>Graph Theory</a>. For more details, please refer to the <a href=https://github.com/je-suis-tm/graph-theory/blob/master/Portfolio%20Optimization%20project/README.md>read me</a> page of a separate directory or <a href=https://je-suis-tm.github.io/graph-theory/portfolio-optimization>graph theory</a> section on my personal blog.
+
+### 14.Smart Farmers project
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/oil%20palm%20vs%20palm%20oil.PNG)
+
+For more details, please refer to the <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Smart%20Farmers%20project/README.md>read me page</a> of a separate directory or <a href=https://je-suis-tm.github.io/quant-trading/smart-farmers>quant trading section</a> on my personal blog.
 
 <br>
 
