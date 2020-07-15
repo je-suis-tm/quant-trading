@@ -220,6 +220,8 @@ This project is documented in the repository of <a href=https://github.com/je-su
 
 I know a lot of you have complained that this repository isn’t quantitative enough. You are yelling for the ultimate weapon of math destruction such as Poisson process or Jensen’s inequality. Well, the objective of quantitative trading is churning out more :euro: rather than deploying an elegant closed form equation. If you crave for intellectual challenge in mathematics, you are always welcome to check out my <a href=https://github.com/je-suis-tm/graph-theory>Graph Theory</a> repository. Nevertheless, I believe the birth of this project will meet your demand. Buon appetito :yum:
 
+This project intends to use convex optimization to approximate farmers’ plantation planning. Assuming farmers are Homo Economicus, their end game is to maximize their profit regarding how supply and demand can impact the price. Their decision is constrained by available agricultural land and biological features of crops. This model will give us a head start in trading CME agricultural futures.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/oil%20palm%20vs%20palm%20oil.png)
 
 For more details, please refer to the <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Smart%20Farmers%20project/README.md>read me page</a> of a separate directory or <a href=https://je-suis-tm.github.io/quant-trading/smart-farmers>quant trading section</a> on my personal blog.
