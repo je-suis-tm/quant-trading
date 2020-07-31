@@ -218,9 +218,11 @@ This project is documented in the repository of <a href=https://github.com/je-su
 
 ### 14.Smart Farmers project
 
-I know a lot of you have complained that this repository isn’t quantitative enough. You are yelling for the ultimate weapon of math destruction such as Poisson process or Jensen’s inequality. Well, the objective of quantitative trading is churning out more :euro: rather than deploying an elegant closed form equation. If you crave for intellectual challenge in mathematics, you are always welcome to check out my <a href=https://github.com/je-suis-tm/graph-theory>Graph Theory</a> repository. Nevertheless, I believe the birth of this project will meet your demand. Buon appetito :yum:
+I know a lot of you have complained that this repository isn’t quantitative enough. You are yelling for the ultimate weapon of math destruction such as Poisson process or Jensen’s inequality. Well, the objective of quantitative trading is churning out more :euro: rather than deploying an elegant closed form equation. If you crave for intellectual challenge in mathematics, you are always welcome to check out my <a href=https://github.com/je-suis-tm/graph-theory>Graph Theory</a> repository. Nevertheless, I believe the birth of this project will meet your picky demand. Buon appetito :yum:
 
-This project intends to use convex optimization to approximate farmers’ plantation planning. Assuming farmers are Homo Economicus, their end game is to maximize their profit regarding how supply and demand can impact the price. Their decision is constrained by available agricultural land and biological features of crops. This model will give us a head start in trading CME agricultural futures.
+:tangerine: :pineapple: :melon: :corn: and :sweet_potato: are something we have been taking for granted. Up until COVID-19, we finally come to senses that farmers are one of our low-paid essential workers. This project is dedicated to the optimal allocation of agricultural resources. By trading agricultural market, we are able to eliminate the inefficiency in the crop market. Ideally no food will be wasted and farmers will be fairly compensated. 
+
+The project per se intends to leverage convex optimization to approximate farmers’ plantation planning for different crops. Assuming farmers are Homo Economicus, their end game is to maximize the profit regarding the price impact from supply and demand. Their decision is constrained by arable land area and biological features of crops. We develop this smart model accordingly to acquire a head start in trading :rice: :coffee: and :chocolate_bar:
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/oil%20palm%20vs%20palm%20oil.png)
 
