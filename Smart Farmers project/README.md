@@ -46,16 +46,20 @@ To make the ultimate result more robust, we slightly expand the assumptions.
 
 ### Theoretical Framework
 
+&nbsp;
+
 **Objective Function**
 
-maximize total profit regarding supply and demand for each type of crop
+Maximize total profit regarding supply and demand for each type of crop
 
 **Constraints**
 
-* government intervention 
-* annual crop rotation
-* perennial crop lifespan
-* limited arable land
+* Government intervention 
+* Annual crop rotation
+* Perennial crop lifespan
+* Limited arable land
+
+&nbsp;
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/naive%20model.PNG) 
 
@@ -99,7 +103,7 @@ In order to get the optimal production of each type of crop, we steal something 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/naive%20model%20matrix.PNG) 
 
-Splendid, all hands on deck, it’s about time to move towards the next chapter!
+Splendid, all :raised_hands: on deck, it’s about time to move towards the next chapter!
 
 ### Data Specification
 
