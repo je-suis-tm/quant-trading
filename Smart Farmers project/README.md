@@ -59,6 +59,10 @@ Maximize total profit regarding supply and demand for each type of crop
 * Perennial crop lifespan
 * Limited arable land
 
+**Workflow**
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/workflow.png)
+
 &nbsp;
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/naive%20model.PNG) 
@@ -224,7 +228,7 @@ The naïve form is centered around the idea of Pareto Optimal. The generalized f
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/ricardian%20model.PNG) 
 
-The generalized form looks like the cousin of the naïve form. There are only minor changes in the mathematics form. We have one more sum function Σ to capture each country with subscript j in the system. The list of countries should include importers and exporters for each type of crop to cover ideally 90% of the market activity. Well, given the data complexity of Ricardian model, it is likely to take a decade for me to collect everything and simulate the model. Since we have talked about the smart farmers, let’s be smart researchers for once. Amid the decent performance of the naïve form, why bother fixing it when it’s not broken?
+The generalized form looks like the cousin of the naïve form. There are only minor changes in the mathematics form. We have one more sum function Σ to capture each country with subscript j in the system. The list of countries should include importers and exporters for each type of crop to cover ideally 90% of the market activity. Well, given the data complexity of Ricardian model, it is likely to take a decade for me to collect everything and simulate the model. Since we have talked about the smart farmers, let’s be smart researchers for once. Amid the decent performance of the naïve form, why bother fixing it when it’s not broken? The bottom line is, as long as we collect good forecast of population, GDP per capita, arable land & crop yield, we are able to make one year ahead forecast for both crop production and price. In that way, we can adjust our futures contracts accordingly and switch from the front month to a further-out month.
 
 ### Further Reading
 
