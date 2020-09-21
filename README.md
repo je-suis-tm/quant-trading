@@ -16,7 +16,7 @@
 
 &nbsp;
 
-Most scripts inside this repository are technical indicator automated trading. These scripts include various types of momentum trading, opening range breakout and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly quantamental analysis on some strange ideas I come up with to beat the market (or so I thought). There is no HFT strategy simply because ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting/forward testing (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless. No slippage, no surcharge, no illiquidity. 
+Most scripts inside this repository are technical indicator automated trading. These scripts include various types of momentum trading, opening range breakout, reversal of support & resistance and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly quantamental analysis on some strange ideas I come up with to beat the market (or so I thought). There is no HFT strategy simply because ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting/forward testing (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless. No slippage, no surcharge, no illiquidity. Last but not least, all scripts contain a global function named main so that you can embed the scripts directly into you trading system (although too lazy to write docstring).
 
 ### Table of Contents
 
@@ -70,6 +70,8 @@ MACD oscillator is trading strategy 101. MACD refers to Moving Average Convergen
 
 For the strategy itself, we compute long term moving average and short term moving average on the close price of a given stock. To generate the trading signal, we implement a comparison between the moving averages of different time horizons. When short term moving average is above long term moving average, we long the given stock accordingly. Vice versa.
 
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/MACD%20Oscillator%20backtest.py>here</a> to be redirected to the script.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/macd%20positions.png)
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/macd%20oscillator.png)
@@ -79,6 +81,8 @@ For the strategy itself, we compute long term moving average and short term movi
 Pair trading is the basic form of statistics arbitrage. It relies on the assumption that two cointegrated stocks would not drift too far away from each other. First step, we select two stocks and run <a href=https://en.wikipedia.org/wiki/Error_correction_model#Engle_and_Granger_2-step_approach>Engle-Granger two step analysis</a>. Once the criteria of cointegration is met, we standardize the residual and set one sigma away (two tailed) as the threshold. After that, we compute the current standardized residual of the selected stocks accordingly. When the standardized residual exceeds the threshold, it generates the trading signal. The simple rule is we always long the cheap stock and short the expensive stock. 
 
 The core idea of pair trading is <a href=https://en.wikipedia.org/wiki/Cointegration>cointegration</a>. Metaphorically speaking, cointegration is like a couple in a clingy relationship where two parties are crazy-glued together. Yet, most relationships break sooner or later, and only the very few can make it to the marriage (from a statistics perspective, not being pessimistic). Hence, it is important to frequently check on the status quo of cointegration before any pair trading order execution (the same applies to relationships).
+
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Pair%20trading%20backtest.py>here</a> to be redirected to the script.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/pair%20trading%20eg%20two%20step.PNG)
 
@@ -94,6 +98,8 @@ For the strategy itself, initially we make a few transformations on four vital b
 
 The rules of Heikin-Ashi can be found in <a href=https://quantiacs.com/Blog/Intro-to-Algorithmic-Trading-with-Heikin-Ashi.aspx>Quantiacs</a>.
 
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Heikin-Ashi%20backtest.py>here</a> to be redirected to the script.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/heikin-ashi%20positions.png)
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/heikin-ashi%20asset%20value.png)
@@ -108,6 +114,8 @@ Back to London Breakout, London and Tokyo are two of the largest FX markets in t
 
 For the strategy itself, we establish upper and lower thresholds prior to the high and low of the crucial timeframe. Once London FX market opens, we spend the first couple of minutes to check if the price would breach the preset boundaries. If it is above threshold, we long the currency pair accordingly. Vice versa. Nevertheless, we should set up a limit to prevent us from trading in the case of abnormal opening volatility. Normally, we clear our positions based on our target stop loss or stop profit respectively. By the end of the trading hour (still from the perspective of the current time zone), if there are any open positions, we clear them out.
 
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/London%20Breakout%20backtest.py>here</a> to be redirected to the script.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/london%20breakout%20positions.png)
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/london%20breakout%20thresholds.png)
@@ -119,6 +127,8 @@ Awesome oscillator is an upgraded version of MACD oscillator. It is one of those
 There are various strategies for awesome oscillator to generate signals, such as traditional moving average divergence, twin peaks and saucer. Twin peaks is just one of the many names of bottom W pattern. The pattern recognition will be covered in another chapter so the main focus of this chapter is saucer. Saucer is slightly more complex to implement than the traditional divergence. In return, saucer has the power to beat the slow response of the traditional divergence. Generally speaking, a faster response may sound awesome, but it does not guarantee a less risky outcome or a more profitable outcome. Hence, we will take MACD oscillator as a control group, to test if awesome oscillator can actually outperform MACD oscillator.
 
 The rules of awesome oscillator could be found in <a href=https://www.tradingview.com/wiki/Awesome_Oscillator_(AO)>TradingView</a>.
+
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Awesome%20Oscillator%20backtest.py>here</a> to be redirected to the script.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/awesome%20positions.png)
 
@@ -146,6 +156,8 @@ Initially we establish upper and lower thresholds based on previous days' open, 
 
 Rules of dual thrust can be found in <a href=https://www.quantconnect.com/tutorials/dual-thrust-trading-algorithm>QuantConnect</a>.
 
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Dual%20Thrust%20backtest.py>here</a> to be redirected to the script.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/dual%20thrust%20positions.png)
 
 ### 8.Parabolic SAR
@@ -155,6 +167,8 @@ Parabolic SAR is an indicator to identify stop and reverse of a trend. Usually, 
 The building of this strategy seems very simple, but the construction of the indicator is extremely painful due to the involvement of recursive calculation. Illustration on how to compute Parabolic SAR can be found in <a href=https://en.wikipedia.org/wiki/Parabolic_SAR>Wikipedia</a> but it is not very well explained. To get a clear idea of the calculation, my personal recommendation is to take a look at the <a href=https://www.box.com/s/gbtrjuoktgyag56j6lv0>spreadsheet</a> made by joeu2004.
 
 It is worth mentioning that SAR and RSI (which will be featured in a later chapter) shares the same founder, Welles Wilder. The guy is a real legend who used to work as mechanical engineer and real estate developer and later became a technical analyst. His book on technical trading system is a must-read for anyone that wants to elevate quant trading system to the next level.
+
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Parabolic%20SAR%20backtest.py>here</a> to be redirected to the script.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/parabolic%20sar%20positions.png)
 
@@ -170,6 +184,8 @@ For pattern recognition, Bollinger Bands has the capability of testing bottom W,
 
 More details of Bollinger Bands can be found in <a href=https://www.tradingview.com/wiki/Bollinger_Bands_(BB)>TradingView</a>.
 
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Bollinger%20Bands%20Pattern%20Recognition%20backtest.py>here</a> to be redirected to the script.
+
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/bollinger%20bands%20positions.png)
 
 ### 10. Relative Strength Index Pattern Recognition
@@ -183,6 +199,8 @@ RSI (Relative Strength Index) is also a popular indicator. It reflects the curre
 If you are looking for something slightly more complex, well, we can apply pattern recognition technique to RSI as well. Unlike strategy No.9 Bollinger Bands, we can directly look at the patterns of RSI itself instead of the price. Since we have tested double bottom pattern in Bollinger Bands, we would test head-shoulder pattern on RSI this time.
 
 For details of head-shoulder pattern, please refer to <a href=https://www.investopedia.com/terms/h/head-shoulders.asp>Investopedia</a>.
+
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/RSI%20Pattern%20Recognition%20backtest.py>here</a> to be redirected to the script.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/rsi%20pattern%20positions.png)
 
@@ -205,6 +223,8 @@ Here marks the debut of options strategy in this repository. Straddle refers to 
 Long straddle is commonly seen in event driven strategy, e.g. political referendum, company earning release. It profits from the uncertainty of both-side risk. For upside risk, the potential profit is unlimited. The potential loss does not come from the downside risk (there is limited gain from downside risk). Instead, it comes from the stagnant price due to insufficient volatility. In this case, short straddle is more suitable for sideways choppy market.
 
 The crucial element of options straddle is the selection of the strike price. As the price of options contains the market consensus, the only way to maximize the profit is to find the optimal strike price to shrink the loss bandwidth. This is where the economists kick in and offer base case outlook plus best/worst scenarios. In contrast to the common misunderstanding of quantitative trading, Option Greeks are no silver bullet. Quantitative combined with fundamental in one, so-called quantamental, makes the portfolio impeccable.
+
+Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Options%20Straddle%20backtest.py>here</a> to be redirected to the script.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/options%20straddle%20payoff%20diagram.png)
 
