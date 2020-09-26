@@ -20,33 +20,33 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Table of Contents
 
-1. <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD oscillator</a>
+1. <a href=./#1-macd-oscillator>MACD oscillator</a>
 
-2. <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair trading</a>
+2. <a href=./#2-pair-trading>Pair trading</a>
 
-3. <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a>
+3. <a href=./#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a>
 
-4. <a href=https://github.com/je-suis-tm/quant-trading#4-london-breakout>London Breakout</a>
+4. <a href=./#4-london-breakout>London Breakout</a>
 
-5. <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome oscillator</a>
+5. <a href=./#5awesome-oscillator>Awesome oscillator</a>
 
-6. <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money project</a>
+6. <a href=./#6oil-money-project>Oil Money project</a>
 
-7. <a href=https://github.com/je-suis-tm/quant-trading#7dual-thrust>Dual Thrust</a>
+7. <a href=./#7dual-thrust>Dual Thrust</a>
 
-8. <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a>
+8. <a href=./#8parabolic-sar>Parabolic SAR</a>
 
-9. <a href=https://github.com/je-suis-tm/quant-trading#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a>
+9. <a href=./#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a>
 
-10. <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
+10. <a href=./#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
 
-11. <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo project</a>
+11. <a href=./#11monte-carlo-project>Monte Carlo project</a>
 
-12. <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
+12. <a href=./#12options-straddle>Options Straddle</a>
 
-13. <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization project</a>
+13. <a href=./#13portfolio-optimization-project>Portfolio Optimization project</a>
 
-14. <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers project</a>
+14. <a href=./#14smart-farmers-project>Smart Farmers project</a>
 
 ### Data Source
 
