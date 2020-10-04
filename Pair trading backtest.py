@@ -89,7 +89,7 @@ def cointegration(data1,data2):
     signals['fitted']=np.mat(sm.add_constant(signals['asset2']))*np.mat(model.params).reshape(2,1)
     
     signals['residual']=signals['asset1']-signals['fitted']
-    
+
     signals['z']=(signals['residual']-np.mean(signals['residual']))/np.std(signals['residual'])
     
     #use z*0 to get panda series instead of an integer result
@@ -196,8 +196,8 @@ def portfolio(df1):
     capital0=20000
 
     #shares to buy of each position
-    positions1=capital0//max(df1['asset1'])
-    positions2=capital0//max(df1['asset2'])
+    positions1=capital0//df1['asset1'].iloc[0]
+    positions2=capital0//df1['asset2'].iloc[0]
 
     #cumsum1 column is created to check the holding of the position
     df1['cumsum1']=df1['positions1'].cumsum()
