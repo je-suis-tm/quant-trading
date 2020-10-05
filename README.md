@@ -50,7 +50,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Data Source
 
-1. <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>
+1. <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a>
 
 2. Bloomberg/Eikon
 
@@ -58,7 +58,9 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 4. <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
 
-5. <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
+5. <a href=https://github.com/je-suis-tm/web-scraping/blob/master/CME3.py>CME</a>/<a href=https://github.com/je-suis-tm/web-scraping/blob/master/LME.py>LME</a>
+
+6. <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
 
 <br>
 
