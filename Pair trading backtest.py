@@ -178,12 +178,7 @@ def signal_generation(asset1,asset2,method,bandwidth=250):
     #only need to generate trading signal of one asset
     #the other one should be the opposite direction
     signals['signals2']=-signals['signals1']
-    signals['positions2']=signals['signals2'].diff()
-    
-    #fix initial positions issue
-    if signals['signals1'].iloc[0]!=0:
-        signals['positions1'].iloc[0]=signals['signals1'].iloc[0]
-        signals['positions2'].iloc[0]=signals['signals2'].iloc[0]        
+    signals['positions2']=signals['signals2'].diff()   
     
     return signals
 
@@ -252,6 +247,8 @@ def portfolio(data):
     capital0=20000
 
     #shares to buy of each position
+    #this is no forward bias
+    #just ensure we have enough €€€ to purchase shares when the price peaks
     positions1=capital0//max(data['asset1'])
     positions2=capital0//max(data['asset2'])
 
