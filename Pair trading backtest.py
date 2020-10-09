@@ -335,7 +335,7 @@ def main():
     plot(signals[ind:],ticker1,ticker2)    
 
     #viz portfolio performance
-    porto=portfolio(signals[ind:])
+    portfolio_details=portfolio(signals[ind:])
     
     #the performance metrics of investment could be found in another strategy called Heikin-Ashi
     # https://github.com/je-suis-tm/quant-trading/blob/master/heikin%20ashi%20backtest.py
