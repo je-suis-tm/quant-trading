@@ -20,47 +20,55 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Table of Contents
 
-1. <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD oscillator</a>
+#### Options Strategy
 
-2. <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair trading</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
 
-3. <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#15panic-attack-project>Panic Attack Project</a>
 
-4. <a href=https://github.com/je-suis-tm/quant-trading#4-london-breakout>London Breakout</a>
+#### Quantamental Analysis
 
-5. <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome oscillator</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo project</a>
 
-6. <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money project</a>
 
-7. <a href=https://github.com/je-suis-tm/quant-trading#7dual-thrust>Dual Thrust</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization project</a>
 
-8. <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers project</a>
 
-9. <a href=https://github.com/je-suis-tm/quant-trading#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a>
+#### Technical Indicators
 
-10. <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome oscillator</a> 
 
-11. <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a> 
 
-12. <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#7dual-thrust>Dual Thrust</a> 
 
-13. <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a> 
 
-14. <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#4-london-breakout>London Breakout</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD oscillator</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair trading</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
 
 ### Data Source
 
-1. <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a>
+* Bloomberg/Eikon
 
-2. Bloomberg/Eikon
+* <a href=https://github.com/je-suis-tm/web-scraping/blob/master/CME3.py>CME</a>/<a href=https://github.com/je-suis-tm/web-scraping/blob/master/LME.py>LME</a>
 
-3. <a href=https://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>FX Historical Data</a>
+* <a href=https://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>FX Historical Data</a>
 
-4. <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
+* <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
 
-5. <a href=https://github.com/je-suis-tm/web-scraping/blob/master/CME3.py>CME</a>/<a href=https://github.com/je-suis-tm/web-scraping/blob/master/LME.py>LME</a>
+* <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
 
-6. <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
+* <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a>
 
 <br>
 
@@ -247,6 +255,8 @@ The project per se intends to leverage convex optimization to approximate farmer
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/oil%20palm%20vs%20palm%20oil.png)
 
 *For more details, please refer to the <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Smart%20Farmers%20project/README.md>read me page</a> of a separate directory or <a href=https://je-suis-tm.github.io/quant-trading/smart-farmers>quant trading section</a> on my personal blog.*
+
+### 15.Panic Attack project
 
 <br>
 
