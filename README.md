@@ -1,6 +1,6 @@
 # Quant-trading
 
-<br>
+&nbsp;
 
 ## Intro
 
@@ -20,11 +20,15 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Table of Contents
 
+&nbsp;
+
 #### Options Strategy
 
 * <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
 
 * <a href=https://github.com/je-suis-tm/quant-trading#15panic-attack-project>Panic Attack Project</a>
+
+&nbsp;
 
 #### Quantamental Analysis
 
@@ -37,6 +41,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 * <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization Project</a>
 
 * <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers Project</a>
+
+&nbsp;
 
 #### Technical Indicators
 
@@ -55,6 +61,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 * <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
+
+&nbsp;
 
 ### Data Source
 
