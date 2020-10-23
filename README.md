@@ -28,29 +28,29 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 #### Quantamental Analysis
 
-* <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo Project</a>
 
-* <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money Project</a>
 
-* <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair Trading</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization Project</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers Project</a>
 
 #### Technical Indicators
 
-* <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome oscillator</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome Oscillator</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#7dual-thrust>Dual Thrust</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi candlestick</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi Candlestick</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#4-london-breakout>London Breakout</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD oscillator</a> 
-
-* <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair trading</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD Oscillator</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a> 
 
