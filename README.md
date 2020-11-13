@@ -25,7 +25,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 #### Options Strategy
 
 * <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
-* <a href=https://github.com/je-suis-tm/quant-trading#15vix-calculator>VIX Calculator</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#15-vix-calculator>VIX Calculator</a>
 
 &nbsp;
 
