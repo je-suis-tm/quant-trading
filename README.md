@@ -25,6 +25,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 #### Options Strategy
 
 * <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#15vix-calculator>VIX Calculator</a>
 
 &nbsp;
 
@@ -261,6 +262,10 @@ The project per se intends to leverage convex optimization to approximate farmer
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/oil%20palm%20vs%20palm%20oil.png)
 
 *For more details, please refer to the <a href=https://github.com/je-suis-tm/quant-trading/tree/master/Smart%20Farmers%20project/README.md>read me page</a> of a separate directory or <a href=https://je-suis-tm.github.io/quant-trading/smart-farmers>quant trading section</a> on my personal blog.*
+
+### 15. VIX Calculator
+
+*Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/VIX%20Calculator.py>here</a> to be redirected to the script.*
 
 <br>
 
