@@ -267,6 +267,8 @@ The project per se intends to leverage convex optimization to approximate farmer
 
 VIX is the fear gauge of S&P 500 index. By using <a href=https://www.mathopenref.com/calcriemann.html>Riemann sum</a> and <a href=https://www.emathhelp.net/notes/calculus-1/taylor-formula>Taylor series expansion</a>, we are able to convert a continuous fair price variance swap to a discrete options volatility index, which is called VIX. VIX is determined by two components, 3-week-ahead weekly S&P 500 options and one-month-ahead monthly S&P 500 options. It is de facto market anticipated volatility of S&P 500 index in 30 days. So far it has been applied to some stock exchange indices and some forex pairs. Since VIX is such a great risk management tool, why don’t we apply it to any asset with options contract? The objective of this script is to create a VIX calculator for any commodity options within any given length of forecast time horizon.
 
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/vix%20calculator.PNG)
+
 *Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/VIX%20Calculator.py>here</a> to be redirected to the script.*
 
 <br>
