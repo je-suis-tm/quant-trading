@@ -8,6 +8,8 @@
 # http://www.cboe.com/micro/vix/vixwhite.pdf
 #check this awesome article on the connection between vix and variance swap
 # https://berentlunde.netlify.app/post/the-fear-index-vix-and-variance-swaps
+#check this paper on the variance swap
+# https://www.researchgate.net/publication/246869706_More_Than_You_Ever_Wanted_to_Know_About_Volatility_Swaps
 import pandas as pd
 import datetime as dt
 import dateutil
