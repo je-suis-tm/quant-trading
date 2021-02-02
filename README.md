@@ -24,32 +24,32 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 #### Options Strategy
 
-* <a href=https://github.com/je-suis-tm/quant-trading#12options-straddle>Options Straddle</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#12-options-straddle>Options Straddle</a>
 * <a href=https://github.com/je-suis-tm/quant-trading#15-vix-calculator>VIX Calculator</a>
 
 &nbsp;
 
 #### Quantamental Analysis
 
-* <a href=https://github.com/je-suis-tm/quant-trading#11monte-carlo-project>Monte Carlo Project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#11-monte-carlo-project>Monte Carlo Project</a>
 
-* <a href=https://github.com/je-suis-tm/quant-trading#6oil-money-project>Oil Money Project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#6-oil-money-project>Oil Money Project</a>
 
 * <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair Trading</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#13portfolio-optimization-project>Portfolio Optimization Project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#13-portfolio-optimization-project>Portfolio Optimization Project</a>
 
-* <a href=https://github.com/je-suis-tm/quant-trading#14smart-farmers-project>Smart Farmers Project</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#14-smart-farmers-project>Smart Farmers Project</a>
 
 &nbsp;
 
 #### Technical Indicators
 
-* <a href=https://github.com/je-suis-tm/quant-trading#5awesome-oscillator>Awesome Oscillator</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#5-awesome-oscillator>Awesome Oscillator</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#9bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#9-bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#7dual-thrust>Dual Thrust</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#7-dual-thrust>Dual Thrust</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi Candlestick</a> 
 
@@ -57,7 +57,7 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 * <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD Oscillator</a> 
 
-* <a href=https://github.com/je-suis-tm/quant-trading#8parabolic-sar>Parabolic SAR</a> 
+* <a href=https://github.com/je-suis-tm/quant-trading#8-parabolic-sar>Parabolic SAR</a> 
 
 * <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
 
