@@ -73,6 +73,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 * <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
 
+* <a href=https://github.com/je-suis-tm/web-scraping/blob/master/WallStreetBets.py>Reddit WallStreetBets</a>
+
 * <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
 
 * <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a>
