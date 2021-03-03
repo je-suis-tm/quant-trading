@@ -84,6 +84,9 @@ def constrained_ols(x,y):
     #diagonal matrix
     #use -1 to achieve larger than
     inequality_coeff[::len(x.columns)+1]=-1
+    
+    #no constraint for the constant
+    inequality_coeff[0,0]=0
     inequality_value=cvxopt.matrix([0.0 for _ in range(len(x.columns))])
 
     cvxopt.solvers.options['show_progress']=False
