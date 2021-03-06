@@ -167,7 +167,7 @@ The estimated production follows the trend but with a larger magnitude of fluctu
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/mango%20production.png) 
 
-Supply and demand do not work in mango’s case, either. People usually buy imported mango from Thailand. Domestic demand should be able to cover the model. It’s a bit strange that some other hidden factors influence mango demand.
+Supply and demand work to certain extent – at least the overall trend is captured. People usually buy imported mango from Thailand. Domestic demand should be able to cover the model. There may be some other hidden factors influence mango demand.
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/mango%20regression.png) 
 
@@ -179,7 +179,7 @@ Despite the overestimation of rubber production, the model provides a clear pict
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/rubber%20production.png) 
 
-Supply and demand do not work on rubber as well. Since rubber is an export business, the model must take in consideration of international demand. 
+Supply and demand have limited explanatory power on rubber. Since rubber is an export business, the model must take in consideration of international demand. 
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/Smart%20Farmers%20project/preview/rubber%20regression.png) 
 
