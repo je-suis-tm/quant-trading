@@ -73,13 +73,17 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 * <a href=https://www.histdata.com/>Histdata</a>/<a href=https://fxhistoricaldata.com>FX Historical Data</a>
 
+* <a href=https://github.com/je-suis-tm/web-scraping/blob/master/Macrotrends.py>Macrotrends</a>
+
 * <a href=https://stooq.com>Stooq</a>/<a href=https://www.quandl.com>Quandl</a>
 
 * <a href=https://github.com/je-suis-tm/web-scraping/blob/master/WallStreetBets.py>Reddit WallStreetBets</a>
 
 * <a href=https://github.com/je-suis-tm/web-scraping>Web Scraping</a>
 
-* <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a>
+* <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a> 
+
+*After recent updates, Yahoo Finance only allows you to download the last five year's data. I am still sniffing for a better resource. Please share with me if you find an alternative for Yahoo Finance.*
 
 <br>
 
