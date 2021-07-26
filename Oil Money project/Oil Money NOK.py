@@ -172,6 +172,8 @@ print(model.summary(),'\n')
 #from the summary u can tell there is multicollinearity
 #the condition number is skyrocketing
 #alternatively, i can use elastic net regression to achieve the convergence
+#check the link below for more details
+# https://github.com/je-suis-tm/machine-learning/blob/master/coordinate%20descent%20for%20elastic%20net.ipynb
 m=en(alphas=[0.0001, 0.0005, 0.001, 0.01, 0.1, 1, 10],
      l1_ratio=[.01, .1, .5, .9, .99],  max_iter=5000).fit(x0[x0.index<'2017-04-25'], y)  
 print(m.intercept_,m.coef_)
