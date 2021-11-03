@@ -63,6 +63,8 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 * <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
 
+* <a href=https://github.com/je-suis-tm/quant-trading#17-shooting-star>Shooting Star</a>
+
 &nbsp;
 
 ### Data Source
@@ -286,6 +288,11 @@ Every now and then, we read some bulge brackets hit the headline, “XXX will re
 ![alt text](https://github.com/je-suis-tm/machine-learning/blob/master/Wisdom%20of%20Crowds%20project/preview/y1%20forecast%20bias.png)
 
 *This project is documented in the repository of <a href=https://github.com/je-suis-tm/machine-learning>Machine Learning</a>. For more details, please refer to the <a href=https://github.com/je-suis-tm/machine-learning/blob/master/Wisdom%20of%20Crowds%20project/README.md>read me</a> page of a separate directory or <a href=https://je-suis-tm.github.io/machine-learning/wisdom-of-crowds>machine learning</a> section on my personal blog.*
+
+### 17. Shooting Star
+
+> Can we pretend that airplanes in the night sky are like shooting stars? I could really use a wish right now!<br><br>
+> --- Hayley Williams, Lead Vocalist of Paramore
 
 <br>
 
