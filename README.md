@@ -85,8 +85,6 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 * <a href=https://finance.yahoo.com>Yahoo Finance</a>/<a href=https://pypi.org/project/fix-yahoo-finance>fix_yahoo_finance package</a>/<a href=https://pypi.org/project/yfinance>yfinance package</a> 
 
-*After recent updates, Yahoo Finance only allows you to download the last five year's data. I am still sniffing for a better resource. Please share with me if you find an alternative for Yahoo Finance.*
-
 <br>
 
 ## Strategies:
