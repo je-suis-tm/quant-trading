@@ -294,6 +294,10 @@ Every now and then, we read some bulge brackets hit the headline, “XXX will re
 > Can we pretend that airplanes in the night sky are like shooting stars? I could really use a wish right now!<br><br>
 > --- Hayley Williams, Lead Vocalist of Paramore
 
+*Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Shooting%20Star%20backtest.py>here</a> to be redirected to the script.*
+
+![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/shooting%20star%20positions.png)
+
 <br>
 
 #### STAY TUNED
