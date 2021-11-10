@@ -292,6 +292,10 @@ Every now and then, we read some bulge brackets hit the headline, “XXX will re
 > Can we pretend that airplanes in the night sky are like shooting stars? I could really use a wish right now!<br><br>
 > --- Hayley Williams, Lead Vocalist of Paramore
 
+Shooting star, such a poetic name, is merely a simple candlestick pattern. It has a long upper shadow, little lower shadow and a small real body, which resonates the shape of a shooting star. Similar to a real comet, shooting star is a jinxed signal. It indicates the beginning of a bearish momentum after a price uptrend. However, the definition of a shooting star in mathematics is sophisticated. Not many candlesticks can suffice the rigid criteria of shooting star. In practice, people relax the constraint on shooting star in order to trigger the signal.
+
+A sibling of shooting star is called hammer which is effectively a vertical flipped shooting star with bullish outlook. The close price of a hammer is supposed to be higher than the open price. Another sibling of shooting star is called inverted hammer. Inverted hammer shares the same shape with shooting star, but inverted hammer comes with higher close price than open price and usually is an omen of price hike. Nonetheless, there is no "inverted shooting star". As malicious as it sounds, the official name is called hanging man...
+
 *Click <a href=https://github.com/je-suis-tm/quant-trading/blob/master/Shooting%20Star%20backtest.py>here</a> to be redirected to the script.*
 
 ![alt text](https://github.com/je-suis-tm/quant-trading/blob/master/preview/shooting%20star%20positions.png)
