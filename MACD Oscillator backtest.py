@@ -38,7 +38,7 @@ def macd(signals):
 #we can subtract short moving average from long moving average
 #the difference between is sometimes positive, it sometimes becomes negative
 #thats why it is named as moving average converge/diverge oscillator
-def signal_generation(df,method):
+def signal_generation(df, method):
     
     signals=method(df)
     signals['positions']=0
