@@ -273,7 +273,7 @@ def vix_calculator(df,cmt_rate,calendar,
                    num_of_mins_timeframe,num_of_mins_year):
     
     #us federal holidays
-    federal_holidays=calendar['DATE'].tolist()
+    federal_holidays=calendar['Date'].tolist()
     
     #daily treasury yield curve rate
     interest_rate_front=cmt_rate['value'][cmt_rate['maturity']==f'{timeframe_front} Mo'][cmt_rate['Date']==tradedate].item()/100
