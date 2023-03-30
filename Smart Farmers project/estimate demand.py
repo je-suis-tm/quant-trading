@@ -134,14 +134,6 @@ def get_params(crops,grande,malay_gdp,malay_pop,viz=False):
         D[target_crop]=list(ans)
         
     return D
-
-
-# ### execution
-
-# In[6]:
-
-
-global beginyear,endyear
 beginyear=2012
 endyear=2019
 

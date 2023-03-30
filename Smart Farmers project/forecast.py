@@ -301,18 +301,8 @@ capita=pd.read_csv('capita.csv')
 capita.set_index('Date',inplace=True,)
 
 capita.index=pd.to_datetime(capita.index)
-
-
-# In[13]:
-
-
-global malay_land
 malay_land=pd.read_csv('malay_land.csv')
-
-global malay_pop
 malay_pop=pd.read_csv('malay_pop.csv')
-
-global malay_gdp
 malay_gdp=pd.read_csv('malay_gdp.csv')
 
 
@@ -321,34 +311,10 @@ malay_gdp=pd.read_csv('malay_gdp.csv')
 
 #ffill land area for 2018
 malay_land.at[6,'Value']=malay_land.at[5,'Value']
-
-
-# In[15]:
-
-
-global D
 D=prepare(grand)
-
-
-# In[16]:
-
-
-global beginyear,endyear
 beginyear=2013
 endyear=2019
-
-
-# In[17]:
-
-
-global currentyear
 currentyear=2013
-
-
-# In[18]:
-
-
-global upperbound,lowerbound
 upperbound=1.2
 lowerbound=-0.8
 

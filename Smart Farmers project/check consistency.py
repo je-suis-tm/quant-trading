@@ -20,12 +20,6 @@ prix=pd.read_csv('Prices_E_All_Data_(Normalized).csv',
 
 land=pd.read_csv('Inputs_LandUse_E_All_Data_(Normalized).csv',
                  encoding='latin-1')
-
-
-# In[3]:
-
-
-global beginyear,endyear
 beginyear=2012;
 endyear=2019
 
