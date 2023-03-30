@@ -16,10 +16,16 @@ import pandas as pd
 
 #traditional commodity cost curve
 #input two pandas series, the third one is optional
-def cost_curve(x,y1,y2=[],
+def cost_curve(x,y1,y2=None,
                hline_var=0,hline_color='k',hline_name='',
-               colormap='tab20c',legends=[],notes=[],
+               colormap='tab20c',legends=None,notes=None,
                ylabel='',xlabel='',title='',fig_size=(10,5)):
+    if y2 is None:
+        y2 = []
+    if legends is None:
+        legends = []
+    if notes is None:
+        notes = []
     
     ax=plt.figure(figsize=fig_size).add_subplot(111)
     ax.spines['top'].set_visible(False)
@@ -78,7 +84,6 @@ def cost_curve(x,y1,y2=[],
     plt.legend(loc=6,bbox_to_anchor=(0.12, -0.4), ncol=4)    
     
     plt.show()
-    
 
 
 # In[3]:
