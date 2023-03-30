@@ -35,12 +35,6 @@ import matplotlib.pyplot as plt
 import fix_yahoo_finance as yf
 import random as rd
 from sklearn.model_selection import train_test_split
-
-
-# In[2]:
-
-#this list is purely designed to generate gradient color 
-global colorlist
 colorlist=['#fffb77',
  '#fffa77',
  '#fff977',

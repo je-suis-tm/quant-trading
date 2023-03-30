@@ -78,22 +78,8 @@ def prepare(target_land,target_prod,target_prix):
         D[currentyear]['eco lifespan']=eco_lifespan
 
     return D
-
-
-# ### execution
-
-# In[3]:
-
-
-global beginyear,endyear
 beginyear=2012
 endyear=2019
-
-
-# In[4]:
-
-
-global eco_coeff,default_discount
 eco_coeff=0.7
 default_discount=0.8
 
