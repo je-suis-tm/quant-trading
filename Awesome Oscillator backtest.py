@@ -19,11 +19,11 @@
 
 
 # In[1]:
-#need to get fix yahoo finance package first
+#need to get yfinance package first
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import fix_yahoo_finance as yf
+import yfinance as yf
 
 
 # In[2]:

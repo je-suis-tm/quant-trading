@@ -32,7 +32,7 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import fix_yahoo_finance as yf
+import yfinance as yf
 
 
 # In[2]:

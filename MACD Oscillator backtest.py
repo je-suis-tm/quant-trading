@@ -7,12 +7,12 @@ Created on Tue Feb  6 11:57:46 2018
 
 # In[1]:
 
-#need to get fix yahoo finance package first
+#need to get yfinance package first
 
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-import fix_yahoo_finance as yf
+import yfinance as yf
 
 
 
@@ -44,7 +44,11 @@ def signal_generation(df,method):
     signals['positions']=0
 
     #positions becomes and stays one once the short moving average is above long moving average
-    signals['positions'][ma1:]=np.where(signals['ma1'][ma1:]>=signals['ma2'][ma1:],1,0)
+    signals.loc[signals.index[ma1:],'positions']=np.where(
+        signals['ma1'].iloc[ma1:]>=signals['ma2'].iloc[ma1:],
+        1,
+        0,
+    )
 
     #as positions only imply the holding
     #we take the difference to generate real trade signal

@@ -17,7 +17,7 @@
 
 import matplotlib.pyplot as plt
 import numpy as np
-import fix_yahoo_finance as yf
+import yfinance as yf
 import pandas as pd
 
 
