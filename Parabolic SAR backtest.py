@@ -15,6 +15,17 @@
 # https://en.wikipedia.org/wiki/Parabolic_SAR
 # https://www.box.com/s/gbtrjuoktgyag56j6lv0
 
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 缺少样本外测试
+#   • 未包含交易成本
+#   • 缺少止损
+#
+
 import matplotlib.pyplot as plt
 import numpy as np
 import fix_yahoo_finance as yf

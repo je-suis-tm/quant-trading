@@ -29,6 +29,17 @@
 #since i have written bottom w pattern for bollinger bands
 #i would not do it here
 
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 参数较多注意过拟合
+#   • 缺少样本外测试
+#   • 未包含交易成本
+#
+
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt

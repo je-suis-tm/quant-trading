@@ -20,6 +20,17 @@
 
 # In[1]:
 #need to get fix yahoo finance package first
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 缺少样本外测试
+#   • 缺少止损机制
+#   • 未包含交易成本
+#
+
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd

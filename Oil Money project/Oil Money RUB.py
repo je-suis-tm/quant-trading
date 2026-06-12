@@ -3,6 +3,17 @@
 # In[1]:
 
 
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 缺少样本外测试验证
+#   • 未包含交易成本模型
+#   • 建议增加止损机制
+#
+
 import os
 import pandas as pd
 import numpy as np

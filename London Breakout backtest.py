@@ -41,6 +41,17 @@
 #which is est 3 am
 #daylight saving time is another story
 #what a stupid idea it is
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 缺少样本外测试
+#   • 缺少止损
+#   • 缺少基准比较
+#
+
 import os
 os.chdir('d:/')
 import matplotlib.pyplot as plt

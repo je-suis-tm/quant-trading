@@ -1,4 +1,15 @@
 # -*- coding: utf-8 -*-
+
+# ═══════════════════════════════════════════════════════════
+# Quant Auditor 质量提醒 (audited by quant-auditor)
+# https://github.com/shunfeng8421/quant-auditor
+# ═══════════════════════════════════════════════════════════
+# 审计发现:
+#   • 缺少样本外测试
+#   • 缺少止损
+#   • 缺少基准比较
+#
+
 """
 Created on Mon Mar 19 15:22:38 2018
 @author: Administrator
