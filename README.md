@@ -69,6 +69,91 @@ Most scripts inside this repository are technical indicator automated trading. T
 
 ### Data Source
 
+# Quant-trading
+
+&nbsp;
+
+## Intro
+
+&nbsp;
+
+> We’re right 50.75 percent of the time... but we’re 100 percent right 50.75 percent of the time, you can make billions that way. <br><br>
+> --- Robert Mercer, co-CEO of Renaissance Technologies
+
+> If you trade a lot, you only need to be right 51 percent of the time, we need a smaller edge on each trade. <br><br>
+> --- Elwyn Berlekamp, co-Founder of Combinatorial Game Theory
+
+###### *The quotes above come from a book by Gregory Zuckerman, a book every quant must read, THE MAN WHO SOLVED THE MARKET.*
+
+&nbsp;
+
+Most scripts inside this repository are technical indicator automated trading. These scripts include various types of momentum trading, opening range breakout, reversal of support & resistance and statistical arbitrage strategies. Yet, quantitative trading is not only about technical analysis. It can refer to computational finance to exploit derivative price mismatch, pattern recognition on alternative datasets to generate alphas or low latency order execution in the market microstructure. Hence, there are a few ongoing projects inside this repository. These projects are mostly quantamental analysis on some strange ideas I come up with to beat the market (or so I thought). There is no HFT strategy simply because ultra high frequency data are very expensive to acquire (even consider platforms like Quantopian or Quandl). Additionally, please note that, all scripts are historical data backtesting/forward testing (basically via Python, not C++, maybe Julia in the near future). The assumption is that all trades are frictionless. No slippage, no surcharge, no illiquidity. Last but not least, all scripts contain a global function named main so that you can embed the scripts directly into you trading system (although too lazy to write docstring).
+
+### Table of Contents
+
+&nbsp;
+
+#### Options Strategy
+
+* <a href=https://github.com/je-suis-tm/quant-trading#12-options-straddle>Options Straddle</a>
+* <a href=https://github.com/je-suis-tm/quant-trading#15-vix-calculator>VIX Calculator</a>
+
+&nbsp;
+
+#### Quantamental Analysis
+
+* <a href=https://github.com/je-suis-tm/quant-trading#11-monte-carlo-project>Monte Carlo Project</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#6-oil-money-project>Oil Money Project</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#2-pair-trading>Pair Trading</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#13-portfolio-optimization-project>Portfolio Optimization Project</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#14-smart-farmers-project>Smart Farmers Project</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#16-wisdom-of-crowds-project>Wisdom of Crowd Project</a>
+
+&nbsp;
+
+#### Technical Indicators
+
+* <a href=https://github.com/je-suis-tm/quant-trading#5-awesome-oscillator>Awesome Oscillator</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#9-bollinger-bands-pattern-recognition>Bollinger Bands Pattern Recognition</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#7-dual-thrust>Dual Thrust</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#3-heikin-ashi-candlestick>Heikin-Ashi Candlestick</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#4-london-breakout>London Breakout</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#1-macd-oscillator>MACD Oscillator</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#8-parabolic-sar>Parabolic SAR</a> 
+
+* <a href=https://github.com/je-suis-tm/quant-trading#10-relative-strength-index-pattern-recognition>Relative Strength Index Pattern Recognition</a>
+
+* <a href=https://github.com/je-suis-tm/quant-trading#17-shooting-star>Shooting Star</a>
+
+&nbsp;
+
+#### MFT & Execution Infrastructure
+
+* <a href=https://github.com/billionerleha-111/Tolmachev-Netcode-SDK>TolmachЁv Netcode SDK</a>
+
+&nbsp;
+
+### MFT & Execution Infrastructure
+
+As mentioned in the intro, this repository focuses on historical backtesting assuming frictionless trades. However, taking your statistical arbitrage or pair trading strategies into the live market—especially across multiple exchanges—requires flawless execution infrastructure. If you are stepping into the world of Medium-Frequency Trading (MFT) and high-concurrency clusters, you cannot afford microsecond desyncs or order book slippage.
+
+* <a href=https://github.com/billionerleha-111/Tolmachev-Netcode-SDK>TolmachЁv Netcode SDK</a> - An enterprise-grade deterministic state synchronization engine that completely replaces traditional client-side prediction and rollback mechanics. Built on topological mathematics and harmonic compression, it locks order books perfectly. **Core benchmarks:** Throughput > 41.5 million TPS, Physical RTT 24.175 ns, Core Jitter 10.4537 μs, and Atomic Validation (0 CPU load — faster than OS header unpacking). This architecture reduces CCU load by up to 40%. <a href=https://tuhct-sdk.store>Official Website</a>
+
+&nbsp;
+
+### Data Source
+
 * Bloomberg/Eikon
 
 * <a href=https://github.com/je-suis-tm/web-scraping/blob/master/CME3.py>CME</a>/<a href=https://github.com/je-suis-tm/web-scraping/blob/master/LME.py>LME</a>
