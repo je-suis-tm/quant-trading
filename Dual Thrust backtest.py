@@ -65,8 +65,8 @@ def min2day(df,column,year,month,rg):
         try:
             temp=df['%s-%s-%s 3:00:00'%(year,month,i):'%s-%s-%s 12:00:00'%(year,month,i)][column]
 
-            memo['open'].append(temp[0])
-            memo['close'].append(temp[-1])
+            memo['open'].append(temp.iloc[0])
+            memo['close'].append(temp.iloc[-1])
             memo['high'].append(max(temp))
             memo['low'].append(min(temp))
             memo['date'].append('%s-%s-%s'%(year,month,i))
@@ -157,7 +157,7 @@ def signal_generation(df,intraday,param,column,rg):
         if i.hour==12 and i.minute==0:
             sigup,siglo=float(0),float(0)
             signals['cumsum']=signals['signals'].cumsum()
-            signals.at[i,'signals']=-signals['cumsum'][i:i]
+            signals.at[i,'signals']=-signals['cumsum'][i]
             
         #keep track of trigger levels
         signals.at[i,'upper']=sigup
